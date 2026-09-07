@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pricing · AVAS</title>
-<meta name="description" content="Every price on the page. A $750 diagnostic, retainers at $397, $1,750 and $2,600 a month, every tier a count, everything else a quote.">
+<meta name="description" content="Every price on the page. A $750 diagnostic, retainers from $2,500, $3,800 and $10,000 a month, every tier a count, everything else a quote.">
 <meta name="theme-color" content="#F5F5F7">
 <link rel="canonical" href="https://ayalavirtualassistance.site/pricing/">
 <link rel="icon" href="/assets/avas-mark-plain.png">
 <meta property="og:title" content="Pricing · AVAS">
-<meta property="og:description" content="Every price on the page. A $750 diagnostic, retainers at $397, $1,750 and $2,600 a month, every tier a count, everything else a quote.">
+<meta property="og:description" content="Every price on the page. A $750 diagnostic, retainers from $2,500, $3,800 and $10,000 a month, every tier a count, everything else a quote.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ayalavirtualassistance.site/pricing/">
 <meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
@@ -282,6 +282,7 @@ html[data-motion="calm"] .float{animation:none!important}
   letter-spacing:-.03em;color:var(--ink);line-height:1.15;margin:12px 0 2px;
 }
 #p-pricing .ptier__fig span{font-size:.48em;letter-spacing:.01em;color:var(--muted)}
+#p-pricing .ptier__fig .ptier__from{font-size:.42em;letter-spacing:.02em;color:var(--muted);font-weight:400;margin-right:5px}
 #p-pricing .ptier__unit{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:14px}
 #p-pricing .ptier__list{list-style:none;margin:0 0 14px;padding:0}
 #p-pricing .ptier__list li{
@@ -459,6 +460,17 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 #p-pricing .sub{max-width:64ch}
 #p-pricing .sub h2{font-size:var(--fs-h2);color:var(--deep);margin-bottom:12px}
 #p-pricing .sub p{font-size:17px;line-height:1.6;color:var(--ink-72)}
+#p-pricing .ptier__tag{
+  display:inline-block;font-size:9.5px;letter-spacing:.14em;border-radius:4px;padding:2px 6px;margin-left:6px;
+  background:var(--espresso);color:var(--panel);font-family:var(--font-m);
+}
+
+#p-pricing .floor{
+  border:1px solid var(--hair);border-radius:16px;padding:20px 24px;background:var(--bg);
+  display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;
+}
+#p-pricing .floor p{font-size:16px;line-height:1.55;color:var(--ink-72);max-width:60ch}
+#p-pricing .floor strong{color:var(--deep)}
 
 #p-pricing .quote{
   background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:24px;
@@ -488,7 +500,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       <p class="panel__eyebrow">PRICING</p>
       <h1 class="sec__h sec__h--hero">The price is <em class="tl">on the page.</em></h1>
       <p class="lead">You are not buying hours and you are not buying a vibe. You are buying a
-        number of things a month, made by a named person, on a calendar you can see. Every tier
+        number of things a month, made by a named team, on a calendar you can see. Every tier
         below is a count, every card says where it stops, and anything outside a tier is a quote.</p>
       <div class="btn-row">
         <a class="btn" href="/book/">Book a call</a>
@@ -513,8 +525,8 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
           <li>The five highest value formats you are not making</li>
           <li>A 90 day calendar with a post count per week and an owner per row</li>
         </ul>
-        <p class="start__stop">The whole fee comes off your first month, up to one month's retainer.
-          If the honest answer is publish less, you get that in writing.</p>
+        <p class="start__stop">The whole fee comes off your first month. If the honest answer is
+          publish less, you get that in writing.</p>
       </div>
       <div class="start__side">
         <p class="start__fig">$750<small>One time. Gwen Ayala on the readout call.</small></p>
@@ -524,56 +536,71 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <div class="sub" id="tiers">
       <p class="panel__eyebrow">THREE TIERS</p>
       <h2>What it costs to have us running it.</h2>
-      <p>Prices in US dollars. Every tier is a count, not an adjective. A slot is a real seat on the
-        night shift, and the number open is the number printed.</p>
+      <p>Prices in US dollars. Every tier is a count, not an adjective, and every tier has a number of
+        requests in progress at a time. Two tiers are a band: where you land in it is set by the
+        diagnostic, on channels and video count, and written down before month one.</p>
     </div>
     <ul class="pricing__grid">
-      <li class="ptier" id="publish">
-        <p class="ptier__name">Publish <span class="ptier__slot">2 slots</span></p>
-        <p class="ptier__fig">$397<span>/mo</span></p>
-        <p class="ptier__unit">One brand, two channels. Three month minimum, then month to month.</p>
+      <li class="ptier" id="partner">
+        <p class="ptier__name">Partner <span class="ptier__slot">1 slot</span></p>
+        <p class="ptier__fig"><span class="ptier__from">from</span>$10,000<span>/mo</span></p>
+        <p class="ptier__unit">One brand, up to six channels. A named pod, yours.</p>
         <ul class="ptier__list">
-          <li>10 image posts a month, graphic and caption and hashtags</li>
-          <li>Next month's calendar in your hands on the 25th</li>
-          <li>2 revision rounds per post, 3 day turnaround</li>
-          <li>A written readout by the 5th</li>
+          <li>40 posts a month, 16 of them vertical video with thumbnails</li>
+          <li>8 long form pieces up to 900 words</li>
+          <li>Up to 500 comments and DMs answered, inside 4 business hours</li>
+          <li>3 campaigns a month built end to end: offer, landing page, 3 emails</li>
+          <li>A named pod of three, manager, editor and community lead, on a weekly call</li>
+          <li>Quarterly strategy owned with you, one metric that settles it</li>
         </ul>
-        <p class="ptier__stop">Where it stops: image posts only. Vertical video is the tier above,
-          because format is what costs, not post count.</p>
+        <p class="ptier__stop">Where it stops: eight requests in progress, at the front of the queue.
+          Edit only, no shoots. More headcount into the pod is what "from" means, and it is quoted.</p>
       </li>
 
-      <li class="ptier ptier--lead" id="engine">
-        <p class="ptier__name">Content Engine</p>
-        <p class="ptier__fig">$1,750<span>/mo</span></p>
-        <p class="ptier__unit">One brand, three channels. Three month minimum, then month to month.</p>
+      <li class="ptier ptier--lead" id="embedded">
+        <p class="ptier__name">Embedded <span class="ptier__tag">most clients</span></p>
+        <p class="ptier__fig">$3,800<span> to 4,500/mo</span></p>
+        <p class="ptier__unit">One brand, four channels. A marketing department that runs without you.</p>
         <ul class="ptier__list">
-          <li>12 posts a month, 4 of them vertical video</li>
+          <li>20 posts a month, 6 of them vertical video</li>
           <li>4 long form pieces up to 900 words</li>
+          <li>Up to 200 comments and DMs answered, inside 4 business hours</li>
+          <li>1 campaign a month built end to end: offer, landing page, 3 emails</li>
+          <li>A named manager and a named editor, both on a weekly call</li>
           <li>A calendar kept 30 days ahead, a written readout by the 5th</li>
-          <li>A call with Gwen every month, source files for everything</li>
         </ul>
-        <p class="ptier__stop">Where it stops: two requests in progress at a time. Submit as many as
-          you like, the rest queue in the order you set.</p>
+        <p class="ptier__stop">Where it stops: four requests in progress at a time. Submit as many
+          as you like, the rest queue in the order you set.</p>
       </li>
 
-      <li class="ptier" id="own">
-        <p class="ptier__name">Own the Channel <span class="ptier__slot">1 slot</span></p>
-        <p class="ptier__fig">$2,600<span>/mo</span></p>
-        <p class="ptier__unit">One brand, five channels. Three month minimum, then month to month.</p>
+      <li class="ptier" id="essential">
+        <p class="ptier__name">Essential</p>
+        <p class="ptier__fig">$2,500<span> to 3,000/mo</span></p>
+        <p class="ptier__unit">One brand, two channels. Your content and inbox stop being your job.</p>
         <ul class="ptier__list">
-          <li>20 posts a month, 8 of them vertical video with thumbnails</li>
+          <li>16 posts a month, 4 of them vertical video</li>
+          <li>2 long form pieces up to 900 words</li>
           <li>Up to 100 comments and DMs answered, inside a business day</li>
-          <li>A named manager and a named editor, both on every call</li>
-          <li>One quarterly bet, with the metric that settles it</li>
+          <li>1 landing page kept live, up to 4 change requests a month</li>
+          <li>A named lead, a call every month, a written readout by the 5th</li>
+          <li>2 revision rounds per asset, 3 day turnaround</li>
         </ul>
-        <p class="ptier__stop">Where it stops: edit only, no shoots, no actors, no locations, and we
-          do not pretend otherwise. Four requests in progress. One client at a time, and more video
-          is a quote.</p>
+        <p class="ptier__stop">Where it stops: two requests in progress at a time. A third waits
+          its turn, it does not squeeze in.</p>
       </li>
     </ul>
-    <p class="pricing__foot">Twelve months takes 12 percent off the monthly and locks your price.
-      Six months makes the diagnostic free. Ad spend, video shoots and paid media are never
-      included, and if you need them we will name someone good and take nothing for it.</p>
+    <p class="pricing__foot">No setup fee. Your team is running inside 14 days. Three month minimum,
+      then month to month. Prepay a quarter and take 10 percent off. Twelve months takes 12 percent
+      off and locks your price. Ad spend, video shoots and paid media are never included, and if you
+      need them we will name someone good and take nothing for it.</p>
+
+    <div class="floor" id="floor">
+      <p><strong>Under $2,500 a month?</strong> This is probably not the right fit yet. Start with
+        the diagnostic, or take the sixty second quiz and come back when it is.</p>
+      <div class="btn-row" style="margin-top:0">
+        <a class="btn btn--ghost" href="/quiz/">Take the quiz</a>
+      </div>
+    </div>
 
     <div class="quote" id="quote">
       <p class="panel__eyebrow">OUTSIDE A TIER</p>
@@ -585,10 +612,11 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
         <li>A second brand</li>
         <li>More vertical video</li>
         <li>A launch sprint</li>
-        <li>Comments and DMs past 100</li>
+        <li>Comments and DMs past your block</li>
         <li>White label for agencies</li>
         <li>A live dashboard</li>
         <li>A faster clock</li>
+        <li>Funnels, CRM and automation, with JTL Growth</li>
       </ul>
       <div class="btn-row">
         <a class="btn" href="/book/?quote=1">Request a quote</a>
@@ -605,13 +633,13 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <dl class="defs">
       <div class="def"><dt>We do not sell unlimited</dt><dd>We sell a number of requests in progress at a time, with an uncapped queue behind it. Same promise, written honestly.</dd></div>
       <div class="def"><dt>Revisions</dt><dd>Two rounds per asset. A round is one consolidated set of comments, delivered together. Comments that arrive after the next round starts begin a third round, quoted before we start.</dd></div>
-      <div class="def"><dt>Turnaround</dt><dd>A reply inside one business day, Manila. Clocks run on Philippine business days, excluding Philippine public holidays.</dd></div>
+      <div class="def"><dt>Turnaround</dt><dd>A reply inside one business day on Essential, inside four business hours on Embedded and Partner. Clocks run on Philippine business days, excluding Philippine public holidays.</dd></div>
       <div class="def"><dt>If we are waiting on you</dt><dd>More than 5 business days on your assets, access or approvals moves the delivery date by the length of the wait. The price does not move.</dd></div>
       <div class="def"><dt>Scope freeze</dt><dd>Scope freezes when month one's calendar is approved. Everything after that is a quote, approved in writing before work starts.</dd></div>
-      <div class="def"><dt>Minimum term</dt><dd>Three months, then month to month, thirty days notice. Six months makes the diagnostic free. Twelve months takes 12 percent off the monthly and locks your price.</dd></div>
+      <div class="def"><dt>Minimum term</dt><dd>Three months, then month to month, thirty days notice. Prepay a quarter and take 10 percent off. Twelve months takes 12 percent off the monthly and locks your price.</dd></div>
       <div class="def"><dt>Payment</dt><dd>Invoiced monthly in advance, bank transfer or card, in US dollars.</dd></div>
       <div class="def"><dt>Never included</dt><dd>Ad spend, video shoots, actors, locations and paid media. If you need them we name someone good and take nothing for it.</dd></div>
-      <div class="def"><dt>Who does the work</dt><dd>A named person in Manila who signs your deliverables and is on your calls. Not a rotating pool, and not a ticket queue with a first name attached.</dd></div>
+      <div class="def"><dt>Who does the work</dt><dd>Named people in Manila who sign your deliverables and are on your calls. Not a rotating pool, and not a ticket queue with a first name attached.</dd></div>
     </dl>
     <p class="note terms__more">The rest, including ownership, confidentiality and governing law, is on the <a href="/terms/">terms page</a>.</p>
 

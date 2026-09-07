@@ -493,8 +493,8 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     </fieldset>
 
     <div class="quiz__screen" id="qsResult" data-screen hidden aria-live="polite" tabindex="-1">
-      <p class="card__k" id="quizTierName">Publish</p>
-      <h2 id="quizTierPrice">$397 a month</h2>
+      <p class="card__k" id="quizTierName">Essential</p>
+      <h2 id="quizTierPrice">$2,500 to $3,000 a month</h2>
       <p class="note" id="quizTierOutcome">One brand, two channels, ten image posts a month.</p>
       <ul class="card__stop" id="quizResultCounts">
         <li>Two channels</li>
@@ -580,9 +580,9 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 
    Mapping (lowest need to highest):
      essential + team solo          -> diagnostic  ($750 Content Systems Diagnostic)
-     essential + everyone else      -> publish      ($397/mo)
-     embedded  (any team)           -> engine       ($1,750/mo Content Engine)
-     partner   + team not "large"   -> own          ($2,600/mo Own the Channel)
+     essential + everyone else      -> essential    ($2,500 to $3,000/mo)
+     embedded  (any team)           -> embedded     ($3,800 to $4,500/mo)
+     partner   + team not "large"   -> partner      (from $10,000/mo)
      partner   + team "large"       -> quote        (outside a tier, request a quote)
    This keeps the order of the old bands (essential < embedded < partner) and
    only adds one more split at each end, using signals the quiz already
@@ -618,26 +618,26 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       counts: ["Ten business days", "One report, one recommendation", "Fee credited to month one"],
       link: "/pricing/#diagnostic"
     },
-    publish: {
-      name: "Publish",
-      price: "$397 a month",
-      outcome: "One brand, two channels, image posts on a calendar you see before it runs.",
-      counts: ["Two slots", "Two channels, one brand", "Ten image posts a month"],
-      link: "/pricing/#publish"
+    essential: {
+      name: "Essential",
+      price: "$2,500 to $3,000 a month",
+      outcome: "One brand, two channels, your content and inbox stop being your job.",
+      counts: ["Two channels, one brand", "Sixteen posts, four vertical video", "100 comments and DMs answered"],
+      link: "/pricing/#essential"
     },
-    engine: {
-      name: "Content Engine",
-      price: "$1,750 a month",
-      outcome: "One brand, three channels, a mix of formats, and a monthly call with Gwen.",
-      counts: ["Three channels, one brand", "Twelve posts, four vertical video, four long form", "A monthly call with Gwen"],
-      link: "/pricing/#engine"
+    embedded: {
+      name: "Embedded",
+      price: "$3,800 to $4,500 a month",
+      outcome: "One brand, four channels, a marketing department that runs without you.",
+      counts: ["Four channels, one brand", "Twenty posts, six vertical video, one campaign a month", "A named manager and editor on a weekly call"],
+      link: "/pricing/#embedded"
     },
-    own: {
-      name: "Own the Channel",
-      price: "$2,600 a month",
-      outcome: "Five channels, a named manager and editor, and your inbox answered daily.",
-      counts: ["One slot, five channels", "Twenty posts, eight vertical video", "100 comments and DMs answered"],
-      link: "/pricing/#own"
+    partner: {
+      name: "Partner",
+      price: "from $10,000 a month",
+      outcome: "Up to six channels and a named pod, yours, accountable to one metric a quarter.",
+      counts: ["One slot, up to six channels", "Forty posts, sixteen vertical video, three campaigns a month", "500 comments and DMs answered"],
+      link: "/pricing/#partner"
     },
     quote: {
       name: "Outside a tier",
@@ -790,9 +790,9 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   /* the only new logic: split each old tier's population into two current
      buckets using team size, which the old tier fn already reads */
   function bucketFor(tierKey) {
-    if (tierKey === "essential") { return answers.q2 === "solo" ? "diagnostic" : "publish"; }
-    if (tierKey === "embedded") { return "engine"; }
-    return answers.q2 === "large" ? "quote" : "own";
+    if (tierKey === "essential") { return answers.q2 === "solo" ? "diagnostic" : "essential"; }
+    if (tierKey === "embedded") { return "embedded"; }
+    return answers.q2 === "large" ? "quote" : "partner";
   }
 
   var tierNameEl = document.getElementById("quizTierName");
