@@ -134,7 +134,7 @@ button{font:inherit;color:inherit}
   display:flex;align-items:center;gap:10px;white-space:nowrap;
   padding:16px var(--pad);
 }
-.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none}
+.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none;transition:color .3s}
 .top__nav{display:flex;gap:18px;margin-left:24px}
 .top__nav a,.top__menu-list a{
   font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
@@ -262,6 +262,19 @@ html[data-motion="calm"] .float{animation:none!important}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ---------- the chrome over the one dark panel (proof): light ink, same shapes ---------- */
+html[data-panel="p-proof"] .top__mark,html[data-panel="p-proof"] .top__nav a{color:#F5F5F7}
+html[data-panel="p-proof"] .top__nav a[aria-current="page"]{border-bottom-color:rgba(245,245,247,.5)}
+html[data-panel="p-proof"] .top button{color:rgba(245,245,247,.72);border-color:rgba(245,245,247,.28)}
+html[data-panel="p-proof"] .top button[aria-pressed="true"]{color:#F5F5F7;border-color:rgba(245,245,247,.5)}
+html[data-panel="p-proof"] .top__cta{background:#F5F5F7;color:#1D1D1F;border-color:#F5F5F7}
+html[data-panel="p-proof"] .top__menu summary{color:rgba(245,245,247,.8);border-color:rgba(245,245,247,.3)}
+html[data-panel="p-proof"] .rail__dots button{border-color:rgba(245,245,247,.45)}
+html[data-panel="p-proof"] .rail__dots button[aria-current="true"]{background:#D08A5A;border-color:#D08A5A;box-shadow:0 0 0 4px rgba(208,138,90,.18)}
+html[data-panel="p-proof"] .rail__bar{background:rgba(245,245,247,.18)}
+html[data-panel="p-proof"] .rail__bar i{background:#D08A5A}
+html[data-panel="p-proof"] .rail__count{color:rgba(245,245,247,.72)}
 
 /* Hero: one clear line, and the mark sits off to the right the way it did at
    the start. The mark is the WebGL dust cloud, so the image here is only the
@@ -1193,110 +1206,91 @@ html[data-motion="calm"] #p-bot .av-caret{animation:none;opacity:1}
 
 <section class="panel proof" id="p-proof" data-anchor="proof">
 <style>
-/* the globe is sized against the viewport HEIGHT as well as its width: at
-   1440x800 a 640px sphere pushed the eyebrow under the header and the fine
-   print under the rail dots. A panel is exactly one screen, so it budgets. */
-#p-proof{overflow-x:hidden;--gsize:min(560px,88vw,46svh);--pinspace:clamp(120px,14vw,200px)}
-
+/* The one dark panel on the page, by the Owner's call on 2026-09-08: black like
+   the JTL globe panel, the globe as big as JTL's. Everything else stays Apple
+   gray. The dark tokens live here and nowhere else, so the ground rule
+   (espresso is an accent, never a ground) still holds for the rest of the site;
+   on black the accent lightens one step so the numbers clear 7:1. */
+#p-proof{
+  --pb:#0B0B0C;--pp:#141416;--ph:rgba(245,245,247,.12);
+  --pi:#F5F5F7;--pm:rgba(245,245,247,.66);--pf:rgba(245,245,247,.44);--pa:#D08A5A;
+  --gsize:min(720px,46vw,74svh);
+  background:var(--pb);color:var(--pi);overflow:hidden;
+}
+#p-proof .panel__eyebrow{color:var(--pa)}
 #p-proof .p4-eyebrow-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px 20px}
-#p-proof .panel__eyebrow{margin-bottom:0}
 #p-proof .p4-route{
   font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);white-space:nowrap;
+  color:var(--pf);white-space:nowrap;
 }
-#p-proof .p4-route b{color:var(--espresso);font-weight:700}
+#p-proof .p4-route b{color:var(--pa);font-weight:700}
 
-/* ---------- stage: the globe, four figures pinned around it like its own city labels ---------- */
-#p-proof .p4-stage{
-  position:relative;
-  width:min(calc(var(--gsize) + 2 * var(--pinspace)),100%);
-  min-height:var(--gsize);
-  margin:clamp(8px,1.6vh,18px) auto 0;
-  display:flex;align-items:center;justify-content:center;
+/* ---------- two columns: the counts and the quote left, the globe right ---------- */
+#p-proof .p4-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;
+  gap:clamp(24px,4vw,72px);width:100%;flex:1;min-height:0;margin-top:clamp(10px,2vh,24px);
 }
-/* globe.css sizes every globe at min(640px,92vw). Inside this panel the
-   budget is the viewport height, so it takes --gsize instead. Layout only,
-   nothing about how the globe looks or behaves. */
-#p-proof .p4-stage .jp-globe{flex:none;width:var(--gsize);height:var(--gsize);aspect-ratio:auto}
-
+#p-proof .p4-left{display:flex;flex-direction:column;gap:clamp(14px,2.2vh,26px);min-width:0;max-width:640px}
+#p-proof .p4-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 #p-proof .p4-pin{
-  position:absolute;z-index:3;
-  display:flex;flex-direction:column;gap:3px;
-  width:clamp(128px,calc(var(--pinspace) - 16px),196px);
-  padding:10px 13px;background:var(--panel);border:1px solid var(--hair);
-  border-radius:11px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:4px;padding:16px 18px;
+  background:var(--pp);border:1px solid var(--ph);border-radius:12px;
 }
 #p-proof .p4-pin__num{
   font-family:var(--font-d);font-weight:var(--w-display);
   font-variation-settings:'wdth' var(--wdth-display);letter-spacing:var(--track-display);
-  font-size:clamp(21px,2vw,29px);color:var(--espresso);line-height:1;
+  font-size:clamp(26px,2.6vw,40px);color:var(--pa);line-height:1;
 }
 #p-proof .p4-pin__label{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--muted);line-height:1.35;
+  font-family:var(--font-m);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--pm);line-height:1.4;
 }
-
-/* leader line + anchor dot, drawn on a small pseudo box that runs from the pin's
-   inner corner out toward the globe; the box sits in the panel's own gutter,
-   well outside the sphere's silhouette, so it never meets a city pill. */
-#p-proof .p4-pin::after{content:'';position:absolute;width:46px;height:46px}
-#p-proof .p4-pin--tl{top:0;left:0}
-#p-proof .p4-pin--tl::after{left:100%;top:100%;
-  background:radial-gradient(circle 3px at 100% 100%,var(--espresso) 97%,transparent),
-    linear-gradient(135deg,transparent 46%,var(--espresso-60) 48%,var(--espresso-60) 52%,transparent 54%);}
-#p-proof .p4-pin--tr{top:0;right:0;text-align:right}
-#p-proof .p4-pin--tr::after{right:100%;top:100%;
-  background:radial-gradient(circle 3px at 0% 100%,var(--espresso) 97%,transparent),
-    linear-gradient(45deg,transparent 46%,var(--espresso-60) 48%,var(--espresso-60) 52%,transparent 54%);}
-#p-proof .p4-pin--bl{bottom:0;left:0}
-#p-proof .p4-pin--bl::after{left:100%;bottom:100%;
-  background:radial-gradient(circle 3px at 100% 0%,var(--espresso) 97%,transparent),
-    linear-gradient(45deg,transparent 46%,var(--espresso-60) 48%,var(--espresso-60) 52%,transparent 54%);}
-#p-proof .p4-pin--br{bottom:0;right:0;text-align:right}
-#p-proof .p4-pin--br::after{right:100%;bottom:100%;
-  background:radial-gradient(circle 3px at 0% 0%,var(--espresso) 97%,transparent),
-    linear-gradient(135deg,transparent 46%,var(--espresso-60) 48%,var(--espresso-60) 52%,transparent 54%);}
-
-/* ---------- quote: small, low, tucked under the stage ---------- */
-#p-proof .p4-quote-row{
-  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;
-  gap:8px 24px;margin-top:clamp(10px,1.8vh,20px);
-}
+#p-proof .p4-quote-row{display:flex;flex-direction:column;gap:10px}
 #p-proof .p4-quote{margin:0;padding:0;border:none;max-width:44ch}
 #p-proof .p4-quote p{
-  font-family:var(--font-b);font-weight:500;font-size:clamp(15px,1.3vw,18px);
-  color:var(--ink-72);line-height:1.4;margin:0;
+  font-family:var(--font-b);font-weight:500;font-size:clamp(17px,1.5vw,23px);
+  color:var(--pi);line-height:1.35;margin:0;
 }
-#p-proof .p4-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+#p-proof .p4-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px}
 #p-proof .p4-meta cite{
   font-family:var(--font-m);font-style:normal;font-size:11px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted);
+  text-transform:uppercase;color:var(--pm);
 }
 #p-proof .p4-cta{
   font-family:var(--font-m);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--espresso);text-decoration:none;border-bottom:1px solid var(--espresso-24);
+  color:var(--pa);text-decoration:none;border-bottom:1px solid rgba(208,138,90,.4);
   padding-bottom:2px;transition:border-color .3s;
 }
-#p-proof .p4-cta:hover{border-color:var(--espresso)}
-
-/* the fine print: the two lines that carry the rest of the claim */
+#p-proof .p4-cta:hover{border-color:var(--pa)}
 #p-proof .p4-fine,#p-proof .p-proof__chan{
-  margin-top:8px;max-width:104ch;
-  font-size:13px;line-height:1.45;color:var(--faint);
+  max-width:60ch;font-size:13px;line-height:1.45;color:var(--pf);
 }
-#p-proof .p-proof__chan{margin-top:4px}
+#p-proof .p-proof__chan{margin-top:-6px}
 
-/* ---------- phone: pins become a stacked stat grid, globe and lines gone ---------- */
+/* the globe: JTL's size, JTL's dark register, the AVAS arcs */
+#p-proof .p4-stage{
+  position:relative;flex:none;width:var(--gsize);height:var(--gsize);
+  display:flex;align-items:center;justify-content:center;justify-self:end;
+}
+#p-proof .p4-stage .jp-globe{flex:none;width:var(--gsize);height:var(--gsize);aspect-ratio:auto}
+/* the night-side shade was drawn for the light globe; on black it swallowed the dots */
+#p-proof .jp-globe .jp-night{opacity:.42}
+
+/* the word reveal on black: dim words stay readable */
+#p-proof .wreveal .w{opacity:.3}
+#p-proof .wreveal .w.on{opacity:1}
+#p-proof .wreveal .w.tl.on{color:var(--pa)}
+
+@media (max-width:1100px){
+  #p-proof{--gsize:min(480px,86vw,40svh)}
+  #p-proof .p4-grid{grid-template-columns:1fr;align-items:start}
+  #p-proof .p4-stage{justify-self:center}
+}
+/* ---------- phone: stats stack, the quote follows, the globe stays off for battery ---------- */
 @media (max-width:900px){
-  #p-proof .jp-globe{display:none}
-  #p-proof .p4-stage{
-    position:static;width:auto;min-height:0;display:grid;
-    grid-template-columns:1fr 1fr;gap:12px;margin:22px 0;
-  }
-  #p-proof .p4-pin{position:static;width:auto;text-align:left!important}
-  #p-proof .p4-pin::after{display:none}
-  #p-proof .p4-quote-row{flex-direction:column;align-items:flex-start}
-  #p-proof .p4-meta{align-items:flex-start;text-align:left}
+  #p-proof .p4-stage,#p-proof .jp-globe{display:none}
+  #p-proof .p4-grid{display:block;margin-top:18px}
+  #p-proof .p4-left{max-width:none}
 }
 </style>
 
@@ -1305,39 +1299,46 @@ html[data-motion="calm"] #p-bot .av-caret{animation:none;opacity:1}
   <p class="p4-route"><b>Boston</b> to Manila, while she slept</p>
 </div>
 
-<div class="p4-stage">
-  <div class="p4-pin p4-pin--tl">
-    <span class="p4-pin__num">68 to 85%</span>
-    <span class="p4-pin__label">migration completed, overnight</span>
+<div class="p4-grid">
+  <div class="p4-left">
+    <div class="p4-stats">
+      <div class="p4-pin">
+        <span class="p4-pin__num">68 to 85%</span>
+        <span class="p4-pin__label">migration completed, overnight</span>
+      </div>
+      <div class="p4-pin">
+        <span class="p4-pin__num">265</span>
+        <span class="p4-pin__label">subscribers moved and tag verified</span>
+      </div>
+      <div class="p4-pin">
+        <span class="p4-pin__num">21</span>
+        <span class="p4-pin__label">pages live after the move</span>
+      </div>
+      <div class="p4-pin">
+        <span class="p4-pin__num">4</span>
+        <span class="p4-pin__label">page defects fixed the same night</span>
+      </div>
+    </div>
+
+    <div class="p4-quote-row">
+      <blockquote class="p4-quote">
+        <p class="wreveal" data-accent="already,live.">&ldquo;I signed off with a to-do list and woke up to a launch that was already live.&rdquo;</p>
+      </blockquote>
+      <div class="p4-meta">
+        <cite>Kate Powers, Kate Powers Creates</cite>
+        <a class="p4-cta" href="#p-book">Book the same night shift</a>
+      </div>
+    </div>
+
+    <p class="p4-fine">Her whole site moved off Kajabi, her community was built from zero, and her channels have run nightly since.</p>
+    <p class="p-proof__chan">Five surfaces run nightly: Instagram, Facebook, Threads, Substack and the site itself. The Aligned Women community was started from zero and is still hers, we just keep it fed.</p>
+
   </div>
-  <div class="p4-pin p4-pin--tr">
-    <span class="p4-pin__num">265</span>
-    <span class="p4-pin__label">subscribers moved and tag verified</span>
+
+  <div class="p4-stage">
+    <div class="jp-globe" data-globe data-dark="1" data-reach="core"></div>
   </div>
-  <div class="p4-pin p4-pin--bl">
-    <span class="p4-pin__num">21</span>
-    <span class="p4-pin__label">pages live after the move</span>
-  </div>
-  <div class="p4-pin p4-pin--br">
-    <span class="p4-pin__num">4</span>
-    <span class="p4-pin__label">page defects fixed the same night</span>
-  </div>
-  <div class="jp-globe" data-globe data-dark="0" data-reach="core"></div>
 </div>
-
-<div class="p4-quote-row">
-  <blockquote class="p4-quote">
-    <p class="wreveal" data-accent="already,live.">&ldquo;I signed off with a to-do list and woke up to a launch that was already live.&rdquo;</p>
-  </blockquote>
-  <div class="p4-meta">
-    <cite>Kate Powers, Kate Powers Creates</cite>
-    <a class="p4-cta" href="#p-book">Book the same night shift</a>
-  </div>
-</div>
-
-<p class="p4-fine">Her whole site moved off Kajabi, her community was built from zero, and her channels have run nightly since.</p>
-<p class="p-proof__chan">Five surfaces run nightly: Instagram, Facebook, Threads, Substack and the site itself. The Aligned Women community was started from zero and is still hers, we just keep it fed.</p>
-
 </section>
 
 <section class="panel" id="p-pricing" data-anchor="pricing">
@@ -2052,6 +2053,8 @@ window.AVAS_SOUNDS={"alpha_down":["UklGRrAWAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACA
     dots.forEach((d, k) => d.setAttribute('aria-current', String(k === nav)));
     if (count) count.textContent = String(nav + 1).padStart(2, '0') + ' / ' + String(NAV).padStart(2, '0');
     panels.forEach((p, k) => p.classList.toggle('is-on', k === i));
+    // the chrome reads which panel is under it: the one dark panel flips it light
+    document.documentElement.dataset.panel = (panels[i] && panels[i].id) || '';
   }
 
   function frame() {
@@ -2084,6 +2087,14 @@ window.AVAS_SOUNDS={"alpha_down":["UklGRrAWAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACA
     if (flat()) return;
     target = progress();
     kick();
+  }
+
+  /* flat layout: the panels stack, so an observer tells the chrome which one is under it */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) document.documentElement.dataset.panel = e.target.id || ''; });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    panels.forEach(p => io.observe(p));
   }
 
   /* ---- jumping: dots, in-app answers, keys. All native scrollTo. ---- */
@@ -2452,7 +2463,7 @@ window.AVAS_SOUNDS={"alpha_down":["UklGRrAWAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACA
   'use strict';
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
-  var MARK = '<svg viewBox="288 703 1315 626" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5" stroke-linecap="butt"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg>';
+  var MARK = '<img src="assets/avas-mark-plain.png" alt="" style="width:18px;height:18px;object-fit:contain;display:block">';
 
   /* the hub and the cities on the line */
   var HUB = 'Manila';
