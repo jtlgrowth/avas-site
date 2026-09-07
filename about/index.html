@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-motion="full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>About · AVAS</title>
+<meta name="description" content="Founded 2021 in Quezon City by Gwen Ayala. The crew that runs the night shift, by name.">
+<meta name="theme-color" content="#F5F5F7">
+<link rel="canonical" href="https://ayalavirtualassistance.site/about/">
+<link rel="icon" href="/assets/avas-mark-plain.png">
+<meta property="og:title" content="About · AVAS">
+<meta property="og:description" content="Founded 2021 in Quezon City by Gwen Ayala. The crew that runs the night shift, by name.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ayalavirtualassistance.site/about/">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>/* AVAS v16 tokens.
+
+   Palette: Apple gray, not porcelain. No beige, no cream, no warm ground.
+   Values are Apple's own system greys, taken from library/apple-gray.
+   Espresso is the only warm colour on the page and it is an ACCENT: the mark,
+   the caret, an active state, a link, a CTA fill, a hairline. Never a ground.
+
+   Type: JTL Growth's own combination, read from its live stylesheet.
+   Archivo Expanded for display, Archivo for body, Instrument Serif as the
+   accent voice, Space Mono for machine surfaces only. All inlined, no CDN. */
+:root{
+  --bg:#F5F5F7;
+  --panel:#FFFFFF;
+  --raised:#EBEBED;
+  --ink:#1D1D1F;
+  --ink-72:#3A3A3E;
+  --muted:#515154;
+  --faint:#86868B;
+  --hair:#D2D2D7;
+  --hair-2:rgba(29,29,31,.055);
+  --espresso:#8B4A2A;
+  --espresso-60:rgba(139,74,42,.6);
+  --espresso-24:rgba(139,74,42,.24);
+  --espresso-10:rgba(139,74,42,.10);
+  --deep:#3A241C;
+  --shadow:0 20px 50px rgba(29,29,31,.10), 0 1px 0 rgba(29,29,31,.04) inset;
+  --shadow-lift:0 36px 90px rgba(29,29,31,.16);
+
+  /* display carries the expanded width; the variable axis does the work */
+  --font-d:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-b:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-s:'Instrument Serif',Georgia,serif;
+  --font-m:'Space Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --w-display:700;
+  --wdth-display:118;
+  --track-display:-.026em;
+
+  --fs-hero:clamp(38px,6.6vw,104px);
+  --fs-h2:clamp(32px,4.2vw,60px);
+  --fs-body:17px;
+  --pad:clamp(20px,4.4vw,72px);
+  --rail-ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- reset and ground ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-b);font-size:var(--fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--font-d);font-weight:var(--w-display);
+  font-variation-settings:'wdth' var(--wdth-display);
+  letter-spacing:var(--track-display);margin:0;line-height:1.06}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--espresso-24)}
+:focus-visible{outline:2px solid var(--espresso);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--espresso);color:var(--panel);
+  padding:10px 16px;border-radius:0 0 10px 0;font-weight:600}
+.skip:focus{left:0}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+
+/* ---------- top chrome ---------- */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;gap:10px;white-space:nowrap;
+  padding:16px var(--pad);
+}
+.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none}
+.top__nav{display:flex;gap:18px;margin-left:24px}
+.top__nav a,.top__menu-list a{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  color:var(--muted);transition:color .25s;
+}
+.top__nav a:hover,.top__nav a[aria-current="page"],.top__menu-list a:hover{color:var(--espresso)}
+.top__nav a[aria-current="page"]{border-bottom:1px solid var(--espresso-60);padding-bottom:2px}
+.top__cta{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;
+  background:var(--espresso);color:var(--panel);border:1px solid var(--espresso);border-radius:999px;
+  padding:5px 13px;transition:background .25s,border-color .25s;
+}
+.top__cta:hover{background:var(--deep);border-color:var(--deep)}
+.top__menu{display:none;position:relative}
+.top__menu summary{
+  list-style:none;cursor:pointer;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.top__menu summary::-webkit-details-marker{display:none}
+.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso-24)}
+.top__menu-list{
+  position:absolute;right:0;top:calc(100% + 8px);min-width:200px;
+  background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:8px;
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center}
+.top__menu-list a:hover{background:var(--espresso-10)}
+@media (max-width:900px){
+  .top__nav{display:none}
+  .top__menu{display:block}
+  .top__cta{display:none}
+}
+.top__sp{flex:1}
+.top button{
+  background:transparent;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:color .25s,border-color .25s,background .25s;
+}
+.top button:hover{color:var(--espresso);border-color:var(--espresso-24);background:var(--espresso-10)}
+.top button[aria-pressed="true"]{color:var(--espresso);border-color:var(--espresso-24)}
+
+/* ---------- shared section frame ---------- */
+.hero,.panel{position:relative;z-index:1}
+
+/* ---------- the rail ---------- */
+.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh))}
+.rail__stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.rail__track{display:flex;height:100%;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.panel{
+  width:100vw;height:100%;flex:none;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:76px var(--pad) 68px;
+}
+.panel__eyebrow{
+  font-family:var(--font-b);font-weight:600;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--espresso);margin-bottom:14px;
+}
+
+/* rail UI: dots, counter, progress hairline */
+.rail__ui{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;z-index:6;
+  display:flex;align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
+/* the corner assistant lives bottom right, so the counter gets out of its way */
+@media (min-width:901px){ .rail__ui{padding-right:96px} }
+.rail__dots{display:flex;gap:8px;pointer-events:auto}
+.rail__dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--hair);
+  background:transparent;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;
+}
+.rail__dots button[aria-current="true"]{background:var(--espresso);border-color:var(--espresso);
+  box-shadow:0 0 0 4px var(--espresso-10)}
+.rail__bar{flex:1;height:1px;background:var(--hair);position:relative}
+.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);
+  width:calc(var(--rail-p,0) * 100%);transform-origin:left}
+.rail__count{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+
+/* word reveal, driven by horizontal progress */
+.wreveal .w{opacity:.16;transition:opacity .5s var(--rail-ease),color .5s}
+.wreveal .w.on{opacity:1}
+/* the accent word drops into the serif, which is how JTL rations its italic */
+.wreveal .w.tl{
+  font-family:var(--font-s);font-style:italic;font-weight:400;
+  font-variation-settings:normal;letter-spacing:-.008em;
+}
+.wreveal .w.tl.on{color:var(--espresso)}
+
+/* ---------- footer ---------- */
+.foot{
+  position:relative;z-index:1;display:flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:26px var(--pad);border-top:1px solid var(--hair);
+  font-size:13px;color:var(--faint);
+}
+@media (max-width:760px){
+  .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
+  .foot__sp{flex-basis:100%;height:0}
+  .foot a{overflow-wrap:anywhere}
+}
+.foot__sp{flex:1}
+.foot a:hover{color:var(--espresso)}
+
+/* the wrap panel: a hero that lives inside the track, so it takes the panel's
+   box and drops the page section's own sizing */
+.panel.hero--clone{
+  min-height:0;height:100%;width:100vw;flex:none;
+  padding:96px var(--pad) 84px;      /* the hero's own padding, not the panel's */
+  justify-content:center;
+}
+.panel.hero--clone .hero__cue{pointer-events:none}
+
+/* ---------- calm register: the Owner's live kill switch for oscillation ---------- */
+html[data-motion="calm"] *{animation-play-state:paused!important}
+html[data-motion="calm"] .float{animation:none!important}
+
+/* ---------- collapse: phone, and anyone who asked for less motion ---------- */
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .rail{height:auto!important}
+  .rail__stick{position:static;height:auto;overflow:visible}
+  .rail__track{display:block;width:auto;transform:none!important}
+  .panel{width:auto;height:auto;min-height:auto;padding:56px var(--pad)}
+  .rail__ui{display:none}
+  .hero--clone{display:none}
+  #gl{display:none}
+  .wreveal .w{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* Privacy notice. It gates something real: the Calendly embed does not load
+   until this is answered, so declining actually changes what happens. */
+#consent{
+  position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
+  width:min(400px,calc(100vw - 28px));
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  box-shadow:var(--shadow-lift);padding:20px 22px 18px;
+}
+#consent .consent__h{font-family:var(--font-d);font-size:19px;color:var(--deep);margin-bottom:8px}
+#consent .consent__p{font-size:14px;line-height:1.55;color:var(--muted)}
+#consent .consent__more{margin-top:10px;font-size:13px;color:var(--muted)}
+#consent .consent__more summary{cursor:pointer;color:var(--espresso);list-style:none}
+#consent .consent__more summary::-webkit-details-marker{display:none}
+#consent .consent__more summary::after{content:" +";font-family:var(--font-m)}
+#consent .consent__more[open] summary::after{content:" -"}
+#consent .consent__more ul{margin:10px 0 0;padding-left:18px;line-height:1.6}
+#consent .consent__more li+li{margin-top:6px}
+#consent .consent__more b{color:var(--ink)}
+#consent .consent__row{display:flex;gap:10px;margin-top:16px}
+#consent .consent__btn{
+  flex:1;padding:10px 14px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--hair);background:transparent;color:var(--ink);
+  font-size:14px;font-weight:500;
+  transition:background .25s,border-color .25s,color .25s;
+}
+#consent .consent__btn:hover{border-color:var(--espresso-24);background:var(--espresso-10);color:var(--espresso)}
+#consent .consent__btn--yes{background:var(--espresso);border-color:var(--espresso);color:var(--panel)}
+#consent .consent__btn--yes:hover{background:var(--deep);border-color:var(--deep);color:var(--panel)}
+@media (max-width:520px){
+  #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
+}
+
+/* Inner pages: document flow, no rail, no WebGL. The homepage owns the sideways
+   travel; every other route reads top to bottom on the same tokens. */
+.top{
+  background:rgba(245,245,247,.86);
+  -webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);
+  border-bottom:1px solid var(--hair-2);
+}
+main.page{position:relative;z-index:1;padding:112px var(--pad) 72px;max-width:1240px;margin:0 auto}
+.sec{margin:0 0 clamp(56px,8vh,96px)}
+.sec:last-child{margin-bottom:0}
+.sec__h{font-size:var(--fs-h2);color:var(--deep);max-width:20ch;margin-bottom:16px;text-wrap:balance}
+.sec__h--hero{font-size:clamp(36px,5.4vw,84px);max-width:16ch;margin-bottom:20px}
+.lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-72);max-width:58ch}
+.measure{max-width:64ch}
+.lead + .sec__h,.prose + .sec__h,.defs + .sec__h,.lead + h2,.lead + .sec,.btn-row + .sec{margin-top:48px}
+/* a section nested in a section is a subsection: its heading steps down one size */
+.sec .sec h3.sec__h,.sec .sec h2.sec__h{font-size:clamp(24px,2.6vw,36px);max-width:24ch}
+.prose p{margin-bottom:14px;line-height:1.65;color:var(--ink-72)}
+.prose h3{font-size:22px;margin:32px 0 10px;color:var(--deep)}
+.prose ul,.prose ol{padding-left:18px;color:var(--ink-72);line-height:1.6;margin:0 0 14px}
+.prose li{margin-bottom:6px}
+.prose a{color:var(--espresso);text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* the serif accent word, the way JTL rations its italic; on the homepage
+   rail.js splits headings and marks it, here it is written as <em class="tl"> */
+.tl{font-family:var(--font-s);font-style:italic;font-weight:400;font-variation-settings:normal;
+  letter-spacing:-.008em;color:var(--espresso)}
+.wreveal .w{opacity:1}
+
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:720px){.grid--2,.grid--3,.grid--4{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.grid--3{grid-template-columns:repeat(3,1fr)}.grid--4{grid-template-columns:repeat(4,1fr)}}
+
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:22px;min-width:0;
+  display:flex;flex-direction:column}
+.card--lead{border-color:var(--espresso-24);box-shadow:var(--shadow)}
+.card__k{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--espresso);margin-bottom:10px}
+.card h3{font-size:20px;margin-bottom:8px;line-height:1.15}
+.card p{font-size:15px;line-height:1.55;color:var(--ink-72)}
+.card ul{list-style:none;margin:10px 0 0;padding:0}
+.card ul li{font-size:15px;line-height:1.5;color:var(--ink-72);padding-left:16px;position:relative;margin-bottom:6px}
+.card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--espresso-60)}
+.card__stop{font-size:14px;line-height:1.5;color:var(--muted);border-top:1px solid var(--hair-2);
+  padding-top:12px;margin-top:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  background:var(--espresso);color:var(--panel);text-decoration:none;font-weight:600;font-size:15px;
+  padding:12px 22px;border-radius:999px;border:1px solid var(--espresso);cursor:pointer;
+  transition:background .25s,border-color .25s,color .25s}
+.btn:hover{background:var(--deep);border-color:var(--deep)}
+.btn--ghost{background:transparent;color:var(--espresso)}
+.btn--ghost:hover{background:var(--espresso-10);color:var(--deep)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
+
+.note{font-size:14px;line-height:1.6;color:var(--muted)}
+.mono{font-family:var(--font-m)}
+.hr{border:0;border-top:1px solid var(--hair);margin:40px 0}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5}
+.tbl th{font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+
+/* definition rows: a term, then its plain sentence */
+.defs{display:grid;gap:0}
+.def{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--hair)}
+.def:last-child{border-bottom:1px solid var(--hair)}
+.def dt{font-family:var(--font-d);font-weight:600;font-size:16px;color:var(--deep);margin:0}
+.def dd{margin:0;font-size:15px;line-height:1.6;color:var(--ink-72);max-width:68ch}
+@media (min-width:900px){.def{grid-template-columns:220px 1fr;gap:24px}}
+
+/* the pricing page reuses the homepage panel styles, three tiers wide */
+main.page #p-pricing .pricing__grid{grid-template-columns:1fr}
+@media (min-width:720px){main.page #p-pricing .pricing__grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){main.page #p-pricing .pricing__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* the booking panel keeps its two-column shape without the rail's fixed height */
+main.page #p-book .book{height:auto;max-height:none}
+main.page #p-book .book__frame{height:auto}
+main.page #p-book .cal{min-height:640px;height:auto}
+main.page #p-book .cal iframe{min-height:640px;height:640px}
+
+@media (max-width:900px){
+  main.page{padding-top:96px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="top__mark" href="/" aria-label="AVAS home">AVAS</a>
+  <nav class="top__nav" aria-label="Site">
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/work">Work</a>
+    <a href="/about" aria-current="page">About</a>
+    <a href="/quiz">Quiz</a>
+  </nav>
+  <span class="top__sp"></span>
+  <details class="top__menu">
+    <summary>Menu</summary>
+    <div class="top__menu-list">
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/quiz">Quiz</a>
+      <a href="/book">Book a call</a>
+    </div>
+  </details>
+  <a class="top__cta" href="/book">Book a call</a>
+</header>
+
+<main class="page" id="main">
+<style>
+/* panel-about: crew card mark (initials in a token-coloured circle, no photos)
+   and the night-timeline row. Scoped under this page's own section ids. */
+#about-hero .note{margin-top:14px}
+
+#about-crew .card__mark{
+  width:40px;height:40px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  background:var(--espresso-10);color:var(--espresso);
+  font-family:var(--font-m);font-size:13px;letter-spacing:.02em;
+}
+#about-crew .card__row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+
+#about-night .card__k{margin-bottom:8px}
+#about-night .card p{font-size:14px}
+
+#about-sisters .def dd a{color:var(--espresso);text-decoration-thickness:1px;text-underline-offset:3px}
+</style>
+
+<section class="sec" id="about-hero">
+  <p class="panel__eyebrow">About</p>
+  <h1 class="sec__h sec__h--hero">It started with one founder and one long <em class="tl">night</em>.</h1>
+  <p class="lead">In 2021, Gwen Ayala was running marketing for other people's businesses and watching them burn out trying to do it all alone. So she built the team she wished she had: a crew that works Manila's night shift so founders get their mornings back.</p>
+  <p class="note">Founded 2021, Quezon City.</p>
+</section>
+
+<section class="sec" id="about-believe">
+  <h2 class="sec__h">What we believe</h2>
+  <p class="lead measure">You shouldn't have to choose between growing and sleeping. Every service we run exists to make that choice unnecessary: real strategists and creators working through Manila's night, so your daylight hours go back to the parts of the business only you can do.</p>
+</section>
+
+<section class="sec" id="about-crew">
+  <h2 class="sec__h">The crew</h2>
+  <div class="grid grid--3">
+    <div class="card">
+      <div class="card__row"><span class="card__mark">GA</span><span class="card__k">On shift</span></div>
+      <h3>Gwen Ayala</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Founder, Marketing Strategist</p>
+      <p>Spent five years running marketing for other founders' businesses before she decided to build the team she wished she'd had.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">JJ</span><span class="card__k">On shift</span></div>
+      <h3>Jamz Jamorol</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Operations Manager</p>
+      <p>If a workflow breaks at 2am, he's usually already fixed it by the time anyone else notices.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">NB</span><span class="card__k">On shift</span></div>
+      <h3>Nicolle Bararodin</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Content Director</p>
+      <p>Writes and designs like she's talking to one real customer, never a crowd.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">MF</span><span class="card__k">On shift</span></div>
+      <h3>Myls Flores</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Community Manager</p>
+      <p>Answers your DMs like a friend would, even at 1am, if that's when they come in.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">JA</span><span class="card__k">On shift</span></div>
+      <h3>Jahnella Mae Ayala</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Graphics Designer</p>
+      <p>Turns a rough idea into a finished visual before you've even finished describing it.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">KC</span><span class="card__k">On shift</span></div>
+      <h3>Kat Costa</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Publishing Head</p>
+      <p>Keeps every post, page, and send on schedule, so nothing goes out late on her watch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about-night">
+  <h2 class="sec__h">How the night runs</h2>
+  <p class="lead measure">One overnight shift, in order.</p>
+  <div class="grid grid--4">
+    <div class="card">
+      <p class="card__k">21:47 MNL</p>
+      <p>Posts scheduled.</p>
+    </div>
+    <div class="card">
+      <p class="card__k">23:12 MNL</p>
+      <p>Funnel copy drafted.</p>
+    </div>
+    <div class="card">
+      <p class="card__k">01:26 MNL</p>
+      <p>DMs answered.</p>
+    </div>
+    <div class="card">
+      <p class="card__k">06:00 MNL</p>
+      <p>Inbox zero.</p>
+    </div>
+  </div>
+  <p class="note" style="margin-top:16px">You approve in the morning, we build overnight.</p>
+</section>
+
+<section class="sec" id="about-sisters">
+  <h2 class="sec__h">Two companies, one referral</h2>
+  <dl class="defs">
+    <div class="def">
+      <dt>AVAS</dt>
+      <dd>Runs content, social, community and campaigns.</dd>
+    </div>
+    <div class="def">
+      <dt>JTL Growth</dt>
+      <dd>The sister company. Runs funnels, CRM, GHL, automation and AI builds, at <a href="https://jtlgrowth.com">jtlgrowth.com</a>. Referrals go both ways, one diagnostic first.</dd>
+    </div>
+  </dl>
+</section>
+
+<section class="sec" id="about-cta">
+  <div class="btn-row">
+    <a class="btn" href="/book/">Book a call</a>
+    <a class="btn btn--ghost" href="/work/">See the work</a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <span>AVAS <span aria-hidden="true">&middot;</span> Ayala Virtual Assistance</span>
+  <span class="foot__sp"></span>
+  <span>Quezon City, Manila</span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/privacy">Privacy</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/terms">Terms</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+</footer>
+
+<aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
+  <h2 class="consent__h" id="consent-h">We value your privacy</h2>
+  <p class="consent__p">This page keeps two settings on your device: whether the keyboard sounds are on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <details class="consent__more">
+    <summary>What that actually means</summary>
+    <ul>
+      <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
+      <li><b>Loaded from Calendly</b> when you accept: their booking widget, which sets its own cookies so it can remember your slot.</li>
+      <li><b>If you decline</b>: nothing third party loads, and the booking panel gives you a plain link instead.</li>
+    </ul>
+  </details>
+  <div class="consent__row">
+    <button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept</button>
+    <button type="button" class="consent__btn" data-consent="denied">Decline</button>
+  </div>
+</aside>
+
+<script>/* Privacy consent. One key, three states: unset shows the notice, granted lets
+   the booking panel load Calendly, denied keeps every third party off the page.
+   The answer changes behaviour, so the notice is not decoration. */
+(() => {
+  'use strict';
+  var KEY = 'avas-consent';
+  var el = document.getElementById('consent');
+  if (!el) return;
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  window.avasConsent = {
+    state: function () { return read(); },
+    granted: function () { return read() === 'granted'; },
+    onChange: []
+  };
+
+  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.dataset.consent;
+    write(v);
+    el.hidden = true;
+    delete document.documentElement.dataset.consent;
+    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  });
+})();
+</script>
+
+</body>
+</html>

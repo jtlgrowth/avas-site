@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-motion="full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fit quiz · AVAS</title>
+<meta name="description" content="Sixty seconds, six questions, the tier that fits or the diagnostic that comes first.">
+<meta name="theme-color" content="#F5F5F7">
+<link rel="canonical" href="https://ayalavirtualassistance.site/quiz/">
+<link rel="icon" href="/assets/avas-mark-plain.png">
+<meta property="og:title" content="Fit quiz · AVAS">
+<meta property="og:description" content="Sixty seconds, six questions, the tier that fits or the diagnostic that comes first.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ayalavirtualassistance.site/quiz/">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>/* AVAS v16 tokens.
+
+   Palette: Apple gray, not porcelain. No beige, no cream, no warm ground.
+   Values are Apple's own system greys, taken from library/apple-gray.
+   Espresso is the only warm colour on the page and it is an ACCENT: the mark,
+   the caret, an active state, a link, a CTA fill, a hairline. Never a ground.
+
+   Type: JTL Growth's own combination, read from its live stylesheet.
+   Archivo Expanded for display, Archivo for body, Instrument Serif as the
+   accent voice, Space Mono for machine surfaces only. All inlined, no CDN. */
+:root{
+  --bg:#F5F5F7;
+  --panel:#FFFFFF;
+  --raised:#EBEBED;
+  --ink:#1D1D1F;
+  --ink-72:#3A3A3E;
+  --muted:#515154;
+  --faint:#86868B;
+  --hair:#D2D2D7;
+  --hair-2:rgba(29,29,31,.055);
+  --espresso:#8B4A2A;
+  --espresso-60:rgba(139,74,42,.6);
+  --espresso-24:rgba(139,74,42,.24);
+  --espresso-10:rgba(139,74,42,.10);
+  --deep:#3A241C;
+  --shadow:0 20px 50px rgba(29,29,31,.10), 0 1px 0 rgba(29,29,31,.04) inset;
+  --shadow-lift:0 36px 90px rgba(29,29,31,.16);
+
+  /* display carries the expanded width; the variable axis does the work */
+  --font-d:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-b:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-s:'Instrument Serif',Georgia,serif;
+  --font-m:'Space Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --w-display:700;
+  --wdth-display:118;
+  --track-display:-.026em;
+
+  --fs-hero:clamp(38px,6.6vw,104px);
+  --fs-h2:clamp(32px,4.2vw,60px);
+  --fs-body:17px;
+  --pad:clamp(20px,4.4vw,72px);
+  --rail-ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- reset and ground ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-b);font-size:var(--fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--font-d);font-weight:var(--w-display);
+  font-variation-settings:'wdth' var(--wdth-display);
+  letter-spacing:var(--track-display);margin:0;line-height:1.06}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--espresso-24)}
+:focus-visible{outline:2px solid var(--espresso);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--espresso);color:var(--panel);
+  padding:10px 16px;border-radius:0 0 10px 0;font-weight:600}
+.skip:focus{left:0}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+
+/* ---------- top chrome ---------- */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;gap:10px;white-space:nowrap;
+  padding:16px var(--pad);
+}
+.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none}
+.top__nav{display:flex;gap:18px;margin-left:24px}
+.top__nav a,.top__menu-list a{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  color:var(--muted);transition:color .25s;
+}
+.top__nav a:hover,.top__nav a[aria-current="page"],.top__menu-list a:hover{color:var(--espresso)}
+.top__nav a[aria-current="page"]{border-bottom:1px solid var(--espresso-60);padding-bottom:2px}
+.top__cta{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;
+  background:var(--espresso);color:var(--panel);border:1px solid var(--espresso);border-radius:999px;
+  padding:5px 13px;transition:background .25s,border-color .25s;
+}
+.top__cta:hover{background:var(--deep);border-color:var(--deep)}
+.top__menu{display:none;position:relative}
+.top__menu summary{
+  list-style:none;cursor:pointer;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.top__menu summary::-webkit-details-marker{display:none}
+.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso-24)}
+.top__menu-list{
+  position:absolute;right:0;top:calc(100% + 8px);min-width:200px;
+  background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:8px;
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center}
+.top__menu-list a:hover{background:var(--espresso-10)}
+@media (max-width:900px){
+  .top__nav{display:none}
+  .top__menu{display:block}
+  .top__cta{display:none}
+}
+.top__sp{flex:1}
+.top button{
+  background:transparent;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:color .25s,border-color .25s,background .25s;
+}
+.top button:hover{color:var(--espresso);border-color:var(--espresso-24);background:var(--espresso-10)}
+.top button[aria-pressed="true"]{color:var(--espresso);border-color:var(--espresso-24)}
+
+/* ---------- shared section frame ---------- */
+.hero,.panel{position:relative;z-index:1}
+
+/* ---------- the rail ---------- */
+.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh))}
+.rail__stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.rail__track{display:flex;height:100%;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.panel{
+  width:100vw;height:100%;flex:none;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:76px var(--pad) 68px;
+}
+.panel__eyebrow{
+  font-family:var(--font-b);font-weight:600;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--espresso);margin-bottom:14px;
+}
+
+/* rail UI: dots, counter, progress hairline */
+.rail__ui{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;z-index:6;
+  display:flex;align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
+/* the corner assistant lives bottom right, so the counter gets out of its way */
+@media (min-width:901px){ .rail__ui{padding-right:96px} }
+.rail__dots{display:flex;gap:8px;pointer-events:auto}
+.rail__dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--hair);
+  background:transparent;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;
+}
+.rail__dots button[aria-current="true"]{background:var(--espresso);border-color:var(--espresso);
+  box-shadow:0 0 0 4px var(--espresso-10)}
+.rail__bar{flex:1;height:1px;background:var(--hair);position:relative}
+.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);
+  width:calc(var(--rail-p,0) * 100%);transform-origin:left}
+.rail__count{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+
+/* word reveal, driven by horizontal progress */
+.wreveal .w{opacity:.16;transition:opacity .5s var(--rail-ease),color .5s}
+.wreveal .w.on{opacity:1}
+/* the accent word drops into the serif, which is how JTL rations its italic */
+.wreveal .w.tl{
+  font-family:var(--font-s);font-style:italic;font-weight:400;
+  font-variation-settings:normal;letter-spacing:-.008em;
+}
+.wreveal .w.tl.on{color:var(--espresso)}
+
+/* ---------- footer ---------- */
+.foot{
+  position:relative;z-index:1;display:flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:26px var(--pad);border-top:1px solid var(--hair);
+  font-size:13px;color:var(--faint);
+}
+@media (max-width:760px){
+  .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
+  .foot__sp{flex-basis:100%;height:0}
+  .foot a{overflow-wrap:anywhere}
+}
+.foot__sp{flex:1}
+.foot a:hover{color:var(--espresso)}
+
+/* the wrap panel: a hero that lives inside the track, so it takes the panel's
+   box and drops the page section's own sizing */
+.panel.hero--clone{
+  min-height:0;height:100%;width:100vw;flex:none;
+  padding:96px var(--pad) 84px;      /* the hero's own padding, not the panel's */
+  justify-content:center;
+}
+.panel.hero--clone .hero__cue{pointer-events:none}
+
+/* ---------- calm register: the Owner's live kill switch for oscillation ---------- */
+html[data-motion="calm"] *{animation-play-state:paused!important}
+html[data-motion="calm"] .float{animation:none!important}
+
+/* ---------- collapse: phone, and anyone who asked for less motion ---------- */
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .rail{height:auto!important}
+  .rail__stick{position:static;height:auto;overflow:visible}
+  .rail__track{display:block;width:auto;transform:none!important}
+  .panel{width:auto;height:auto;min-height:auto;padding:56px var(--pad)}
+  .rail__ui{display:none}
+  .hero--clone{display:none}
+  #gl{display:none}
+  .wreveal .w{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* Privacy notice. It gates something real: the Calendly embed does not load
+   until this is answered, so declining actually changes what happens. */
+#consent{
+  position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
+  width:min(400px,calc(100vw - 28px));
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  box-shadow:var(--shadow-lift);padding:20px 22px 18px;
+}
+#consent .consent__h{font-family:var(--font-d);font-size:19px;color:var(--deep);margin-bottom:8px}
+#consent .consent__p{font-size:14px;line-height:1.55;color:var(--muted)}
+#consent .consent__more{margin-top:10px;font-size:13px;color:var(--muted)}
+#consent .consent__more summary{cursor:pointer;color:var(--espresso);list-style:none}
+#consent .consent__more summary::-webkit-details-marker{display:none}
+#consent .consent__more summary::after{content:" +";font-family:var(--font-m)}
+#consent .consent__more[open] summary::after{content:" -"}
+#consent .consent__more ul{margin:10px 0 0;padding-left:18px;line-height:1.6}
+#consent .consent__more li+li{margin-top:6px}
+#consent .consent__more b{color:var(--ink)}
+#consent .consent__row{display:flex;gap:10px;margin-top:16px}
+#consent .consent__btn{
+  flex:1;padding:10px 14px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--hair);background:transparent;color:var(--ink);
+  font-size:14px;font-weight:500;
+  transition:background .25s,border-color .25s,color .25s;
+}
+#consent .consent__btn:hover{border-color:var(--espresso-24);background:var(--espresso-10);color:var(--espresso)}
+#consent .consent__btn--yes{background:var(--espresso);border-color:var(--espresso);color:var(--panel)}
+#consent .consent__btn--yes:hover{background:var(--deep);border-color:var(--deep);color:var(--panel)}
+@media (max-width:520px){
+  #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
+}
+
+/* AVAS v16, fit quiz. Scoped under #p-quiz, reuses inner.css tokens and
+   components (.card, .btn, .note, .panel__eyebrow) rather than redefining
+   them. Vanilla, no framework. */
+#p-quiz .quiz{max-width:640px;padding:clamp(24px,4vw,40px)}
+#p-quiz .quiz__progress{margin-bottom:26px}
+#p-quiz .quiz__progress-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+#p-quiz .quiz__step-label{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#p-quiz .quiz__back{min-height:36px;padding:6px 16px;font-size:13px}
+#p-quiz .quiz__bar{display:block;height:3px;border-radius:100px;background:var(--hair);overflow:hidden}
+#p-quiz .quiz__bar-fill{display:block;height:100%;border-radius:100px;width:0%;background:var(--espresso);transition:width .35s ease}
+
+#p-quiz .quiz__screen{border:0;margin:0;padding:0}
+#p-quiz .quiz__screen legend{font-family:var(--font-d);font-weight:var(--w-display);
+  font-variation-settings:'wdth' var(--wdth-display);font-size:clamp(21px,2.6vw,28px);
+  line-height:1.2;color:var(--deep);margin:0 0 22px;padding:0;max-width:22ch}
+#p-quiz .quiz__screen h2{font-size:clamp(24px,3vw,34px);margin-bottom:10px}
+
+#p-quiz .quiz__options{display:flex;flex-direction:column;gap:10px}
+#p-quiz .quiz__opt{
+  display:flex;align-items:center;gap:14px;width:100%;
+  background:var(--panel);border:1px solid var(--hair);border-radius:12px;
+  padding:16px 18px;cursor:pointer;transition:border-color .2s,background-color .2s;
+}
+#p-quiz .quiz__opt:hover{border-color:var(--espresso-24)}
+#p-quiz .quiz__opt:has(input:checked){border-color:var(--espresso);background:var(--espresso-10)}
+#p-quiz .quiz__opt:has(input:focus-visible){outline:2px solid var(--espresso);outline-offset:2px}
+#p-quiz .quiz__opt input{width:18px;height:18px;flex:none;accent-color:var(--espresso)}
+#p-quiz .quiz__opt span{font-size:16px;color:var(--ink)}
+
+#p-quiz .btn-row{margin-top:22px}
+#p-quiz .btn:disabled{opacity:.4;cursor:not-allowed}
+
+#p-quiz #qsResult h2{color:var(--deep)}
+#p-quiz #qsResult .card__stop{border-top:1px solid var(--hair-2);margin-top:16px;padding-top:14px}
+#p-quiz #qsResult .card__stop li{list-style:none}
+#p-quiz .quiz__retake{margin-top:18px;background:transparent;border:0;color:var(--muted);
+  text-decoration:underline;text-underline-offset:3px;padding:0;min-height:0}
+#p-quiz .quiz__retake:hover{color:var(--espresso)}
+
+@media (max-width:640px){
+  #p-quiz .quiz{padding:22px 18px}
+  #p-quiz .quiz__opt{padding:14px 16px}
+}
+
+/* Inner pages: document flow, no rail, no WebGL. The homepage owns the sideways
+   travel; every other route reads top to bottom on the same tokens. */
+.top{
+  background:rgba(245,245,247,.86);
+  -webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);
+  border-bottom:1px solid var(--hair-2);
+}
+main.page{position:relative;z-index:1;padding:112px var(--pad) 72px;max-width:1240px;margin:0 auto}
+.sec{margin:0 0 clamp(56px,8vh,96px)}
+.sec:last-child{margin-bottom:0}
+.sec__h{font-size:var(--fs-h2);color:var(--deep);max-width:20ch;margin-bottom:16px;text-wrap:balance}
+.sec__h--hero{font-size:clamp(36px,5.4vw,84px);max-width:16ch;margin-bottom:20px}
+.lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-72);max-width:58ch}
+.measure{max-width:64ch}
+.lead + .sec__h,.prose + .sec__h,.defs + .sec__h,.lead + h2,.lead + .sec,.btn-row + .sec{margin-top:48px}
+/* a section nested in a section is a subsection: its heading steps down one size */
+.sec .sec h3.sec__h,.sec .sec h2.sec__h{font-size:clamp(24px,2.6vw,36px);max-width:24ch}
+.prose p{margin-bottom:14px;line-height:1.65;color:var(--ink-72)}
+.prose h3{font-size:22px;margin:32px 0 10px;color:var(--deep)}
+.prose ul,.prose ol{padding-left:18px;color:var(--ink-72);line-height:1.6;margin:0 0 14px}
+.prose li{margin-bottom:6px}
+.prose a{color:var(--espresso);text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* the serif accent word, the way JTL rations its italic; on the homepage
+   rail.js splits headings and marks it, here it is written as <em class="tl"> */
+.tl{font-family:var(--font-s);font-style:italic;font-weight:400;font-variation-settings:normal;
+  letter-spacing:-.008em;color:var(--espresso)}
+.wreveal .w{opacity:1}
+
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:720px){.grid--2,.grid--3,.grid--4{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.grid--3{grid-template-columns:repeat(3,1fr)}.grid--4{grid-template-columns:repeat(4,1fr)}}
+
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:22px;min-width:0;
+  display:flex;flex-direction:column}
+.card--lead{border-color:var(--espresso-24);box-shadow:var(--shadow)}
+.card__k{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--espresso);margin-bottom:10px}
+.card h3{font-size:20px;margin-bottom:8px;line-height:1.15}
+.card p{font-size:15px;line-height:1.55;color:var(--ink-72)}
+.card ul{list-style:none;margin:10px 0 0;padding:0}
+.card ul li{font-size:15px;line-height:1.5;color:var(--ink-72);padding-left:16px;position:relative;margin-bottom:6px}
+.card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--espresso-60)}
+.card__stop{font-size:14px;line-height:1.5;color:var(--muted);border-top:1px solid var(--hair-2);
+  padding-top:12px;margin-top:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  background:var(--espresso);color:var(--panel);text-decoration:none;font-weight:600;font-size:15px;
+  padding:12px 22px;border-radius:999px;border:1px solid var(--espresso);cursor:pointer;
+  transition:background .25s,border-color .25s,color .25s}
+.btn:hover{background:var(--deep);border-color:var(--deep)}
+.btn--ghost{background:transparent;color:var(--espresso)}
+.btn--ghost:hover{background:var(--espresso-10);color:var(--deep)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
+
+.note{font-size:14px;line-height:1.6;color:var(--muted)}
+.mono{font-family:var(--font-m)}
+.hr{border:0;border-top:1px solid var(--hair);margin:40px 0}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5}
+.tbl th{font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+
+/* definition rows: a term, then its plain sentence */
+.defs{display:grid;gap:0}
+.def{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--hair)}
+.def:last-child{border-bottom:1px solid var(--hair)}
+.def dt{font-family:var(--font-d);font-weight:600;font-size:16px;color:var(--deep);margin:0}
+.def dd{margin:0;font-size:15px;line-height:1.6;color:var(--ink-72);max-width:68ch}
+@media (min-width:900px){.def{grid-template-columns:220px 1fr;gap:24px}}
+
+/* the pricing page reuses the homepage panel styles, three tiers wide */
+main.page #p-pricing .pricing__grid{grid-template-columns:1fr}
+@media (min-width:720px){main.page #p-pricing .pricing__grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){main.page #p-pricing .pricing__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* the booking panel keeps its two-column shape without the rail's fixed height */
+main.page #p-book .book{height:auto;max-height:none}
+main.page #p-book .book__frame{height:auto}
+main.page #p-book .cal{min-height:640px;height:auto}
+main.page #p-book .cal iframe{min-height:640px;height:640px}
+
+@media (max-width:900px){
+  main.page{padding-top:96px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="top__mark" href="/" aria-label="AVAS home">AVAS</a>
+  <nav class="top__nav" aria-label="Site">
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/work">Work</a>
+    <a href="/about">About</a>
+    <a href="/quiz" aria-current="page">Quiz</a>
+  </nav>
+  <span class="top__sp"></span>
+  <details class="top__menu">
+    <summary>Menu</summary>
+    <div class="top__menu-list">
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/quiz">Quiz</a>
+      <a href="/book">Book a call</a>
+    </div>
+  </details>
+  <a class="top__cta" href="/book">Book a call</a>
+</header>
+
+<main class="page" id="main">
+<section class="sec" id="p-quiz" data-anchor="quiz">
+  <p class="panel__eyebrow">THE FIT QUIZ</p>
+  <h1 class="sec__h sec__h--hero">Sixty seconds to your tier</h1>
+  <p class="lead">Five questions. At the end you get one tier, the price, and what it includes. No email required to see it.</p>
+
+  <div class="quiz card card--lead" id="quiz">
+
+    <div class="quiz__progress" id="quizProgress" hidden>
+      <div class="quiz__progress-top">
+        <span class="quiz__step-label" id="quizStepLabel">Question 1 of 5</span>
+        <button type="button" class="quiz__back btn btn--ghost" id="quizBack">Back</button>
+      </div>
+      <div class="quiz__bar" role="progressbar" id="quizBar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Quiz progress"><span class="quiz__bar-fill" id="quizBarFill"></span></div>
+    </div>
+
+    <div class="quiz__screen" id="qsStart" data-screen>
+      <p class="card__k">Start here</p>
+      <h2>What should AVAS run for you first</h2>
+      <p class="note">Five questions about what is eating your week, your team size, and how fast you want it fixed. The result names one tier, one price, and three things it includes.</p>
+      <div class="btn-row">
+        <button type="button" class="btn" id="quizStart">Start the quiz</button>
+      </div>
+      <noscript>
+        <p class="quiz__fallback note">JavaScript is off, so the quiz cannot run here. See every tier and price on <a href="/pricing/">the pricing page</a> instead.</p>
+      </noscript>
+    </div>
+
+    <fieldset class="quiz__screen" id="qsQ1" data-screen data-step="1" hidden>
+      <legend>What is eating most of your week</legend>
+      <div class="quiz__options">
+        <label class="quiz__opt"><input type="radio" name="q1" value="content"><span>Content and social</span></label>
+        <label class="quiz__opt"><input type="radio" name="q1" value="growth"><span>Ads and funnels</span></label>
+        <label class="quiz__opt"><input type="radio" name="q1" value="ops"><span>Inbox and admin</span></label>
+        <label class="quiz__opt"><input type="radio" name="q1" value="systems"><span>Systems and automation</span></label>
+        <label class="quiz__opt"><input type="radio" name="q1" value="partner"><span>All of it, honestly</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="quiz__screen" id="qsQ2" data-screen data-step="2" hidden>
+      <legend>Who is working on this with you</legend>
+      <div class="quiz__options">
+        <label class="quiz__opt"><input type="radio" name="q2" value="solo"><span>Just me</span></label>
+        <label class="quiz__opt"><input type="radio" name="q2" value="small"><span>2 to 5 of us</span></label>
+        <label class="quiz__opt"><input type="radio" name="q2" value="mid"><span>6 to 14</span></label>
+        <label class="quiz__opt"><input type="radio" name="q2" value="large"><span>15 or more</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="quiz__screen" id="qsQ3" data-screen data-step="3" hidden>
+      <legend>What have you already tried</legend>
+      <div class="quiz__options">
+        <label class="quiz__opt"><input type="radio" name="q3" value="va"><span>Hired a VA before</span></label>
+        <label class="quiz__opt"><input type="radio" name="q3" value="diy"><span>Built tools and automations myself</span></label>
+        <label class="quiz__opt"><input type="radio" name="q3" value="agency"><span>Worked with an agency</span></label>
+        <label class="quiz__opt"><input type="radio" name="q3" value="none"><span>Nothing yet</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="quiz__screen" id="qsQ4" data-screen data-step="4" hidden>
+      <legend>You wake up and one thing is already done, which one</legend>
+      <div class="quiz__options">
+        <label class="quiz__opt"><input type="radio" name="q4" value="content"><span>This week's content, shipped</span></label>
+        <label class="quiz__opt"><input type="radio" name="q4" value="growth"><span>Ads and funnels running</span></label>
+        <label class="quiz__opt"><input type="radio" name="q4" value="ops"><span>Inbox at zero</span></label>
+        <label class="quiz__opt"><input type="radio" name="q4" value="systems"><span>The follow up running itself</span></label>
+        <label class="quiz__opt"><input type="radio" name="q4" value="partner"><span>A real plan on the table</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="quiz__screen" id="qsQ5" data-screen data-step="5" hidden>
+      <legend>When do you want this off your plate</legend>
+      <div class="quiz__options">
+        <label class="quiz__opt"><input type="radio" name="q5" value="asap"><span>This week</span></label>
+        <label class="quiz__opt"><input type="radio" name="q5" value="month"><span>This month</span></label>
+        <label class="quiz__opt"><input type="radio" name="q5" value="quarter"><span>This quarter</span></label>
+        <label class="quiz__opt"><input type="radio" name="q5" value="exploring"><span>Just exploring</span></label>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn" id="quizNext5" disabled>See my tier</button>
+      </div>
+    </fieldset>
+
+    <div class="quiz__screen" id="qsResult" data-screen hidden aria-live="polite" tabindex="-1">
+      <p class="card__k" id="quizTierName">Publish</p>
+      <h2 id="quizTierPrice">$397 a month</h2>
+      <p class="note" id="quizTierOutcome">One brand, two channels, ten image posts a month.</p>
+      <ul class="card__stop" id="quizResultCounts">
+        <li>Two channels</li>
+        <li>Ten posts a month</li>
+        <li>Image posts only</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn" id="quizSeeTier" href="/pricing/#publish">See the tier</a>
+        <a class="btn btn--ghost" href="/book/">Book a call</a>
+      </div>
+      <button type="button" class="quiz__retake btn--ghost btn" id="quizRetake">Retake the quiz</button>
+    </div>
+
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <span>AVAS <span aria-hidden="true">&middot;</span> Ayala Virtual Assistance</span>
+  <span class="foot__sp"></span>
+  <span>Quezon City, Manila</span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/privacy">Privacy</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/terms">Terms</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+</footer>
+
+<aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
+  <h2 class="consent__h" id="consent-h">We value your privacy</h2>
+  <p class="consent__p">This page keeps two settings on your device: whether the keyboard sounds are on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <details class="consent__more">
+    <summary>What that actually means</summary>
+    <ul>
+      <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
+      <li><b>Loaded from Calendly</b> when you accept: their booking widget, which sets its own cookies so it can remember your slot.</li>
+      <li><b>If you decline</b>: nothing third party loads, and the booking panel gives you a plain link instead.</li>
+    </ul>
+  </details>
+  <div class="consent__row">
+    <button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept</button>
+    <button type="button" class="consent__btn" data-consent="denied">Decline</button>
+  </div>
+</aside>
+
+<script>/* Privacy consent. One key, three states: unset shows the notice, granted lets
+   the booking panel load Calendly, denied keeps every third party off the page.
+   The answer changes behaviour, so the notice is not decoration. */
+(() => {
+  'use strict';
+  var KEY = 'avas-consent';
+  var el = document.getElementById('consent');
+  if (!el) return;
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  window.avasConsent = {
+    state: function () { return read(); },
+    granted: function () { return read() === 'granted'; },
+    onChange: []
+  };
+
+  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.dataset.consent;
+    write(v);
+    el.hidden = true;
+    delete document.documentElement.dataset.consent;
+    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  });
+})();
+
+/* AVAS v16, fit quiz. Vanilla JS, IIFE, no globals, no framework, no network.
+   Scoring is ported from the retired GHL quiz.html (computePlanKey + tierFor,
+   Q1/Q4 weight 3, team/timing weight-1 leans, "everything" both = partner)
+   unchanged. Only the result mapping changed: the old three tiers (essential,
+   embedded, partner) are split into the five current buckets below.
+
+   Mapping (lowest need to highest):
+     essential + team solo          -> diagnostic  ($750 Content Systems Diagnostic)
+     essential + everyone else      -> publish      ($397/mo)
+     embedded  (any team)           -> engine       ($1,750/mo Content Engine)
+     partner   + team not "large"   -> own          ($2,600/mo Own the Channel)
+     partner   + team "large"       -> quote        (outside a tier, request a quote)
+   This keeps the order of the old bands (essential < embedded < partner) and
+   only adds one more split at each end, using signals the quiz already
+   collects (team size), so no new question was needed. */
+(function () {
+  "use strict";
+
+  var root = document.getElementById("quiz");
+  if (!root) { return; }
+
+  var STEP_IDS = ["qsStart", "qsQ1", "qsQ2", "qsQ3", "qsQ4", "qsQ5", "qsResult"];
+  var TOTAL_Q = 5;
+
+  var AREAS = ["content", "growth", "ops", "systems", "partner"];
+  var TEAM_LEAN = {
+    solo:  { ops: 1, content: 1 },
+    small: { content: 1, growth: 1 },
+    mid:   { systems: 1, growth: 1 },
+    large: { partner: 1, systems: 1 }
+  };
+  var TIMING_LEAN = {
+    asap:      { ops: 1, partner: 1 },
+    month:     { content: 1, growth: 1 },
+    quarter:   { systems: 1, growth: 1 },
+    exploring: { content: 1, systems: 1 }
+  };
+
+  var BUCKETS = {
+    diagnostic: {
+      name: "Start with the diagnostic",
+      price: "$750, one time",
+      outcome: "Ten business days. We map what is actually broken before you commit to a monthly plan. The fee comes off month one if you continue.",
+      counts: ["Ten business days", "One report, one recommendation", "Fee credited to month one"],
+      link: "/pricing/#diagnostic"
+    },
+    publish: {
+      name: "Publish",
+      price: "$397 a month",
+      outcome: "One brand, two channels, image posts on a calendar you see before it runs.",
+      counts: ["Two slots", "Two channels, one brand", "Ten image posts a month"],
+      link: "/pricing/#publish"
+    },
+    engine: {
+      name: "Content Engine",
+      price: "$1,750 a month",
+      outcome: "One brand, three channels, a mix of formats, and a monthly call with Gwen.",
+      counts: ["Three channels, one brand", "Twelve posts, four vertical video, four long form", "A monthly call with Gwen"],
+      link: "/pricing/#engine"
+    },
+    own: {
+      name: "Own the Channel",
+      price: "$2,600 a month",
+      outcome: "Five channels, a named manager and editor, and your inbox answered daily.",
+      counts: ["One slot, five channels", "Twenty posts, eight vertical video", "100 comments and DMs answered"],
+      link: "/pricing/#own"
+    },
+    quote: {
+      name: "Outside a tier",
+      price: "Request a quote",
+      outcome: "More than one brand, a white label arrangement, or a launch. Every one of those is scoped on a call, not a page.",
+      counts: ["More than one brand", "Agency white label", "Launch scope"],
+      link: "/book/?quote=1"
+    }
+  };
+
+  function reducedMotion() {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  var screens = {};
+  STEP_IDS.forEach(function (id) { screens[id] = document.getElementById(id); });
+
+  var progressEl = document.getElementById("quizProgress");
+  var stepLabelEl = document.getElementById("quizStepLabel");
+  var barFillEl = document.getElementById("quizBarFill");
+  var barEl = document.getElementById("quizBar");
+  var backBtn = document.getElementById("quizBack");
+  var startBtn = document.getElementById("quizStart");
+  var retakeBtn = document.getElementById("quizRetake");
+  var next5Btn = document.getElementById("quizNext5");
+
+  var answers = {};
+  var currentIndex = 0;
+  var advancing = false;
+
+  function focusScreen(screen) {
+    var target = screen.querySelector("legend, h2");
+    if (!target) { return; }
+    if (target.tagName === "LEGEND") { return; }
+    if (!target.hasAttribute("tabindex")) { target.setAttribute("tabindex", "-1"); }
+    target.focus();
+  }
+
+  function updateProgress() {
+    var qNum = STEP_IDS.indexOf(STEP_IDS[currentIndex]) === 0 ? 0 : currentIndex;
+    var isQuestion = currentIndex >= 1 && currentIndex <= TOTAL_Q;
+    if (progressEl) { progressEl.hidden = !isQuestion; }
+    if (isQuestion && stepLabelEl && barFillEl) {
+      stepLabelEl.textContent = "Question " + qNum + " of " + TOTAL_Q;
+      barFillEl.style.width = (qNum / TOTAL_Q * 100) + "%";
+      if (barEl) {
+        barEl.setAttribute("aria-valuenow", String(qNum));
+        barEl.setAttribute("aria-valuetext", "Question " + qNum + " of " + TOTAL_Q);
+      }
+    }
+  }
+
+  function showScreen(index) {
+    var next = screens[STEP_IDS[index]];
+    if (!next) { return; }
+    var current = screens[STEP_IDS[currentIndex]];
+    if (current && current !== next) { current.hidden = true; }
+    next.hidden = false;
+    currentIndex = index;
+    updateProgress();
+    focusScreen(next);
+  }
+
+  function goTo(index) {
+    if (index === currentIndex || advancing) { return; }
+    if (index === 6) { renderResult(); }
+    showScreen(index);
+  }
+
+  /* auto-advance on pick for Q1 to Q4; Q5 waits on the explicit button so the
+     last click before the result is always deliberate */
+  [1, 2, 3, 4].forEach(function (step) {
+    var screen = screens[STEP_IDS[step]];
+    if (!screen) { return; }
+    var inputs = screen.querySelectorAll('input[type="radio"]');
+    Array.prototype.forEach.call(inputs, function (input) {
+      input.addEventListener("change", function () {
+        answers["q" + step] = input.value;
+        if (advancing) { return; }
+        advancing = true;
+        var delay = reducedMotion() ? 0 : 260;
+        window.setTimeout(function () {
+          advancing = false;
+          goTo(step + 1);
+        }, delay);
+      });
+    });
+  });
+
+  var q5Screen = screens.qsQ5;
+  if (q5Screen && next5Btn) {
+    var q5Inputs = q5Screen.querySelectorAll('input[type="radio"]');
+    Array.prototype.forEach.call(q5Inputs, function (input) {
+      input.addEventListener("change", function () {
+        answers.q5 = input.value;
+        next5Btn.disabled = false;
+      });
+    });
+    next5Btn.addEventListener("click", function () { goTo(6); });
+  }
+
+  if (startBtn) { startBtn.addEventListener("click", function () { goTo(1); }); }
+  if (backBtn) {
+    backBtn.addEventListener("click", function () {
+      if (currentIndex > 0) { goTo(currentIndex - 1); }
+    });
+  }
+  if (retakeBtn) {
+    retakeBtn.addEventListener("click", function () {
+      answers = {};
+      Array.prototype.forEach.call(root.querySelectorAll('input[type="radio"]'), function (i) { i.checked = false; });
+      if (next5Btn) { next5Btn.disabled = true; }
+      goTo(0);
+    });
+  }
+
+  /* ---------- scoring, ported unchanged from the retired quiz.html ---------- */
+  function computePlanKey() {
+    var tally = {};
+    AREAS.forEach(function (a) { tally[a] = 0; });
+    if (answers.q1 && tally.hasOwnProperty(answers.q1)) { tally[answers.q1] += 3; }
+    if (answers.q4 && tally.hasOwnProperty(answers.q4)) { tally[answers.q4] += 3; }
+    var teamLean = TEAM_LEAN[answers.q2];
+    if (teamLean) { Object.keys(teamLean).forEach(function (a) { tally[a] += teamLean[a]; }); }
+    var timingLean = TIMING_LEAN[answers.q5];
+    if (timingLean) { Object.keys(timingLean).forEach(function (a) { tally[a] += timingLean[a]; }); }
+
+    var saidEverything = (answers.q1 === "partner") + (answers.q4 === "partner");
+    if (saidEverything === 2) { return "partner"; }
+    if (saidEverything === 1 && answers.q2 === "large") { return "partner"; }
+
+    var bestScore = -1;
+    AREAS.forEach(function (a) { if (tally[a] > bestScore) { bestScore = tally[a]; } });
+    var leaders = AREAS.filter(function (a) { return tally[a] === bestScore; });
+    if (leaders.length === 1) { return leaders[0]; }
+    if (answers.q1 && leaders.indexOf(answers.q1) !== -1) { return answers.q1; }
+    if (answers.q4 && leaders.indexOf(answers.q4) !== -1) { return answers.q4; }
+    return leaders[0];
+  }
+
+  function tierFor(planKey) {
+    if (answers.q2 === "solo") { return planKey === "partner" ? "embedded" : "essential"; }
+    if (planKey === "partner" || answers.q2 === "large") { return "partner"; }
+    if (answers.q2 === "mid") { return "embedded"; }
+    if (answers.q2 === "small" && (answers.q5 === "asap" || answers.q5 === "month")) { return "embedded"; }
+    if (answers.q2 === "small" && answers.q1 !== answers.q4) { return "embedded"; }
+    return "essential";
+  }
+
+  /* the only new logic: split each old tier's population into two current
+     buckets using team size, which the old tier fn already reads */
+  function bucketFor(tierKey) {
+    if (tierKey === "essential") { return answers.q2 === "solo" ? "diagnostic" : "publish"; }
+    if (tierKey === "embedded") { return "engine"; }
+    return answers.q2 === "large" ? "quote" : "own";
+  }
+
+  var tierNameEl = document.getElementById("quizTierName");
+  var tierPriceEl = document.getElementById("quizTierPrice");
+  var tierOutcomeEl = document.getElementById("quizTierOutcome");
+  var countsEl = document.getElementById("quizResultCounts");
+  var seeTierEl = document.getElementById("quizSeeTier");
+
+  function renderResult() {
+    var planKey = computePlanKey();
+    var oldTier = tierFor(planKey);
+    var bucketKey = bucketFor(oldTier);
+    var bucket = BUCKETS[bucketKey] || BUCKETS.publish;
+
+    if (tierNameEl) { tierNameEl.textContent = bucket.name; }
+    if (tierPriceEl) { tierPriceEl.textContent = bucket.price; }
+    if (tierOutcomeEl) { tierOutcomeEl.textContent = bucket.outcome; }
+    if (countsEl) {
+      countsEl.innerHTML = "";
+      bucket.counts.forEach(function (line) {
+        var li = document.createElement("li");
+        li.textContent = line;
+        countsEl.appendChild(li);
+      });
+    }
+    if (seeTierEl) { seeTierEl.setAttribute("href", bucket.link); }
+  }
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>

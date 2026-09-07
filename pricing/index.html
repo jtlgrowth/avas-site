@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-motion="full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pricing · AVAS</title>
+<meta name="description" content="Every price on the page. A $750 diagnostic, retainers at $397, $1,750 and $2,600 a month, every tier a count, everything else a quote.">
+<meta name="theme-color" content="#F5F5F7">
+<link rel="canonical" href="https://ayalavirtualassistance.site/pricing/">
+<link rel="icon" href="/assets/avas-mark-plain.png">
+<meta property="og:title" content="Pricing · AVAS">
+<meta property="og:description" content="Every price on the page. A $750 diagnostic, retainers at $397, $1,750 and $2,600 a month, every tier a count, everything else a quote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ayalavirtualassistance.site/pricing/">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>/* AVAS v16 tokens.
+
+   Palette: Apple gray, not porcelain. No beige, no cream, no warm ground.
+   Values are Apple's own system greys, taken from library/apple-gray.
+   Espresso is the only warm colour on the page and it is an ACCENT: the mark,
+   the caret, an active state, a link, a CTA fill, a hairline. Never a ground.
+
+   Type: JTL Growth's own combination, read from its live stylesheet.
+   Archivo Expanded for display, Archivo for body, Instrument Serif as the
+   accent voice, Space Mono for machine surfaces only. All inlined, no CDN. */
+:root{
+  --bg:#F5F5F7;
+  --panel:#FFFFFF;
+  --raised:#EBEBED;
+  --ink:#1D1D1F;
+  --ink-72:#3A3A3E;
+  --muted:#515154;
+  --faint:#86868B;
+  --hair:#D2D2D7;
+  --hair-2:rgba(29,29,31,.055);
+  --espresso:#8B4A2A;
+  --espresso-60:rgba(139,74,42,.6);
+  --espresso-24:rgba(139,74,42,.24);
+  --espresso-10:rgba(139,74,42,.10);
+  --deep:#3A241C;
+  --shadow:0 20px 50px rgba(29,29,31,.10), 0 1px 0 rgba(29,29,31,.04) inset;
+  --shadow-lift:0 36px 90px rgba(29,29,31,.16);
+
+  /* display carries the expanded width; the variable axis does the work */
+  --font-d:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-b:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-s:'Instrument Serif',Georgia,serif;
+  --font-m:'Space Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --w-display:700;
+  --wdth-display:118;
+  --track-display:-.026em;
+
+  --fs-hero:clamp(38px,6.6vw,104px);
+  --fs-h2:clamp(32px,4.2vw,60px);
+  --fs-body:17px;
+  --pad:clamp(20px,4.4vw,72px);
+  --rail-ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- reset and ground ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-b);font-size:var(--fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--font-d);font-weight:var(--w-display);
+  font-variation-settings:'wdth' var(--wdth-display);
+  letter-spacing:var(--track-display);margin:0;line-height:1.06}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--espresso-24)}
+:focus-visible{outline:2px solid var(--espresso);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--espresso);color:var(--panel);
+  padding:10px 16px;border-radius:0 0 10px 0;font-weight:600}
+.skip:focus{left:0}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+
+/* ---------- top chrome ---------- */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;gap:10px;white-space:nowrap;
+  padding:16px var(--pad);
+}
+.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none}
+.top__nav{display:flex;gap:18px;margin-left:24px}
+.top__nav a,.top__menu-list a{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  color:var(--muted);transition:color .25s;
+}
+.top__nav a:hover,.top__nav a[aria-current="page"],.top__menu-list a:hover{color:var(--espresso)}
+.top__nav a[aria-current="page"]{border-bottom:1px solid var(--espresso-60);padding-bottom:2px}
+.top__cta{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;
+  background:var(--espresso);color:var(--panel);border:1px solid var(--espresso);border-radius:999px;
+  padding:5px 13px;transition:background .25s,border-color .25s;
+}
+.top__cta:hover{background:var(--deep);border-color:var(--deep)}
+.top__menu{display:none;position:relative}
+.top__menu summary{
+  list-style:none;cursor:pointer;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.top__menu summary::-webkit-details-marker{display:none}
+.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso-24)}
+.top__menu-list{
+  position:absolute;right:0;top:calc(100% + 8px);min-width:200px;
+  background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:8px;
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center}
+.top__menu-list a:hover{background:var(--espresso-10)}
+@media (max-width:900px){
+  .top__nav{display:none}
+  .top__menu{display:block}
+  .top__cta{display:none}
+}
+.top__sp{flex:1}
+.top button{
+  background:transparent;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:color .25s,border-color .25s,background .25s;
+}
+.top button:hover{color:var(--espresso);border-color:var(--espresso-24);background:var(--espresso-10)}
+.top button[aria-pressed="true"]{color:var(--espresso);border-color:var(--espresso-24)}
+
+/* ---------- shared section frame ---------- */
+.hero,.panel{position:relative;z-index:1}
+
+/* ---------- the rail ---------- */
+.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh))}
+.rail__stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.rail__track{display:flex;height:100%;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.panel{
+  width:100vw;height:100%;flex:none;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:76px var(--pad) 68px;
+}
+.panel__eyebrow{
+  font-family:var(--font-b);font-weight:600;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--espresso);margin-bottom:14px;
+}
+
+/* rail UI: dots, counter, progress hairline */
+.rail__ui{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;z-index:6;
+  display:flex;align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
+/* the corner assistant lives bottom right, so the counter gets out of its way */
+@media (min-width:901px){ .rail__ui{padding-right:96px} }
+.rail__dots{display:flex;gap:8px;pointer-events:auto}
+.rail__dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--hair);
+  background:transparent;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;
+}
+.rail__dots button[aria-current="true"]{background:var(--espresso);border-color:var(--espresso);
+  box-shadow:0 0 0 4px var(--espresso-10)}
+.rail__bar{flex:1;height:1px;background:var(--hair);position:relative}
+.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);
+  width:calc(var(--rail-p,0) * 100%);transform-origin:left}
+.rail__count{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+
+/* word reveal, driven by horizontal progress */
+.wreveal .w{opacity:.16;transition:opacity .5s var(--rail-ease),color .5s}
+.wreveal .w.on{opacity:1}
+/* the accent word drops into the serif, which is how JTL rations its italic */
+.wreveal .w.tl{
+  font-family:var(--font-s);font-style:italic;font-weight:400;
+  font-variation-settings:normal;letter-spacing:-.008em;
+}
+.wreveal .w.tl.on{color:var(--espresso)}
+
+/* ---------- footer ---------- */
+.foot{
+  position:relative;z-index:1;display:flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:26px var(--pad);border-top:1px solid var(--hair);
+  font-size:13px;color:var(--faint);
+}
+@media (max-width:760px){
+  .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
+  .foot__sp{flex-basis:100%;height:0}
+  .foot a{overflow-wrap:anywhere}
+}
+.foot__sp{flex:1}
+.foot a:hover{color:var(--espresso)}
+
+/* the wrap panel: a hero that lives inside the track, so it takes the panel's
+   box and drops the page section's own sizing */
+.panel.hero--clone{
+  min-height:0;height:100%;width:100vw;flex:none;
+  padding:96px var(--pad) 84px;      /* the hero's own padding, not the panel's */
+  justify-content:center;
+}
+.panel.hero--clone .hero__cue{pointer-events:none}
+
+/* ---------- calm register: the Owner's live kill switch for oscillation ---------- */
+html[data-motion="calm"] *{animation-play-state:paused!important}
+html[data-motion="calm"] .float{animation:none!important}
+
+/* ---------- collapse: phone, and anyone who asked for less motion ---------- */
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .rail{height:auto!important}
+  .rail__stick{position:static;height:auto;overflow:visible}
+  .rail__track{display:block;width:auto;transform:none!important}
+  .panel{width:auto;height:auto;min-height:auto;padding:56px var(--pad)}
+  .rail__ui{display:none}
+  .hero--clone{display:none}
+  #gl{display:none}
+  .wreveal .w{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* Privacy notice. It gates something real: the Calendly embed does not load
+   until this is answered, so declining actually changes what happens. */
+#consent{
+  position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
+  width:min(400px,calc(100vw - 28px));
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  box-shadow:var(--shadow-lift);padding:20px 22px 18px;
+}
+#consent .consent__h{font-family:var(--font-d);font-size:19px;color:var(--deep);margin-bottom:8px}
+#consent .consent__p{font-size:14px;line-height:1.55;color:var(--muted)}
+#consent .consent__more{margin-top:10px;font-size:13px;color:var(--muted)}
+#consent .consent__more summary{cursor:pointer;color:var(--espresso);list-style:none}
+#consent .consent__more summary::-webkit-details-marker{display:none}
+#consent .consent__more summary::after{content:" +";font-family:var(--font-m)}
+#consent .consent__more[open] summary::after{content:" -"}
+#consent .consent__more ul{margin:10px 0 0;padding-left:18px;line-height:1.6}
+#consent .consent__more li+li{margin-top:6px}
+#consent .consent__more b{color:var(--ink)}
+#consent .consent__row{display:flex;gap:10px;margin-top:16px}
+#consent .consent__btn{
+  flex:1;padding:10px 14px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--hair);background:transparent;color:var(--ink);
+  font-size:14px;font-weight:500;
+  transition:background .25s,border-color .25s,color .25s;
+}
+#consent .consent__btn:hover{border-color:var(--espresso-24);background:var(--espresso-10);color:var(--espresso)}
+#consent .consent__btn--yes{background:var(--espresso);border-color:var(--espresso);color:var(--panel)}
+#consent .consent__btn--yes:hover{background:var(--deep);border-color:var(--deep);color:var(--panel)}
+@media (max-width:520px){
+  #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
+}
+
+/* Pricing panel. The rail gives a panel exactly one screen, so the grid is
+   bounded and each tier is a count plus the sentence that stops it. Three
+   tiers, one marked, no toggles: the number is the number. */
+#p-pricing .pricing{
+  display:flex;flex-direction:column;gap:clamp(18px,2.4vh,28px);
+  width:100%;max-width:1280px;margin:0 auto;min-height:0;
+}
+#p-pricing .pricing__head{max-width:64ch}
+#p-pricing .pricing__h{font-size:var(--fs-h2);color:var(--deep);margin-bottom:12px}
+#p-pricing .pricing__line{font-size:17px;line-height:1.6;color:var(--ink-72);max-width:58ch}
+#p-pricing .pricing__grid{
+  list-style:none;margin:0;padding:0;display:grid;gap:16px;min-height:0;
+  grid-template-columns:1fr;
+}
+#p-pricing .ptier{
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  padding:20px 20px 18px;display:flex;flex-direction:column;min-width:0;
+}
+#p-pricing .ptier--lead{border-color:var(--espresso-24);box-shadow:var(--shadow)}
+#p-pricing .ptier__name{
+  font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--espresso);line-height:1.5;
+}
+#p-pricing .ptier__slot{
+  display:inline-block;font-size:9.5px;letter-spacing:.14em;border:1px solid var(--espresso-24);
+  border-radius:4px;padding:2px 6px;margin-left:6px;color:var(--espresso-60);
+}
+#p-pricing .ptier__fig{
+  font-family:var(--font-m);font-weight:700;font-size:clamp(26px,2.4vw,32px);
+  letter-spacing:-.03em;color:var(--ink);line-height:1.15;margin:12px 0 2px;
+}
+#p-pricing .ptier__fig span{font-size:.48em;letter-spacing:.01em;color:var(--muted)}
+#p-pricing .ptier__unit{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:14px}
+#p-pricing .ptier__list{list-style:none;margin:0 0 14px;padding:0}
+#p-pricing .ptier__list li{
+  font-size:15px;line-height:1.5;color:var(--ink-72);
+  padding-left:16px;position:relative;margin-bottom:7px;
+}
+#p-pricing .ptier__list li:before{
+  content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--espresso-60);
+}
+#p-pricing .ptier__stop{
+  font-size:14px;line-height:1.5;color:var(--muted);
+  border-top:1px solid var(--hair-2);padding-top:12px;margin-top:auto;
+}
+#p-pricing .pricing__foot{
+  font-size:14px;line-height:1.6;color:var(--muted);max-width:88ch;
+  border-top:1px solid var(--hair);padding-top:14px;
+}
+
+@media (min-width:720px){
+  #p-pricing .pricing__grid{grid-template-columns:1fr 1fr}
+}
+@media (min-width:1100px){
+  #p-pricing .pricing{gap:clamp(14px,2vh,24px)}
+  #p-pricing .pricing__grid{grid-template-columns:repeat(3,1fr);gap:18px}
+  #p-pricing .ptier__list li{font-size:14.5px}
+}
+
+/* Inner pages: document flow, no rail, no WebGL. The homepage owns the sideways
+   travel; every other route reads top to bottom on the same tokens. */
+.top{
+  background:rgba(245,245,247,.86);
+  -webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);
+  border-bottom:1px solid var(--hair-2);
+}
+main.page{position:relative;z-index:1;padding:112px var(--pad) 72px;max-width:1240px;margin:0 auto}
+.sec{margin:0 0 clamp(56px,8vh,96px)}
+.sec:last-child{margin-bottom:0}
+.sec__h{font-size:var(--fs-h2);color:var(--deep);max-width:20ch;margin-bottom:16px;text-wrap:balance}
+.sec__h--hero{font-size:clamp(36px,5.4vw,84px);max-width:16ch;margin-bottom:20px}
+.lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-72);max-width:58ch}
+.measure{max-width:64ch}
+.lead + .sec__h,.prose + .sec__h,.defs + .sec__h,.lead + h2,.lead + .sec,.btn-row + .sec{margin-top:48px}
+/* a section nested in a section is a subsection: its heading steps down one size */
+.sec .sec h3.sec__h,.sec .sec h2.sec__h{font-size:clamp(24px,2.6vw,36px);max-width:24ch}
+.prose p{margin-bottom:14px;line-height:1.65;color:var(--ink-72)}
+.prose h3{font-size:22px;margin:32px 0 10px;color:var(--deep)}
+.prose ul,.prose ol{padding-left:18px;color:var(--ink-72);line-height:1.6;margin:0 0 14px}
+.prose li{margin-bottom:6px}
+.prose a{color:var(--espresso);text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* the serif accent word, the way JTL rations its italic; on the homepage
+   rail.js splits headings and marks it, here it is written as <em class="tl"> */
+.tl{font-family:var(--font-s);font-style:italic;font-weight:400;font-variation-settings:normal;
+  letter-spacing:-.008em;color:var(--espresso)}
+.wreveal .w{opacity:1}
+
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:720px){.grid--2,.grid--3,.grid--4{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.grid--3{grid-template-columns:repeat(3,1fr)}.grid--4{grid-template-columns:repeat(4,1fr)}}
+
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:22px;min-width:0;
+  display:flex;flex-direction:column}
+.card--lead{border-color:var(--espresso-24);box-shadow:var(--shadow)}
+.card__k{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--espresso);margin-bottom:10px}
+.card h3{font-size:20px;margin-bottom:8px;line-height:1.15}
+.card p{font-size:15px;line-height:1.55;color:var(--ink-72)}
+.card ul{list-style:none;margin:10px 0 0;padding:0}
+.card ul li{font-size:15px;line-height:1.5;color:var(--ink-72);padding-left:16px;position:relative;margin-bottom:6px}
+.card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--espresso-60)}
+.card__stop{font-size:14px;line-height:1.5;color:var(--muted);border-top:1px solid var(--hair-2);
+  padding-top:12px;margin-top:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  background:var(--espresso);color:var(--panel);text-decoration:none;font-weight:600;font-size:15px;
+  padding:12px 22px;border-radius:999px;border:1px solid var(--espresso);cursor:pointer;
+  transition:background .25s,border-color .25s,color .25s}
+.btn:hover{background:var(--deep);border-color:var(--deep)}
+.btn--ghost{background:transparent;color:var(--espresso)}
+.btn--ghost:hover{background:var(--espresso-10);color:var(--deep)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
+
+.note{font-size:14px;line-height:1.6;color:var(--muted)}
+.mono{font-family:var(--font-m)}
+.hr{border:0;border-top:1px solid var(--hair);margin:40px 0}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5}
+.tbl th{font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+
+/* definition rows: a term, then its plain sentence */
+.defs{display:grid;gap:0}
+.def{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--hair)}
+.def:last-child{border-bottom:1px solid var(--hair)}
+.def dt{font-family:var(--font-d);font-weight:600;font-size:16px;color:var(--deep);margin:0}
+.def dd{margin:0;font-size:15px;line-height:1.6;color:var(--ink-72);max-width:68ch}
+@media (min-width:900px){.def{grid-template-columns:220px 1fr;gap:24px}}
+
+/* the pricing page reuses the homepage panel styles, three tiers wide */
+main.page #p-pricing .pricing__grid{grid-template-columns:1fr}
+@media (min-width:720px){main.page #p-pricing .pricing__grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){main.page #p-pricing .pricing__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* the booking panel keeps its two-column shape without the rail's fixed height */
+main.page #p-book .book{height:auto;max-height:none}
+main.page #p-book .book__frame{height:auto}
+main.page #p-book .cal{min-height:640px;height:auto}
+main.page #p-book .cal iframe{min-height:640px;height:640px}
+
+@media (max-width:900px){
+  main.page{padding-top:96px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="top__mark" href="/" aria-label="AVAS home">AVAS</a>
+  <nav class="top__nav" aria-label="Site">
+    <a href="/services">Services</a>
+    <a href="/pricing" aria-current="page">Pricing</a>
+    <a href="/work">Work</a>
+    <a href="/about">About</a>
+    <a href="/quiz">Quiz</a>
+  </nav>
+  <span class="top__sp"></span>
+  <details class="top__menu">
+    <summary>Menu</summary>
+    <div class="top__menu-list">
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/quiz">Quiz</a>
+      <a href="/book">Book a call</a>
+    </div>
+  </details>
+  <a class="top__cta" href="/book">Book a call</a>
+</header>
+
+<main class="page" id="main">
+<section class="sec" id="p-pricing" data-anchor="pricing">
+<style>
+/* /pricing: the homepage panel styles carry the tier cards; this block adds the
+   start-here strip, the quote strip and the terms rows, all scoped here. */
+#p-pricing [id]{scroll-margin-top:110px}
+#p-pricing .pricing{gap:clamp(28px,4vh,44px)}
+#p-pricing .pricing__hero{max-width:64ch}
+#p-pricing .pricing__hero .lead{margin-top:18px}
+#p-pricing .pricing__hero .btn-row{margin-top:24px}
+
+#p-pricing .start{
+  display:grid;grid-template-columns:1fr;gap:18px;align-items:start;
+  background:var(--panel);border:1px solid var(--espresso-24);border-radius:16px;
+  padding:24px;box-shadow:var(--shadow);
+}
+#p-pricing .start__fig{
+  font-family:var(--font-m);font-weight:700;font-size:clamp(30px,3vw,40px);
+  letter-spacing:-.03em;color:var(--ink);line-height:1.1;
+}
+#p-pricing .start__fig small{display:block;font-size:13px;letter-spacing:.02em;font-weight:400;color:var(--muted);margin-top:6px}
+#p-pricing .start h2{font-size:clamp(22px,2.2vw,30px);color:var(--deep);margin:6px 0 10px}
+#p-pricing .start .ptier__list{margin-bottom:0}
+#p-pricing .start__stop{
+  font-size:14px;line-height:1.55;color:var(--muted);
+  border-top:1px solid var(--hair-2);padding-top:12px;margin-top:14px;
+}
+@media (min-width:900px){
+  #p-pricing .start{grid-template-columns:1fr auto;gap:32px;padding:28px 32px}
+  #p-pricing .start__side{text-align:right;min-width:200px}
+}
+
+#p-pricing .sub{max-width:64ch}
+#p-pricing .sub h2{font-size:var(--fs-h2);color:var(--deep);margin-bottom:12px}
+#p-pricing .sub p{font-size:17px;line-height:1.6;color:var(--ink-72)}
+
+#p-pricing .quote{
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:24px;
+  display:flex;flex-direction:column;gap:16px;
+}
+#p-pricing .quote h2{font-size:clamp(24px,2.6vw,36px);color:var(--deep)}
+#p-pricing .quote p{font-size:16px;line-height:1.6;color:var(--ink-72);max-width:64ch}
+#p-pricing .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+#p-pricing .chips li{
+  font-family:var(--font-m);font-size:11.5px;letter-spacing:.06em;color:var(--ink-72);
+  border:1px solid var(--hair);border-radius:999px;padding:6px 12px;background:var(--bg);
+}
+#p-pricing .quote .btn-row{margin-top:4px}
+
+#p-pricing .defs .def dd{max-width:72ch}
+#p-pricing .terms__more{margin-top:18px}
+
+#p-pricing .close{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;
+  border-top:1px solid var(--hair);padding-top:28px;
+}
+#p-pricing .close h2{font-size:clamp(24px,2.6vw,36px);color:var(--deep);max-width:20ch}
+</style>
+
+  <div class="pricing">
+    <div class="pricing__hero">
+      <p class="panel__eyebrow">PRICING</p>
+      <h1 class="sec__h sec__h--hero">The price is <em class="tl">on the page.</em></h1>
+      <p class="lead">You are not buying hours and you are not buying a vibe. You are buying a
+        number of things a month, made by a named person, on a calendar you can see. Every tier
+        below is a count, every card says where it stops, and anything outside a tier is a quote.</p>
+      <div class="btn-row">
+        <a class="btn" href="/book/">Book a call</a>
+        <a class="btn btn--ghost" href="#terms">Where it stops</a>
+      </div>
+    </div>
+
+    <div class="sub" id="diagnostic">
+      <p class="panel__eyebrow">START HERE</p>
+      <h2>Every engagement starts with a paid diagnostic.</h2>
+      <p>A free discovery call scopes your content for nothing and tells you nothing. A paid one
+        produces a document, and the fee comes off what you buy next.</p>
+    </div>
+    <div class="start">
+      <div>
+        <p class="ptier__name">Content Systems Diagnostic</p>
+        <h2>Ten business days. Every channel, counted.</h2>
+        <ul class="ptier__list">
+          <li>Every live channel audited on 90 days of real numbers</li>
+          <li>Three named competitors, their cadence and format mix counted</li>
+          <li>Everything you published in 90 days, sorted by format and funnel stage</li>
+          <li>The five highest value formats you are not making</li>
+          <li>A 90 day calendar with a post count per week and an owner per row</li>
+        </ul>
+        <p class="start__stop">The whole fee comes off your first month, up to one month's retainer.
+          If the honest answer is publish less, you get that in writing.</p>
+      </div>
+      <div class="start__side">
+        <p class="start__fig">$750<small>One time. Gwen Ayala on the readout call.</small></p>
+      </div>
+    </div>
+
+    <div class="sub" id="tiers">
+      <p class="panel__eyebrow">THREE TIERS</p>
+      <h2>What it costs to have us running it.</h2>
+      <p>Prices in US dollars. Every tier is a count, not an adjective. A slot is a real seat on the
+        night shift, and the number open is the number printed.</p>
+    </div>
+    <ul class="pricing__grid">
+      <li class="ptier" id="publish">
+        <p class="ptier__name">Publish <span class="ptier__slot">2 slots</span></p>
+        <p class="ptier__fig">$397<span>/mo</span></p>
+        <p class="ptier__unit">One brand, two channels. Three month minimum, then month to month.</p>
+        <ul class="ptier__list">
+          <li>10 image posts a month, graphic and caption and hashtags</li>
+          <li>Next month's calendar in your hands on the 25th</li>
+          <li>2 revision rounds per post, 3 day turnaround</li>
+          <li>A written readout by the 5th</li>
+        </ul>
+        <p class="ptier__stop">Where it stops: image posts only. Vertical video is the tier above,
+          because format is what costs, not post count.</p>
+      </li>
+
+      <li class="ptier ptier--lead" id="engine">
+        <p class="ptier__name">Content Engine</p>
+        <p class="ptier__fig">$1,750<span>/mo</span></p>
+        <p class="ptier__unit">One brand, three channels. Three month minimum, then month to month.</p>
+        <ul class="ptier__list">
+          <li>12 posts a month, 4 of them vertical video</li>
+          <li>4 long form pieces up to 900 words</li>
+          <li>A calendar kept 30 days ahead, a written readout by the 5th</li>
+          <li>A call with Gwen every month, source files for everything</li>
+        </ul>
+        <p class="ptier__stop">Where it stops: two requests in progress at a time. Submit as many as
+          you like, the rest queue in the order you set.</p>
+      </li>
+
+      <li class="ptier" id="own">
+        <p class="ptier__name">Own the Channel <span class="ptier__slot">1 slot</span></p>
+        <p class="ptier__fig">$2,600<span>/mo</span></p>
+        <p class="ptier__unit">One brand, five channels. Three month minimum, then month to month.</p>
+        <ul class="ptier__list">
+          <li>20 posts a month, 8 of them vertical video with thumbnails</li>
+          <li>Up to 100 comments and DMs answered, inside a business day</li>
+          <li>A named manager and a named editor, both on every call</li>
+          <li>One quarterly bet, with the metric that settles it</li>
+        </ul>
+        <p class="ptier__stop">Where it stops: edit only, no shoots, no actors, no locations, and we
+          do not pretend otherwise. Four requests in progress. One client at a time, and more video
+          is a quote.</p>
+      </li>
+    </ul>
+    <p class="pricing__foot">Twelve months takes 12 percent off the monthly and locks your price.
+      Six months makes the diagnostic free. Ad spend, video shoots and paid media are never
+      included, and if you need them we will name someone good and take nothing for it.</p>
+
+    <div class="quote" id="quote">
+      <p class="panel__eyebrow">OUTSIDE A TIER</p>
+      <h2>Need more than a card holds? Ask for a number.</h2>
+      <p>Some things do not fit a tier, so we quote them the same way we price everything else:
+        a count and a stop, in writing, before any work starts.</p>
+      <ul class="chips">
+        <li>More channels</li>
+        <li>A second brand</li>
+        <li>More vertical video</li>
+        <li>A launch sprint</li>
+        <li>Comments and DMs past 100</li>
+        <li>White label for agencies</li>
+        <li>A live dashboard</li>
+        <li>A faster clock</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn" href="/book/?quote=1">Request a quote</a>
+        <a class="btn btn--ghost" href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+      </div>
+    </div>
+
+    <div class="sub" id="terms">
+      <p class="panel__eyebrow">TERMS, IN PLAIN SENTENCES</p>
+      <h2>Where every number stops.</h2>
+      <p>Scope creep is a definition problem. Here are the definitions, in the same words that
+        appear in the contract.</p>
+    </div>
+    <dl class="defs">
+      <div class="def"><dt>We do not sell unlimited</dt><dd>We sell a number of requests in progress at a time, with an uncapped queue behind it. Same promise, written honestly.</dd></div>
+      <div class="def"><dt>Revisions</dt><dd>Two rounds per asset. A round is one consolidated set of comments, delivered together. Comments that arrive after the next round starts begin a third round, quoted before we start.</dd></div>
+      <div class="def"><dt>Turnaround</dt><dd>A reply inside one business day, Manila. Clocks run on Philippine business days, excluding Philippine public holidays.</dd></div>
+      <div class="def"><dt>If we are waiting on you</dt><dd>More than 5 business days on your assets, access or approvals moves the delivery date by the length of the wait. The price does not move.</dd></div>
+      <div class="def"><dt>Scope freeze</dt><dd>Scope freezes when month one's calendar is approved. Everything after that is a quote, approved in writing before work starts.</dd></div>
+      <div class="def"><dt>Minimum term</dt><dd>Three months, then month to month, thirty days notice. Six months makes the diagnostic free. Twelve months takes 12 percent off the monthly and locks your price.</dd></div>
+      <div class="def"><dt>Payment</dt><dd>Invoiced monthly in advance, bank transfer or card, in US dollars.</dd></div>
+      <div class="def"><dt>Never included</dt><dd>Ad spend, video shoots, actors, locations and paid media. If you need them we name someone good and take nothing for it.</dd></div>
+      <div class="def"><dt>Who does the work</dt><dd>A named person in Manila who signs your deliverables and is on your calls. Not a rotating pool, and not a ticket queue with a first name attached.</dd></div>
+    </dl>
+    <p class="note terms__more">The rest, including ownership, confidentiality and governing law, is on the <a href="/terms/">terms page</a>.</p>
+
+    <div class="close">
+      <h2>Thirty minutes, founder to founder.</h2>
+      <div class="btn-row" style="margin-top:0">
+        <a class="btn" href="/book/">Book a call</a>
+        <a class="btn btn--ghost" href="/quiz/">Take the 60 second fit quiz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <span>AVAS <span aria-hidden="true">&middot;</span> Ayala Virtual Assistance</span>
+  <span class="foot__sp"></span>
+  <span>Quezon City, Manila</span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/privacy">Privacy</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/terms">Terms</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+</footer>
+
+<aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
+  <h2 class="consent__h" id="consent-h">We value your privacy</h2>
+  <p class="consent__p">This page keeps two settings on your device: whether the keyboard sounds are on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <details class="consent__more">
+    <summary>What that actually means</summary>
+    <ul>
+      <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
+      <li><b>Loaded from Calendly</b> when you accept: their booking widget, which sets its own cookies so it can remember your slot.</li>
+      <li><b>If you decline</b>: nothing third party loads, and the booking panel gives you a plain link instead.</li>
+    </ul>
+  </details>
+  <div class="consent__row">
+    <button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept</button>
+    <button type="button" class="consent__btn" data-consent="denied">Decline</button>
+  </div>
+</aside>
+
+<script>/* Privacy consent. One key, three states: unset shows the notice, granted lets
+   the booking panel load Calendly, denied keeps every third party off the page.
+   The answer changes behaviour, so the notice is not decoration. */
+(() => {
+  'use strict';
+  var KEY = 'avas-consent';
+  var el = document.getElementById('consent');
+  if (!el) return;
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  window.avasConsent = {
+    state: function () { return read(); },
+    granted: function () { return read() === 'granted'; },
+    onChange: []
+  };
+
+  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.dataset.consent;
+    write(v);
+    el.hidden = true;
+    delete document.documentElement.dataset.consent;
+    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  });
+})();
+</script>
+
+</body>
+</html>

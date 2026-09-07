@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-motion="full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Work · AVAS</title>
+<meta name="description" content="Kate Powers, Virtually Vera, TAP Virtual Solutions, Pearle's Pantry: what shipped, counted.">
+<meta name="theme-color" content="#F5F5F7">
+<link rel="canonical" href="https://ayalavirtualassistance.site/work/">
+<link rel="icon" href="/assets/avas-mark-plain.png">
+<meta property="og:title" content="Work · AVAS">
+<meta property="og:description" content="Kate Powers, Virtually Vera, TAP Virtual Solutions, Pearle's Pantry: what shipped, counted.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ayalavirtualassistance.site/work/">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>/* AVAS v16 tokens.
+
+   Palette: Apple gray, not porcelain. No beige, no cream, no warm ground.
+   Values are Apple's own system greys, taken from library/apple-gray.
+   Espresso is the only warm colour on the page and it is an ACCENT: the mark,
+   the caret, an active state, a link, a CTA fill, a hairline. Never a ground.
+
+   Type: JTL Growth's own combination, read from its live stylesheet.
+   Archivo Expanded for display, Archivo for body, Instrument Serif as the
+   accent voice, Space Mono for machine surfaces only. All inlined, no CDN. */
+:root{
+  --bg:#F5F5F7;
+  --panel:#FFFFFF;
+  --raised:#EBEBED;
+  --ink:#1D1D1F;
+  --ink-72:#3A3A3E;
+  --muted:#515154;
+  --faint:#86868B;
+  --hair:#D2D2D7;
+  --hair-2:rgba(29,29,31,.055);
+  --espresso:#8B4A2A;
+  --espresso-60:rgba(139,74,42,.6);
+  --espresso-24:rgba(139,74,42,.24);
+  --espresso-10:rgba(139,74,42,.10);
+  --deep:#3A241C;
+  --shadow:0 20px 50px rgba(29,29,31,.10), 0 1px 0 rgba(29,29,31,.04) inset;
+  --shadow-lift:0 36px 90px rgba(29,29,31,.16);
+
+  /* display carries the expanded width; the variable axis does the work */
+  --font-d:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-b:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-s:'Instrument Serif',Georgia,serif;
+  --font-m:'Space Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --w-display:700;
+  --wdth-display:118;
+  --track-display:-.026em;
+
+  --fs-hero:clamp(38px,6.6vw,104px);
+  --fs-h2:clamp(32px,4.2vw,60px);
+  --fs-body:17px;
+  --pad:clamp(20px,4.4vw,72px);
+  --rail-ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- reset and ground ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-b);font-size:var(--fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--font-d);font-weight:var(--w-display);
+  font-variation-settings:'wdth' var(--wdth-display);
+  letter-spacing:var(--track-display);margin:0;line-height:1.06}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--espresso-24)}
+:focus-visible{outline:2px solid var(--espresso);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--espresso);color:var(--panel);
+  padding:10px 16px;border-radius:0 0 10px 0;font-weight:600}
+.skip:focus{left:0}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+
+/* ---------- top chrome ---------- */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;gap:10px;white-space:nowrap;
+  padding:16px var(--pad);
+}
+.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none}
+.top__nav{display:flex;gap:18px;margin-left:24px}
+.top__nav a,.top__menu-list a{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  color:var(--muted);transition:color .25s;
+}
+.top__nav a:hover,.top__nav a[aria-current="page"],.top__menu-list a:hover{color:var(--espresso)}
+.top__nav a[aria-current="page"]{border-bottom:1px solid var(--espresso-60);padding-bottom:2px}
+.top__cta{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;
+  background:var(--espresso);color:var(--panel);border:1px solid var(--espresso);border-radius:999px;
+  padding:5px 13px;transition:background .25s,border-color .25s;
+}
+.top__cta:hover{background:var(--deep);border-color:var(--deep)}
+.top__menu{display:none;position:relative}
+.top__menu summary{
+  list-style:none;cursor:pointer;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.top__menu summary::-webkit-details-marker{display:none}
+.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso-24)}
+.top__menu-list{
+  position:absolute;right:0;top:calc(100% + 8px);min-width:200px;
+  background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:8px;
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center}
+.top__menu-list a:hover{background:var(--espresso-10)}
+@media (max-width:900px){
+  .top__nav{display:none}
+  .top__menu{display:block}
+  .top__cta{display:none}
+}
+.top__sp{flex:1}
+.top button{
+  background:transparent;border:1px solid var(--hair);border-radius:999px;
+  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:color .25s,border-color .25s,background .25s;
+}
+.top button:hover{color:var(--espresso);border-color:var(--espresso-24);background:var(--espresso-10)}
+.top button[aria-pressed="true"]{color:var(--espresso);border-color:var(--espresso-24)}
+
+/* ---------- shared section frame ---------- */
+.hero,.panel{position:relative;z-index:1}
+
+/* ---------- the rail ---------- */
+.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh))}
+.rail__stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.rail__track{display:flex;height:100%;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.panel{
+  width:100vw;height:100%;flex:none;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:76px var(--pad) 68px;
+}
+.panel__eyebrow{
+  font-family:var(--font-b);font-weight:600;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--espresso);margin-bottom:14px;
+}
+
+/* rail UI: dots, counter, progress hairline */
+.rail__ui{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;z-index:6;
+  display:flex;align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
+/* the corner assistant lives bottom right, so the counter gets out of its way */
+@media (min-width:901px){ .rail__ui{padding-right:96px} }
+.rail__dots{display:flex;gap:8px;pointer-events:auto}
+.rail__dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--hair);
+  background:transparent;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;
+}
+.rail__dots button[aria-current="true"]{background:var(--espresso);border-color:var(--espresso);
+  box-shadow:0 0 0 4px var(--espresso-10)}
+.rail__bar{flex:1;height:1px;background:var(--hair);position:relative}
+.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);
+  width:calc(var(--rail-p,0) * 100%);transform-origin:left}
+.rail__count{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+
+/* word reveal, driven by horizontal progress */
+.wreveal .w{opacity:.16;transition:opacity .5s var(--rail-ease),color .5s}
+.wreveal .w.on{opacity:1}
+/* the accent word drops into the serif, which is how JTL rations its italic */
+.wreveal .w.tl{
+  font-family:var(--font-s);font-style:italic;font-weight:400;
+  font-variation-settings:normal;letter-spacing:-.008em;
+}
+.wreveal .w.tl.on{color:var(--espresso)}
+
+/* ---------- footer ---------- */
+.foot{
+  position:relative;z-index:1;display:flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:26px var(--pad);border-top:1px solid var(--hair);
+  font-size:13px;color:var(--faint);
+}
+@media (max-width:760px){
+  .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
+  .foot__sp{flex-basis:100%;height:0}
+  .foot a{overflow-wrap:anywhere}
+}
+.foot__sp{flex:1}
+.foot a:hover{color:var(--espresso)}
+
+/* the wrap panel: a hero that lives inside the track, so it takes the panel's
+   box and drops the page section's own sizing */
+.panel.hero--clone{
+  min-height:0;height:100%;width:100vw;flex:none;
+  padding:96px var(--pad) 84px;      /* the hero's own padding, not the panel's */
+  justify-content:center;
+}
+.panel.hero--clone .hero__cue{pointer-events:none}
+
+/* ---------- calm register: the Owner's live kill switch for oscillation ---------- */
+html[data-motion="calm"] *{animation-play-state:paused!important}
+html[data-motion="calm"] .float{animation:none!important}
+
+/* ---------- collapse: phone, and anyone who asked for less motion ---------- */
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .rail{height:auto!important}
+  .rail__stick{position:static;height:auto;overflow:visible}
+  .rail__track{display:block;width:auto;transform:none!important}
+  .panel{width:auto;height:auto;min-height:auto;padding:56px var(--pad)}
+  .rail__ui{display:none}
+  .hero--clone{display:none}
+  #gl{display:none}
+  .wreveal .w{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* Privacy notice. It gates something real: the Calendly embed does not load
+   until this is answered, so declining actually changes what happens. */
+#consent{
+  position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
+  width:min(400px,calc(100vw - 28px));
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  box-shadow:var(--shadow-lift);padding:20px 22px 18px;
+}
+#consent .consent__h{font-family:var(--font-d);font-size:19px;color:var(--deep);margin-bottom:8px}
+#consent .consent__p{font-size:14px;line-height:1.55;color:var(--muted)}
+#consent .consent__more{margin-top:10px;font-size:13px;color:var(--muted)}
+#consent .consent__more summary{cursor:pointer;color:var(--espresso);list-style:none}
+#consent .consent__more summary::-webkit-details-marker{display:none}
+#consent .consent__more summary::after{content:" +";font-family:var(--font-m)}
+#consent .consent__more[open] summary::after{content:" -"}
+#consent .consent__more ul{margin:10px 0 0;padding-left:18px;line-height:1.6}
+#consent .consent__more li+li{margin-top:6px}
+#consent .consent__more b{color:var(--ink)}
+#consent .consent__row{display:flex;gap:10px;margin-top:16px}
+#consent .consent__btn{
+  flex:1;padding:10px 14px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--hair);background:transparent;color:var(--ink);
+  font-size:14px;font-weight:500;
+  transition:background .25s,border-color .25s,color .25s;
+}
+#consent .consent__btn:hover{border-color:var(--espresso-24);background:var(--espresso-10);color:var(--espresso)}
+#consent .consent__btn--yes{background:var(--espresso);border-color:var(--espresso);color:var(--panel)}
+#consent .consent__btn--yes:hover{background:var(--deep);border-color:var(--deep);color:var(--panel)}
+@media (max-width:520px){
+  #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
+}
+
+/* Panels 2 and 3: the client highlight. Kate Powers, big, on porcelain, and the
+   numbers from one overnight migration. Espresso stays an accent only. */
+
+/* ---------- p-kate ---------- */
+#p-kate{overflow-x:hidden}
+#p-kate .kate__grid{
+  display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(280px,1fr);
+  align-items:center;gap:clamp(28px,5vw,64px);width:100%;
+}
+#p-kate .kate__copy{max-width:46ch}
+#p-kate .kate__h{font-size:var(--fs-h2);color:var(--deep);max-width:17ch;line-height:1.03}
+/* the accent words drop into the serif, the way JTL rations its italic */
+#p-kate .kate__h .w.tl,#p-kate .kate__h em,#p-kate .kate__h i{
+  font-family:var(--font-s);font-style:italic;font-weight:400;
+  font-variation-settings:normal;letter-spacing:-.01em;color:var(--espresso);
+}
+#p-kate .kate__line{margin-top:16px;font-size:var(--fs-body);color:var(--ink-72);max-width:42ch}
+#p-kate .kate__hint{
+  margin-top:24px;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+}
+#p-kate .kate__hint span{color:var(--espresso);font-size:14px}
+
+#p-kate .kate__stage{position:relative;display:flex;justify-content:center;padding:32px 56px 0}
+
+#p-kate .kate__figure{
+  position:relative;display:block;width:clamp(220px,30vw,330px);aspect-ratio:656/780;
+  background:none;border:none;padding:0;margin:0;cursor:pointer;z-index:2;
+}
+#p-kate .kate__img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;object-position:bottom center;pointer-events:none;
+  transition:opacity .5s ease;
+}
+#p-kate .kate__img--stay{opacity:1}
+#p-kate .kate__img--point{opacity:0}
+#p-kate .kate__figure.is-active .kate__img--stay{opacity:0}
+#p-kate .kate__figure.is-active .kate__img--point{opacity:1}
+
+#p-kate .kate__float{position:absolute;pointer-events:none;transition:transform .15s ease-out}
+#p-kate .kate__float img{width:100%;height:auto;display:block}
+#p-kate .kate__float--book{top:0;right:2%;width:clamp(72px,9vw,120px);z-index:3}
+#p-kate .kate__float--plush{bottom:4%;left:0;width:clamp(66px,8vw,108px);z-index:1}
+
+/* badges: anchored near the raised fingertip in kate-point.png */
+#p-kate .kate__badges{position:absolute;left:11%;top:17%;width:0;height:0;z-index:4}
+#p-kate .kate__badge{
+  position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:5px;
+  transform:translate(0,0) scale(.5);opacity:0;
+  transition:transform .5s var(--rail-ease),opacity .35s ease;
+}
+#p-kate .kate__badge:nth-child(2){transition-delay:45ms}
+#p-kate .kate__badge:nth-child(3){transition-delay:90ms}
+#p-kate .kate__badge:nth-child(4){transition-delay:135ms}
+#p-kate .kate__badge:nth-child(5){transition-delay:180ms}
+#p-kate .kate__badge.fly{
+  transform:translate(calc(var(--bx) * var(--kate-s,1)),calc(var(--by) * var(--kate-s,1))) scale(1);
+  opacity:1;
+}
+#p-kate.is-calm-badges .kate__badge{transition:opacity .35s ease}
+
+#p-kate .kate__disc{
+  width:42px;height:42px;border-radius:50%;background:var(--panel);
+  border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow);
+}
+#p-kate .kate__disc svg{width:18px;height:18px;color:var(--espresso)}
+#p-kate .kate__label{
+  font-family:var(--font-m);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+}
+
+@media (max-width:900px){
+  #p-kate .kate__grid{grid-template-columns:1fr;text-align:left}
+  #p-kate .kate__stage{margin-top:36px;padding:24px 44px 0}
+  #p-kate{--kate-s:.62}
+}
+
+/* ---------- p-proof ---------- */
+#p-proof .proof__quote{margin:0;padding:0;border:none}
+#p-proof .proof__quote p{
+  font-family:var(--font-d);font-weight:600;letter-spacing:-.01em;
+  font-size:clamp(24px,3.4vw,42px);color:var(--deep);line-height:1.18;
+  margin:0 0 16px;max-width:20ch;
+}
+#p-proof .proof__quote cite{
+  font-family:var(--font-m);font-style:normal;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+#p-proof .proof__stats{
+  display:flex;flex-wrap:wrap;gap:clamp(24px,4.5vw,56px);
+  margin:clamp(32px,5.5vh,56px) 0;padding-top:28px;border-top:1px solid var(--hair);
+}
+#p-proof .proof__stat{display:flex;flex-direction:column;gap:6px;min-width:118px}
+#p-proof .proof__num{font-family:var(--font-d);font-size:clamp(30px,4.2vw,54px);color:var(--espresso);line-height:1}
+#p-proof .proof__label{
+  font-family:var(--font-m);font-size:11px;letter-spacing:.04em;color:var(--muted);
+  text-transform:uppercase;max-width:17ch;
+}
+
+#p-proof .proof__close{font-size:var(--fs-body);color:var(--ink-72);max-width:58ch;margin-bottom:22px}
+
+#p-proof .proof__cta{
+  align-self:flex-start;display:inline-block;font-family:var(--font-m);font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--espresso);text-decoration:none;
+  border-bottom:1px solid var(--espresso-24);padding-bottom:3px;transition:border-color .3s;
+}
+#p-proof .proof__cta:hover{border-color:var(--espresso)}
+
+/* Inner pages: document flow, no rail, no WebGL. The homepage owns the sideways
+   travel; every other route reads top to bottom on the same tokens. */
+.top{
+  background:rgba(245,245,247,.86);
+  -webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);
+  border-bottom:1px solid var(--hair-2);
+}
+main.page{position:relative;z-index:1;padding:112px var(--pad) 72px;max-width:1240px;margin:0 auto}
+.sec{margin:0 0 clamp(56px,8vh,96px)}
+.sec:last-child{margin-bottom:0}
+.sec__h{font-size:var(--fs-h2);color:var(--deep);max-width:20ch;margin-bottom:16px;text-wrap:balance}
+.sec__h--hero{font-size:clamp(36px,5.4vw,84px);max-width:16ch;margin-bottom:20px}
+.lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-72);max-width:58ch}
+.measure{max-width:64ch}
+.lead + .sec__h,.prose + .sec__h,.defs + .sec__h,.lead + h2,.lead + .sec,.btn-row + .sec{margin-top:48px}
+/* a section nested in a section is a subsection: its heading steps down one size */
+.sec .sec h3.sec__h,.sec .sec h2.sec__h{font-size:clamp(24px,2.6vw,36px);max-width:24ch}
+.prose p{margin-bottom:14px;line-height:1.65;color:var(--ink-72)}
+.prose h3{font-size:22px;margin:32px 0 10px;color:var(--deep)}
+.prose ul,.prose ol{padding-left:18px;color:var(--ink-72);line-height:1.6;margin:0 0 14px}
+.prose li{margin-bottom:6px}
+.prose a{color:var(--espresso);text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* the serif accent word, the way JTL rations its italic; on the homepage
+   rail.js splits headings and marks it, here it is written as <em class="tl"> */
+.tl{font-family:var(--font-s);font-style:italic;font-weight:400;font-variation-settings:normal;
+  letter-spacing:-.008em;color:var(--espresso)}
+.wreveal .w{opacity:1}
+
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:720px){.grid--2,.grid--3,.grid--4{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.grid--3{grid-template-columns:repeat(3,1fr)}.grid--4{grid-template-columns:repeat(4,1fr)}}
+
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:22px;min-width:0;
+  display:flex;flex-direction:column}
+.card--lead{border-color:var(--espresso-24);box-shadow:var(--shadow)}
+.card__k{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--espresso);margin-bottom:10px}
+.card h3{font-size:20px;margin-bottom:8px;line-height:1.15}
+.card p{font-size:15px;line-height:1.55;color:var(--ink-72)}
+.card ul{list-style:none;margin:10px 0 0;padding:0}
+.card ul li{font-size:15px;line-height:1.5;color:var(--ink-72);padding-left:16px;position:relative;margin-bottom:6px}
+.card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--espresso-60)}
+.card__stop{font-size:14px;line-height:1.5;color:var(--muted);border-top:1px solid var(--hair-2);
+  padding-top:12px;margin-top:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  background:var(--espresso);color:var(--panel);text-decoration:none;font-weight:600;font-size:15px;
+  padding:12px 22px;border-radius:999px;border:1px solid var(--espresso);cursor:pointer;
+  transition:background .25s,border-color .25s,color .25s}
+.btn:hover{background:var(--deep);border-color:var(--deep)}
+.btn--ghost{background:transparent;color:var(--espresso)}
+.btn--ghost:hover{background:var(--espresso-10);color:var(--deep)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
+
+.note{font-size:14px;line-height:1.6;color:var(--muted)}
+.mono{font-family:var(--font-m)}
+.hr{border:0;border-top:1px solid var(--hair);margin:40px 0}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5}
+.tbl th{font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+
+/* definition rows: a term, then its plain sentence */
+.defs{display:grid;gap:0}
+.def{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--hair)}
+.def:last-child{border-bottom:1px solid var(--hair)}
+.def dt{font-family:var(--font-d);font-weight:600;font-size:16px;color:var(--deep);margin:0}
+.def dd{margin:0;font-size:15px;line-height:1.6;color:var(--ink-72);max-width:68ch}
+@media (min-width:900px){.def{grid-template-columns:220px 1fr;gap:24px}}
+
+/* the pricing page reuses the homepage panel styles, three tiers wide */
+main.page #p-pricing .pricing__grid{grid-template-columns:1fr}
+@media (min-width:720px){main.page #p-pricing .pricing__grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){main.page #p-pricing .pricing__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* the booking panel keeps its two-column shape without the rail's fixed height */
+main.page #p-book .book{height:auto;max-height:none}
+main.page #p-book .book__frame{height:auto}
+main.page #p-book .cal{min-height:640px;height:auto}
+main.page #p-book .cal iframe{min-height:640px;height:640px}
+
+@media (max-width:900px){
+  main.page{padding-top:96px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="top__mark" href="/" aria-label="AVAS home">AVAS</a>
+  <nav class="top__nav" aria-label="Site">
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/work" aria-current="page">Work</a>
+    <a href="/about">About</a>
+    <a href="/quiz">Quiz</a>
+  </nav>
+  <span class="top__sp"></span>
+  <details class="top__menu">
+    <summary>Menu</summary>
+    <div class="top__menu-list">
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/quiz">Quiz</a>
+      <a href="/book">Book a call</a>
+    </div>
+  </details>
+  <a class="top__cta" href="/book">Book a call</a>
+</header>
+
+<main class="page" id="main">
+<style>
+/* p-work: three cases plus the client wall, on the inner-page shell. Kate's
+   figure and kate.css/kate.js already exist for #p-kate; reused here as-is,
+   only the surrounding copy and stat cards are new. */
+#p-kate .kw-grid{
+  display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,1.3fr);
+  gap:clamp(28px,5vw,64px);align-items:start;
+}
+#p-kate .kw-figwrap{position:relative;padding:24px 40px 0}
+#p-kate .kw-route{
+  font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:18px;
+}
+#p-kate .kw-route b{color:var(--espresso);font-weight:700}
+#p-kate .kw-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;
+}
+#p-kate .kw-stat{
+  background:var(--panel);border:1px solid var(--hair);border-radius:14px;padding:16px 18px;
+}
+#p-kate .kw-stat b{
+  display:block;font-family:var(--font-d);font-weight:var(--w-display);
+  font-variation-settings:'wdth' var(--wdth-display);letter-spacing:var(--track-display);
+  font-size:clamp(22px,2.6vw,32px);color:var(--espresso);line-height:1;margin-bottom:6px;
+}
+#p-kate .kw-stat span{
+  font-family:var(--font-m);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);line-height:1.35;
+}
+#p-kate blockquote{margin:0 0 10px;padding:20px 0 0;border-top:1px solid var(--hair)}
+#p-kate blockquote p{
+  font-family:var(--font-d);font-weight:600;letter-spacing:-.01em;
+  font-size:clamp(19px,1.9vw,26px);color:var(--deep);line-height:1.28;margin:0 0 10px;
+}
+#p-kate blockquote cite{
+  font-family:var(--font-m);font-style:normal;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+#p-kate .kw-fine{margin-top:14px;font-size:13px;line-height:1.5;color:var(--faint);max-width:60ch}
+#p-kate .kw-chan{margin-top:6px}
+
+@media (max-width:900px){
+  #p-kate .kw-grid{grid-template-columns:1fr}
+  #p-kate .kw-figwrap{padding:16px 20px 0;order:2}
+  #p-kate .kw-stats{grid-template-columns:1fr 1fr}
+}
+
+/* client wall */
+#p-work-wall .wall-list{
+  list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:0;
+  border-top:1px solid var(--hair);
+}
+@media (min-width:720px){#p-work-wall .wall-list{grid-template-columns:1fr 1fr}}
+#p-work-wall .wall-list li{
+  padding:16px 4px;border-bottom:1px solid var(--hair);
+  font-family:var(--font-d);font-weight:600;font-size:17px;color:var(--deep);
+}
+</style>
+
+<section class="sec" id="p-work-hero">
+  <p class="panel__eyebrow">Work</p>
+  <h1 class="sec__h sec__h--hero">What shipped, <em class="tl">counted</em>.</h1>
+  <p class="lead measure">One migration finished overnight, one brand delivered white-label, one launch shipped while its founder slept. Three clients, three different jobs, every number behind them checked against the record before it went on this page.</p>
+</section>
+
+<section class="sec" id="p-kate">
+  <p class="panel__eyebrow">One client, in full</p>
+  <div class="kw-grid">
+    <div class="kw-figwrap">
+      <div class="kate__stage" style="padding:0">
+        <button type="button" class="kate__figure" id="kateFigure" aria-label="Kate Powers. Hover or press to see the channels AVAS runs for her: Instagram, Facebook, Threads, Substack, and her website.">
+          <img class="kate__img kate__img--stay" src="/assets/kate-stay.png" alt="" width="656" height="780" decoding="async">
+          <img class="kate__img kate__img--point" src="/assets/kate-point.png" alt="" width="607" height="780" decoding="async">
+          <span class="kate__badges" aria-hidden="true">
+            <span class="kate__badge" style="--bx:-38px;--by:-148px">
+              <span class="kate__disc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span>
+              <span class="kate__label">Instagram</span>
+            </span>
+            <span class="kate__badge" style="--bx:-116px;--by:-108px">
+              <span class="kate__disc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></span>
+              <span class="kate__label">Facebook</span>
+            </span>
+            <span class="kate__badge" style="--bx:-164px;--by:-38px">
+              <span class="kate__disc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z"/></svg></span>
+              <span class="kate__label">Threads</span>
+            </span>
+            <span class="kate__badge" style="--bx:-158px;--by:42px">
+              <span class="kate__disc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></span>
+              <span class="kate__label">Substack</span>
+            </span>
+            <span class="kate__badge" style="--bx:-108px;--by:116px">
+              <span class="kate__disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+              <span class="kate__label">Website</span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div>
+      <p class="kw-route"><b>Boston</b> to Manila, while she slept</p>
+      <div class="kw-stats">
+        <div class="kw-stat"><b>68 to 85%</b><span>Migration completed, overnight</span></div>
+        <div class="kw-stat"><b>265</b><span>Subscribers moved and tag verified</span></div>
+        <div class="kw-stat"><b>21</b><span>Pages live after the move</span></div>
+        <div class="kw-stat"><b>4</b><span>Page defects fixed the same night</span></div>
+      </div>
+      <blockquote>
+        <p>&ldquo;I signed off with a to-do list and woke up to a launch that was already live.&rdquo;</p>
+        <cite>Kate Powers, Kate Powers Creates</cite>
+      </blockquote>
+      <p class="kw-fine">Her whole site moved off Kajabi, her community was built from zero, and her channels have run nightly since.</p>
+      <p class="kw-fine kw-chan">Five surfaces run nightly: Instagram, Facebook, Threads, Substack and the site itself. The Aligned Women community was started from zero and is still hers, we just keep it fed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="p-work-cases">
+  <p class="panel__eyebrow">Two more, briefly</p>
+  <div class="grid grid--2">
+    <div class="card card--lead">
+      <p class="card__k">White-label</p>
+      <h3>Virtually Vera</h3>
+      <p>AVAS runs the execution under her brand, so her clients only ever see her. The work moves, the name on it does not.</p>
+    </div>
+    <div class="card card--lead">
+      <p class="card__k">Launch Momentum</p>
+      <h3>TAP Virtual Solutions</h3>
+      <p>A launch built and shipped in full while the founder slept. The plan went in overnight, and it was already running by morning.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="p-work-wall">
+  <p class="panel__eyebrow">Already handed it over</p>
+  <ul class="wall-list">
+    <li>Kate Powers Creates</li>
+    <li>Virtually Vera</li>
+    <li>TAP Virtual Solutions</li>
+    <li>Filipina Women in Business</li>
+    <li>Hair &amp; Skin Restore</li>
+    <li>ai Herway</li>
+    <li>Pearle's Pantry</li>
+  </ul>
+</section>
+
+<section class="sec" id="p-work-count">
+  <p class="panel__eyebrow">What we count</p>
+  <p class="lead measure">Every retainer comes with a written readout by the 5th and a calendar you can see, not a promise you have to take on faith. <a href="/pricing/">See what that costs.</a></p>
+</section>
+
+<section class="sec" id="p-work-cta">
+  <div class="btn-row">
+    <a class="btn" href="/book/">Book the same night shift</a>
+    <a class="btn btn--ghost" href="/pricing/">See pricing</a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <span>AVAS <span aria-hidden="true">&middot;</span> Ayala Virtual Assistance</span>
+  <span class="foot__sp"></span>
+  <span>Quezon City, Manila</span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/privacy">Privacy</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="/terms">Terms</a>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+</footer>
+
+<aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
+  <h2 class="consent__h" id="consent-h">We value your privacy</h2>
+  <p class="consent__p">This page keeps two settings on your device: whether the keyboard sounds are on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <details class="consent__more">
+    <summary>What that actually means</summary>
+    <ul>
+      <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
+      <li><b>Loaded from Calendly</b> when you accept: their booking widget, which sets its own cookies so it can remember your slot.</li>
+      <li><b>If you decline</b>: nothing third party loads, and the booking panel gives you a plain link instead.</li>
+    </ul>
+  </details>
+  <div class="consent__row">
+    <button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept</button>
+    <button type="button" class="consent__btn" data-consent="denied">Decline</button>
+  </div>
+</aside>
+
+<script>/* Privacy consent. One key, three states: unset shows the notice, granted lets
+   the booking panel load Calendly, denied keeps every third party off the page.
+   The answer changes behaviour, so the notice is not decoration. */
+(() => {
+  'use strict';
+  var KEY = 'avas-consent';
+  var el = document.getElementById('consent');
+  if (!el) return;
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  window.avasConsent = {
+    state: function () { return read(); },
+    granted: function () { return read() === 'granted'; },
+    onChange: []
+  };
+
+  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.dataset.consent;
+    write(v);
+    el.hidden = true;
+    delete document.documentElement.dataset.consent;
+    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  });
+})();
+
+/* Kate panel: hover/focus/tap swap between the two Kate photos plus the badge
+   flight, and a pointer parallax on the two floating products. No network,
+   no globals beyond this IIFE, no window listener but one throttled pointermove. */
+(() => {
+  'use strict';
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const root = document.getElementById('p-kate');
+  if (!root) return;
+
+  const fig = root.querySelector('#kateFigure');
+  const badges = root.querySelectorAll('.kate__badge');
+  const floats = root.querySelectorAll('.kate__float');
+
+  if (fig) {
+    const setActive = on => {
+      fig.classList.toggle('is-active', on);
+      root.classList.toggle('is-calm-badges', document.documentElement.dataset.motion === 'calm');
+      badges.forEach(b => b.classList.toggle('fly', on));
+    };
+    fig.addEventListener('pointerenter', () => setActive(true));
+    fig.addEventListener('pointerleave', () => setActive(false));
+    fig.addEventListener('focusin', () => setActive(true));
+    fig.addEventListener('focusout', () => setActive(false));
+
+    let tapped = false;
+    fig.addEventListener('click', () => {
+      if (matchMedia('(hover: hover)').matches) return; // desktop: hover already drives it
+      tapped = !tapped;
+      setActive(tapped);
+    });
+  }
+
+  if (floats.length) {
+    let raf = null, px = 0, py = 0;
+    const apply = () => {
+      floats.forEach(f => {
+        const depth = parseFloat(f.dataset.depth) || 1;
+        f.style.transform = `translate(${(px * depth).toFixed(1)}px,${(py * depth).toFixed(1)}px)`;
+      });
+      raf = null;
+    };
+    addEventListener('pointermove', e => {
+      px = (e.clientX / innerWidth - 0.5) * 16;
+      py = (e.clientY / innerHeight - 0.5) * 16;
+      if (!raf) raf = requestAnimationFrame(apply);
+    }, { passive: true });
+  }
+})();
+</script>
+
+</body>
+</html>
