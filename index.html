@@ -263,18 +263,48 @@ html[data-motion="calm"] .float{animation:none!important}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 
-/* ---------- the chrome over the one dark panel (proof): light ink, same shapes ---------- */
+/* ---------- the chrome over the one dark panel (proof) ----------
+   On the rail the ground morphs into black and out again (rail.js paints
+   body and writes --dark, 0 to 1), so the header and the rail UI mix their
+   ink from the same number and never cut. In the stacked layout there is no
+   morph, so the panel under the chrome flips it instead. */
+:root{--dark:0}
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .top__mark{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--deep))}
+  .top__nav a{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--muted))}
+  .top__nav a:hover{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso))}
+  .top button{
+    color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted));
+    border-color:color-mix(in srgb,rgba(245,245,247,.28) calc(var(--dark) * 100%),var(--hair));
+  }
+  .top button[aria-pressed="true"]{
+    color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,rgba(245,245,247,.5) calc(var(--dark) * 100%),var(--espresso-24));
+  }
+  .top__cta{
+    background:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    color:color-mix(in srgb,#1D1D1F calc(var(--dark) * 100%),var(--panel));
+  }
+  .rail__dots button{border-color:color-mix(in srgb,rgba(245,245,247,.45) calc(var(--dark) * 100%),var(--hair))}
+  .rail__dots button[aria-current="true"]{
+    background:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso));
+  }
+  .rail__bar{background:color-mix(in srgb,rgba(245,245,247,.18) calc(var(--dark) * 100%),var(--hair))}
+  .rail__bar i{background:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso))}
+  .rail__count{color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted))}
+  /* the proof panel is transparent on the rail: the morphing ground is its black */
+  #p-proof{background:transparent}
+}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
 html[data-panel="p-proof"] .top__mark,html[data-panel="p-proof"] .top__nav a{color:#F5F5F7}
 html[data-panel="p-proof"] .top__nav a[aria-current="page"]{border-bottom-color:rgba(245,245,247,.5)}
 html[data-panel="p-proof"] .top button{color:rgba(245,245,247,.72);border-color:rgba(245,245,247,.28)}
 html[data-panel="p-proof"] .top button[aria-pressed="true"]{color:#F5F5F7;border-color:rgba(245,245,247,.5)}
 html[data-panel="p-proof"] .top__cta{background:#F5F5F7;color:#1D1D1F;border-color:#F5F5F7}
 html[data-panel="p-proof"] .top__menu summary{color:rgba(245,245,247,.8);border-color:rgba(245,245,247,.3)}
-html[data-panel="p-proof"] .rail__dots button{border-color:rgba(245,245,247,.45)}
-html[data-panel="p-proof"] .rail__dots button[aria-current="true"]{background:#D08A5A;border-color:#D08A5A;box-shadow:0 0 0 4px rgba(208,138,90,.18)}
-html[data-panel="p-proof"] .rail__bar{background:rgba(245,245,247,.18)}
-html[data-panel="p-proof"] .rail__bar i{background:#D08A5A}
-html[data-panel="p-proof"] .rail__count{color:rgba(245,245,247,.72)}
+}
 
 /* Hero: one clear line, and the mark sits off to the right the way it did at
    the start. The mark is the WebGL dust cloud, so the image here is only the
@@ -1215,7 +1245,12 @@ html[data-motion="calm"] #p-bot .av-caret{animation:none;opacity:1}
   --pb:#0B0B0C;--pp:#141416;--ph:rgba(245,245,247,.12);
   --pi:#F5F5F7;--pm:rgba(245,245,247,.66);--pf:rgba(245,245,247,.44);--pa:#D08A5A;
   --gsize:min(720px,46vw,74svh);
-  background:var(--pb);color:var(--pi);overflow:hidden;
+  color:var(--pi);overflow:hidden;
+}
+/* on the rail the panel is transparent and the page ground morphs into black
+   (rail.js); only the stacked layout paints the panel itself */
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  #p-proof{background:var(--pb)}
 }
 #p-proof .panel__eyebrow{color:var(--pa)}
 #p-proof .p4-eyebrow-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px 20px}
@@ -1998,7 +2033,10 @@ window.AVAS_SOUNDS={"alpha_down":["UklGRrAWAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACA
   arrive[N - 1] = U;
 
   /* ---- background morph, lerped per frame between porcelain stops ---- */
-  const STOPS = [[245, 245, 247], [241, 241, 244], [248, 248, 250], [243, 243, 246], [238, 238, 241], [245, 245, 247]];
+  // stop 3 is the proof panel: the page ground morphs into black on the way in
+  // and back out, the way jtlgrowth.com does it, instead of a hard cut
+  const STOPS = [[245, 245, 247], [241, 241, 244], [248, 248, 250], [11, 11, 12], [243, 243, 246], [245, 245, 247]];
+  const DARK_STOP = 3;
   const lerp = (a, b, t) => a + (b - a) * t;
   function paintBg(xu) {
     const p = Math.max(0, Math.min(N, xu + 1));
@@ -2006,6 +2044,9 @@ window.AVAS_SOUNDS={"alpha_down":["UklGRrAWAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACA
     const f = p - s;
     const c = STOPS[s].map((v, i) => Math.round(lerp(v, STOPS[s + 1][i], f)));
     document.body.style.backgroundColor = `rgb(${c[0]},${c[1]},${c[2]})`;
+    // how black the ground is right now, 0 to 1; the chrome mixes its ink from it
+    const dark = Math.max(0, 1 - Math.abs(p - DARK_STOP));
+    document.documentElement.style.setProperty('--dark', dark.toFixed(3));
   }
 
   /* ---- word reveal, split once, revealed by horizontal progress ---- */

@@ -218,18 +218,48 @@ html[data-motion="calm"] .float{animation:none!important}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 
-/* ---------- the chrome over the one dark panel (proof): light ink, same shapes ---------- */
+/* ---------- the chrome over the one dark panel (proof) ----------
+   On the rail the ground morphs into black and out again (rail.js paints
+   body and writes --dark, 0 to 1), so the header and the rail UI mix their
+   ink from the same number and never cut. In the stacked layout there is no
+   morph, so the panel under the chrome flips it instead. */
+:root{--dark:0}
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .top__mark{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--deep))}
+  .top__nav a{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--muted))}
+  .top__nav a:hover{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso))}
+  .top button{
+    color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted));
+    border-color:color-mix(in srgb,rgba(245,245,247,.28) calc(var(--dark) * 100%),var(--hair));
+  }
+  .top button[aria-pressed="true"]{
+    color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,rgba(245,245,247,.5) calc(var(--dark) * 100%),var(--espresso-24));
+  }
+  .top__cta{
+    background:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    color:color-mix(in srgb,#1D1D1F calc(var(--dark) * 100%),var(--panel));
+  }
+  .rail__dots button{border-color:color-mix(in srgb,rgba(245,245,247,.45) calc(var(--dark) * 100%),var(--hair))}
+  .rail__dots button[aria-current="true"]{
+    background:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso));
+  }
+  .rail__bar{background:color-mix(in srgb,rgba(245,245,247,.18) calc(var(--dark) * 100%),var(--hair))}
+  .rail__bar i{background:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso))}
+  .rail__count{color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted))}
+  /* the proof panel is transparent on the rail: the morphing ground is its black */
+  #p-proof{background:transparent}
+}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
 html[data-panel="p-proof"] .top__mark,html[data-panel="p-proof"] .top__nav a{color:#F5F5F7}
 html[data-panel="p-proof"] .top__nav a[aria-current="page"]{border-bottom-color:rgba(245,245,247,.5)}
 html[data-panel="p-proof"] .top button{color:rgba(245,245,247,.72);border-color:rgba(245,245,247,.28)}
 html[data-panel="p-proof"] .top button[aria-pressed="true"]{color:#F5F5F7;border-color:rgba(245,245,247,.5)}
 html[data-panel="p-proof"] .top__cta{background:#F5F5F7;color:#1D1D1F;border-color:#F5F5F7}
 html[data-panel="p-proof"] .top__menu summary{color:rgba(245,245,247,.8);border-color:rgba(245,245,247,.3)}
-html[data-panel="p-proof"] .rail__dots button{border-color:rgba(245,245,247,.45)}
-html[data-panel="p-proof"] .rail__dots button[aria-current="true"]{background:#D08A5A;border-color:#D08A5A;box-shadow:0 0 0 4px rgba(208,138,90,.18)}
-html[data-panel="p-proof"] .rail__bar{background:rgba(245,245,247,.18)}
-html[data-panel="p-proof"] .rail__bar i{background:#D08A5A}
-html[data-panel="p-proof"] .rail__count{color:rgba(245,245,247,.72)}
+}
 
 /* Privacy notice. It gates something real: the Calendly embed does not load
    until this is answered, so declining actually changes what happens. */
