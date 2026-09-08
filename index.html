@@ -1664,7 +1664,11 @@ window.AVAS_LIVE=1;
 
   /* ================= router ================= */
   let DATA = null;
-  const NAV_RE = /^(go to|goto|open|show|visit|take me to)\s+(.+)$/;
+  /* every way a visitor asks to be taken somewhere, English and Taglish, plus
+     the question forms ("where is pricing", "asan ung services"). A match here
+     means travel now: no typed answer first, the visitor asked for the room,
+     not the paragraph. */
+  const NAV_RE = /^(?:please\s+)?(?:go to|goto|go|open|show me|show|visit|take me to|take me|bring me to|jump to|navigate to|where is|where are|where can i find|where do i find|how do i get to|pumunta ka sa|pumunta ka|pumunta sa|pumunta|punta ka sa|punta sa|punta|dalhin mo ako sa|dalhin mo ako|buksan mo ang|buksan mo|buksan ang|buksan|ipakita mo ang|ipakita mo|ipakita ang|ipakita|asan ang|asan ung|asan yung|asan na ang|asan|nasaan ang|nasaan ung|nasaan yung|nasaan|saan ang|saan ung|saan yung|saan ba ang|saan ba|saan|tignan ang|tignan ung|tignan|tingnan ang|tingnan)\s+(?:the\s+|ang\s+|ung\s+|yung\s+|mga\s+|sa\s+)?(.+)$/;
 
   function findIntent(id) { return DATA.intents.find(i => i.id === id) || null; }
 
@@ -1683,7 +1687,7 @@ window.AVAS_LIVE=1;
       if (nav) {
         for (const it of DATA.intents) {
           for (const kw of it.k) {
-            if (new RegExp('\\b' + escRe(kw) + '\\b', 'i').test(nav[2]) && kw.length > bestLen) {
+            if (new RegExp('\\b' + escRe(kw) + '\\b', 'i').test(nav[1]) && kw.length > bestLen) {
               bestLen = kw.length; best = it;
             }
           }
@@ -1747,10 +1751,7 @@ window.AVAS_LIVE=1;
       d.appendChild(s); log.appendChild(d); trim(); scrollBottom();
     }
 
-    /* auto: the visitor asked to be taken somewhere ("go to services"), so the
-       answer travels on its own instead of parking behind a button. The button
-       still ships, it is what the auto trip clicks. */
-    function lineAvas(text, go, done, auto) {
+    function lineAvas(text, go, done) {
       const d = document.createElement('div');
       d.className = 'av-line av-line--avas';
       const w = document.createElement('span'); w.className = 'av-who'; w.textContent = 'AVAS';
@@ -1765,10 +1766,6 @@ window.AVAS_LIVE=1;
           a.dataset.go = go;
           a.textContent = go.charAt(0) === '#' ? 'take me there' : 'open ' + go;
           t.after(a);
-          if (auto) {
-            lineSys(go.charAt(0) === '#' ? 'Taking you there …' : 'Opening ' + go + ' …');
-            setTimeout(() => a.click(), reduced() ? 0 : 700);
-          }
         }
         scrollBottom();
         done && done();
@@ -1791,11 +1788,22 @@ window.AVAS_LIVE=1;
     }
 
     function jump(sel) {
+      /* the site's rail owns panel travel and knows which panel holds what; the
+         sample falls back to its own anchors */
+      if (window.__avGoTo && window.__avGoTo(sel)) return;
       const target = root.querySelector('[data-anchor="' + sel.slice(1) + '"]');
       if (!target) { lineAvas('That section lives on the full page, not in this sample.'); return; }
       target.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'center' });
       target.classList.add('is-flash');
       setTimeout(() => target.classList.remove('is-flash'), 1500);
+    }
+
+    function travel(go) {
+      if (go.charAt(0) === '#') { jump(go); return; }
+      /* AVAS_LIVE is set by the site build: a page target is a real page there,
+         and only a sample of the homepage here. */
+      if (window.AVAS_LIVE) { location.href = go; return; }
+      lineAvas('That is page ' + go + ' on the live site. This sample is the homepage only.');
     }
 
     function pump() {
@@ -1806,8 +1814,15 @@ window.AVAS_LIVE=1;
       const it = bestFor(text);
       const msg = it ? it.a : DATA.notfound;
       const go = it && it.go ? it.go : null;
-      const auto = !!go && NAV_RE.test(text.toLowerCase().trim());
-      lineAvas(msg, go, () => { busy = false; pump(); }, auto);
+      /* asked to be taken somewhere: travel now. Typing out a paragraph first
+         and then moving is the wait the Owner cut on 2026-09-08. */
+      if (go && NAV_RE.test(text.toLowerCase().trim())) {
+        lineSys(go.charAt(0) === '#' ? 'Taking you there …' : 'Opening ' + go + ' …');
+        travel(go);
+        busy = false; pump();
+        return;
+      }
+      lineAvas(msg, go, () => { busy = false; pump(); });
     }
     function run(text) {
       const t = String(text).trim();
@@ -1857,12 +1872,7 @@ window.AVAS_LIVE=1;
     log.addEventListener('click', e => {
       const b = e.target.closest('.av-go');
       if (!b) return;
-      const go = b.dataset.go;
-      if (go.charAt(0) === '#') jump(go);
-      /* AVAS_LIVE is set by the site build: a page target is a real page there,
-         and only a sample of the homepage here. */
-      else if (window.AVAS_LIVE) location.href = go;
-      else lineAvas('That is page ' + go + ' on the live site. This sample is the homepage only.');
+      travel(b.dataset.go);
     });
     /* the full placeholder overflows a phone-width input. Swap it, and swap it back
        if the sheet is opened wide again. */
@@ -2175,6 +2185,19 @@ window.AVAS_LIVE=1;
   }
   window.__avGoPanel = goPanel;
 
+  /* travel to a selector, and say whether the rail could. The laptop engine asks
+     first, so one place decides how a panel is reached. */
+  function goSel(sel) {
+    const el = document.querySelector(sel);
+    if (!el) return false;
+    const i = panels.indexOf(el.closest('.panel'));
+    if (i >= 0) goPanel(i); else el.scrollIntoView({ behavior: RMQ.matches ? 'auto' : 'smooth', block: 'center' });
+    el.classList.add('is-flash');
+    setTimeout(() => el.classList.remove('is-flash'), 1400);
+    return true;
+  }
+  window.__avGoTo = goSel;
+
   dots.forEach((d, i) => d.addEventListener('click', () => goPanel(i)));
 
   /* the laptop answers with "take me there" buttons. Handle them before the
@@ -2184,13 +2207,7 @@ window.AVAS_LIVE=1;
     if (!b) return;
     const go = b.dataset.go || '';
     if (go.charAt(0) !== '#') return;
-    const el = document.querySelector(go);
-    if (!el) return;
-    e.stopPropagation();
-    const i = panels.indexOf(el.closest('.panel'));
-    if (i >= 0) goPanel(i); else el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    el.classList.add('is-flash');
-    setTimeout(() => el.classList.remove('is-flash'), 1400);
+    if (goSel(go)) e.stopPropagation();
   }, true);
 
   document.querySelectorAll('a[href^="#p-"], a[href="#rail"]').forEach(a => {
