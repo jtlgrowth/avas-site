@@ -398,8 +398,6 @@ html[data-gl="on"] .hero__mark{display:none}
   /* 16/10 at 96vw leaves 213px of screen, and the form plus the chips ate all
      of it, so the answer log collapsed to zero and the machine looked dead.
      On a phone the screen is a height, not a ratio. */
-  #p-laptop .av-lap__screen{aspect-ratio:auto;height:min(58svh,430px)}
-  #p-laptop .av-log{min-height:120px}
 }
 
 #p-laptop .av-lap__lid{
@@ -514,7 +512,9 @@ html[data-gl="on"] .hero__mark{display:none}
   background:var(--espresso-24);margin-right:7px;vertical-align:middle}
 
 #p-laptop .av-term{
-  min-height:0;display:flex;flex-direction:column;padding:14px 16px 12px;position:relative;
+  /* min-width:0, or the grid track takes its content's min width and the whole
+     terminal runs off the right of a phone screen, clipped by the lid */
+  min-height:0;min-width:0;display:flex;flex-direction:column;padding:14px 16px 12px;position:relative;
 }
 
 /* ---------- the log ---------- */
@@ -559,6 +559,29 @@ html[data-gl="on"] .hero__mark{display:none}
   font-family:var(--font-b);font-size:16px;color:var(--ink);caret-color:var(--espresso);
 }
 #p-laptop .av-input::placeholder{color:var(--faint)}
+
+/* ---------- the "type here" note ----------
+   A visitor who does not know the machine answers will never type into it, so
+   the prompt says so in a hand written aside that leaves once they are in.
+   It sits in the log's dead corner, absolute, so it can never push the form. */
+#p-laptop .av-hint{
+  position:absolute;left:38%;bottom:calc(100% - 8px);z-index:4;
+  display:flex;align-items:flex-end;gap:2px;pointer-events:none;
+  color:var(--espresso);opacity:.72;
+  transition:opacity .35s ease;
+}
+#p-laptop .av-hint__w{
+  font-family:var(--font-s);font-style:italic;font-size:19px;line-height:1;
+  transform:rotate(-4deg);white-space:nowrap;
+}
+#p-laptop .av-hint__a{width:70px;height:42px;transform:translateY(6px)}
+#p-laptop .av-form:focus-within .av-hint,
+#p-laptop .av-lap.is-used .av-hint{opacity:0}
+@media (max-width:640px){
+  #p-laptop .av-hint{left:auto;right:4px}
+  #p-laptop .av-hint__w{font-size:16px}
+  #p-laptop .av-hint__a{width:54px;height:30px}
+}
 #p-laptop .av-sugg{
   position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;
   margin:0;padding:6px;list-style:none;
@@ -594,6 +617,14 @@ html[data-gl="on"] .hero__mark{display:none}
 @media (prefers-reduced-motion:reduce){
   #p-laptop .av-caret{animation:none;opacity:1}
   #p-laptop .av-lap__lid::after{transition:none}
+}
+
+/* Written last on purpose: the 16/10 ratio is set further up this file, and the
+   phone override has to win on source order. It did not, so a phone screen was
+   688px wide inside a 374px lid and two thirds of the terminal was clipped. */
+@media (max-width:900px){
+  #p-laptop .av-lap__screen{aspect-ratio:auto;height:min(58svh,430px)}
+  #p-laptop .av-log{min-height:120px}
 }
 
 /* Panels 2 and 3: the client highlight. Kate Powers, big, on porcelain, and the
@@ -1176,6 +1207,14 @@ html[data-motion="calm"] #p-bot .av-caret{animation:none;opacity:1}
               <input class="av-input" type="text" aria-label="Ask AVAS" aria-autocomplete="list"
                      placeholder="type here what are you looking for?">
               <ul class="av-sugg" role="listbox" aria-label="Suggestions" hidden></ul>
+              <span class="av-hint" aria-hidden="true">
+                <svg class="av-hint__a" viewBox="0 0 96 56" fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M90 6c2 16-6 29-20 37-9 5-20 8-32 9"/>
+                  <path d="M38 52l11-6M38 52l9 7"/>
+                </svg>
+                <span class="av-hint__w">type here</span>
+              </span>
             </form>
             <div class="av-chips">
               <button type="button" data-click data-cmd="services">services</button>
@@ -1827,6 +1866,7 @@ window.AVAS_LIVE=1;
     function run(text) {
       const t = String(text).trim();
       if (!t) return;
+      lap.classList.add('is-used'); /* the "type here" note has done its job */
       queue.push(t);
       pump();
       input.value = '';
