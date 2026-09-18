@@ -137,6 +137,27 @@ h2.sec{font:600 clamp(28px,3.6vw,40px)/1.1 var(--disp);letter-spacing:-.018em;ma
   padding:13px 16px;font-size:14.5px;color:#EEDFE8}
 .done-note b{color:var(--gold)}
 .builder{margin-top:18px;background:var(--shell);border:1px solid var(--line);border-radius:16px;padding:24px}
+.filter{margin-top:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:14px 18px;background:var(--shell)}
+.frow+.frow{border-top:1px solid var(--line)}
+.fq{font-weight:600;font-size:15.5px}
+.fa{color:var(--mute);font-size:14px}
+@media(max-width:620px){.frow{grid-template-columns:1fr;gap:4px}}
+.opt{color:var(--mute);letter-spacing:0;text-transform:none;font-weight:500;font-size:12.5px}
+.expect{margin-top:12px;background:rgba(232,184,75,.07);border:1px solid rgba(232,184,75,.28);
+  border-radius:12px;padding:12px 15px;font-size:14px;color:#EFE0CF}
+.expect b{color:var(--gold);display:block;font:700 10.5px var(--body);letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:5px}
+.uhoh{margin-top:10px;font-size:13.5px;color:var(--mute);padding-left:14px;border-left:2px solid var(--line)}
+.uhoh b{color:#DCC9D5}
+.egs{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.egs{grid-template-columns:1fr}}
+.eg{background:var(--shell);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:14px}
+.eg .tag{font:700 10px var(--body);letter-spacing:.18em;text-transform:uppercase;display:block;margin-bottom:6px}
+.eg.no .tag{color:var(--mute)} .eg.yes .tag{color:var(--rose)}
+.eg.no{opacity:.72}
+ol.mini{margin:12px 0 0;padding-left:20px;font-size:14.5px;color:#DCC9D5}
+ol.mini li{margin-bottom:6px}
 .builder label{display:block;font:700 11.5px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
 .builder textarea{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--cream);
   border-radius:12px;padding:13px 15px;font:400 15px/1.5 var(--body);resize:vertical}
@@ -233,7 +254,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 60px;color:var(--mute);fo
 <header class="hero"><div class="wrap">
   <span class="eyebrow">From Operator to Orchestrator</span>
   <h1>Put them to <em>work.</em></h1>
-  <p>You hired an employee this afternoon. It has a name and a seat. Right now it is sitting there with nothing to do. Here is how you give it a job, and the one rule that makes it yours.</p>
+  <p>You hired an employee this morning. It has a name, a seat and nothing to do. This afternoon is the other half of the job: how to actually hand work over, so it comes back the way you would have done it.</p>
 </div></header>
 
 <div class="wrap layout">
@@ -250,8 +271,8 @@ footer{border-top:1px solid var(--line);padding:32px 0 60px;color:var(--mute);fo
   <!-- ACTIVITY -->
   <section id="activity">
     <span class="eyebrow">The activity &middot; 20 minutes</span>
-    <h2 class="sec">Give it a job and a rule.</h2>
-    <p class="lede">Not a task. A <strong>job</strong> has a name, a scope and a standard. A <strong>rule</strong> is the one thing it must never do, in your words. Write both, run it once, then fix the rule and run it again.</p>
+    <h2 class="sec">Hand one real job over.</h2>
+    <p class="lede">You already hired your AI employee this morning. Nobody is hiring again. This is the part nobody teaches: how to actually hand work to it and give it the rules that make it sound like you. One real job, properly delegated, in twenty minutes.</p>
 
     <div class="timerbar">
       <span class="clock" id="clock">20:00</span>
@@ -262,92 +283,125 @@ footer{border-top:1px solid var(--line);padding:32px 0 60px;color:var(--mute);fo
 
     <!-- STEP 1 -->
     <div class="stepblk">
-      <div class="shead"><span class="sno">1</span><div><h3>Open your terminal</h3><p>Laptop, not your phone.</p></div><span class="smin">0&ndash;2 min</span></div>
+      <div class="shead"><span class="sno">1</span><div><h3>Open your AI employee</h3><p>The one you hired this morning. Laptop, not your phone.</p></div><span class="smin">0&ndash;2 min</span></div>
+      <p class="small">First open the black window you used this morning. It is called the terminal. It is just a place to type.</p>
       <div class="two">
-        <div><div class="oskey">Windows</div><p class="small">Press the Windows key, type <b>PowerShell</b>, press Enter.</p></div>
-        <div><div class="oskey">Mac</div><p class="small">Press Cmd and Space, type <b>Terminal</b>, press Enter.</p></div>
+        <div><div class="oskey">Windows</div><p class="small">Press the <b>Windows key</b>, type <b>PowerShell</b>, press Enter.</p></div>
+        <div><div class="oskey">Mac</div><p class="small">Press <b>Cmd</b> and <b>Space</b>, type <b>Terminal</b>, press Enter.</p></div>
       </div>
-      <p class="small mt">Then type these three lines, one at a time, pressing Enter after each.</p>
+      <p class="small mt">A window opens with a cursor blinking. Type this one word and press Enter.</p>
       <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">terminal</span><button class="mini" data-copy="c1">Copy</button></div>
-<pre id="c1">cd Desktop
-mkdir my-employee
-cd my-employee</pre></div>
-      <p class="hint">That makes one folder for this employee to live in. A folder is a department.</p>
+<pre id="c1">claude</pre></div>
+      <div class="expect"><b>What you should see</b>Some text, then a box at the bottom waiting for you to type. That box is your employee. Everything from here gets typed or pasted into it.</div>
+      <p class="small mt">Now ask it who it is, so you know you are talking to the right one. Paste this in and press Enter. Paste is <b>Ctrl+V</b> on Windows, <b>Cmd+V</b> on Mac.</p>
+      <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="c2">Copy</button></div>
+<pre id="c2">Who did I hire you as this morning?
+Tell me your job in one sentence.</pre></div>
+      <p class="uhoh"><b>It says it does not know?</b> Then it is a fresh one. That is fine and it takes ten seconds to fix. Type: <em>&ldquo;You are the [name] I set up this morning. Your job is [job].&rdquo;</em> Press Enter and carry on. That is all hiring ever was.</p>
+      <p class="uhoh"><b>It says command not found?</b> Raise your hand. Do not sit quietly and lose the twenty minutes.</p>
     </div>
 
     <!-- STEP 2 -->
     <div class="stepblk">
-      <div class="shead"><span class="sno">2</span><div><h3>Wake it up</h3><p>One word. Wait for the prompt to appear.</p></div><span class="smin">2&ndash;3 min</span></div>
-      <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">terminal</span><button class="mini" data-copy="c2">Copy</button></div>
-<pre id="c2">claude</pre></div>
-      <p class="hint">Everything after this is typed inside that window. Paste with Ctrl+V on Windows, Cmd+V on Mac.</p>
+      <div class="shead"><span class="sno">2</span><div><h3>Pick what you are handing over</h3><p>One job. Not your whole business.</p></div><span class="smin">2&ndash;4 min</span></div>
+      <p class="small">Think about <strong>last week</strong>, not next week. Not the hard things. The things you did again that you had also done the week before. Replying to the same enquiry. Writing the same kind of message. Chasing the same kind of person.</p>
+      <p class="small mt">Almost everybody picks something too big the first time. Here is the difference:</p>
+      <div class="egs">
+        <div class="eg no"><span class="tag">Too big</span>&ldquo;Handle my marketing.&rdquo; &ldquo;Grow my sales.&rdquo; &ldquo;Manage my clients.&rdquo; Nobody could do these from one instruction, including a human.</div>
+        <div class="eg yes"><span class="tag">The right size</span>&ldquo;The follow-up message when someone goes quiet.&rdquo; &ldquo;The reply to a price enquiry.&rdquo; &ldquo;The caption for a before and after.&rdquo; One message, one output.</div>
+      </div>
+      <p class="small mt">Now run the one you picked through these three questions. In your head, quickly.</p>
+      <div class="filter">
+        <div class="frow"><span class="fq">Does it repeat?</span><span class="fa">If no, stop. Never delegate something you only do once.</span></div>
+        <div class="frow"><span class="fq">Can I show an example of &ldquo;done&rdquo;?</span><span class="fa">If no, you cannot brief it yet. Pick something else.</span></div>
+        <div class="frow"><span class="fq">Am I the only one who can judge it?</span><span class="fa">Then keep the decision, and hand over the draft.</span></div>
+      </div>
+      <p class="hint">It repeats, and you can show an example of done. That is the one you hand over today.</p>
     </div>
 
     <!-- STEP 3 -->
     <div class="stepblk">
-      <div class="shead"><span class="sno">3</span><div><h3>Give it the job and the rule</h3><p>Fill the boxes, copy what it builds, paste it into the terminal.</p></div><span class="smin">3&ndash;8 min</span></div>
+      <div class="shead"><span class="sno">3</span><div><h3>Write the five-line brief</h3><p>This is the whole skill. Everything else is typing.</p></div><span class="smin">4&ndash;11 min</span></div>
+      <p class="small">You are about to do the thing most people never do. Instead of asking it for something, you are going to <strong>brief</strong> it, the way you would brief a new team member on their first day.</p>
+      <ol class="mini">
+        <li>Fill in the boxes below. Short answers. Do not write an essay.</li>
+        <li>The grey box underneath fills itself in as you type. That is your brief.</li>
+        <li>Press <b>Copy my brief</b>, then paste it into your terminal and press Enter.</li>
+      </ol>
       <div class="builder">
         <div class="bfield">
-          <label for="fjob">The job</label>
-          <textarea id="fjob" rows="3" placeholder="You write my follow-up messages to clients who have gone quiet after a proposal. Three sentences, ends with a one-word question."></textarea>
-          <p class="hint">A name, a scope, a standard. If you can say it once and never explain it again, it is a job.</p>
+          <label for="fjob">Job</label>
+          <textarea id="fjob" rows="2" placeholder="Follow-up DM to a client who has gone quiet five days after a proposal."></textarea>
+          <p class="hint">One task, one output. Say what it produces, not what it is responsible for. &ldquo;Writes the follow-up message&rdquo;, not &ldquo;handles follow-ups&rdquo;.</p>
         </div>
         <div class="bfield">
-          <label for="frule">The rule</label>
-          <textarea id="frule" rows="2" placeholder="Never say &quot;just checking in&quot; or &quot;circle back&quot;. Write like I am texting a friend, not a client."></textarea>
-          <p class="hint">One thing it must never do, in your own words. This is the line that makes it sound like you.</p>
+          <label for="fdone">Done&#8209;when</label>
+          <textarea id="fdone" rows="2" placeholder="Three sentences maximum, ends with a one-word question, goes out as a DM."></textarea>
+          <p class="hint">How long, what shape, where it goes. If you cannot say when it is finished, it will never be finished. This is the line that stops it writing you a paragraph when you wanted two lines.</p>
         </div>
         <div class="bfield">
-          <label for="fex">Sounds like <span style="color:var(--mute);letter-spacing:0;text-transform:none;font-weight:500">&nbsp;&mdash; optional, and the strongest box on this page</span></label>
-          <textarea id="fex" rows="2" placeholder="Paste one real message of yours that worked."></textarea>
+          <label for="finputs">Inputs</label>
+          <textarea id="finputs" rows="2" placeholder="Proposal sent Sept 10, 45k package. She replied once then went quiet."></textarea>
+          <p class="hint">The facts it cannot know. Paste the actual thread, the actual price, the actual dates. It has never met your client. Everything you leave out, it will invent.</p>
         </div>
-        <div class="out" id="out">Fill in the job and the rule. Your brief appears here, ready to paste into the terminal.</div>
+        <div class="bfield">
+          <label for="fex">Sounds like <span class="opt">&nbsp;&mdash; this one does more than the other four together</span></label>
+          <textarea id="fex" rows="3" placeholder="Hi Maria! Quick one lang, did the pricing make sense or need ko i-adjust?"></textarea>
+          <p class="hint">Go into your own messages, find one you actually sent that worked, and paste it. Do not describe your voice. Saying &ldquo;friendly but professional&rdquo; tells it nothing. One real message tells it everything.</p>
+        </div>
+        <div class="bfield">
+          <label for="fnot">Not this</label>
+          <textarea id="fnot" rows="2" placeholder="No &quot;just checking in&quot;, no &quot;circle back&quot;, no discount, no paragraphs."></textarea>
+          <p class="hint">The two or three things that make you cringe. Be petty. Petty is specific, and specific is what it can follow.</p>
+        </div>
+        <div class="out" id="out">Fill in the job and done-when. Your brief appears here, ready to paste.</div>
         <div class="copyrow">
           <button class="btn" id="copybrief">Copy my brief</button>
           <span class="copied" id="copied" hidden>Copied</span>
         </div>
       </div>
+      <p class="uhoh"><b>Stuck on a box?</b> Leave it empty and keep going. Job and done-when are the only two that have to be there.</p>
     </div>
 
     <!-- STEP 4 -->
     <div class="stepblk">
-      <div class="shead"><span class="sno">4</span><div><h3>Give it real work</h3><p>Not a test. Something from today.</p></div><span class="smin">8&ndash;13 min</span></div>
-      <p class="small">Paste this next, with your own real thing in the brackets. A real client thread, a real enquiry, a real half-written post.</p>
-      <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="c3">Copy</button></div>
-<pre id="c3">Here is real work. Do the job now.
-
-[paste the actual thing from your business]
-
-When you are done, tell me which part of my rule
-was unclear to you.</pre></div>
-      <p class="hint">It will be roughly right and specifically wrong. That is normal, and it is the whole point of the next step.</p>
+      <div class="shead"><span class="sno">4</span><div><h3>Hand it off and read what comes back</h3><p>Send it. Then stop typing and actually read.</p></div><span class="smin">11&ndash;14 min</span></div>
+      <p class="small">Paste the brief into the terminal and press Enter. Give it ten or twenty seconds. You will see it thinking, then the answer appears.</p>
+      <div class="expect"><b>What you should see</b>Something roughly right and specifically wrong. Close enough that you are a bit impressed, off enough that you would not send it as it is. That is exactly what is supposed to happen.</div>
+      <p class="small mt">Now do the part that matters. Read it properly and find <strong>one line you would never have sent</strong>. Not the whole thing. One line. Put your finger on it.</p>
+      <p class="uhoh"><b>It came back perfect?</b> Then your brief was good. Give it a harder one, or a real thread you have been avoiding all week.</p>
+      <p class="uhoh"><b>It came back nothing like you wanted?</b> Good, that is the more useful outcome, and step 5 is where it gets fixed.</p>
     </div>
 
     <!-- STEP 5 -->
     <div class="stepblk">
-      <div class="shead"><span class="sno">5</span><div><h3>Fix the rule, not the output</h3><p>This is the step everybody skips.</p></div><span class="smin">13&ndash;17 min</span></div>
-      <p class="small">Do not rewrite the draft yourself. Quote the line you hated and make it change the rule instead.</p>
+      <div class="shead"><span class="sno">5</span><div><h3>Give it the rule</h3><p>Correct the brief, not the draft. This is the step everybody skips.</p></div><span class="smin">14&ndash;18 min</span></div>
+      <p class="small">Here is where nearly everyone goes wrong. They see a line they do not like, quietly fix it themselves, send it, and feel like AI saved them five minutes. Next week they fix the same line again.</p>
+      <p class="small mt">Do not touch the draft. Quote the line you hated and turn it into a rule it keeps forever.</p>
       <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="c4">Copy</button></div>
 <pre id="c4">This line was wrong: "[paste the exact line you hated]"
 
 Here is how I would have written it: "[write it your way]"
 
-Do not just fix the draft. Tell me which part of my rule
-let that through, rewrite the rule, then run the job again.</pre></div>
-      <p class="hint">Fix the output and you fix it again tomorrow. Fix the rule and it is gone forever.</p>
+Do not just fix the draft. Tell me which line of my brief
+let that through, rewrite that line, then run the job again.</pre></div>
+      <div class="expect"><b>What you should see</b>It tells you which part of your brief was too loose, rewrites that line, and runs the job again. The second version should sound noticeably more like you. That gap is the entire lesson of this afternoon.</div>
+      <p class="hint">Fix the draft and you fix it again next week. Fix the rule and it is gone for good. That is the difference between using AI and managing it.</p>
     </div>
 
     <!-- STEP 6 -->
     <div class="stepblk">
-      <div class="shead"><span class="sno">6</span><div><h3>Make it permanent</h3><p>So you never explain any of this again.</p></div><span class="smin">17&ndash;20 min</span></div>
+      <div class="shead"><span class="sno">6</span><div><h3>Make it permanent</h3><p>So you never brief this job twice.</p></div><span class="smin">18&ndash;20 min</span></div>
+      <p class="small">Everything you just agreed only lives in this conversation. Close the window and it is gone. This last step writes it into a note your employee reads every single time it wakes up.</p>
       <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="c5">Copy</button></div>
-<pre id="c5">Save everything we agreed into a file called CLAUDE.md
-in this folder, so every future session already knows it.
+<pre id="c5">Save this job into a file called CLAUDE.md, so you
+never have to brief me on it again.
 
-Include the job, the final rule, how I write, and the
+Include the final five-line brief, how I write, and the
 things I never want to see. Keep it under 400 words.
 Then show me the file.</pre></div>
-      <p class="done-note"><b>Done when</b> you have one output on screen you would actually send today, and a CLAUDE.md file sitting in that folder.</p>
+      <div class="expect"><b>What you should see</b>It writes the file and prints it back to you. Read it. If something in there is not true about you, tell it now and make it fix the file.</div>
+      <p class="done-note"><b>Done when</b> you have one output on screen you would actually send today, and your employee has the rule saved so it never makes that mistake again.</p>
     </div>
   </section>
 
@@ -541,20 +595,31 @@ Make it work on my phone too.</pre></div>
     document.getElementById('page').style.display='block';
   } }catch(e){}
 
-  // ---- brief builder
-  var fjob=document.getElementById('fjob'), frule=document.getElementById('frule'),
-      fex=document.getElementById('fex'), out=document.getElementById('out');
+  // ---- five-line brief builder
+  var F={job:'fjob',done:'fdone',inputs:'finputs',ex:'fex',not:'fnot'}, E={};
+  Object.keys(F).forEach(function(k){ E[k]=document.getElementById(F[k]); });
+  var out=document.getElementById('out');
+  function pad(label){ return (label+':').padEnd(13,' '); }
+  function block(label,val){
+    var lines=val.split(/\n/);
+    return pad(label)+lines[0]+lines.slice(1).map(function(l){ return '\n'+' '.repeat(13)+l; }).join('');
+  }
   function brief(){
-    var j=fjob.value.trim(), r=frule.value.trim(), e=fex.value.trim();
-    if(!j && !r){ out.textContent='Fill in the job and the rule. Your brief appears here, ready to paste into the terminal.'; return ''; }
-    var t='You are my AI employee for this folder.\n\nYOUR JOB\n'+(j||'[write the job above]')+
-          '\n\nYOUR RULE, never break this\n'+(r||'[write the rule above]');
-    if(e) t+='\n\nSOUNDS LIKE, match this voice\n'+e;
-    t+='\n\nSay it back to me in your own words so I know you have it,'+
-       '\nthen wait. I will give you real work next.';
+    var v={}; Object.keys(E).forEach(function(k){ v[k]=E[k].value.trim(); });
+    if(!v.job && !v.done){
+      out.textContent='Fill in the job and done-when. Your brief appears here, ready to paste.';
+      return '';
+    }
+    var t='Here is one job. Do it now, using this brief.\n\n';
+    t+=block('Job', v.job||'[write the job above]')+'\n';
+    t+=block('Done-when', v.done||'[write done-when above]')+'\n';
+    if(v.inputs) t+=block('Inputs', v.inputs)+'\n';
+    if(v.ex)     t+=block('Sounds like', v.ex)+'\n';
+    if(v.not)    t+=block('Not this', v.not)+'\n';
+    t+='\nWhen you are done, tell me which line of this brief\nwas least clear to you.';
     out.textContent=t; return t;
   }
-  [fjob,frule,fex].forEach(function(el){ el.addEventListener('input',brief); });
+  Object.keys(E).forEach(function(k){ E[k].addEventListener('input',brief); });
 
   function flash(el){ el.hidden=false; setTimeout(function(){ el.hidden=true; },1600); }
   document.getElementById('copybrief').addEventListener('click',function(){
