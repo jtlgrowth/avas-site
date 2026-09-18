@@ -164,7 +164,7 @@ ol.mini li{margin-bottom:6px}
 .builder textarea:focus{outline:2px solid var(--rose);outline-offset:1px}
 .bfield+.bfield{margin-top:20px}
 .hint{color:var(--mute);font-size:13px;margin-top:7px}
-.out{margin-top:22px;background:var(--ink);border:1px dashed var(--line);border-radius:12px;padding:18px;
+.out{margin-top:22px;user-select:all;cursor:text;background:var(--ink);border:1px dashed var(--line);border-radius:12px;padding:18px;
   font:400 14px/1.62 var(--mono);white-space:pre-wrap;color:#E9D9E3;overflow-x:auto}
 .copyrow{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center}
 .copied{color:var(--gold);font-size:13.5px;font-weight:600}
@@ -550,6 +550,7 @@ Make it work on my phone too.</pre></div>
 <script>
 (function(){
   var KEY='ptw.gate.v1', PW='orchestrator';
+  var isMac=/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent);
   var done={};
   try{ done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ done={}; }
 
@@ -622,15 +623,56 @@ Make it work on my phone too.</pre></div>
   Object.keys(E).forEach(function(k){ E[k].addEventListener('input',brief); });
 
   function flash(el){ el.hidden=false; setTimeout(function(){ el.hidden=true; },1600); }
+
+  // Copy with a fallback chain. navigator.clipboard needs https and can be blocked
+  // outright inside an iframe, so never rely on it alone in a live room.
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;
+    ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+    document.body.appendChild(ta);
+    ta.select(); ta.setSelectionRange(0, text.length);
+    var ok=false;
+    try{ ok=document.execCommand('copy'); }catch(e){ ok=false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  function selectNode(el){
+    try{
+      var r=document.createRange(); r.selectNodeContents(el);
+      var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }catch(e){}
+  }
+  // done(true) on success, done(false) if the user has to copy it by hand
+  function copyText(text, node, done){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ done(true); },
+        function(){ done(legacyCopy(text) || (selectNode(node), false)); });
+    } else {
+      done(legacyCopy(text) || (selectNode(node), false));
+    }
+  }
+
   document.getElementById('copybrief').addEventListener('click',function(){
     var t=brief(); if(!t) return;
-    navigator.clipboard.writeText(t).then(function(){ flash(document.getElementById('copied')); });
+    var btn=this, note=document.getElementById('copied');
+    copyText(t, out, function(ok){
+      if(ok){ note.textContent='Copied'; flash(note); }
+      else {
+        note.textContent='Selected for you. Press ' + (isMac?'Cmd':'Ctrl') + '+C.';
+        note.hidden=false;
+      }
+    });
   });
+
   document.querySelectorAll('.mini').forEach(function(b){
     b.addEventListener('click',function(){
-      var el=document.getElementById(b.dataset.copy);
-      navigator.clipboard.writeText(el.textContent).then(function(){
-        var o=b.textContent; b.textContent='Copied'; setTimeout(function(){ b.textContent=o; },1500);
+      var el=document.getElementById(b.dataset.copy), o=b.dataset.label||b.textContent;
+      b.dataset.label=o;
+      copyText(el.textContent, el, function(ok){
+        b.textContent = ok ? 'Copied' : (isMac?'Cmd':'Ctrl')+'+C';
+        setTimeout(function(){ b.textContent=o; }, ok?1500:3000);
       });
     });
   });
