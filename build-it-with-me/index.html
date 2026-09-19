@@ -139,6 +139,19 @@ b.hl{color:var(--gold);font-weight:600}
 .clicks kbd{font:600 13px var(--body);background:var(--shell2);border:1px solid var(--line);
   border-radius:6px;padding:2px 8px;color:var(--cream)}
 
+.noto{margin-top:22px;background:linear-gradient(135deg,rgba(232,184,75,.10),rgba(232,184,75,.04));
+  border:1px solid rgba(232,184,75,.42);border-radius:16px;padding:24px 26px}
+.noto h3{font:600 24px/1.22 var(--disp);color:var(--gold);margin-bottom:8px}
+.noto>p{font-size:15.5px;color:#EFE0CF;margin:0}
+.noto ol{margin:18px 0 0;padding:0;list-style:none;counter-reset:nv}
+.noto ol li{counter-increment:nv;position:relative;padding:14px 0 14px 50px;
+  border-top:1px solid rgba(232,184,75,.22);font-size:15.5px;line-height:1.45;color:#F3E6D2}
+.noto ol li:first-child{border-top:0}
+.noto ol li::before{content:counter(nv);position:absolute;left:0;top:12px;width:30px;height:30px;
+  border-radius:9px;background:var(--gold);color:#2A1B00;font:700 14px var(--body);
+  display:flex;align-items:center;justify-content:center}
+.noto ol li b{color:#FFF6EA}
+.noto ol li em{display:block;font-style:normal;color:#CBB394;font-size:13.5px;margin-top:4px}
 .paths{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:700px){.paths{grid-template-columns:1fr}}
 .pth{background:var(--shell);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
@@ -218,6 +231,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--mute);fo
 <div class="wrap layout">
   <nav class="rail">
     <a href="#start">Before you start</a>
+    <a href="#nousage">No usage left?</a>
     <div class="gap"></div>
     <a href="#b1">1 &middot; Teach it your brand</a>
     <a href="#b2">2 &middot; Landing page</a>
@@ -242,7 +256,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--mute);fo
   <div class="chk">
     <div class="ck"><i></i><p>Laptop open and plugged in<em>Not a phone. None of today works on a phone.</em></p></div>
     <div class="ck"><i></i><p>Claude Code opens when you type <b>claude</b><em>If it says command not found, hand up. We fix it now.</em></p></div>
-    <div class="ck"><i></i><p>You still have usage left on your Claude plan<em>If you hit the limit yesterday, sit with someone who has not.</em></p></div>
+    <div class="ck"><i></i><p>You still have usage left on your Claude plan<em>Hit your limit? Do not panic and do not leave. Read the next section, you can still do most of today.</em></p></div>
     <div class="ck"><i></i><p>The page you built this morning is on your screen<em>We are adding to that page, not starting from zero.</em></p></div>
   </div>
 
@@ -258,6 +272,33 @@ footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--mute);fo
     <div class="out1"><b>Build 3</b><span>A checkout button wired to SaligPay, taking GCash, Maya and cards</span></div>
     <div class="out1"><b>Builds 4 &amp; 5</b><span>Five emails that send themselves on their own schedule</span></div>
   </div>
+</section>
+
+<!-- ============ NO USAGE ============ -->
+<section id="nousage">
+  <span class="eyebrow">Read this if you hit your limit</span>
+  <h2 class="sec">No usage left? You are not sitting this out.</h2>
+  <p class="lede">Your limit resets on its own after a few hours, and the app tells you when. But you are not
+  waiting around until then, because most of today does not need it.</p>
+
+  <div class="noto">
+    <h3>Four things to do right now, in this order</h3>
+    <p>Do these and you finish the day with almost everything the person next to you has.</p>
+    <ol>
+      <li><b>All of build 3. Start here.</b>
+        <em>Setting up SaligPay, or getting your QR off your phone, is browser work. It needs no AI at all. That is the piece most of you actually came for, and you can finish it completely.</em></li>
+      <li><b>Builds 1, 4 and 6 in any free AI.</b>
+        <em>Open free ChatGPT, Gemini, or Claude in a browser tab. Paste the same prompts from this page. They are not magic words, they are just clear briefs, and a clear brief works anywhere. You will get your voice rules, your five emails and your ads. Save them in your Notes app.</em></li>
+      <li><b>Build 2 on paper.</b>
+        <em>Fill in every bracket now, while I am explaining it. Tonight when your usage resets, one paste and your page builds itself in about two minutes. The thinking is the slow part. The typing was never the hard bit.</em></li>
+      <li><b>Sit with someone who has usage left.</b>
+        <em>Build their business with them, out loud. You will learn the moves faster watching somebody else argue with it than you would doing it alone, and they get a second pair of eyes. Ask the person beside you now.</em></li>
+    </ol>
+  </div>
+
+  <p class="small mt"><b>The thing worth understanding.</b> What you are learning today is not which tool to open.
+  It is how to brief. The five-line brief you write here works in Claude, in ChatGPT, in Gemini, and in whatever
+  replaces all three next year. Nobody can take that off you by running out of anything.</p>
 </section>
 
 <!-- ============ BUILD 1 ============ -->
@@ -740,7 +781,8 @@ that would make your work better.</pre></div>
   <details><summary>I ran out of usage. Is my day over?</summary>
     <div class="ans"><p>No. Three options, all fine.</p>
     <p>Sit next to someone who still has usage and do it on their screen. Or fill in all the brackets on paper now and run the prompts tonight when your limit resets. Or watch me and photograph everything.</p>
-    <p>This page does not expire. Every prompt here works just as well next Tuesday.</p></div></details>
+    <p>This page does not expire. Every prompt here works just as well next Tuesday.</p>
+    <p>There is a whole section above with the four things to do instead, in order. Start with build 3, it needs no AI at all.</p></div></details>
 
   <details><summary>It says <code>command not found</code>. What did I break?</summary>
     <div class="ans"><p>Nothing. It just means the computer cannot find the program yet.</p>
