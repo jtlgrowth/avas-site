@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="From Operator to Orchestrator, Day 2. The prompts and step-by-step builds for your landing page, checkout, follow-up emails and ads.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://ayalavirtualassistance.site/build-it-with-me/">
+<link rel="icon" href="https://stcdn.leadconnectorhq.com/funnel/icon/favicon.ico">
+<meta property="og:title" content="Build it with me">
+<meta property="og:description" content="From Operator to Orchestrator, Day 2. Ayala Virtual Assistance.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ayalavirtualassistance.site/build-it-with-me/">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1080601664910995');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1080601664910995&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+html{color-scheme:dark}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Build It With Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#14090F; --shell:#1F1019; --shell2:#2A1622; --line:#3B2331;
+  --rose:#FF3BA7; --cream:#F7EFF4; --mute:#A08D99; --gold:#E8B84B;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --body:"Poppins",system-ui,-apple-system,sans-serif;
+  --disp:"Fraunces","Iowan Old Style",Georgia,serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--cream);font:400 17px/1.62 var(--body);-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+a{color:var(--rose)}
+h1,h2,h3{margin:0;text-wrap:balance}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+.eyebrow{font:700 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+
+#gate{min-height:100svh;display:grid;place-items:center;padding:56px 24px}
+.gatebox{width:100%;max-width:560px}
+.gatebox h1{font:600 clamp(40px,7vw,60px)/1.02 var(--disp);letter-spacing:-.02em;margin:14px 0 0}
+.gatebox h1 em{font-style:italic;color:var(--rose)}
+.gsub{color:var(--mute);margin:16px 0 30px;max-width:44ch}
+.pwrow{display:flex;gap:10px;flex-wrap:wrap}
+.pwrow input{flex:1;min-width:210px;background:var(--shell);border:1px solid var(--line);
+  color:var(--cream);border-radius:12px;padding:14px 16px;font:500 16px var(--body)}
+.pwrow input:focus{outline:2px solid var(--rose);outline-offset:1px}
+.err{color:var(--gold);font-size:14px;margin-top:12px;min-height:20px}
+#page{display:none}
+header.hero{border-bottom:1px solid var(--line);padding:56px 0 46px}
+.hero h1{font:600 clamp(38px,6.4vw,70px)/1.02 var(--disp);letter-spacing:-.022em;margin-top:14px}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero p{color:var(--mute);max-width:58ch;margin:18px 0 0;font-size:18px}
+
+.layout{display:grid;grid-template-columns:225px 1fr;gap:54px;padding:44px 0 90px}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:0}nav.rail{position:static;margin-bottom:34px}}
+nav.rail{position:sticky;top:26px;align-self:start;display:flex;flex-direction:column;gap:2px}
+nav.rail a{display:block;padding:7px 0 7px 12px;color:var(--mute);text-decoration:none;font-size:14px;font-weight:500;
+  border-left:2px solid transparent;transition:color .18s,border-color .18s}
+nav.rail a:hover{color:var(--cream);border-left-color:var(--rose)}
+nav.rail .gap{height:12px}
+
+section{scroll-margin-top:24px}
+section+section{margin-top:58px;padding-top:58px;border-top:1px solid var(--line)}
+h2.sec{font:600 clamp(28px,3.6vw,40px)/1.1 var(--disp);letter-spacing:-.018em;margin:10px 0 0}
+.lede{color:var(--mute);max-width:64ch;margin:14px 0 0}
+.small{font-size:14.5px;color:#DCC9D5;margin:0}
+.small.mt{margin-top:16px}
+.hint{color:var(--mute);font-size:13px;margin-top:8px}
+b.hl{color:var(--gold);font-weight:600}
+
+.outs{margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:820px){.outs{grid-template-columns:1fr}}
+.out1{background:var(--shell);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
+.out1 b{display:block;font:700 10px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:6px}
+.out1 span{font-size:14.5px;color:#E7D4E0}
+
+.chk{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.ck{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;cursor:pointer;
+  background:var(--shell);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+.ck i{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--line);display:block;margin-top:2px}
+.ck.on i{background:var(--gold);border-color:var(--gold)}
+.ck p{margin:0;font-size:15px}
+.ck em{display:block;color:var(--mute);font-style:normal;font-size:13.5px;margin-top:3px}
+
+.term{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0D0509}
+.tbar{display:flex;align-items:center;gap:7px;padding:9px 14px;background:var(--shell2);border-bottom:1px solid var(--line)}
+.tdot{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.tname{margin-left:8px;flex:1;font:500 11.5px var(--mono);color:var(--mute);letter-spacing:.06em}
+.mini{font:600 11.5px var(--body);background:var(--shell);color:var(--cream);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;cursor:pointer}
+.mini:hover{border-color:var(--rose);color:var(--rose)}
+.term pre{margin:0;padding:17px 19px;color:#F0DCE8;font:400 13.5px/1.62 var(--mono);white-space:pre-wrap;overflow-x:auto}
+.term pre b{color:var(--gold);font-weight:500}
+
+.build{margin-top:30px;padding-top:30px;border-top:1px solid var(--line)}
+.bh{display:grid;grid-template-columns:46px 1fr auto;gap:16px;align-items:start}
+.bno{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font:700 17px var(--body);background:var(--rose);color:#20030F}
+.bh h3{font:600 23px/1.22 var(--body)}
+.bh p{margin:4px 0 0;color:var(--mute);font:400 15px/1.45 var(--body)}
+.bmin{font:500 12.5px var(--mono);color:var(--rose);letter-spacing:.04em;white-space:nowrap;padding-top:11px}
+.expect{margin-top:13px;background:rgba(232,184,75,.07);border:1px solid rgba(232,184,75,.28);
+  border-radius:12px;padding:12px 15px;font-size:14px;color:#EFE0CF}
+.expect b{color:var(--gold);display:block;font:700 10.5px var(--body);letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px}
+.uhoh{margin-top:10px;font-size:13.5px;color:var(--mute);padding-left:14px;border-left:2px solid var(--line)}
+.uhoh b{color:#DCC9D5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:620px){.two{grid-template-columns:1fr}.bh{grid-template-columns:40px 1fr}.bmin{grid-column:2;padding-top:0}}
+.oskey{font:700 10.5px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:5px}
+
+/* click-steps for GHL / SaligPay */
+.clicks{margin-top:16px;counter-reset:cs;list-style:none;padding:0}
+.clicks li{counter-increment:cs;position:relative;padding:13px 0 13px 54px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.45}
+.clicks li:first-child{border-top:0}
+.clicks li::before{content:counter(cs);position:absolute;left:0;top:11px;width:32px;height:32px;border-radius:9px;
+  background:var(--shell2);border:1px solid var(--line);color:var(--gold);font:700 14px var(--body);
+  display:flex;align-items:center;justify-content:center}
+.clicks li em{display:block;font-style:normal;color:var(--mute);font-size:13.5px;margin-top:4px}
+.clicks kbd{font:600 13px var(--body);background:var(--shell2);border:1px solid var(--line);
+  border-radius:6px;padding:2px 8px;color:var(--cream)}
+
+.paths{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.paths{grid-template-columns:1fr}}
+.pth{background:var(--shell);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.pth.b{border-color:var(--gold)}
+.pth .tag{font:700 10px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:7px}
+.pth.b .tag{color:var(--gold)}
+.pth h4{margin:0 0 6px;font:600 18px var(--body)}
+.pth p{margin:0;font-size:14.5px;color:#D5BFCC}
+.pth a{display:inline-block;margin-top:10px;font-weight:600;font-size:14px;text-decoration:none}
+.watch{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.watch{grid-template-columns:1fr}}
+.w1{background:var(--shell);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.w1 .tag{font:700 10px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:7px}
+.w1 h4{margin:0 0 6px;font:600 17px var(--body)}
+.w1 p{margin:0;font-size:14.5px;color:#D5BFCC}
+
+details{background:var(--shell);border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
+details[open]{border-color:var(--rose)}
+summary{cursor:pointer;padding:15px 18px;font-weight:600;font-size:15.5px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--rose);font-weight:700}
+details[open] summary::after{content:"\2013"}
+.ans{padding:0 18px 16px;font-size:15px;line-height:1.6;color:#DCC9D5}
+.ans p{margin:0 0 9px}.ans p:last-child{margin-bottom:0}
+.ans code{font:500 13px var(--mono);background:var(--shell2);padding:2px 6px;border-radius:5px;color:var(--gold)}
+
+.free{margin-top:24px;background:linear-gradient(135deg,var(--shell2),var(--shell));
+  border:1px solid var(--rose);border-radius:18px;padding:28px 30px}
+.free h3{font:600 26px/1.2 var(--disp);margin-bottom:8px}
+.free p{color:#E3CCDA;font-size:15.5px;margin:0 0 6px}
+.free ul{margin:14px 0 20px;padding-left:20px;color:#E3CCDA;font-size:15px}
+.free li{margin-bottom:6px}
+.btn{font:600 15px var(--body);border:0;border-radius:999px;padding:13px 26px;cursor:pointer;
+  background:var(--rose);color:#20030F;text-decoration:none;display:inline-block}
+.btn:hover{filter:brightness(1.08)}
+.note{margin-top:12px;font-size:13px;color:var(--mute)}
+.frow{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:4px}
+@media(max-width:700px){.frow{grid-template-columns:1fr}}
+.free input{background:var(--ink);border:1px solid var(--line);color:var(--cream);
+  border-radius:12px;padding:14px 16px;font:500 15.5px var(--body);width:100%}
+.free input:focus{outline:2px solid var(--rose);outline-offset:1px}
+.free input::placeholder{color:#8B7481}
+.fmsg{margin-top:14px;font-size:15px;min-height:22px}
+.fmsg.ok{color:var(--gold);font-weight:600}
+.fmsg.bad{color:#FF8FC4}
+.fallback{margin-top:16px;background:var(--ink);border:1px dashed var(--line);border-radius:12px;
+  padding:16px 18px;display:none}
+.fallback.show{display:block}
+.fallback p{font-size:14.5px;color:#DCC9D5;margin:0 0 10px}
+.fallback .val{font:500 15px var(--mono);color:var(--gold);word-break:break-all;display:block;margin-bottom:12px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--mute);font-size:13.5px}
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="gatebox">
+    <span class="eyebrow">From Operator to Orchestrator &middot; Day 2</span>
+    <h1>Build it <em>with me.</em></h1>
+    <p class="gsub">Every prompt, every step and the FAQ are behind this door.
+    The password is on the screen in the room.</p>
+    <div class="pwrow">
+      <input id="pw" type="password" placeholder="Password on the screen" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="btn" id="go" type="button">Open the page</button>
+    </div>
+    <div class="err" id="err"></div>
+  </div>
+</div>
+
+<div id="page">
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">From Operator to Orchestrator &middot; Day 2</span>
+  <h1>Build it <em>with me.</em></h1>
+  <p>Everything I do on my screen, you do on yours. Every prompt is below, ready to copy.
+  Six builds. At the end you have a page that takes real money, emails that send themselves, and ads in your own voice.</p>
+</div></header>
+
+<div class="wrap layout">
+  <nav class="rail">
+    <a href="#start">Before you start</a>
+    <div class="gap"></div>
+    <a href="#b1">1 &middot; Teach it your brand</a>
+    <a href="#b2">2 &middot; Landing page</a>
+    <a href="#b3">3 &middot; Checkout + SaligPay</a>
+    <a href="#b4">4 &middot; Write the emails</a>
+    <a href="#b5">5 &middot; The workflow</a>
+    <a href="#b6">6 &middot; Your ads</a>
+    <div class="gap"></div>
+    <a href="#watch">What I am doing</a>
+    <a href="#faq">Questions</a>
+    <a href="#free">Your freebie</a>
+  </nav>
+
+<main>
+
+<!-- ============ START ============ -->
+<section id="start">
+  <span class="eyebrow">Two minutes</span>
+  <h2 class="sec">Before you start.</h2>
+  <p class="lede">Tap each box as you check it. If any one is missing, put your hand up now, not at minute ten.</p>
+
+  <div class="chk">
+    <div class="ck"><i></i><p>Laptop open and plugged in<em>Not a phone. None of today works on a phone.</em></p></div>
+    <div class="ck"><i></i><p>Claude Code opens when you type <b>claude</b><em>If it says command not found, hand up. We fix it now.</em></p></div>
+    <div class="ck"><i></i><p>You still have usage left on your Claude plan<em>If you hit the limit yesterday, sit with someone who has not.</em></p></div>
+    <div class="ck"><i></i><p>The page you built this morning is on your screen<em>We are adding to that page, not starting from zero.</em></p></div>
+  </div>
+
+  <p class="small mt">Open your terminal the same way as yesterday.</p>
+  <div class="two">
+    <div><div class="oskey">Windows</div><p class="small">Press the <b>Windows key</b>, type <b>PowerShell</b>, press Enter.</p></div>
+    <div><div class="oskey">Mac</div><p class="small">Press <b>Cmd</b> and <b>Space</b>, type <b>Terminal</b>, press Enter.</p></div>
+  </div>
+  <p class="hint">Paste is <b>Ctrl+V</b> on Windows, <b>Cmd+V</b> on Mac. If Ctrl+V does nothing in PowerShell, right-click instead. That pastes too.</p>
+
+  <div class="outs">
+    <div class="out1"><b>Builds 1 &amp; 2</b><span>A landing page that sounds like you, not like AI</span></div>
+    <div class="out1"><b>Build 3</b><span>A checkout button wired to SaligPay, taking GCash, Maya and cards</span></div>
+    <div class="out1"><b>Builds 4 &amp; 5</b><span>Five emails that send themselves on their own schedule</span></div>
+  </div>
+</section>
+
+<!-- ============ BUILD 1 ============ -->
+<section id="b1">
+  <span class="eyebrow">Build one &middot; Do this first</span>
+  <h2 class="sec">Teach it your brand. Once.</h2>
+  <p class="lede">This is the step everybody wants to skip, and it is the one that decides whether everything else today
+  sounds like you or sounds like a robot. You do it once. Every build after this one inherits it.</p>
+
+  <div class="build">
+    <div class="bh"><span class="bno">1</span><div><h3>Give it your voice and your pegs</h3>
+      <p>Pegs are the accounts you wish you sounded like. Paste their actual captions, not their names.</p></div><span class="bmin">10 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p0">Copy</button></div>
+<pre id="p0">Before we build anything, learn how I sound.
+
+MY BUSINESS: <b>[what you sell, one sentence]</b>
+WHO BUYS FROM ME: <b>[describe them like a real person, not a "target market"]</b>
+MY PRICE RANGE: <b>[lowest and highest]</b>
+
+MY BRAND VOICE IN THREE WORDS: <b>[example: warm, direct, a bit cheeky]</b>
+
+THREE THINGS I ACTUALLY WROTE
+(captions, replies or messages I really sent. Not my best
+ones. My most normal ones.)
+1. <b>[paste one]</b>
+2. <b>[paste one]</b>
+3. <b>[paste one]</b>
+
+MY PEGS
+(accounts I wish I sounded like. Paste one real caption
+from each, and say what I like about it.)
+1. <b>[paste their caption]</b> — I like this because <b>[why]</b>
+2. <b>[paste their caption]</b> — I like this because <b>[why]</b>
+
+WORDS I NEVER WANT TO SEE: <b>[list three]</b>
+
+Now do three things:
+1. Write ten rules about how I write, based on what I
+   pasted above. Be specific. "Friendly" is not a rule.
+   "Uses lang and po, never uses exclamation marks" is.
+2. Tell me the difference between how I write and how my
+   pegs write, honestly.
+3. Save all of it to CLAUDE.md so you never ask me again.
+
+Then wait. I will give you real work next.</pre></div>
+    <div class="expect"><b>What you should see</b>Ten rules about your own writing, and an honest comparison with your pegs. Read the ten rules. If one of them is wrong about you, say so now and make it fix the file. Every build after this uses these rules.</div>
+    <p class="uhoh"><b>Do not skip the pegs.</b> Telling it "make it sound premium" does nothing. Showing it one real caption from someone premium does everything.</p>
+  </div>
+</section>
+
+<!-- ============ BUILD 2 ============ -->
+<section id="b2">
+  <span class="eyebrow">Build two</span>
+  <h2 class="sec">Your landing page.</h2>
+  <p class="lede">One page that says what you sell, who it is for, and what to do next. It already knows your voice
+  from build one, so you only have to give it the offer.</p>
+
+  <div class="build">
+    <div class="bh"><span class="bno">1</span><div><h3>Build the page</h3>
+      <p>Fill the brackets. Keep each line short.</p></div><span class="bmin">15 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p1">Copy</button></div>
+<pre id="p1">Now build my landing page, using the voice rules you
+saved in CLAUDE.md.
+
+THE OFFER: <b>[what they get, and the price]</b>
+PROOF: <b>[one real thing a customer said, or one real number]</b>
+WHAT I WANT THEM TO DO: <b>[book a call, message me, or buy now]</b>
+
+Build one file called index.html. No frameworks, no
+links to other websites, everything inside the one file.
+
+Rules:
+- Mobile first. Almost everyone will open this on a phone.
+- One button, repeated three times down the page.
+- Use only what I gave you. Do not invent claims,
+  testimonials, or numbers. If something is missing,
+  write NEEDED in capitals instead of guessing.
+- Follow my voice rules. Use my words, not marketing words.
+- Never write "unlock", "elevate", "seamless",
+  "revolutionize", or "in today's fast-paced world".
+
+Show me the file, open it in my browser, then tell me the
+one part you think is weakest and why.</pre></div>
+    <div class="expect"><b>What you should see</b>A plain, clear page that opens in your browser. It should sound like you, because it read your rules first. If it invented a testimonial you never gave it, tell it to delete that. That is the mistake it makes most often here.</div>
+  </div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">2</span><div><h3>Change one thing</h3>
+      <p>Never accept the first version. Nobody's first version is right.</p></div><span class="bmin">5 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p2">Copy</button></div>
+<pre id="p2">Change this one thing: <b>[the line you would never say out loud]</b>
+
+Do not rewrite the whole page. Change that one line, then
+tell me which other line on the page now sounds wrong next
+to it. Also add the fix to my voice rules in CLAUDE.md so
+you never write it that way again.</pre></div>
+  </div>
+</section>
+
+<!-- ============ BUILD 3 ============ -->
+<section id="b3">
+  <span class="eyebrow">Build three</span>
+  <h2 class="sec">Checkout, wired to SaligPay.</h2>
+  <p class="lede">This is the part you came for. Somewhere on your page where a person hands you money without
+  you opening a single screenshot.</p>
+
+  <p class="small mt"><b>Two ways to do this. Pick the one that matches what you already have.</b></p>
+  <div class="paths">
+    <div class="pth"><span class="tag">Path A</span><h4>I have SaligPay, or I am willing to sign up now</h4>
+      <p>The money lands on its own and you get told. Nothing to check by hand, ever.</p>
+      <p class="hint" style="margin-top:8px">Signing up today? Use code <kbd>GAyala0903</kbd></p>
+      <a href="#pathA">Go to Path A &darr;</a></div>
+    <div class="pth b"><span class="tag">Path B</span><h4>I only have a GCash or Maya QR</h4>
+      <p>Most of this room. Still works today, and it still gets you out of opening screenshots in Messenger.</p>
+      <a href="#pathB">Go to Path B &darr;</a></div>
+  </div>
+
+  <div class="build">
+    <div class="bh" id="pathA"><span class="bno">A</span><div><h3>Path A &middot; Get your payment link. Follow me on the screen.</h3>
+      <p>You need the link before the button can point anywhere. Do this part with me, step by step.</p></div><span class="bmin">10 min</span></div>
+    <ol class="clicks">
+      <li>Open <b>saligpay.com</b> in a new browser tab and sign up, or log in if you already have one.
+        <em>Use the email you actually check. They send the approval there.</em></li>
+      <li>When it asks for a referral code, use mine: <kbd>GAyala0903</kbd>
+        <em>That is my code. Use it so they know you came from this room.</em></li>
+      <li>Create a <b>payment link</b> for the thing you are selling.
+        <em>Give it the name a customer would recognise, and the exact price in pesos.</em></li>
+      <li>Choose which ways people can pay you. Turn on <b>GCash</b>, <b>Maya</b> and <b>cards</b>.
+        <em>Turn on everything you are comfortable with. The more options, the fewer people give up.</em></li>
+      <li><b>Copy the link.</b> Paste it into a note on your laptop so you do not lose it.
+        <em>It should start with https. If you can open it in a browser and see a payment page, it works.</em></li>
+      <li>If your account is <b>not approved yet</b>, that is normal. Write <kbd>PENDING</kbd> instead of a link and carry on.
+        <em>Your page still gets finished today. You drop the real link in the moment they approve you.</em></li>
+    </ol>
+    <div class="expect"><b>Before you move on</b>Open your own payment link on your phone. If you can see a payment screen, you are done with this step. That link is the only thing the next prompt needs.</div>
+  </div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">A</span><div><h3>Path A &middot; Wire the button to it</h3>
+      <p>This builds the checkout page and the thank-you page, and connects your landing page button to both.</p></div><span class="bmin">15 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p3">Copy</button></div>
+<pre id="p3">Now connect my page to my payment link.
+
+WHAT THEY ARE BUYING: <b>[the name a customer would use]</b>
+PRICE: <b>[amount in pesos]</b>
+MY SALIGPAY LINK: <b>[paste it, or write PENDING]</b>
+
+Make two more files next to index.html.
+
+checkout.html
+- Says what they are buying and the exact price
+- Says what happens after they pay, and how long it takes
+- Says which payment methods work: GCash, Maya, card, BillEase
+- One big button that opens MY SALIGPAY LINK in a new tab
+- If my link says PENDING, make the button grey, say
+  "Payment link coming soon", and do nothing when clicked,
+  so I can paste the real link in later without breaking it
+
+thanks.html
+- Confirms the payment went through
+- Tells them exactly what I will do next, and when
+- Gives them one way to reach me if something is wrong
+
+Then:
+- Point every button on index.html to checkout.html
+- Make all three pages look like the same business
+- Use my voice rules from CLAUDE.md on every page
+
+Show me all three files, then open checkout.html so I can
+click the button myself.</pre></div>
+    <div class="expect"><b>What you should see</b>Three pages that link together. Click the button yourself. It should open the real SaligPay payment screen. If it does, a stranger can now pay you.</div>
+    <p class="uhoh"><b>Test it properly.</b> Send yourself the link on Messenger and open it on your phone. Pay yourself one peso if your account is live. Everyone buys from you on a phone, so that is where it has to work.</p>
+  </div>
+
+  <div class="build">
+    <div class="bh" id="pathB"><span class="bno">B</span><div><h3>Path B &middot; You only have a QR</h3>
+      <p>Do this instead of Path A. Skip it entirely if you did Path A.</p></div><span class="bmin">25 min</span></div>
+
+    <p class="small">Here is the honest difference. With a payment link the money confirms itself. With a QR,
+    somebody still has to check. <b>But you are going to stop checking the way you do now.</b></p>
+    <p class="small mt">Right now you open Messenger, squint at a screenshot, scroll up to remember who it was, and
+    tick it off in your head. After this, you get a clean list: name, email, amount, reference number, all in rows.
+    Same checking, one tenth of the time, and nothing gets lost.</p>
+
+    <p class="small mt"><b>First, get your QR out of your phone and onto your laptop.</b></p>
+    <ol class="clicks">
+      <li>Open <b>GCash</b> or <b>Maya</b> on your phone and go to your <b>QR</b> screen.
+        <em>The one people scan to send you money. Not the one you use to pay other people.</em></li>
+      <li>Screenshot it, or save the QR image if the app lets you.</li>
+      <li>Send that image to yourself on Messenger, Viber or email, then open it on your laptop and save it.</li>
+      <li>Put the file in the <b>same folder as your index.html</b> and rename it <kbd>qr.png</kbd>.
+        <em>Not sure where that folder is? Ask your employee: "where is index.html saved, and how do I open that folder?"</em></li>
+      <li>Open the image on your laptop and check the QR is sharp and not cut off at the edges.
+        <em>A blurry QR is a lost sale. If it is fuzzy, screenshot it again with your phone brightness turned up.</em></li>
+    </ol>
+
+    <p class="small mt">Now build the page around it.</p>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p3b">Copy</button></div>
+<pre id="p3b">I do not have a payment link yet. I only have a GCash QR.
+Build my checkout around the QR instead.
+
+WHAT THEY ARE BUYING: <b>[the name a customer would use]</b>
+PRICE: <b>[exact amount in pesos]</b>
+MY QR IMAGE: qr.png, it is in this folder
+THE NAME THAT SHOWS WHEN THEY PAY ME: <b>[your GCash name]</b>
+LAST 4 DIGITS OF MY NUMBER: <b>[so they know it is the right person]</b>
+HOW LONG I TAKE TO CONFIRM: <b>[example: within 12 hours]</b>
+
+Build checkout.html with, in this order:
+
+1. What they are buying and the exact price, big, at the top
+2. My QR code from qr.png, big enough to scan off a laptop
+   screen with a phone
+3. My name and last 4 digits under it, so they can see they
+   are paying the right person before they send money
+4. Numbered instructions, written for someone who has never
+   done this: open GCash, tap scan, point at this code, send
+   the exact amount, screenshot the receipt
+5. Then a form, directly underneath, that asks for:
+   - their full name
+   - their email address
+   - the reference number on their GCash receipt
+   - the exact amount they sent
+
+Make that form work on Netlify:
+- on the form tag put name="payment-confirm", method="POST"
+  and data-netlify="true"
+- include the hidden form-name input that Netlify needs,
+  with the value payment-confirm
+- add action="/thanks.html" so they land on the thank-you
+  page after they submit
+- make every field required except nothing, they are all
+  required
+
+Then build thanks.html:
+- Confirms I have received their details
+- Says I will confirm their payment within the time above
+- Says what happens after that
+- Gives them one way to reach me if something goes wrong
+
+Point every button on index.html to checkout.html.
+Use my voice rules from CLAUDE.md on all three pages.
+
+Show me all three files, then open checkout.html so I can
+scan my own QR with my own phone and test it.</pre></div>
+    <div class="expect"><b>Test it yourself, properly</b>Scan your own QR with your own phone from the laptop screen. If it opens GCash with your name showing, it works. Then fill in your own form with a fake reference number and make sure you land on the thank-you page.</div>
+
+    <p class="small mt"><b>Last bit. Make it tell you when someone pays.</b></p>
+    <ol class="clicks">
+      <li>Publish the site first. Netlify forms only work once the page is live.
+        <em>Do the publish step below, then come back here.</em></li>
+      <li>In Netlify, open your site and find <b>Forms</b>.
+        <em>Your form appears here on its own after the first real submission. If you see payment-confirm listed, it is working.</em></li>
+      <li>Turn on <b>email notifications</b> and put in the email you actually check.
+        <em>Now every time someone pays, the details arrive in your inbox as text. Name, email, reference number, amount.</em></li>
+      <li>Open the form once a day and check the new rows against your GCash.
+        <em>That is the whole job now. A list, once a day, instead of thirty screenshots scattered across Messenger.</em></li>
+    </ol>
+    <p class="uhoh"><b>When you do get approved for a real payment link,</b> come back and tell your employee: <em>"swap the QR out for this payment link"</em> and paste it. It rebuilds the page in one step and you never touch the rest.</p>
+  </div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">&#9679;</span><div><h3>Everyone: publish it</h3>
+      <p>Same as this morning. It is not real until it has a link you can send.</p></div><span class="bmin">10 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p4">Copy</button></div>
+<pre id="p4">Publish all three pages the same way we published this
+morning. Walk me through it one step at a time and wait
+for me to say done before you move to the next step.
+
+When it is live, give me the URL and open it so I can
+check it on my phone.</pre></div>
+  </div>
+</section>
+
+<!-- ============ BUILD 4 ============ -->
+<section id="b4">
+  <span class="eyebrow">Build four</span>
+  <h2 class="sec">Write the five emails.</h2>
+  <p class="lede">Someone signs up. What happens next? Right now, usually nothing, because you got busy.
+  These five emails are what you would have sent if you had the time. Write them once, use them forever.</p>
+
+  <div class="build">
+    <div class="bh"><span class="bno">1</span><div><h3>Write the whole sequence</h3>
+      <p>It already knows your voice. You only need to give it the situation.</p></div><span class="bmin">15 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p5">Copy</button></div>
+<pre id="p5">Write my email sequence for someone who just signed up
+on my page. Use my voice rules from CLAUDE.md.
+
+WHAT THEY SIGNED UP FOR: <b>[the offer]</b>
+MY PRICE: <b>[amount]</b>
+THE REAL REASON THEY HESITATE: <b>[say it honestly, not politely]</b>
+WHAT I WANT THEM TO DO IN THE END: <b>[buy, book, or reply]</b>
+
+Write five emails:
+
+EMAIL 1, sent immediately  — the welcome
+  Thank them, confirm what they signed up for, tell them
+  exactly what happens next and when. No selling at all.
+
+EMAIL 2, two days later    — the objection
+  Answer the one thing actually stopping them. Name it
+  out loud instead of dancing around it.
+
+EMAIL 3, three days later  — the proof
+  One story or one real result. No pitch anywhere in this
+  email. None.
+
+EMAIL 4, three days later  — the offer
+  Ask for the sale plainly. One link. One price.
+
+EMAIL 5, three days later  — the close
+  The last one. Make it genuinely easy to say no, and mean it.
+
+Rules for all five:
+- Under 120 words each
+- Subject lines under 45 characters, no colons, lowercase
+  is fine if that is how I write
+- No "just checking in", no "circle back", no "I hope this
+  email finds you well"
+- Sound like my voice rules, not like a company
+
+Save them all to emails.md.
+Then show me EMAIL 2 only, and tell me why you wrote the
+subject line that way.</pre></div>
+    <div class="expect"><b>What you should see</b>A file with five emails. Read email 2 out loud to yourself. If it does not sound like you, do not rewrite it yourself. Tell it which line is wrong and make it fix the rule, exactly like yesterday.</div>
+  </div>
+</section>
+
+<!-- ============ BUILD 5 ============ -->
+<section id="b5">
+  <span class="eyebrow">Build five &middot; Follow me on the big screen</span>
+  <h2 class="sec">Make the emails send themselves.</h2>
+  <p class="lede">You have five emails sitting in a file. Right now they do nothing. This is where they become a
+  machine that runs while you are asleep. I am building this live. Follow along on your own screen, or just
+  watch and photograph, whichever you prefer.</p>
+
+  <div class="expect"><b>Read this first</b>This part happens in GoHighLevel, which is a paid tool. <b>You do not need it to have finished today.</b> Builds 1 to 4 and 6 are all yours already. If you do not have GHL, watch this one, take photos, and come back to it when you are ready. Nothing else today depends on it.</div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">1</span><div><h3>Make the place the emails live</h3>
+      <p>Before a workflow can send an email, the email has to exist as a template.</p></div><span class="bmin">10 min</span></div>
+    <ol class="clicks">
+      <li>Open your <b>Marketing</b> area, then <b>Emails</b>, then <b>Templates</b>.
+        <em>This is the folder where your saved emails live.</em></li>
+      <li>Create a new template. Name it exactly <kbd>01 Welcome</kbd>.
+        <em>Numbering them keeps them in order forever. Do this and thank yourself in six months.</em></li>
+      <li>Paste <b>Email 1</b> from your <b>emails.md</b> file into it. Paste the subject line too. Save.</li>
+      <li>Repeat for the other four. Name them <kbd>02 Objection</kbd>, <kbd>03 Proof</kbd>, <kbd>04 Offer</kbd>, <kbd>05 Close</kbd>.
+        <em>Five templates. This is the boring part and it takes ten minutes. Do it now and the rest is easy.</em></li>
+    </ol>
+  </div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">2</span><div><h3>Build the workflow</h3>
+      <p>A workflow is just: when this happens, do these things, in this order.</p></div><span class="bmin">20 min</span></div>
+    <ol class="clicks">
+      <li>Go to <b>Automation</b>, then <b>Workflows</b>, then create a new one and start from scratch.
+        <em>Name it after the offer, not after the tool. "Free blueprint signups", not "Workflow 1".</em></li>
+      <li>Add the <b>Trigger</b>. Choose <b>Form Submitted</b> and pick the form on your landing page.
+        <em>The trigger is the thing that wakes the machine up. Nothing runs until this happens.</em></li>
+      <li>Add an <b>Action</b>. Choose <b>Add Tag</b>. Type a tag like <kbd>lead-blueprint</kbd>.
+        <em>A tag is a sticker on a person. Later you can find everyone with that sticker in one click.</em></li>
+      <li>Add an <b>Action</b>. Choose <b>Send Email</b>. Pick <kbd>01 Welcome</kbd>.
+        <em>This one has no wait before it. It goes out the second they sign up, while they still remember you.</em></li>
+      <li>Add a <b>Wait</b>. Set it to <b>2 days</b>.
+        <em>Wait means exactly that. The machine pauses, then carries on by itself.</em></li>
+      <li>Add <b>Send Email</b> &rarr; <kbd>02 Objection</kbd>. Then <b>Wait 3 days</b>.</li>
+      <li>Add <b>Send Email</b> &rarr; <kbd>03 Proof</kbd>. Then <b>Wait 3 days</b>.</li>
+      <li>Add <b>Send Email</b> &rarr; <kbd>04 Offer</kbd>. Then <b>Wait 3 days</b>.</li>
+      <li>Add <b>Send Email</b> &rarr; <kbd>05 Close</kbd>.
+        <em>That is the whole sequence. Nine steps and it runs for eleven days without you.</em></li>
+      <li>Turn the workflow from <b>Draft</b> to <b>Publish</b>.
+        <em>If you forget this, nothing sends. This is the single most common mistake, including by people who have done it before.</em></li>
+    </ol>
+    <div class="expect"><b>Test it before you trust it</b>Fill in your own form with your own email address. Email 1 should land in your inbox within a minute or two. If it does not, the workflow is still in Draft, or the trigger is pointing at a different form.</div>
+  </div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">3</span><div><h3>Stop emailing people who already bought</h3>
+      <p>The most embarrassing mistake in automation, and the easiest to prevent.</p></div><span class="bmin">5 min</span></div>
+    <ol class="clicks">
+      <li>In the same workflow, open the <b>Settings</b> and find <b>Remove from workflow</b> conditions.</li>
+      <li>Set it so anyone who gets the tag <kbd>customer</kbd> drops out of this sequence immediately.
+        <em>Otherwise someone who paid you on Tuesday still gets "are you still interested" on Friday.</em></li>
+      <li>Then make a second, tiny workflow: when a payment succeeds, <b>add tag</b> <kbd>customer</kbd>.
+        <em>Two steps. That is the whole thing, and it saves you a very awkward message one day.</em></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ BUILD 6 ============ -->
+<section id="b6">
+  <span class="eyebrow">Build six</span>
+  <h2 class="sec">Your ads.</h2>
+  <p class="lede">You have a live page that takes money. Now something has to send people to it. Your employee already
+  knows your voice and your pegs, so this part is fast.</p>
+
+  <div class="build">
+    <div class="bh"><span class="bno">1</span><div><h3>Write the ads</h3>
+      <p>No need to paste your captions again. It saved them in build one.</p></div><span class="bmin">15 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p6">Copy</button></div>
+<pre id="p6">Write my ads. They send people to the page we built.
+
+WHO I WANT TO REACH: <b>[describe one real person, not a market]</b>
+WHAT STOPS THEM BUYING: <b>[the real objection]</b>
+MY BUDGET FOR THE FIRST TEST: <b>[amount, be honest, small is fine]</b>
+
+Use my voice rules and my pegs from CLAUDE.md.
+
+Give me:
+- 5 hooks. First line only. Five completely different
+  angles, not five versions of one idea.
+- 3 full captions under 120 words, in my voice.
+- For each caption, one line describing the photo or
+  video that goes with it.
+
+Rules:
+- If my real captions have no emojis, use none.
+- Never open with "Are you tired of" or "Imagine if".
+- Do not use words I never use.
+
+Then tell me which of the 5 hooks you would spend my
+money on first, and why. Be blunt.</pre></div>
+    <div class="expect"><b>What you should see</b>Five hooks that genuinely differ. If they all sound the same, the three captions you gave it in build one were too similar. Give it a rougher one, something you posted at 11pm, and run it again.</div>
+  </div>
+
+  <div class="build">
+    <div class="bh"><span class="bno">2</span><div><h3>Save everything</h3>
+      <p>Last prompt of the workshop.</p></div><span class="bmin">5 min</span></div>
+    <div class="term"><div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tname">paste into claude</span><button class="mini" data-copy="p7">Copy</button></div>
+<pre id="p7">Update CLAUDE.md with everything from today: my offer,
+my price, my payment link, my voice rules, my pegs, the
+words I never use, and what we learned while building.
+
+Keep it under 600 words. Then show me the file and tell
+me the one thing you still do not know about my business
+that would make your work better.</pre></div>
+    <p class="uhoh"><b>This file is why next week is faster than today.</b> Without it you start explaining yourself from zero every time.</p>
+  </div>
+</section>
+
+<!-- ============ WATCH ============ -->
+<section id="watch">
+  <span class="eyebrow">On the big screen</span>
+  <h2 class="sec">What I am doing while you build.</h2>
+  <p class="lede">These are the tools I actually run my business on. Nothing you built today depends on them.
+  I am showing you where this goes once one page is not enough.</p>
+  <div class="watch">
+    <div class="w1"><span class="tag">GoHighLevel</span><h4>The same page, but connected</h4>
+      <p>Form on the page, tag on the person, email fires on its own, opportunity lands in a pipeline I can actually see.</p></div>
+    <div class="w1"><span class="tag">GoHighLevel</span><h4>The workflow, built from empty</h4>
+      <p>Build five, live, from a blank screen to a published sequence. This is the one to photograph.</p></div>
+    <div class="w1"><span class="tag">SaligPay</span><h4>Where the money lands</h4>
+      <p>Real payments arriving, and why I stopped opening GCash screenshots two years ago.</p></div>
+    <div class="w1"><span class="tag">Meta Ads Manager</span><h4>An ad going live, for real</h4>
+      <p>One of my own captions, put behind real money, on a live account, in front of you. Real numbers, nothing staged.</p></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <span class="eyebrow">Ask me any of these out loud</span>
+  <h2 class="sec">Questions, answered plainly.</h2>
+  <p class="lede">Thirty of them. If yours is not here, put your hand up and it goes on the list.</p>
+
+  <details><summary>What even is the terminal? It looks scary.</summary>
+    <div class="ans"><p>It is just a box where you type instead of click. That is genuinely all it is.</p>
+    <p>You are used to telling a computer what to do by clicking buttons. In the terminal you tell it by typing words. Nothing is going to break. You cannot damage your laptop by typing in it.</p>
+    <p>Think of it like texting your computer instead of poking it.</p></div></details>
+
+  <details><summary>What is Claude Code, and how is it different from ChatGPT?</summary>
+    <div class="ans"><p>ChatGPT talks to you. Claude Code does things for you.</p>
+    <p>ChatGPT can write you the text of a webpage, and then you have to copy it, paste it somewhere, and save it yourself. Claude Code makes the actual file, on your actual laptop, and puts it where it belongs.</p>
+    <p>One gives you words. The other gives you a finished thing.</p></div></details>
+
+  <details><summary>Do I really need to pay for Claude?</summary>
+    <div class="ans"><p>Yes. Claude Code does not run on the free plan.</p>
+    <p>This should have been said clearly in the email before the workshop, and it was not. That is our mistake and we are sorry for the time it cost you yesterday.</p></div></details>
+
+  <details><summary>I ran out of usage. Is my day over?</summary>
+    <div class="ans"><p>No. Three options, all fine.</p>
+    <p>Sit next to someone who still has usage and do it on their screen. Or fill in all the brackets on paper now and run the prompts tonight when your limit resets. Or watch me and photograph everything.</p>
+    <p>This page does not expire. Every prompt here works just as well next Tuesday.</p></div></details>
+
+  <details><summary>It says <code>command not found</code>. What did I break?</summary>
+    <div class="ans"><p>Nothing. It just means the computer cannot find the program yet.</p>
+    <p>Usually the terminal was opened before the install finished. Close the terminal window completely, open a brand new one, and type <code>claude</code> again.</p>
+    <p>If it still says that, put your hand up. Do not spend your build time on this alone. That is what we are here for.</p></div></details>
+
+  <details><summary>Where did my file actually go? I cannot find it.</summary>
+    <div class="ans"><p>Ask it. Seriously, just type this:</p>
+    <p><code>where exactly is the file you just made, and how do I open that folder on my computer?</code></p>
+    <p>It will tell you the exact location and how to get there. You are not supposed to know this by heart.</p></div></details>
+
+  <details><summary>What is a tag?</summary>
+    <div class="ans"><p>A sticker you put on a person.</p>
+    <p>If you put the sticker <code>lead-blueprint</code> on everyone who downloads your freebie, then later you can find all of those people in one click and send them something.</p>
+    <p>Without tags, everyone in your list is just a name and you can never tell them apart.</p></div></details>
+
+  <details><summary>What is a workflow?</summary>
+    <div class="ans"><p>A list of instructions that runs by itself.</p>
+    <p>It is always the same shape: <b>when this happens, do these things, in this order</b>.</p>
+    <p>When someone fills in my form, put a sticker on them, send them a welcome email, wait two days, send another one. You set it up once. It then does that for every single person, forever, including at 3am while you are asleep.</p></div></details>
+
+  <details><summary>What is a trigger?</summary>
+    <div class="ans"><p>The thing that wakes the workflow up.</p>
+    <p>Nothing happens until the trigger happens. Ours is "someone filled in my form". Until somebody does that, your workflow just sits there quietly.</p></div></details>
+
+  <details><summary>Do I need GoHighLevel to finish today?</summary>
+    <div class="ans"><p>No. Builds 1, 2, 3, 4 and 6 are all yours without it.</p>
+    <p>GHL is a paid monthly tool that I use to run mine. I am showing build 5 so you know what the next step looks like when one page is not enough. Watch it, photograph it, come back to it when you are ready.</p></div></details>
+
+  <details><summary>I only have a GCash QR. Is that okay?</summary>
+    <div class="ans"><p>Completely okay. Most of this room is in the same place. Do <b>Path B</b> in build 3.</p>
+    <p>You will still check payments by hand, but not the way you do now. Instead of opening screenshots in Messenger one at a time, you get a tidy list with the name, the email, the amount and the reference number, and your customer gets sent to a proper thank-you page instead of waiting for you to reply "received po".</p>
+    <p>When you eventually get a real payment link, you swap it in with one sentence and keep everything else.</p></div></details>
+
+  <details><summary>What is a reference number and why am I asking for it?</summary>
+    <div class="ans"><p>It is the long number on the GCash receipt after someone sends money. Every payment has a different one.</p>
+    <p>You ask for it because it is the one thing that proves which payment is theirs. Two people can send you the same amount on the same day. Only the reference number tells them apart.</p>
+    <p>It also means you never need them to send you a picture again.</p></div></details>
+
+  <details><summary>When can I actually receive money?</summary>
+    <div class="ans"><p>Your page is finished today. Your SaligPay account has to be approved before real money can land, and that takes a few working days.</p>
+    <p>So: build the page now with the link set to <code>PENDING</code>. The moment they approve you, paste the real link in. Nothing breaks and you do not rebuild anything.</p>
+    <p>We file your application together in this room, so the only thing you are waiting on is them, not yourself.</p>
+    <p>If you are signing up to SaligPay today, use my referral code <code>GAyala0903</code>.</p></div></details>
+
+  <details><summary>My page looks plain. Can it look nicer?</summary>
+    <div class="ans"><p>Yes, but not yet.</p>
+    <p>Get the words right first, publish it, then make it pretty. A beautiful page that says nothing sells nothing.</p>
+    <p>When you are ready, try: <code>make this look more premium. Same words, do not change any of the copy.</code></p></div></details>
+
+  <details><summary>Can I do this on my phone?</summary>
+    <div class="ans"><p>No, it needs a laptop.</p>
+    <p>If you did not bring one, pair up with the person next to you and do it on theirs. Then rebuild your own at home with this page open beside you.</p></div></details>
+
+  <details><summary>Can I write in Tagalog or Taglish?</summary>
+    <div class="ans"><p>Yes, and you should if that is how you actually talk to your customers.</p>
+    <p>Paste your real Taglish captions in build 1. It will pick up that you mix, where you mix, and which words you use. Then tell it plainly: <code>write my page in Taglish, the same way I wrote those captions</code>.</p>
+    <p>Do not translate yourself into formal English. You will sound like a different business, and your buyers will feel it.</p></div></details>
+
+  <details><summary>I do not have any captions yet. I am just starting.</summary>
+    <div class="ans"><p>Then use messages instead. Open Messenger, find the last three times you explained your business to a real person, and paste those.</p>
+    <p>That is better material than captions anyway, because it is how you talk when you are not performing.</p>
+    <p>No messages either? Record yourself on your phone explaining what you sell for sixty seconds, type out roughly what you said, and paste that.</p></div></details>
+
+  <details><summary>Is it safe to put my QR code on a website? Baka ma-scam ako.</summary>
+    <div class="ans"><p>Your receive-money QR is safe to show. It only lets people <b>send</b> you money. Nobody can take money out with it.</p>
+    <p>It is the same QR you would tape to your counter or post in a group. Shops do it every day.</p>
+    <p>What you must never share is your <b>MPIN</b>, your <b>OTP</b>, or a screenshot of your balance. Nobody legitimate will ever ask for those, including us.</p></div></details>
+
+  <details><summary>What if someone pays the wrong amount?</summary>
+    <div class="ans"><p>You will see it, because your form asks them to type the amount they sent, and you check that against your GCash.</p>
+    <p>If it is short, message them. If it is over, refund the difference. Either way you have their name, email and reference number on one row, so it takes a minute instead of an afternoon of scrolling.</p></div></details>
+
+  <details><summary>What if they pay but do not fill in the form?</summary>
+    <div class="ans"><p>It happens. You will still see the payment in GCash, you just will not know who it was from.</p>
+    <p>Two things that stop most of it. Put the instruction <b>right under the QR</b>, not at the bottom. And make the last line say something like <i>"we cannot confirm your order until you fill this in"</i>, because that is true and people read warnings.</p></div></details>
+
+  <details><summary>Can I use my own domain, like mybusiness.com?</summary>
+    <div class="ans"><p>Yes. Today your page has a free address that ends in netlify.app. That works perfectly well and you can send it to anyone.</p>
+    <p>When you are ready, you buy a domain for roughly a thousand pesos a year and point it at the same page. Nothing gets rebuilt.</p>
+    <p>Do not do this today. Get the page working first.</p></div></details>
+
+  <details><summary>Can I use my own logo, my own photos, my own colours?</summary>
+    <div class="ans"><p>Yes, all three.</p>
+    <p>Put your logo and photos in the same folder as index.html, then say: <code>use logo.png at the top and photo1.jpg in the middle section</code>.</p>
+    <p>For colours: <code>use these colours: [paste your hex codes, or just say "dark green and cream"]</code>.</p>
+    <p>Do it after the words are right, not before.</p></div></details>
+
+  <details><summary>Will my emails land in spam?</summary>
+    <div class="ans"><p>Some will at first. Everyone's do. It is not something you did wrong.</p>
+    <p>Three things that help a lot. Send from a real business email, not a brand new free one. Do not put a link in the very first email. And do not write like an advertisement, which is exactly why we made them sound like you.</p>
+    <p>Send email 1 to yourself first and check where it lands before you switch the workflow on.</p></div></details>
+
+  <details><summary>Can it send SMS instead? Mas binabasa ang text.</summary>
+    <div class="ans"><p>Yes, but not today and not for free. Sending SMS costs money per message and needs a separate setup.</p>
+    <p>Get the emails working first. They cost nothing. Add SMS later once you actually have people coming in.</p></div></details>
+
+  <details><summary>Does Claude see my client information? Is my data private?</summary>
+    <div class="ans"><p>Be sensible. Whatever you paste into the terminal gets sent to Anthropic's servers to be processed, the same as anything you type into ChatGPT.</p>
+    <p>So: never paste passwords, card numbers, OTPs, or a client's ID documents. Not into this, not into any AI tool.</p>
+    <p>Pasting your own captions, your own prices and your own draft messages is fine. If you handle someone else's customer data under an agreement, check that agreement before you paste it anywhere.</p></div></details>
+
+  <details><summary>Do I need a business permit or BIR registration to take payments?</summary>
+    <div class="ans"><p>Eventually yes, if you are running a business properly. That is a real requirement and not something to guess about.</p>
+    <p>It is also not what today is for, and I am not the right person to advise you on it. Talk to an accountant about your own situation.</p>
+    <p>Nothing you built today stops working while you sort that out.</p></div></details>
+
+  <details><summary>If I close my laptop, do I lose everything?</summary>
+    <div class="ans"><p>No. The files are saved on your laptop, in the folder, like any other file.</p>
+    <p>The <b>conversation</b> ends when you close the terminal. That is why build 1 saves your voice rules to CLAUDE.md and build 6 saves everything else. Those files stay, and your employee reads them next time.</p>
+    <p>And once you publish, the page lives online whether your laptop is open or not.</p></div></details>
+
+  <details><summary>Do I need internet for this?</summary>
+    <div class="ans"><p>Yes. Your employee thinks on the internet, so it needs a connection to answer you.</p>
+    <p>The page it builds works offline once it is made, but building it and publishing it both need wifi.</p></div></details>
+
+  <details><summary>How much should I spend on my first ad?</summary>
+    <div class="ans"><p>Small. Enough to learn, not enough to hurt.</p>
+    <p>Run one hook for a few days on a budget you would not mind losing entirely, because you probably will. You are buying information, not sales, on the first one.</p>
+    <p>What you are looking for is which hook people stop on. Then you put the money behind that one.</p></div></details>
+
+  <details><summary>Can I do this for my clients and charge for it?</summary>
+    <div class="ans"><p>For your own business, obviously yes, build as many as you want.</p>
+    <p>If you want to do it for clients, understand that the building is the easy half. The hard half is knowing what to build, holding the client to a deadline, and fixing it when it breaks at 9pm. That is the part that takes years.</p>
+    <p>Come talk to me about it rather than guessing. There is a way to do this properly.</p></div></details>
+
+  <details><summary>I am completely lost and everyone else looks fine.</summary>
+    <div class="ans"><p>They are not fine. Half this room is pretending.</p>
+    <p>Put your hand up. That is literally what we are here for, and one question out loud usually saves five other people who were too shy to ask.</p>
+    <p>If you would rather not ask in front of everyone, catch one of the team at the side. Same answer, no audience.</p></div></details>
+
+  <details><summary>Will this page still be here tomorrow?</summary>
+    <div class="ans"><p>Yes. Bookmark it right now, before you forget.</p>
+    <p>Everything here still works next week, next month, and the first time you want to build a second page.</p></div></details>
+</section>
+
+<!-- ============ FREEBIE ============ -->
+<section id="free">
+  <span class="eyebrow">Yours, free</span>
+  <h2 class="sec">Take my two blueprints.</h2>
+  <div class="free">
+    <h3>The Content Engine and the Lead Engine</h3>
+    <p>The two systems I actually run, written out so you can rebuild them yourself.</p>
+    <ul>
+      <li><b>Content Engine blueprint</b> &mdash; how one idea becomes a week of posts without me ever starting from blank</li>
+      <li><b>Lead Engine blueprint</b> &mdash; how leads get found, sorted and followed up before they ever reach me</li>
+    </ul>
+    <form id="freeform" autocomplete="on" novalidate>
+      <div class="frow">
+        <input id="fname" name="name" type="text" placeholder="Your name" required>
+        <input id="femail" name="email" type="email" placeholder="Your email" required>
+        <button class="btn" type="submit" id="freebtn">Send them to me</button>
+      </div>
+    </form>
+    <div class="fmsg" id="fmsg"></div>
+    <div class="fallback" id="ffallback">
+      <p>Screenshot this and send it to me, or read it out to one of the team.</p>
+      <span class="val" id="fval"></span>
+      <button class="btn" id="fcopy" type="button">Copy my details</button>
+    </div>
+    <p class="note">Put in the email you actually check. They go out tonight, to everyone in this room, and nothing else after that.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  From Operator to Orchestrator, Batch 2 &middot; Day 2 &middot; Gwen Ayala, Systems &amp; Lead Engine
+</div></footer>
+
+</main>
+</div>
+</div>
+
+<script>
+(function(){
+  var isMac=/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent);
+
+  // ---- password gate
+  var PW='orchestrator', OPEN='bim.open';
+  function openPage(){
+    document.getElementById('gate').style.display='none';
+    document.getElementById('page').style.display='block';
+    window.scrollTo(0,0);
+  }
+  function unlock(){
+    var v=document.getElementById('pw').value.trim().toLowerCase();
+    if(v===PW){
+      try{ localStorage.setItem(OPEN,'1'); }catch(e){}
+      openPage();
+    } else {
+      document.getElementById('err').textContent='Not that one. It is on the screen in the room.';
+      document.getElementById('pw').select();
+    }
+  }
+  document.getElementById('go').addEventListener('click', unlock);
+  document.getElementById('pw').addEventListener('keydown', function(e){ if(e.key==='Enter') unlock(); });
+  try{ if(localStorage.getItem(OPEN)==='1') openPage(); }catch(e){}
+  function legacyCopy(t){
+    var ta=document.createElement('textarea');
+    ta.value=t; ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0,t.length);
+    var ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta); return ok;
+  }
+  function selectNode(el){
+    try{ var r=document.createRange(); r.selectNodeContents(el);
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){}
+  }
+  function copyText(t,node,done){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){done(true);},
+        function(){ done(legacyCopy(t) || (selectNode(node),false)); });
+    } else { done(legacyCopy(t) || (selectNode(node),false)); }
+  }
+  document.querySelectorAll('.mini').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.dataset.copy);
+      var o=b.dataset.label||b.textContent; b.dataset.label=o;
+      copyText(el.textContent, el, function(ok){
+        b.textContent = ok ? 'Copied' : (isMac?'Cmd':'Ctrl')+'+C';
+        setTimeout(function(){ b.textContent=o; }, ok?1500:3000);
+      });
+    });
+  });
+  document.querySelectorAll('.ck').forEach(function(c){
+    c.addEventListener('click',function(){ c.classList.toggle('on'); });
+  });
+
+  // ---------------------------------------------------------------
+  // FREEBIE SIGNUP
+  // Paste the three values from your Google Form here and it goes live.
+  // Leave them empty and the form still works: it shows the person their
+  // details to screenshot instead, so nothing ever looks broken.
+  // ---------------------------------------------------------------
+  var FREEBIE = {
+    endpoint  : "",   // https://docs.google.com/forms/d/e/XXXXXXXX/formResponse
+    nameField : "",   // entry.0000000000
+    emailField: ""    // entry.0000000000
+  };
+
+  var form=document.getElementById('freeform'),
+      fname=document.getElementById('fname'),
+      femail=document.getElementById('femail'),
+      fbtn=document.getElementById('freebtn'),
+      fmsg=document.getElementById('fmsg'),
+      fback=document.getElementById('ffallback'),
+      fval=document.getElementById('fval');
+
+  function say(t, cls){ fmsg.textContent=t; fmsg.className='fmsg '+(cls||''); }
+
+  function showFallback(n,e){
+    fval.textContent = n + '  |  ' + e;
+    fback.classList.add('show');
+    say('Saved on this page. Screenshot the box below so I definitely get you.', 'ok');
+  }
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var n=fname.value.trim(), e=femail.value.trim();
+    if(!n){ say('Your name first.', 'bad'); fname.focus(); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ say('That email does not look right. Check it.', 'bad'); femail.focus(); return; }
+
+    // remember it on this device so a refresh does not lose them
+    try{ localStorage.setItem('ptw.free', JSON.stringify({n:n,e:e})); }catch(err){}
+
+    if(!FREEBIE.endpoint){ showFallback(n,e); return; }
+
+    fbtn.disabled=true; fbtn.textContent='Sending...';
+    var body=new FormData();
+    body.append(FREEBIE.nameField, n);
+    body.append(FREEBIE.emailField, e);
+    fetch(FREEBIE.endpoint, {method:'POST', mode:'no-cors', body:body})
+      .then(function(){
+        form.style.display='none';
+        say('Got it, ' + n.split(' ')[0] + '. Both blueprints land in your inbox tonight.', 'ok');
+      })
+      .catch(function(){
+        fbtn.disabled=false; fbtn.textContent='Send them to me';
+        showFallback(n,e);
+      });
+  });
+
+  document.getElementById('fcopy').addEventListener('click', function(){
+    var b=this;
+    copyText(fval.textContent, fval, function(ok){
+      b.textContent = ok ? 'Copied' : (isMac?'Cmd':'Ctrl')+'+C';
+      setTimeout(function(){ b.textContent='Copy my details'; }, 2000);
+    });
+  });
+
+  // if they already signed up on this device, do not make them type it twice
+  try{
+    var prev=JSON.parse(localStorage.getItem('ptw.free')||'null');
+    if(prev && prev.e){ fname.value=prev.n; femail.value=prev.e;
+      say('You already entered these. Send again if you are not sure it went through.'); }
+  }catch(err){}
+})();
+</script>
+</body>
+</html>
