@@ -356,7 +356,7 @@ main{position:relative;z-index:1}
 .panel,.hero{background:transparent}
 
 /* ---------- hero: huge type, glass A standing in it ---------- */
-.a-hero{align-items:flex-start;text-align:left;--a-x:75%}
+.a-hero{align-items:flex-start;text-align:left;--a-x:84%}   /* right of the headline, not over it (Owner 2026-09-27) */
 .a-hero>.eyebrow{position:relative;z-index:4}
 .a-title{position:relative;z-index:1;font-family:var(--font-display);font-weight:700;
   font-variation-settings:"wdth" 112;font-size:var(--a-title);line-height:.86;letter-spacing:-.058em}
@@ -1593,7 +1593,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
      CALM: the Owner's switch; stops loops, clips and CSS animation
      ====================================================================== */
   const calm = D.querySelector('[data-calm]');
-  try { if (localStorage.getItem('avas-motion') === 'calm') H.dataset.motion = 'calm'; } catch (_) {}
+  try { if (localStorage.getItem('avas-calm') === 'calm') H.dataset.motion = 'calm'; } catch (_) {}   // a new key: the old site's saved 'calm' no longer carries over (Owner 2026-09-27: motion on by default)
   if (calm) {
     const paint = () => {
       const on = AV.calm();
@@ -1603,7 +1603,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     paint();
     calm.addEventListener('click', () => {
       H.dataset.motion = AV.calm() ? 'full' : 'calm';
-      try { localStorage.setItem('avas-motion', H.dataset.motion); } catch (_) {}
+      try { localStorage.setItem('avas-calm', H.dataset.motion); } catch (_) {}
       paint();
       if (AV.calm()) clips.forEach(v => v.pause());
       D.dispatchEvent(new CustomEvent('av:calm'));
