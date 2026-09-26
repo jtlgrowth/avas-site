@@ -182,13 +182,23 @@ button{font:inherit;color:inherit}
   padding:26px var(--pad);border-top:1px solid var(--hair);
   font-size:13px;color:var(--faint);
 }
-@media (max-width:760px){
+@media (max-width:900px){
+  /* the JTL lock badge widened this row enough that the old 760px cutoff
+     let it overflow at 768px (solo-review 2026-09-27, CONCERN). */
   .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
   .foot__sp{flex-basis:100%;height:0}
   .foot a{overflow-wrap:anywhere}
 }
 .foot__sp{flex:1}
 .foot a:hover{color:var(--espresso)}
+.jtl-lock{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:13px;
+  padding:6px 12px 6px 6px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--hair);
+  transition:box-shadow .3s}
+.jtl-lock svg{width:24px;height:24px;padding:5px;border-radius:50%;background:var(--ink);color:var(--panel);flex:none}
+.jtl-lock b{font-weight:700}
+.jtl-lock small{color:var(--muted);font-size:11px}
+.jtl-lock:hover{box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink)}
+@media (max-width:900px){.jtl-lock small{display:none}}
 
 /* the wrap panel: a hero that lives inside the track, so it takes the panel's
    box and drops the page section's own sizing */
@@ -392,6 +402,8 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <a href="/work">Work</a>
     <a href="/about">About</a>
     <a href="/quiz">Quiz</a>
+    <a href="/how/">How it works</a>
+    <a href="/team/">Team</a>
   </nav>
   <span class="top__sp"></span>
   <details class="top__menu">
@@ -402,6 +414,8 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       <a href="/work">Work</a>
       <a href="/about">About</a>
       <a href="/quiz">Quiz</a>
+      <a href="/how/">How it works</a>
+      <a href="/team/">Team</a>
       <a href="/book">Book a call</a>
     </div>
   </details>
@@ -506,11 +520,16 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   <a href="/terms">Terms</a>
   <span aria-hidden="true">&middot;</span>
   <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+  <span aria-hidden="true">&middot;</span>
+  <a class="jtl-lock" href="https://jtlgrowth.com" target="_blank" rel="noopener" aria-label="Powered by JTL Growth">
+    <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg>
+    <span><small>Powered by</small> <b>JTL Growth</b></span>
+  </a>
 </footer>
 
 <aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
-  <p class="consent__p">This page keeps two settings on your device: whether the keyboard sounds are on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <p class="consent__p">This page keeps two settings on your device: whether the music is on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
   <details class="consent__more">
     <summary>What that actually means</summary>
     <ul>
@@ -557,5 +576,6 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 })();
 </script>
 
+<script src="/assets/faq-widget.js" data-endpoint="https://portal.ayalavirtualassistance.site/api/public/faq" defer></script>
 </body>
 </html>

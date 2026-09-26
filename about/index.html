@@ -182,13 +182,23 @@ button{font:inherit;color:inherit}
   padding:26px var(--pad);border-top:1px solid var(--hair);
   font-size:13px;color:var(--faint);
 }
-@media (max-width:760px){
+@media (max-width:900px){
+  /* the JTL lock badge widened this row enough that the old 760px cutoff
+     let it overflow at 768px (solo-review 2026-09-27, CONCERN). */
   .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
   .foot__sp{flex-basis:100%;height:0}
   .foot a{overflow-wrap:anywhere}
 }
 .foot__sp{flex:1}
 .foot a:hover{color:var(--espresso)}
+.jtl-lock{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:13px;
+  padding:6px 12px 6px 6px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--hair);
+  transition:box-shadow .3s}
+.jtl-lock svg{width:24px;height:24px;padding:5px;border-radius:50%;background:var(--ink);color:var(--panel);flex:none}
+.jtl-lock b{font-weight:700}
+.jtl-lock small{color:var(--muted);font-size:11px}
+.jtl-lock:hover{box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink)}
+@media (max-width:900px){.jtl-lock small{display:none}}
 
 /* the wrap panel: a hero that lives inside the track, so it takes the panel's
    box and drops the page section's own sizing */
@@ -392,6 +402,8 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <a href="/work">Work</a>
     <a href="/about" aria-current="page">About</a>
     <a href="/quiz">Quiz</a>
+    <a href="/how/">How it works</a>
+    <a href="/team/">Team</a>
   </nav>
   <span class="top__sp"></span>
   <details class="top__menu">
@@ -402,6 +414,8 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       <a href="/work">Work</a>
       <a href="/about">About</a>
       <a href="/quiz">Quiz</a>
+      <a href="/how/">How it works</a>
+      <a href="/team/">Team</a>
       <a href="/book">Book a call</a>
     </div>
   </details>
@@ -442,7 +456,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 
 <section class="sec" id="about-crew">
   <h2 class="sec__h">The crew</h2>
-  <div class="grid grid--3">
+  <div class="grid grid--4">
     <div class="card">
       <div class="card__row"><span class="card__mark">GA</span><span class="card__k">On shift</span></div>
       <h3>Gwen Ayala</h3>
@@ -452,14 +466,14 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <div class="card">
       <div class="card__row"><span class="card__mark">JJ</span><span class="card__k">On shift</span></div>
       <h3>Jamz Jamorol</h3>
-      <p class="card__k" style="margin:-4px 0 8px">Operations Manager</p>
-      <p>If a workflow breaks at 2am, he's usually already fixed it by the time anyone else notices.</p>
+      <p class="card__k" style="margin:-4px 0 8px">Co-founder, COO</p>
+      <p>Builds the systems the whole team runs on. If a workflow breaks at 2am, he has usually fixed it before anyone notices.</p>
     </div>
     <div class="card">
       <div class="card__row"><span class="card__mark">NB</span><span class="card__k">On shift</span></div>
       <h3>Nicolle Bararodin</h3>
-      <p class="card__k" style="margin:-4px 0 8px">Content Director</p>
-      <p>Writes and designs like she's talking to one real customer, never a crowd.</p>
+      <p class="card__k" style="margin:-4px 0 8px">Operations Manager</p>
+      <p>Owns the schedule for every client, so work lands when it was promised, not when someone remembers.</p>
     </div>
     <div class="card">
       <div class="card__row"><span class="card__mark">MF</span><span class="card__k">On shift</span></div>
@@ -476,8 +490,20 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <div class="card">
       <div class="card__row"><span class="card__mark">KC</span><span class="card__k">On shift</span></div>
       <h3>Kat Costa</h3>
-      <p class="card__k" style="margin:-4px 0 8px">Publishing Head</p>
-      <p>Keeps every post, page, and send on schedule, so nothing goes out late on her watch.</p>
+      <p class="card__k" style="margin:-4px 0 8px">GHL Specialist</p>
+      <p>Builds your funnels, pipelines and automations in GHL, so no lead sits waiting for a reply.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">RV</span><span class="card__k">On shift</span></div>
+      <h3>Rufin Vamenta</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Video Editor Specialist</p>
+      <p>Turns raw footage into the reel you post tomorrow, cut and ready before you wake up.</p>
+    </div>
+    <div class="card">
+      <div class="card__row"><span class="card__mark">A</span><span class="card__k">On shift</span></div>
+      <h3>Aira</h3>
+      <p class="card__k" style="margin:-4px 0 8px">Publishing and Caption Writing Specialist</p>
+      <p>Writes the captions and runs the publishing board, so what you see on the calendar is what goes live.</p>
     </div>
   </div>
 </section>
@@ -538,11 +564,16 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   <a href="/terms">Terms</a>
   <span aria-hidden="true">&middot;</span>
   <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+  <span aria-hidden="true">&middot;</span>
+  <a class="jtl-lock" href="https://jtlgrowth.com" target="_blank" rel="noopener" aria-label="Powered by JTL Growth">
+    <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg>
+    <span><small>Powered by</small> <b>JTL Growth</b></span>
+  </a>
 </footer>
 
 <aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
-  <p class="consent__p">This page keeps two settings on your device: whether the keyboard sounds are on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <p class="consent__p">This page keeps two settings on your device: whether the music is on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
   <details class="consent__more">
     <summary>What that actually means</summary>
     <ul>
@@ -589,5 +620,6 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 })();
 </script>
 
+<script src="/assets/faq-widget.js" data-endpoint="https://portal.ayalavirtualassistance.site/api/public/faq" defer></script>
 </body>
 </html>
