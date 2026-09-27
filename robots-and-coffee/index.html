@@ -6,6 +6,9 @@
   fonts                    -> the Google Fonts <link> in <head> plus --font-display / --font-body / --font-mono (keep the two adjacent)
   waitlist link + CTA text -> SETTINGS.content.ctaHref, SETTINGS.content.cta
   social links             -> SETTINGS.content.facebook / instagram / threads
+  consultation call        -> SETTINGS.content.bookHref (Gwen's Calendly, same as /book) and SETTINGS.content.bookCta
+  product links            -> SETTINGS.content.contentEngineHref / leadEngineHref
+  prices                   -> none on this page by Owner direction 2026-09-28; the product pages carry their own
   motion on or off         -> SETTINGS.behavior.animations (false = the reduced-motion layout for everyone)
   preloader                -> SETTINGS.behavior.preloader (false skips the pouring logo)
   theme-color meta pins #120C08 (browser chrome, match it to --ground)
@@ -26,7 +29,6 @@
 <meta property="og:image" content="https://ayalavirtualassistance.site/robots-and-coffee/media/robot-still.webp">
 <meta property="og:url" content="https://ayalavirtualassistance.site/robots-and-coffee/">
 <meta name="theme-color" content="#120C08">
-<!-- social hosts named in SETTINGS.content: settings: host-ok=www.facebook.com settings: host-ok=www.instagram.com settings: host-ok=www.threads.com -->
 <link rel="icon" type="image/png" href="media/rc-icon.png">
 <link rel="preload" as="image" href="media/robot-still.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,6 +256,37 @@ body.locked{overflow:hidden}
 .brand-row span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--dim-2)}
 .brand-row i{font-style:normal;color:var(--caramel)}
 
+/* work with us: two services that book a call, then the shelf */
+.offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.offer{display:grid;grid-template-rows:auto 1fr;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line-strong);background:linear-gradient(160deg,var(--panel-2),var(--panel) 65%)}
+.offer .ph{aspect-ratio:16/9;overflow:hidden}
+.offer .ph img{width:100%;height:115%;object-fit:cover;will-change:transform}
+.offer-body{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);padding:var(--space-5)}
+.offer-tag{display:inline-flex;align-items:center;gap:10px;font:700 var(--text-xs)/1.5 var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.offer-tag svg{width:20px;height:20px}
+.offer h3{font:700 clamp(30px,3.2vw,46px)/1.05 var(--font-display);letter-spacing:-.03em}
+.offer p{color:var(--muted);max-width:52ch}
+.offer ul{list-style:none;padding:0;margin:var(--space-1) 0 var(--space-4);display:grid;gap:10px}
+.offer li{display:flex;gap:12px;align-items:baseline}
+.offer li::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--gold);transform:translateY(-2px)}
+.offer .btn{margin-top:auto}
+.shelf{margin-top:var(--space-8)}
+.shelf-head{display:flex;justify-content:space-between;align-items:end;gap:var(--space-4);margin-bottom:var(--space-4)}
+.shelf-head h3{font:700 clamp(26px,2.6vw,36px)/1.1 var(--font-display);letter-spacing:-.02em;margin-top:12px}
+.shelf-head p{color:var(--muted);max-width:44ch}
+.shelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+.prod{display:grid;gap:var(--space-2);align-content:start;padding:var(--space-4);border-radius:var(--radius-md);border:1px solid var(--line);background:var(--panel);text-decoration:none;color:var(--fg);transition:border-color .25s var(--ease),background-color .25s var(--ease)}
+a.prod:hover{border-color:var(--gold);background-color:var(--panel-2)}
+.prod .ic{color:var(--gold)}
+.prod .ic svg{width:30px;height:30px}
+.prod .kind{font:700 var(--text-xs)/1.5 var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim-2)}
+.prod h4{margin:0;font:700 var(--text-2xl)/1.2 var(--font-display);letter-spacing:-.015em}
+.prod p{color:var(--muted);font-size:var(--text-base)}
+.prod .go{display:inline-flex;align-items:center;gap:8px;margin-top:var(--space-1);font:700 var(--text-sm)/1 var(--font-body);color:var(--gold)}
+.prod .go svg{width:18px;height:18px}
+.prod.soon{border-style:dashed}
+.prod.soon .go{color:var(--dim-2)}
+
 /* closing */
 .close{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:hidden;padding-block:var(--space-10)}
 .close-bg{position:absolute;inset:0;background:url(media/robot-macro.webp) 62% center/cover no-repeat;transform:scale(1.08);will-change:transform}
@@ -272,7 +305,7 @@ body.locked{overflow:hidden}
 .foot a{color:var(--cream)}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
 .rv.in{opacity:1;transform:none}
 html:not(.js) .rv{opacity:1;transform:none}
 
@@ -288,6 +321,9 @@ html:not(.js) .rv{opacity:1;transform:none}
   .room-grid figure:first-child{grid-column:span 2;grid-row:auto}
   .card{grid-template-columns:auto 1fr}
   .card .tag{display:none}
+  .offers-grid{grid-template-columns:1fr}
+  .shelf-grid{grid-template-columns:1fr}
+  .shelf-head{flex-direction:column;align-items:start}
 }
 @media (max-width:760px){
   .wrap{width:calc(100% - 36px)}
@@ -325,6 +361,8 @@ html:not(.js) .rv{opacity:1;transform:none}
   .rv-card{width:82vw}
   .room-grid{grid-template-columns:1fr}
   .room-grid figure:first-child{grid-column:auto}
+  .offer-body{padding:var(--space-4)}
+  .offer .btn{align-self:stretch}
   .foot .wrap{flex-direction:column;align-items:start}
 }
 
@@ -350,7 +388,7 @@ html.still .brand-row{flex-wrap:wrap;width:auto;white-space:normal;padding-inlin
 html.still .close-bg{transform:none}
 </style>
 <script>
-const SETTINGS = {"brand": {"name": "Robots & Coffee", "logo": "media/rc-lockup.webp"}, "content": {"cta": "Join the waitlist", "ctaHref": "/ai-workshop-waitlist/", "facebook": "https://www.facebook.com/profile.php?id=61592292412856", "instagram": "https://www.instagram.com/robots_and_coffee/", "threads": "https://www.threads.com/@robots_and_coffee"}, "behavior": {"animations": true, "preloader": true}, "integration": {"analyticsId": ""}};
+const SETTINGS = {"brand": {"name": "Robots & Coffee", "logo": "media/rc-lockup.webp"}, "content": {"cta": "Join the waitlist", "ctaHref": "/ai-workshop-waitlist/", "facebook": "https://www.facebook.com/profile.php?id=61592292412856", "instagram": "https://www.instagram.com/robots_and_coffee/", "threads": "https://www.threads.com/@robots_and_coffee", "bookHref": "https://calendly.com/obmgwenayala/30min", "bookCta": "Book a consultation call", "contentEngineHref": "/content-engine/", "leadEngineHref": "/lead-engine/"}, "behavior": {"animations": true, "preloader": true}, "integration": {"analyticsId": ""}};
 document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('[data-setting]').forEach(el => { const v = el.dataset.setting.split('.').reduce((o, k) => o && o[k], SETTINGS); if (typeof v !== 'string') return; if (el.dataset.attr === 'href' && el.tagName === 'A') { if (/^(\/|https:\/\/)/.test(v)) el.setAttribute('href', v); } else if (el.dataset.attr === 'src' && el.tagName === 'IMG') { if (/^(media\/|\/|https:\/\/)/.test(v)) el.setAttribute('src', v); } else el.textContent = v; }); });
 </script>
 </head>
@@ -372,6 +410,7 @@ document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll(
       <a class="t" href="#reel">Watch Batch 1</a>
       <a class="t" href="#room">The room</a>
       <a class="t" href="#founders">Founders</a>
+      <a class="t" href="#offers">Work with us</a>
       <a class="btn solid" href="/ai-workshop-waitlist/" data-setting="content.ctaHref" data-attr="href"><span data-setting="content.cta">Join the waitlist</span></a>
     </nav>
   </div>
@@ -575,7 +614,51 @@ document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll(
   </div>
 </section>
 
-<!-- 10 · CLOSE -->
+<!-- 10 · WORK WITH US: coaching, corporate training, the shelf. No prices on this page (Owner 2026-09-28); services book a call -->
+<section class="sec" id="offers" aria-labelledby="off-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">Work with us</span>
+      <h2 class="h2" id="off-h">The workshop is one way in. <span class="serif gold">Here are three more.</span></h2>
+      <p class="lede">Every offer starts with a short call, so we can fit it to your business before anyone commits to anything.</p>
+    </div>
+    <div class="offers-grid">
+      <article class="offer rv">
+        <div class="ph"><img src="media/batch1-recap-poster.webp" alt="Jamz working through a build with a participant at a laptop" loading="lazy" width="1280" height="720" data-par></div>
+        <div class="offer-body">
+          <span class="offer-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></svg>1:1 coaching</span>
+          <h3>Ask us anything, one on one.</h3>
+          <p>Stuck on a tool, a workflow, or where to even start? Sit down with Gwen and Jamz and get straight answers for your exact business.</p>
+          <ul><li>One hour, just you and us</li><li>Anything AI in your business: tools, workflows, where to start</li><li>You leave with answers, not homework</li></ul>
+          <a class="btn solid" href="https://calendly.com/obmgwenayala/30min" data-setting="content.bookHref" data-attr="href" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg><span data-setting="content.bookCta">Book a consultation call</span></a>
+        </div>
+      </article>
+      <article class="offer rv" style="--d:.12s">
+        <div class="ph"><img src="media/build-table.webp" alt="A full table of participants building on their own business" loading="lazy" width="1200" height="900" data-par></div>
+        <div class="offer-body">
+          <span class="offer-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>Corporate training</span>
+          <h3>We bring the room to your team.</h3>
+          <p>The hands-on format from our public batches, run for your company. Your people build on your real work: your offer, your clients, your processes.</p>
+          <ul><li>Run for your team, on your team's real work</li><li>Leaders leave with their own AI employees set up</li><li>Hands on from the first hour</li></ul>
+          <a class="btn solid" href="https://calendly.com/obmgwenayala/30min" data-setting="content.bookHref" data-attr="href" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg><span data-setting="content.bookCta">Book a consultation call</span></a>
+        </div>
+      </article>
+    </div>
+    <div class="shelf">
+      <div class="shelf-head rv">
+        <div><span class="kick">The shelf</span><h3>Digital products you can run today.</h3></div>
+        <p>The same systems we run ourselves, packaged so you can set them up on your own.</p>
+      </div>
+      <div class="shelf-grid">
+        <a class="prod rv" href="/content-engine/" data-setting="content.contentEngineHref" data-attr="href"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 21h8"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg></span><span class="kind">System</span><h4>The Content Engine</h4><p>Your content, systemized. One idea in, a week of posts out. The exact engine we run ourselves.</p><span class="go">See how it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        <a class="prod rv" style="--d:.1s" href="/lead-engine/" data-setting="content.leadEngineHref" data-attr="href"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"/><path d="M4 6h.01"/><path d="M2.29 9.62A10 10 0 1 0 21.31 8.35"/><path d="M16.24 7.76A6 6 0 1 0 8.23 16.67"/><path d="M12 18h.01"/><path d="M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/></svg></span><span class="kind">Blueprint</span><h4>Lead Engine Blueprint</h4><p>The exact system we use to find and warm up leads, step by step.</p><span class="go">See how it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        <div class="prod soon rv" style="--d:.2s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span><span class="kind">Course · coming soon</span><h4>Build Your AI Team</h4><p>We teach you to set up your own AI staff. Video lessons plus a written guide.</p><span class="go">Coming soon</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · CLOSE -->
 <section class="close" id="join" data-scene="close" aria-labelledby="close-h">
   <div class="close-bg" id="close-bg" aria-hidden="true"></div>
   <div class="close-in rv">
@@ -793,7 +876,7 @@ document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll(
       rowB.style.transform = `translate3d(${-sb + vp * sb - 40}px,0,0)`;
 
       /* founders: portraits drift inside their frames */
-      pars.forEach(im => { const v = view(im.closest('.fd')); im.style.transform = `translateY(${(v - .5) * -9}%)`; });
+      pars.forEach(im => { const v = view(im.closest('.fd,.offer')); im.style.transform = `translateY(${(v - .5) * -9}%)`; });
 
       /* booth brands ride the scroll */
       const bp = view(roomSec), bs = Math.max(0, brandRow.scrollWidth - innerWidth);
