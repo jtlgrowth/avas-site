@@ -974,6 +974,8 @@ html.gl-on .a-stage.has-gl .a-still,html.gl-on .a-stage--book .a-still{visibilit
 .px__media img,.px__media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transform:translate3d(calc((1 - var(--r)) * -9%),0,0) scale(calc(1.2 - var(--r) * .2))}
 .px__media video{opacity:0;transition:opacity .5s var(--ease)}
+/* a real page, not a still: the capture glides up to its top as the card wipes in, one way only */
+.px__media--pan img{object-position:50% calc((1 - var(--r)) * 100%)}
 .px__media.is-live video{opacity:1}
 .px__txt{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:22px;align-items:start;margin-top:22px;
   opacity:calc(var(--r) * 1.6 - .5);transform:translate3d(0,calc((1 - var(--r)) * 36px),0)}
@@ -1027,6 +1029,9 @@ html.gl-on .a-stage.has-gl .a-still,html.gl-on .a-stage--book .a-still{visibilit
 .sx__head .a-h2{max-width:none}
 .sx__head .a-link{margin:0 0 8px;flex:none}
 .sx__cards{position:relative}
+.sx__also{max-width:62ch;margin:clamp(28px,5vh,56px) 0 0;font-size:var(--fs-lede);line-height:1.5;color:var(--muted);text-wrap:pretty}
+.sx__also b{font-weight:500;color:var(--fg)}
+.sx__also a{color:var(--fg);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
 .sx__card{--c:0;--m:.5;position:sticky;top:calc(var(--top-h) + 2vh + var(--i) * 16px);height:min(76svh,720px);margin:0 0 7vh;
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);border-radius:var(--v-card-r);overflow:hidden;isolation:isolate;
   transform-origin:50% 0;transform:scale(calc(1 - var(--c) * .07));box-shadow:0 40px 80px -50px var(--shadow),inset 0 0 0 1px var(--border)}
@@ -1199,7 +1204,7 @@ html.still .panel{--e:1;--s:1;--d:1}
   </div>
   <div class="a-grab" data-cursor="drag" aria-hidden="true"></div>
   <div class="a-hero__foot">
-    <p class="a-lede" data-reveal="rise">One team in Manila that makes your marketing and ships it: websites, content, ads, CRM and AI employees. Judge us by what goes live.</p>
+    <p class="a-lede" data-reveal="rise">One team in Manila that makes your marketing and ships it: websites, content, email, ads and CRM. Judge us by what goes live.</p>
     <div class="a-ctas" data-reveal="rise">
       <a class="btn" href="#p-book" data-magnetic="0.3" data-cursor="book">Book a call</a>
       <a class="btn btn--ghost" href="#p-produce" data-magnetic="0.3" data-cursor="see">See the work</a>
@@ -1209,7 +1214,7 @@ html.still .panel{--e:1;--s:1;--d:1}
 </section>
 </div>
 
-<!-- what we produce: the page pins and the five outputs travel past sideways -->
+<!-- what we produce: the page pins and the five outputs travel past sideways (AI and automation builds are JTL Growth's, Owner 2026-10-01) -->
 <section class="px" id="p-produce" aria-labelledby="px-h">
   <div class="px__stick">
     <div class="px__head">
@@ -1218,7 +1223,7 @@ html.still .panel{--e:1;--s:1;--d:1}
     </div>
     <div class="px__track" id="px-track">
       <article class="px__card" style="--k:0">
-        <figure class="px__media"><img src="/assets/home-p-web.webp" srcset="/assets/home-p-web-720.webp 720w, /assets/home-p-web.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="A glossy espresso ceramic funnel on a copper stand" width="1200" height="900" loading="lazy" decoding="async"></figure>
+        <figure class="px__media px__media--pan"><img src="/assets/home-p-web.webp" srcset="/assets/home-p-web-720.webp 720w, /assets/home-p-web.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="The Kate Powers Creates home page, the site we rebuilt for her" width="1200" height="2250" loading="lazy" decoding="async"></figure>
         <div class="px__txt">
           <span class="px__n" aria-hidden="true">01</span>
           <h3>Websites and funnels</h3>
@@ -1227,7 +1232,7 @@ html.still .panel{--e:1;--s:1;--d:1}
         </div>
       </article>
       <article class="px__card" style="--k:1">
-        <figure class="px__media"><img src="/assets/home-p-content.webp" srcset="/assets/home-p-content-720.webp 720w, /assets/home-p-content.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="A curl of 35mm film spilling from a copper canister" width="1200" height="900" loading="lazy" decoding="async"><video muted playsinline preload="none" data-px-src="/assets/home-p-content.mp4" aria-hidden="true" tabindex="-1"></video></figure>
+        <figure class="px__media"><img src="/assets/home-p-content.webp" srcset="/assets/home-p-content-720.webp 720w, /assets/home-p-content.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="A phone filming Keto Lovers PH products at our content shoot" width="1200" height="900" loading="lazy" decoding="async"><video muted playsinline preload="none" data-px-src="/assets/home-p-content.mp4" aria-hidden="true" tabindex="-1"></video></figure>
         <div class="px__txt">
           <span class="px__n" aria-hidden="true">02</span>
           <h3>Content and video</h3>
@@ -1236,30 +1241,30 @@ html.still .panel{--e:1;--s:1;--d:1}
         </div>
       </article>
       <article class="px__card" style="--k:2">
-        <figure class="px__media"><img src="/assets/home-p-ads.webp" srcset="/assets/home-p-ads-720.webp 720w, /assets/home-p-ads.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="An espresso ceramic megaphone with a copper rim" width="1200" height="900" loading="lazy" decoding="async"></figure>
+        <figure class="px__media"><img src="/assets/home-p-email.webp" srcset="/assets/home-p-email-720.webp 720w, /assets/home-p-email.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="The mailing-list signup on Kate Powers Creates, feeding the newsletter we run" width="1200" height="900" loading="lazy" decoding="async"></figure>
         <div class="px__txt">
           <span class="px__n" aria-hidden="true">03</span>
-          <h3>Ads</h3>
-          <p>Meta campaigns built and launched, creative and tracking included.</p>
-          <p class="px__proof mono" data-proof="3" hidden></p>
+          <h3>Email marketing</h3>
+          <p>Welcome flows, newsletters and launch emails, written, built and sent to your own list.</p>
+          <p class="px__proof mono" data-proof="3">Kate Powers Creates &middot; <span>Her newsletter</span></p>
         </div>
       </article>
       <article class="px__card" style="--k:3">
-        <figure class="px__media"><img src="/assets/home-p-crm.webp" srcset="/assets/home-p-crm-720.webp 720w, /assets/home-p-crm.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="A long line of cream domino tiles with a copper ball at its head" width="1200" height="900" loading="lazy" decoding="async"><video muted playsinline preload="none" data-px-src="/assets/home-p-crm.mp4" aria-hidden="true" tabindex="-1"></video></figure>
+        <figure class="px__media"><img src="/assets/home-p-ads.webp" srcset="/assets/home-p-ads-720.webp 720w, /assets/home-p-ads.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="Keto Lovers PH packs held up for ad creative at our shoot" width="1200" height="900" loading="lazy" decoding="async"></figure>
         <div class="px__txt">
           <span class="px__n" aria-hidden="true">04</span>
-          <h3>CRM and automations</h3>
-          <p>Pipelines and follow-ups in GHL, so no lead sits waiting for a reply.</p>
-          <p class="px__proof mono" data-proof="4">Kate Powers Creates &middot; <span>265 subscribers moved and tag verified</span></p>
+          <h3>Ads</h3>
+          <p>Meta campaigns built and launched, creative and tracking included.</p>
+          <p class="px__proof mono" data-proof="4" hidden></p>
         </div>
       </article>
       <article class="px__card" style="--k:4">
-        <figure class="px__media"><img src="/assets/home-p-ai.webp" srcset="/assets/home-p-ai-720.webp 720w, /assets/home-p-ai.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="A frosted glass sphere lit from within, in an espresso bowl" width="1200" height="900" loading="lazy" decoding="async"></figure>
+        <figure class="px__media"><img src="/assets/home-p-crm.webp" srcset="/assets/home-p-crm-720.webp 720w, /assets/home-p-crm.webp 1200w" sizes="(max-width:900px) 80vw, 54vw" alt="Gwen on a client follow-up call at her desk" width="1200" height="900" loading="lazy" decoding="async"><video muted playsinline preload="none" data-px-src="/assets/home-p-crm.mp4" aria-hidden="true" tabindex="-1"></video></figure>
         <div class="px__txt">
           <span class="px__n" aria-hidden="true">05</span>
-          <h3>AI employees</h3>
-          <p>An AI teammate on your inbox that answers from your own playbook.</p>
-          <p class="px__proof mono" data-proof="5" hidden></p>
+          <h3>CRM and follow-up</h3>
+          <p>Pipelines and follow-ups in GHL, so no lead sits waiting for a reply.</p>
+          <p class="px__proof mono" data-proof="5">Kate Powers Creates &middot; <span>265 subscribers moved and tag verified</span></p>
         </div>
       </article>
     </div>
@@ -1300,10 +1305,10 @@ html.still .panel{--e:1;--s:1;--d:1}
     <a class="a-link lw__more" href="/work/" data-cursor="go">See them by brand on the work page &rarr;</a>
   </div>
 <!-- clients:begin -->
-<script type="application/json" id="home-data">{"_":"AVAS clients, public subset of the client file, 2026-09-28","clients":[{"slug":"kate-powers-creates","name":"Kate Powers Creates","status":"current","country":"US","what_we_run":["Site moved off Kajabi","Newsletter","Aligned Women community, built from zero","Daily social on five surfaces"],"mark":"logo","person":"Kate Powers","stats":[{"value":"265","label":"subscribers moved and tag verified"},{"value":"21","label":"pages live after the move"}]},{"slug":"ph-obm-academy","name":"Philippine OBM Academy","status":"current","country":"PH","what_we_run":["Launch Momentum program, July 2026 to January 2027","The OBM Launchpad webinar","OBM Pros launch: applications opened 28 August 2026","Founding cohort, December 2026"],"mark":"logo"},{"slug":"lukas-butter-steaks","name":"Luka's Butter Steaks","status":"current","country":"PH","what_we_run":["CRM with retail, wholesale and franchise pipelines","Follow-up automation","An AI employee on the inbox","Franchise nurture"],"mark":"logo"},{"slug":"fwib","name":"Filipina Women in Business","status":"current","country":"PH","what_we_run":["Website","Gala Night waitlist funnel","Meta ads with the pixel installed sitewide"],"mark":"logo"},{"slug":"virtually-vera","name":"Virtually Vera","status":"past","country":null,"what_we_run":["White-label execution under her brand"],"mark":"wordmark"},{"slug":"keto-lovers-ph","name":"Keto Lovers Ph","status":"past","country":"PH","what_we_run":["Daily TikTok and Reels","Product-led content for sale days"],"mark":"logo"},{"slug":"nyc-brunch-squad","name":"NYC Brunch Squad","status":"past","country":"US","what_we_run":[],"mark":"monogram","initials":"NSB"},{"slug":"krystal-clear-action","name":"Krystal Clear Action","status":"past","country":null,"what_we_run":[],"mark":"monogram","initials":"KCA"},{"slug":"clarissa-visage","name":"Clarissa Visage","status":"past","country":"AU","what_we_run":[],"mark":"monogram","initials":"CV"},{"slug":"fontana-med-spa","name":"Fontana Med Spa","status":"past","country":"US","what_we_run":[],"mark":"monogram","initials":"FMS"},{"slug":"marianna-rose","name":"Marianna Rose","status":"past","country":null,"what_we_run":["Social media rebuild ahead of paid offers"],"mark":"monogram","initials":"MR"},{"slug":"hair-and-skin-restore","name":"Hair & Skin Restore","status":"past","country":null,"what_we_run":[],"mark":"wordmark"},{"slug":"ai-herway","name":"ai Herway","status":"past","country":null,"what_we_run":[],"mark":"wordmark"},{"slug":"pearles-pantry","name":"Pearle's Pantry","status":"past","country":null,"what_we_run":[],"mark":"wordmark"}]}</script>
+<script type="application/json" id="home-data">{"_":"AVAS clients, public subset of the client file, 2026-09-28","clients":[{"slug":"kate-powers-creates","name":"Kate Powers Creates","status":"current","country":"US","what_we_run":["Site moved off Kajabi","Her newsletter","Aligned Women community, built from zero","Daily social on five surfaces"],"mark":"logo","person":"Kate Powers","stats":[{"value":"265","label":"subscribers moved and tag verified"},{"value":"21","label":"pages live after the move"}]},{"slug":"ph-obm-academy","name":"Philippine OBM Academy","status":"current","country":"PH","what_we_run":["Launch Momentum program, July 2026 to January 2027","The OBM Launchpad webinar","OBM Pros launch: applications opened 28 August 2026","Founding cohort, December 2026"],"mark":"logo"},{"slug":"lukas-butter-steaks","name":"Luka's Butter Steaks","status":"current","country":"PH","what_we_run":["CRM with retail, wholesale and franchise pipelines","Follow-up automation","An AI employee on the inbox","Franchise nurture"],"mark":"logo"},{"slug":"fwib","name":"Filipina Women in Business","status":"current","country":"PH","what_we_run":["Website","Gala Night waitlist funnel","Meta ads with the pixel installed sitewide"],"mark":"logo"},{"slug":"virtually-vera","name":"Virtually Vera","status":"past","country":null,"what_we_run":["White-label execution under her brand"],"mark":"wordmark"},{"slug":"keto-lovers-ph","name":"Keto Lovers Ph","status":"past","country":"PH","what_we_run":["Daily TikTok and Reels","Product-led content for sale days"],"mark":"logo"},{"slug":"nyc-brunch-squad","name":"NYC Brunch Squad","status":"past","country":"US","what_we_run":[],"mark":"monogram","initials":"NSB"},{"slug":"krystal-clear-action","name":"Krystal Clear Action","status":"past","country":null,"what_we_run":[],"mark":"monogram","initials":"KCA"},{"slug":"clarissa-visage","name":"Clarissa Visage","status":"past","country":"AU","what_we_run":[],"mark":"monogram","initials":"CV"},{"slug":"fontana-med-spa","name":"Fontana Med Spa","status":"past","country":"US","what_we_run":[],"mark":"monogram","initials":"FMS"},{"slug":"marianna-rose","name":"Marianna Rose","status":"past","country":null,"what_we_run":["Social media rebuild ahead of paid offers"],"mark":"monogram","initials":"MR"},{"slug":"hair-and-skin-restore","name":"Hair & Skin Restore","status":"past","country":null,"what_we_run":[],"mark":"wordmark"},{"slug":"ai-herway","name":"ai Herway","status":"past","country":null,"what_we_run":[],"mark":"wordmark"},{"slug":"pearles-pantry","name":"Pearle's Pantry","status":"past","country":null,"what_we_run":[],"mark":"wordmark"}]}</script>
 <!-- clients:end -->
 <!-- intents:begin -->
-<script type="application/json" id="home-intents">{"notfound":"Not something I hold yet. Try: services, pricing, who runs it, book a call.","intents":[{"id":"who","a":"A marketing team in Manila, founded by Gwen Ayala in 2021. Eight specialists who make and ship websites, content, ads, CRM and AI employees."},{"id":"nightshift","a":"Manila hands the work over as your day starts: built on our side of the clock, in your review link on yours. Nothing ships without your yes.","go":"#p-how"},{"id":"howfast","a":"Your team is running inside 14 days. Replies come inside one business day, and every piece gets two revision rounds.","go":"#p-how"},{"id":"content","a":"Content creation: reels, carousels and captions in your voice, planned a month ahead."},{"id":"social","a":"Social media: calendars planned, posted and monitored, with a readout of what each post did."},{"id":"ads","a":"Ad management: Meta campaigns built and launched, creative and tracking included."},{"id":"email","a":"Email marketing: sequences written, scheduled and tested so they land in inboxes, not spam folders."},{"id":"ghl","a":"GHL and automation: pipelines and follow-ups built, wired and tested, so no lead sits waiting for a reply."},{"id":"ai","a":"AI solutions: an AI teammate on your inbox that answers from your own playbook."},{"id":"admin","a":"Admin support: inboxes cleared, calendars kept, loose ends tied."},{"id":"where","a":"Manila, Philippines. Quezon City. Brands in the US, Australia and the Philippines have handed us their marketing since 2021."},{"id":"help","a":"Type a service name, or: pricing, who runs it, how fast, book a call."},{"id":"clients","a":"Fourteen brands have handed us their marketing, four of them right now. Kate Powers, author and educator: her site moved off Kajabi, her community was built from zero, and her social runs daily."},{"id":"search","a":"Three layers of being found. SEO puts you in Google's blue links. GEO puts you inside AI answers, the ChatGPT and Perplexity kind. AIO keeps the whole thing tuned as those engines change. One team runs all three."}]}</script>
+<script type="application/json" id="home-intents">{"notfound":"Not something I hold yet. Try: services, pricing, who runs it, book a call.","intents":[{"id":"who","a":"A marketing team in Manila, founded by Gwen Ayala in 2021. Eight specialists who make and ship websites, content, email, ads and CRM."},{"id":"nightshift","a":"Manila hands the work over as your day starts: built on our side of the clock, in your review link on yours. Nothing ships without your yes.","go":"#p-how"},{"id":"howfast","a":"Your team is running inside 14 days. Replies come inside one business day, and every piece gets two revision rounds.","go":"#p-how"},{"id":"content","a":"Content creation: reels, carousels and captions in your voice, planned a month ahead."},{"id":"social","a":"Social media: calendars planned, posted and monitored, with a readout of what each post did."},{"id":"ads","a":"Ad management: Meta campaigns built and launched, creative and tracking included."},{"id":"email","a":"Email marketing: sequences written, scheduled and tested so they land in inboxes, not spam folders."},{"id":"ghl","a":"GHL: your pipelines and follow-ups kept in order, so no lead sits waiting for a reply. Automation builds run with our sister company, JTL Growth, at jtlgrowth.com."},{"id":"ai","a":"AI and automation builds run with our sister company, JTL Growth, at jtlgrowth.com. This team makes and ships the marketing."},{"id":"admin","a":"Admin support: inboxes cleared, calendars kept, loose ends tied."},{"id":"where","a":"Manila, Philippines. Quezon City. Brands in the US, Australia and the Philippines have handed us their marketing since 2021."},{"id":"help","a":"Type a service name, or: pricing, who runs it, how fast, book a call."},{"id":"clients","a":"Fourteen brands have handed us their marketing, four of them right now. Kate Powers, author and educator: her site moved off Kajabi, her community was built from zero, and her social runs daily."},{"id":"search","a":"Three layers of being found. SEO puts you in Google's blue links. GEO puts you inside AI answers, the ChatGPT and Perplexity kind. AIO keeps the whole thing tuned as those engines change. One team runs all three."}]}</script>
 <!-- intents:end -->
 </section>
 
@@ -1311,8 +1316,8 @@ html.still .panel{--e:1;--s:1;--d:1}
 <section class="sx" id="p-services" aria-labelledby="sx-h">
   <div class="sx__head">
     <p class="eyebrow">Services</p>
-    <h2 class="a-h2" id="sx-h">Fourteen services. <em>Four clusters.</em></h2>
-    <a class="a-link" href="/services" data-cursor="open">All fourteen, in detail &rarr;</a>
+    <h2 class="a-h2" id="sx-h">Twelve services. <em>Four clusters.</em></h2>
+    <a class="a-link" href="/services" data-cursor="open">All twelve, in detail &rarr;</a>
   </div>
   <div class="sx__cards">
     <article class="sx__card sx__card--white" style="--i:0">
@@ -1323,7 +1328,7 @@ html.still .panel{--e:1;--s:1;--d:1}
         <ul><li>Growth Roadmaps</li><li>Brand Positioning</li><li>Campaign Planning</li></ul>
         <a class="a-link" href="/services" data-cursor="open">See the cluster &rarr;</a>
       </div>
-      <figure class="sx__media"><img src="/assets/home-s-strategy.webp" srcset="/assets/home-s-strategy-720.webp 720w, /assets/home-s-strategy.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="Blank white folders and paper with a copper clip in soft light" width="1200" height="900" loading="lazy" decoding="async"></figure>
+      <figure class="sx__media"><img src="/assets/home-s-strategy.webp" srcset="/assets/home-s-strategy-720.webp 720w, /assets/home-s-strategy.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="Jamz and Gwen planning a client campaign together" width="1200" height="900" loading="lazy" decoding="async"></figure>
     </article>
     <article class="sx__card sx__card--gray" style="--i:1">
       <div class="sx__txt">
@@ -1333,17 +1338,17 @@ html.still .panel{--e:1;--s:1;--d:1}
         <ul><li>Content Creation</li><li>Social Media</li><li>Ad Management</li><li>Email Marketing</li></ul>
         <a class="a-link" href="/services" data-cursor="open">See the cluster &rarr;</a>
       </div>
-      <figure class="sx__media"><img src="/assets/home-s-content.webp" srcset="/assets/home-s-content-720.webp 720w, /assets/home-s-content.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="A copper ring light beside an espresso ceramic vase" width="1200" height="900" loading="lazy" decoding="async"></figure>
+      <figure class="sx__media"><img src="/assets/home-s-content.webp" srcset="/assets/home-s-content-720.webp 720w, /assets/home-s-content.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="Keto Lovers PH packs laid out for a content shoot" width="1200" height="900" loading="lazy" decoding="async"></figure>
     </article>
     <article class="sx__card sx__card--ink" style="--i:2">
       <div class="sx__txt">
         <p class="sx__n" aria-hidden="true">03</p>
-        <p class="mono">Systems, AI &amp; ops</p>
-        <h3>The machine underneath: funnels, CRM, automations and AI.</h3>
-        <ul><li>Funnels &amp; CRM</li><li>GHL &amp; Automation</li><li>AI Solutions</li><li>Admin Support</li></ul>
+        <p class="mono">Systems &amp; ops</p>
+        <h3>The machine under the marketing: funnels, CRM and the admin that keeps it moving.</h3>
+        <ul><li>Funnels &amp; CRM</li><li>Admin Support</li></ul>
         <a class="a-link" href="/services" data-cursor="open">See the cluster &rarr;</a>
       </div>
-      <figure class="sx__media"><img src="/assets/home-s-systems.webp" srcset="/assets/home-s-systems-720.webp 720w, /assets/home-s-systems.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="Three interlocking gears in copper, espresso and cream" width="1200" height="900" loading="lazy" decoding="async"></figure>
+      <figure class="sx__media"><img src="/assets/home-s-systems.webp" srcset="/assets/home-s-systems-720.webp 720w, /assets/home-s-systems.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="Gwen at her desk, AVAS sticker on the laptop" width="1200" height="900" loading="lazy" decoding="async"></figure>
     </article>
     <article class="sx__card sx__card--esp" style="--i:3">
       <div class="sx__txt">
@@ -1353,9 +1358,10 @@ html.still .panel{--e:1;--s:1;--d:1}
         <ul><li>SEO</li><li>GEO</li><li>AIO</li></ul>
         <a class="a-link" href="/services" data-cursor="open">See the cluster &rarr;</a>
       </div>
-      <figure class="sx__media"><img src="/assets/home-s-found.webp" srcset="/assets/home-s-found-720.webp 720w, /assets/home-s-found.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="A copper magnifying glass focusing light on white paper" width="1200" height="900" loading="lazy" decoding="async"></figure>
+      <figure class="sx__media"><img src="/assets/home-s-found.webp" srcset="/assets/home-s-found-720.webp 720w, /assets/home-s-found.webp 1200w" sizes="(max-width:900px) 92vw, 52vw" alt="Jamz and Gwen at work on laptop and tablet" width="1200" height="900" loading="lazy" decoding="async"></figure>
     </article>
   </div>
+  <p class="sx__also">Also on the team, project by project: <b>platform migrations</b>, <b>launches and webinars</b>, <b>community building</b> and <b>white-label work for agencies</b>. AI and automation builds run with our sister company, <a href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener">JTL Growth</a>.</p>
 </section>
 
 <section class="rail" id="rail" data-hold="0:0.9,1:0.35,3:0.8,5:0.25" aria-label="AVAS, six panels">
@@ -1437,7 +1443,7 @@ html.still .panel{--e:1;--s:1;--d:1}
           <div class="a-kstat"><b data-rail-count="265">265</b><span>subscribers moved and tag verified</span></div>
           <div class="a-kstat"><b data-rail-count="21">21</b><span>pages live after the move</span></div>
         </div>
-        <ul class="a-chips" aria-label="What we run for her" data-kate-run><li>Site moved off Kajabi</li><li>Newsletter</li><li>Aligned Women community, built from zero</li><li>Daily social on five surfaces</li></ul>
+        <ul class="a-chips" aria-label="What we run for her" data-kate-run><li>Site moved off Kajabi</li><li>Her newsletter</li><li>Aligned Women community, built from zero</li><li>Daily social on five surfaces</li></ul>
       </div>
     </div>
   </section>
@@ -1461,7 +1467,7 @@ html.still .panel{--e:1;--s:1;--d:1}
       </svg>
       <ol class="a-how__steps">
         <li style="--at:.1"><b class="mono">01</b><h3>Brief</h3><p>You tell us the goal. We turn it into a plan with dates.</p></li>
-        <li style="--at:.37"><b class="mono">02</b><h3>Build</h3><p>The team makes it: pages, posts, ads, automations.</p></li>
+        <li style="--at:.37"><b class="mono">02</b><h3>Build</h3><p>The team makes it: pages, posts, ads, emails.</p></li>
         <li style="--at:.63"><b class="mono">03</b><h3>Review</h3><p>You approve it in your private link. Two revision rounds.</p></li>
         <li style="--at:.9"><b class="mono">04</b><h3>Shipped</h3><p>It goes live, and your readout counts what it did.</p></li>
       </ol>
@@ -1538,7 +1544,7 @@ html.still .panel{--e:1;--s:1;--d:1}
     <div class="a-stage" id="stage-clone"><div class="a-shadow"></div>
       <img class="a-still" src="/assets/home-a-still.webp" alt="" width="520" height="840" loading="lazy" decoding="async">
     </div>
-    <div class="a-hero__foot"><p class="a-lede">One team in Manila that makes your marketing and ships it: websites, content, ads, CRM and AI employees. Judge us by what goes live.</p>
+    <div class="a-hero__foot"><p class="a-lede">One team in Manila that makes your marketing and ships it: websites, content, email, ads and CRM. Judge us by what goes live.</p>
       <div class="a-ctas"><span class="btn">Book a call</span><span class="btn btn--ghost">See the work</span></div></div>
     <span class="a-cue"><span>scroll</span><i></i></span>
   </section>
@@ -1745,7 +1751,7 @@ function start(THREE) {
   </div>
 </aside>
 
-<script>window.AVAS_DATA={"placeholder":"ask anything, or type: services","chips":["services","pricing","who runs it","book a call","how fast"],"notfound":"Not something I hold yet. Try: services, pricing, who runs it, book a call.","intents":[{"id":"pricing","k":["pricing","price","cost","how much","rates","retainer","budget","expensive"],"a":"Every price is published on the page. A Content Systems Diagnostic is $750 one time and comes off your first month. Retainers are Essential at $2,500 to $3,000 a month, Embedded at $3,500 to $5,500, and Partner from $10,000. Three month minimum, then month to month. Anything outside a tier is a quote.","go":"#p-pricing"},{"id":"who","k":["who","team","founder","gwen","people","behind","staff","filipino","manila"],"a":"A marketing team in Manila, founded by Gwen Ayala in 2021. Eight specialists who make and ship websites, content, ads, CRM and AI employees.","go":"/team/"},{"id":"nightshift","k":["night","night shift","timezone","time zone","while i sleep","overnight","asleep","hours"],"a":"Manila hands the work over as your day starts: built on our side of the clock, in your review link on yours. Nothing ships without your yes.","go":"#p-how"},{"id":"howfast","k":["how fast","turnaround","speed","when","deadline","quick","urgent"],"a":"Your team is running inside 14 days. Replies come inside one business day, and every piece gets two revision rounds.","go":"#p-how"},{"id":"content","k":["content","reels","carousel","posts","copywriting","captions","video"],"a":"Content creation: reels, carousels and captions in your voice, planned a month ahead.","go":"/services"},{"id":"social","k":["social","social media","instagram","facebook","tiktok","calendar","scheduling"],"a":"Social media: calendars planned, posted and monitored, with a readout of what each post did.","go":"/services"},{"id":"ads","k":["ads","ad","advertising","meta ads","google ads","paid","budget spend"],"a":"Ad management: Meta campaigns built and launched, creative and tracking included.","go":"/services"},{"id":"email","k":["email","newsletter","sequence","broadcast","klaviyo","mailchimp"],"a":"Email marketing: sequences written, scheduled and tested so they land in inboxes, not spam folders.","go":"/services"},{"id":"funnels","k":["funnel","crm","landing page","pipeline","leads","tagging"],"a":"Funnels and CRM: pages built, automations wired, every lead tagged and followed up.","go":"/services"},{"id":"ghl","k":["ghl","gohighlevel","highlevel","automation","workflow","zapier","make"],"a":"GHL and automation: pipelines and follow-ups built, wired and tested, so no lead sits waiting for a reply.","go":"/services"},{"id":"ai","k":["ai","chatbot","automation ai","gpt","artificial"],"a":"AI solutions: an AI teammate on your inbox that answers from your own playbook.","go":"/services"},{"id":"admin","k":["admin","inbox","calendar","assistant","va","virtual assistant","support"],"a":"Admin support: inboxes cleared, calendars kept, loose ends tied.","go":"/services"},{"id":"roadmap","k":["roadmap","strategy","plan","growth plan","quarter","q3"],"a":"Growth roadmaps: the quarter mapped from offer to send, so nothing ships late.","go":"/services"},{"id":"brand","k":["brand","positioning","identity","messaging","deck"],"a":"Brand positioning: the deck revised until the offer says the same thing everywhere.","go":"/services"},{"id":"where","k":["where","location","based","country","philippines","office"],"a":"Manila, Philippines. Quezon City. Brands in the US, Australia and the Philippines have handed us their marketing since 2021.","go":"/about"},{"id":"careers","k":["careers","jobs","hiring","apply","work with you","join"],"a":"Do the work you are proud of, with a team that ships.","go":"/careers"},{"id":"quiz","k":["quiz","what should i hand over","not sure","recommend","diagnostic","fit"],"a":"Two minutes, and you will know what to hand over first.","go":"/quiz"},{"id":"contract","k":["contract","commitment","lock in","cancel","month to month","terms"],"a":"Month to month. The work holds you, not the paperwork.","go":"#p-pricing"},{"id":"help","k":["help","commands","what can i type","how does this work","?"],"a":"Type a service name, or: pricing, who runs it, how fast, book a call.","go":null},{"id":"clients","k":["clients","who do you work with","case","proof","results","testimonial","kate","kate powers","client"],"a":"Fourteen brands have handed us their marketing, four of them right now. Kate Powers, author and educator: her site moved off Kajabi, her community was built from zero, and her social runs daily.","go":"#p-kate"},{"id":"book","k":["book","call","talk","contact","get started","hire","start","enquire","inquire","calendar","schedule"],"a":"Free 30 minute fit call, founder to founder. Pick a time at the end of this page, no second tab.","go":"#p-book"},{"id":"services","k":["services","what do you do","what do you offer","offering","help with","capabilities","everything"],"a":"Fourteen services, one team: growth roadmaps, brand positioning, campaign planning, content creation, social media, ad management, email marketing, funnels and CRM, GHL and automation, AI solutions, admin support, SEO, GEO, and AIO.","go":"/services"},{"id":"search","k":["seo","geo","aio","aeo","search","google","ranking","rank","keywords","visibility","ai overviews","chatgpt","perplexity","llm","generative","found"],"a":"Three layers of being found. SEO puts you in Google's blue links. GEO puts you inside AI answers, the ChatGPT and Perplexity kind. AIO keeps the whole thing tuned as those engines change. One team runs all three.","go":"/services"}]};
+<script>window.AVAS_DATA={"placeholder":"ask anything, or type: services","chips":["services","pricing","who runs it","book a call","how fast"],"notfound":"Not something I hold yet. Try: services, pricing, who runs it, book a call.","intents":[{"id":"pricing","k":["pricing","price","cost","how much","rates","retainer","budget","expensive"],"a":"Every price is published on the page. A Content Systems Diagnostic is $750 one time and comes off your first month. Retainers are Essential at $2,500 to $3,000 a month, Embedded at $3,500 to $5,500, and Partner from $10,000. Three month minimum, then month to month. Anything outside a tier is a quote.","go":"#p-pricing"},{"id":"who","k":["who","team","founder","gwen","people","behind","staff","filipino","manila"],"a":"A marketing team in Manila, founded by Gwen Ayala in 2021. Eight specialists who make and ship websites, content, email, ads and CRM.","go":"/team/"},{"id":"nightshift","k":["night","night shift","timezone","time zone","while i sleep","overnight","asleep","hours"],"a":"Manila hands the work over as your day starts: built on our side of the clock, in your review link on yours. Nothing ships without your yes.","go":"#p-how"},{"id":"howfast","k":["how fast","turnaround","speed","when","deadline","quick","urgent"],"a":"Your team is running inside 14 days. Replies come inside one business day, and every piece gets two revision rounds.","go":"#p-how"},{"id":"content","k":["content","reels","carousel","posts","copywriting","captions","video"],"a":"Content creation: reels, carousels and captions in your voice, planned a month ahead.","go":"/services"},{"id":"social","k":["social","social media","instagram","facebook","tiktok","calendar","scheduling"],"a":"Social media: calendars planned, posted and monitored, with a readout of what each post did.","go":"/services"},{"id":"ads","k":["ads","ad","advertising","meta ads","google ads","paid","budget spend"],"a":"Ad management: Meta campaigns built and launched, creative and tracking included.","go":"/services"},{"id":"email","k":["email","newsletter","sequence","broadcast","klaviyo","mailchimp"],"a":"Email marketing: sequences written, scheduled and tested so they land in inboxes, not spam folders.","go":"/services"},{"id":"funnels","k":["funnel","crm","landing page","pipeline","leads","tagging"],"a":"Funnels and CRM: pages built, automations wired, every lead tagged and followed up.","go":"/services"},{"id":"ghl","k":["ghl","gohighlevel","highlevel","automation","workflow","zapier","make"],"a":"GHL: your pipelines and follow-ups kept in order, so no lead sits waiting for a reply. Automation builds run with our sister company, JTL Growth, at jtlgrowth.com.","go":"/services"},{"id":"ai","k":["ai","chatbot","automation ai","gpt","artificial"],"a":"AI and automation builds run with our sister company, JTL Growth, at jtlgrowth.com. This team makes and ships the marketing.","go":"/services"},{"id":"admin","k":["admin","inbox","calendar","assistant","va","virtual assistant","support"],"a":"Admin support: inboxes cleared, calendars kept, loose ends tied.","go":"/services"},{"id":"roadmap","k":["roadmap","strategy","plan","growth plan","quarter","q3"],"a":"Growth roadmaps: the quarter mapped from offer to send, so nothing ships late.","go":"/services"},{"id":"brand","k":["brand","positioning","identity","messaging","deck"],"a":"Brand positioning: the deck revised until the offer says the same thing everywhere.","go":"/services"},{"id":"where","k":["where","location","based","country","philippines","office"],"a":"Manila, Philippines. Quezon City. Brands in the US, Australia and the Philippines have handed us their marketing since 2021.","go":"/about"},{"id":"careers","k":["careers","jobs","hiring","apply","work with you","join"],"a":"Do the work you are proud of, with a team that ships.","go":"/careers"},{"id":"quiz","k":["quiz","what should i hand over","not sure","recommend","diagnostic","fit"],"a":"Two minutes, and you will know what to hand over first.","go":"/quiz"},{"id":"contract","k":["contract","commitment","lock in","cancel","month to month","terms"],"a":"Month to month. The work holds you, not the paperwork.","go":"#p-pricing"},{"id":"help","k":["help","commands","what can i type","how does this work","?"],"a":"Type a service name, or: pricing, who runs it, how fast, book a call.","go":null},{"id":"clients","k":["clients","who do you work with","case","proof","results","testimonial","kate","kate powers","client"],"a":"Fourteen brands have handed us their marketing, four of them right now. Kate Powers, author and educator: her site moved off Kajabi, her community was built from zero, and her social runs daily.","go":"#p-kate"},{"id":"book","k":["book","call","talk","contact","get started","hire","start","enquire","inquire","calendar","schedule"],"a":"Free 30 minute fit call, founder to founder. Pick a time at the end of this page, no second tab.","go":"#p-book"},{"id":"services","k":["services","what do you do","what do you offer","offering","help with","capabilities","everything"],"a":"Twelve services, one team: growth roadmaps, brand positioning, campaign planning, content creation, social media, ad management, email marketing, funnels and CRM, admin support, SEO, GEO, and AIO. AI and automation builds run with our sister company, JTL Growth.","go":"/services"},{"id":"search","k":["seo","geo","aio","aeo","search","google","ranking","rank","keywords","visibility","ai overviews","chatgpt","perplexity","llm","generative","found"],"a":"Three layers of being found. SEO puts you in Google's blue links. GEO puts you inside AI answers, the ChatGPT and Perplexity kind. AIO keeps the whole thing tuned as those engines change. One team runs all three.","go":"/services"}]};
 const SETTINGS = {"book_url":"https://ayalavirtualassistance.site/book","email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","site_url":"https://ayalavirtualassistance.site","bg":"drift","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com"};
 document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a.dataset.setHref]; if (v) a.href = v; });
 /* ==========================================================================
