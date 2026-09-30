@@ -7,12 +7,17 @@
 <meta name="description" content="What this site keeps on your device, what Calendly sets, and who to write to.">
 <meta name="theme-color" content="#F5F5F7">
 <link rel="canonical" href="https://ayalavirtualassistance.site/privacy/">
-<link rel="icon" href="/assets/avas-mark-plain.png">
+<link rel="icon" href="/assets/work-icon.png" sizes="96x96" type="image/png">
 <meta property="og:title" content="Privacy · AVAS">
 <meta property="og:description" content="What this site keeps on your device, what Calendly sets, and who to write to.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ayalavirtualassistance.site/privacy/">
 <meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
+<!-- QUICK SETTINGS
+  footer links -> const SETTINGS (build.py OLD_SETTINGS)
+  colours, type, spacing -> the tokens in parts/tokens.css :root
+  settings: host-ok=jtlgrowth.com
+-->
 <link rel="stylesheet" href="/assets/fonts.css">
 <style>/* AVAS v16 tokens.
 
@@ -39,6 +44,8 @@
   --espresso-24:rgba(139,74,42,.24);
   --espresso-10:rgba(139,74,42,.10);
   --deep:#3A241C;
+  --on-dark:#F5F5F7;    /* ink on the one dark panel (shell.css chrome) */
+  --copper:#D08A5A;     /* the rail's active dot on dark */
   --shadow:0 20px 50px rgba(29,29,31,.10), 0 1px 0 rgba(29,29,31,.04) inset;
   --shadow-lift:0 36px 90px rgba(29,29,31,.16);
 
@@ -212,6 +219,7 @@ button{font:inherit;color:inherit}
 /* ---------- calm register: the Owner's live kill switch for oscillation ---------- */
 html[data-motion="calm"] *{animation-play-state:paused!important}
 html[data-motion="calm"] .float{animation:none!important}
+html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after{animation:none!important}
 
 /* ---------- collapse: phone, and anyone who asked for less motion ---------- */
 @media (max-width:900px),(prefers-reduced-motion:reduce){
@@ -235,39 +243,39 @@ html[data-motion="calm"] .float{animation:none!important}
    morph, so the panel under the chrome flips it instead. */
 :root{--dark:0}
 @media (min-width:901px) and (prefers-reduced-motion:no-preference){
-  .top__mark{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--deep))}
-  .top__nav a{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--muted))}
-  .top__nav a:hover{color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso))}
+  .top__mark{color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--deep))}
+  .top__nav a{color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--muted))}
+  .top__nav a:hover{color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso))}
   .top button{
     color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted));
     border-color:color-mix(in srgb,rgba(245,245,247,.28) calc(var(--dark) * 100%),var(--hair));
   }
   .top button[aria-pressed="true"]{
-    color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
+    color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso));
     border-color:color-mix(in srgb,rgba(245,245,247,.5) calc(var(--dark) * 100%),var(--espresso-24));
   }
   .top__cta{
-    background:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
-    border-color:color-mix(in srgb,#F5F5F7 calc(var(--dark) * 100%),var(--espresso));
-    color:color-mix(in srgb,#1D1D1F calc(var(--dark) * 100%),var(--panel));
+    background:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso));
+    color:color-mix(in srgb,var(--ink) calc(var(--dark) * 100%),var(--panel));
   }
   .rail__dots button{border-color:color-mix(in srgb,rgba(245,245,247,.45) calc(var(--dark) * 100%),var(--hair))}
   .rail__dots button[aria-current="true"]{
-    background:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso));
-    border-color:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso));
+    background:color-mix(in srgb,var(--copper) calc(var(--dark) * 100%),var(--espresso));
+    border-color:color-mix(in srgb,var(--copper) calc(var(--dark) * 100%),var(--espresso));
   }
   .rail__bar{background:color-mix(in srgb,rgba(245,245,247,.18) calc(var(--dark) * 100%),var(--hair))}
-  .rail__bar i{background:color-mix(in srgb,#D08A5A calc(var(--dark) * 100%),var(--espresso))}
+  .rail__bar i{background:color-mix(in srgb,var(--copper) calc(var(--dark) * 100%),var(--espresso))}
   .rail__count{color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted))}
   /* the proof panel is transparent on the rail: the morphing ground is its black */
   #p-proof{background:transparent}
 }
 @media (max-width:900px),(prefers-reduced-motion:reduce){
-html[data-panel="p-proof"] .top__mark,html[data-panel="p-proof"] .top__nav a{color:#F5F5F7}
+html[data-panel="p-proof"] .top__mark,html[data-panel="p-proof"] .top__nav a{color:var(--on-dark)}
 html[data-panel="p-proof"] .top__nav a[aria-current="page"]{border-bottom-color:rgba(245,245,247,.5)}
 html[data-panel="p-proof"] .top button{color:rgba(245,245,247,.72);border-color:rgba(245,245,247,.28)}
-html[data-panel="p-proof"] .top button[aria-pressed="true"]{color:#F5F5F7;border-color:rgba(245,245,247,.5)}
-html[data-panel="p-proof"] .top__cta{background:#F5F5F7;color:#1D1D1F;border-color:#F5F5F7}
+html[data-panel="p-proof"] .top button[aria-pressed="true"]{color:var(--on-dark);border-color:rgba(245,245,247,.5)}
+html[data-panel="p-proof"] .top__cta{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
 html[data-panel="p-proof"] .top__menu summary{color:rgba(245,245,247,.8);border-color:rgba(245,245,247,.3)}
 }
 
@@ -397,25 +405,23 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 <header class="top">
   <a class="top__mark" href="/" aria-label="AVAS home">AVAS</a>
   <nav class="top__nav" aria-label="Site">
-    <a href="/services">Services</a>
-    <a href="/pricing">Pricing</a>
-    <a href="/work">Work</a>
-    <a href="/about">About</a>
-    <a href="/quiz">Quiz</a>
+    <a href="/services/">Services</a>
+    <a href="/work/">Work</a>
+    <a href="/pricing/">Pricing</a>
     <a href="/how/">How it works</a>
     <a href="/team/">Team</a>
+    <a href="/#p-ask">Ask</a>
   </nav>
   <span class="top__sp"></span>
   <details class="top__menu">
     <summary>Menu</summary>
     <div class="top__menu-list">
-      <a href="/services">Services</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/work">Work</a>
-      <a href="/about">About</a>
-      <a href="/quiz">Quiz</a>
+      <a href="/services/">Services</a>
+      <a href="/work/">Work</a>
+      <a href="/pricing/">Pricing</a>
       <a href="/how/">How it works</a>
       <a href="/team/">Team</a>
+      <a href="/#p-ask">Ask</a>
       <a href="/book">Book a call</a>
     </div>
   </details>
@@ -491,6 +497,11 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 </main>
 <footer class="foot">
   <span>AVAS <span aria-hidden="true">&middot;</span> Ayala Virtual Assistance</span>
+  <a href="/services">Services</a>
+  <a href="/work">Work</a>
+  <a href="/pricing">Pricing</a>
+  <a href="/about">About</a>
+  <a href="/quiz">Quiz</a>
   <span class="foot__sp"></span>
   <span>Quezon City, Manila</span>
   <span aria-hidden="true">&middot;</span>
@@ -498,9 +509,9 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   <span aria-hidden="true">&middot;</span>
   <a href="/terms">Terms</a>
   <span aria-hidden="true">&middot;</span>
-  <a href="mailto:info@ayalavirtualassistance.com">info@ayalavirtualassistance.com</a>
+  <a href="mailto:info@ayalavirtualassistance.com" data-set-href="email_href">info@ayalavirtualassistance.com</a>
   <span aria-hidden="true">&middot;</span>
-  <a class="jtl-lock" href="https://jtlgrowth.com" target="_blank" rel="noopener" aria-label="Powered by JTL Growth">
+  <a class="jtl-lock" href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener" aria-label="Powered by JTL Growth">
     <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg>
     <span><small>Powered by</small> <b>JTL Growth</b></span>
   </a>
@@ -508,13 +519,14 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 
 <aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
-  <p class="consent__p">This page keeps two settings on your device: whether the music is on, and whether you asked for calmer motion. The booking calendar is loaded from Calendly, a third party, and only when you allow it.</p>
+  <p class="consent__p">This page keeps two settings on your device: whether the music is on, and whether you asked for calmer motion. Two things come from third parties, and only when you allow them: the booking calendar from Calendly, and the music, which plays in YouTube's own player.</p>
   <details class="consent__more">
     <summary>What that actually means</summary>
     <ul>
       <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
       <li><b>Loaded from Calendly</b> when you accept: their booking widget, which sets its own cookies so it can remember your slot.</li>
-      <li><b>If you decline</b>: nothing third party loads, and the booking panel gives you a plain link instead.</li>
+      <li><b>Played by YouTube</b> when you accept or tap Sound: Brooklyn Duo's cover of Landslide in YouTube's player, kept out of sight, which may set its own cookies once it plays.</li>
+      <li><b>If you decline</b>: nothing third party loads on its own. The booking panel gives you a plain link, and the music waits until you tap Sound.</li>
     </ul>
   </details>
   <div class="consent__row">
@@ -523,7 +535,9 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   </div>
 </aside>
 
-<script>/* Privacy consent. One key, three states: unset shows the notice, granted lets
+<script>const SETTINGS = {"email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com"};
+document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a.dataset.setHref]; if (v) a.href = v; });
+/* Privacy consent. One key, three states: unset shows the notice, granted lets
    the booking panel load Calendly, denied keeps every third party off the page.
    The answer changes behaviour, so the notice is not decoration. */
 (() => {
