@@ -279,6 +279,73 @@ html[data-panel="p-proof"] .top__cta{background:var(--on-dark);color:var(--ink);
 html[data-panel="p-proof"] .top__menu summary{color:rgba(245,245,247,.8);border-color:rgba(245,245,247,.3)}
 }
 
+/* ==========================================================================
+   AVAS sound (2026-10-01): the Sound button's icons, its label, the credit
+   bubble, YouTube's hidden player and the shell that carries the music
+   across pages. Shared by the A pages and the inner shell; every token has a
+   fallback because the two shells name their tokens differently.
+   ========================================================================== */
+.top__sound{display:inline-flex;align-items:center;gap:7px;margin-right:8px}
+.top__sound svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.top__sound .i-on,.top__sound[aria-pressed="true"] .i-off{display:none}
+.top__sound[aria-pressed="true"] .i-on{display:block}
+.top__sound.is-loading{opacity:.55;cursor:progress}
+@media (max-width:900px){.top__sound span{display:none}}
+
+/* ---------- now playing: the music card, the song's name and its credit links (Owner 2026-09-30, "name lng") ---------- */
+/* the music's name: out of sight until Sound is hovered or keyboard-focused (pk-0321 C); a phone shows it for 3 s at
+   start (a tap focuses the button too, so plain focus does not count) */
+.snd{position:relative;display:inline-flex}
+.snd__tip{position:absolute;top:calc(100% + 10px);right:0;z-index:71;display:flex;flex-direction:column;gap:1px;
+  width:max-content;max-width:min(260px,calc(100vw - 32px));padding:10px 14px;border-radius:14px;background:var(--bg,#fff);
+  box-shadow:0 10px 30px rgba(28,20,16,.14),0 0 0 1px var(--border,var(--hair,#D2D2D7));text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s var(--ease,ease),transform .2s var(--ease,ease),visibility 0s .2s}
+.snd__tip::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.snd:has(:focus-visible) .snd__tip,.snd__tip.is-shown{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+/* hover opens the label for a real pointer only: a phone's tap leaves :hover stuck on Sound (it has its 3 s reveal) */
+@media (hover:hover){.snd:hover .snd__tip{opacity:1;visibility:visible;transform:none;transition-delay:0s}}
+.snd.is-asking .snd__tip{opacity:0;visibility:hidden}   /* the player itself is showing under Sound */
+.snd__k{font-family:var(--font-mono,var(--font-m,ui-monospace,monospace));font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#6B6B6B)}
+.snd__t{font-size:15px;font-weight:600;color:var(--fg,#0B0B0B);text-decoration:none}
+.snd__by{font-size:13px;color:var(--accent,#3A241C);font-weight:600;text-decoration:none}
+.snd__t:hover,.snd__by:hover,.snd__t:focus-visible,.snd__by:focus-visible{text-decoration:underline;text-underline-offset:2px}
+/* YouTube's player for the music, hidden: in the page and 200 x 200 so it plays, see-through and out of the way.
+   A browser that held it back gets it under Sound (.is-asking) for one press of its own play button. */
+.yt-host{position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:0;pointer-events:none;z-index:0;overflow:hidden}
+.yt-host iframe{display:block;width:100%;height:100%;border:0}
+.yt-host.is-asking{bottom:auto;width:240px;height:135px;opacity:1;pointer-events:auto;z-index:72;border-radius:12px;
+  box-shadow:0 10px 30px rgba(28,20,16,.18),0 0 0 1px var(--border,var(--hair,#D2D2D7))}
+@media (prefers-reduced-motion:reduce){.snd__tip{transition:none;transform:none}}
+.snd__c{font-size:13px;color:var(--muted,#6B6B6B)}
+.snd__a{font-size:13px;color:var(--fg,#0B0B0B)}
+.snd__a:empty{display:none}
+
+/* the credit bubble (Owner 2026-10-01, "a mini cute bubble text in sound button"): a small speech bubble under Sound
+   while the music plays, its tail pointing at the button; one pop on the way in, no motion after (directional only) */
+.snd__mini{position:absolute;top:calc(100% + 12px);right:0;z-index:70;display:flex;flex-direction:column;gap:1px;
+  width:max-content;max-width:min(230px,calc(100vw - 32px));padding:7px 13px 8px 32px;border-radius:16px 5px 16px 16px;
+  background:var(--bg,#fff);color:var(--fg,#0B0B0B);border:1px solid var(--border,var(--hair,#D2D2D7));
+  box-shadow:0 8px 22px rgba(28,20,16,.10);font-size:11.5px;line-height:1.3;letter-spacing:0;text-transform:none;text-align:left;
+  pointer-events:none;opacity:0;visibility:hidden;transform:translateY(-6px) scale(.9);transform-origin:calc(100% - 14px) -6px;
+  transition:opacity .2s ease,transform .38s cubic-bezier(.2,1.5,.4,1),visibility 0s .38s}
+.snd__mini::before{content:"";position:absolute;top:-6px;right:12px;width:10px;height:10px;background:inherit;
+  border-left:1px solid var(--border,var(--hair,#D2D2D7));border-top:1px solid var(--border,var(--hair,#D2D2D7));
+  transform:rotate(45deg);border-top-left-radius:3px}
+.snd__mini b{font-weight:600;white-space:nowrap}
+.snd__mini span:last-child{color:var(--muted,#6B6B6B);white-space:nowrap}
+.snd__note{position:absolute;left:11px;top:50%;width:14px;height:14px;margin-top:-7px;color:var(--accent,#8B4A2A)}
+.snd__note svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+html[data-sound-state="on"] .snd__mini{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.snd:has(:focus-visible) .snd__mini,.snd:has(.snd__tip.is-shown) .snd__mini,.snd.is-asking .snd__mini{opacity:0;visibility:hidden}
+/* a mouse over Sound opens the full label instead; a phone's tap leaves a sticky :hover, so only a real pointer counts */
+@media (hover:hover){.snd:hover .snd__mini{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.snd__mini{transition:opacity .2s ease,visibility 0s .2s;transform:none}}
+
+/* the shell: while the music plays, the site's own pages open in this frame over the page that holds the player */
+.av-frame{position:fixed;inset:0;display:block;width:100%;height:100%;border:0;z-index:2147483000;background:var(--bg,#fff)}
+html.av-shell,html.av-shell body{overflow:hidden!important}
+html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
+
 /* Privacy notice. It gates something real: the Calendly embed does not load
    until this is answered, so declining actually changes what happens. */
 #consent{
@@ -426,6 +493,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     </div>
   </details>
   <a class="top__cta" href="/book">Book a call</a>
+  <button type="button" class="top__calm top__sound" data-sound aria-pressed="false" aria-label="Music is off. Turn it on"><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg><span>sound</span></button>
 </header>
 
 <main class="page" id="main">
@@ -601,7 +669,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   </div>
 </aside>
 
-<script>const SETTINGS = {"email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com"};
+<script>const SETTINGS = {"email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com","music_artist":"Fleetwood Mac","music_routes":"/,/team/,/how/,/services/,/pricing/,/work/,/about/,/book/,/quiz/,/privacy/,/terms/"};
 document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a.dataset.setHref]; if (v) a.href = v; });
 /* Privacy consent. One key, three states: unset shows the notice, granted lets
    the booking panel load Calendly, denied keeps every third party off the page.
@@ -632,6 +700,365 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     delete document.documentElement.dataset.consent;
     window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
   });
+})();
+
+/* ==========================================================================
+   AVAS sound (2026-10-01): the music, its Sound button, its credit and the
+   shell that carries it across pages. Moved out of a-kit.js so the inner
+   pages (about, book, quiz, privacy, terms) play it too. Classic script, no
+   modules; it reads SETTINGS (music_*) and uses window.AV.cursor when the
+   A kit is on the page.
+   ========================================================================== */
+(() => {
+  'use strict';
+  const D = document, H = D.documentElement;
+  const AV = window.AV || (window.AV = {});
+
+  /* ======================================================================
+     SOUND (Owner 2026-09-30). The live site plays Brooklyn Duo's cello and
+     piano cover of Landslide in YouTube's own player, hidden (Owner: "use this
+     instead but just hide the vid and if possible auto play"): the plays and
+     the credit stay theirs and the audio is never downloaded or hosted here.
+     YouTube's terms ask for a visible player; the Owner chose hidden
+     (pk-0321 C), flagged before deploy. Nothing from YouTube loads until the
+     visitor allows it: Accept on the privacy notice starts it right there (a
+     real tap, so browsers let it sound), a visitor who accepted earlier gets
+     a try at playing on load and otherwise at the first tap, and Sound always
+     works. If a browser still holds the player back after a tap (iPhone
+     Safari may), the player shows under Sound for one press of its own play
+     button, then hides again once it plays.
+     The name stays out of sight (pk-0321 C): a small label under Sound names
+     the song with links on hover or keyboard focus, and for 3 s on a phone as
+     the music starts. Sound stops and resumes it; the choice is remembered;
+     a hidden tab pauses it.
+     SETTINGS.music_source 'file' swaps in the Web Audio loop engine (a
+     seamless mp4 loop, music_loop_start for music_seconds): the music-sync
+     what-if uses it for its beat grid; the live build does not.
+
+     The credit bubble (Owner 2026-10-01, "a mini cute bubble text in sound
+     button ... credits so we dont copyright"): while the music plays, a
+     small speech bubble under Sound credits the song, its writers and the
+     cover. Hovering Sound still opens the full label with the links.
+
+     The music carries across pages (Owner 2026-10-01, picked A): while it
+     plays, a link to one of the site's own pages (SETTINGS.music_routes)
+     opens in a full-screen frame over this page, so this page and its
+     player never unload. The address bar, the title and Back follow the
+     frame. Inside the frame, Sound drives this page's player (window.AVMusic),
+     and a link off the site's pages (a GHL funnel, another site) leaves the
+     frame for the whole tab, where the music stops as on any other site.
+     ====================================================================== */
+  const snd = D.querySelector('[data-sound]');
+  const ST = typeof SETTINGS !== 'undefined' ? SETTINGS : {};   // a top-level const, not a window property
+  const YTM = ST.music_source === 'youtube' && !!ST.music_video;
+  if (snd && (YTM || ST.music)) {
+    const M = AV.sound = { on: false, state: 'off', engine: YTM ? 'youtube' : 'file', tip: null, player: null, ctx: null, t0: null };   // AV.sound: read by the QA scripts
+    /* framed by the shell (see above): the page around this one owns the player */
+    const PAR = (() => { try { const p = window.parent; return p !== window && p.AVMusic && p.location.origin === location.origin ? p.AVMusic : null; } catch (_) { return null; } })();
+    if (PAR) M.engine = 'shell';
+    let watcher = null;                                  // the framed page's repaint, set through AVMusic.watch
+    const tell = () => { if (watcher) { try { watcher(M); } catch (_) { watcher = null; } } };
+    const norm = p => (p.endsWith('/') ? p : p + '/');
+    const ROUTES = String(ST.music_routes || '').split(',').filter(Boolean).map(norm);
+    const site = u => u.origin === location.origin && ROUTES.includes(norm(u.pathname));
+    const plain = e => !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+    const linkOf = e => {                                // the same-tab http(s) link a click follows, or null
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return null;
+      const u = new URL(a.href, location.href);
+      return u.protocol === 'http:' || u.protocol === 'https:' ? u : null;
+    };
+    const el = (tag, cls, text) => { const n = D.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+    const link = (cls, href, text) => { const a = el('a', cls, text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
+    /* the name label: Sound and the label share a wrapper, so the pointer can travel onto the links */
+    const wrap = el('span', 'snd');
+    snd.parentNode.insertBefore(wrap, snd);
+    const tip = M.tip = el('span', 'snd__tip');
+    tip.id = 'snd-tip';
+    const kick = el('span', 'snd__k', 'Music');
+    const by = el('span', 'snd__c', 'cover by ');
+    by.append(link('snd__by', ST.music_by_url, ST.music_by));
+    tip.append(kick, link('snd__t', ST.music_url, ST.music_title), el('span', 'snd__a', ST.music_artist || ''), by);
+    /* the credit bubble: text only (the links live in the label above), so it never takes a tap meant for the page */
+    const mini = el('span', 'snd__mini');
+    mini.setAttribute('aria-hidden', 'true');
+    const note = el('span', 'snd__note');
+    const NS = 'http://www.w3.org/2000/svg', svg = D.createElementNS(NS, 'svg');   // Lucide "music", built node by node
+    svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true');
+    [['path', { d: 'M9 18V5l12-2v13' }], ['circle', { cx: 6, cy: 18, r: 3 }], ['circle', { cx: 18, cy: 16, r: 3 }]].forEach(([tag, at]) => {
+      const n = D.createElementNS(NS, tag); Object.entries(at).forEach(([k, v]) => n.setAttribute(k, v)); svg.appendChild(n);
+    });
+    note.appendChild(svg);
+    mini.append(note, el('b', '', ST.music_title + (ST.music_artist ? ' \u00b7 ' + ST.music_artist : '')), el('span', '', 'cover by ' + ST.music_by));
+    wrap.append(snd, tip, mini);
+    snd.setAttribute('aria-describedby', 'snd-tip');
+    const touch = matchMedia('(hover: none)');
+    let tipT = 0;
+    const reveal = () => {                               // a phone: the name shows for 3 s as the music starts
+      if (!touch.matches) return;
+      tip.classList.add('is-shown'); clearTimeout(tipT);
+      tipT = setTimeout(() => tip.classList.remove('is-shown'), 3000);
+    };
+    const set = s => { M.state = s; H.dataset.soundState = s; tell(); };
+    const paint = () => {
+      snd.setAttribute('aria-pressed', String(M.on));
+      snd.setAttribute('aria-label', M.on ? 'Music is on. Turn it off' : 'Music is off. Turn it on');
+      snd.querySelector('span').textContent = M.on ? 'sound on' : 'sound';
+      kick.textContent = M.on ? 'Now playing' : 'Music';
+      snd.dataset.cursor = M.on ? 'stop' : 'play';     // the cursor's word over Sound, kept true while it hovers
+      const word = AV.cursor && AV.cursor.querySelector('.cur__label');
+      if (word && snd.matches(':hover')) word.textContent = snd.dataset.cursor;
+      tell();
+    };
+    const playing = () => { M.on = true; paint(); set('on'); snd.classList.remove('is-loading'); reveal(); };
+    const remember = v => { try { localStorage.setItem('avas-sound', v); } catch (_) {} };
+    const wants = () => { let v = null; try { v = localStorage.getItem('avas-sound'); } catch (_) {} return (v || ST.music_default || 'off') === 'on'; };
+    const consented = () => { try { return localStorage.getItem('avas-consent') === 'granted'; } catch (_) { return false; } };
+    let E;                                               // the engine: start(tapped), stop(), away(hidden)
+
+    if (PAR) {
+      /* ---------- framed: Sound drives the shell's player ---------- */
+      E = { start() { PAR.toggle(true); }, stop() { PAR.toggle(false); }, away() {}, mayAuto: () => false };
+    } else if (YTM) {
+      /* ---------- YouTube's player, hidden ---------- */
+      const VOL = ST.music_volume || 60;
+      let host = null, fadeT = 0, watchT = 0, closing = false, away = false, auto = false;   // auto: a try with no tap behind it
+      const fade = (to, ms, done) => {
+        clearInterval(fadeT);
+        const p = M.player;
+        if (!p || !p.getVolume) { if (done) done(); return; }
+        const from = p.getVolume(), t0 = performance.now();
+        fadeT = setInterval(() => {
+          const k = Math.min(1, (performance.now() - t0) / ms);
+          try { p.setVolume(Math.round(from + (to - from) * k)); } catch (_) {}
+          if (k >= 1) { clearInterval(fadeT); if (done) done(); }
+        }, 50);
+      };
+      const api = () => (window.YT && window.YT.Player) ? Promise.resolve(window.YT) : (M.api || (M.api = new Promise((res, rej) => {
+        const prev = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => { if (prev) { try { prev(); } catch (_) {} } res(window.YT); };
+        const sc = D.createElement('script');
+        sc.src = 'https://www.youtube.com/iframe_api'; sc.async = true;
+        sc.onerror = () => { M.api = null; rej(new Error('iframe api')); };
+        D.head.appendChild(sc);
+        setTimeout(() => rej(new Error('iframe api timeout')), 15000);
+      })));
+      const ask = on => {                                // a browser that held it back: its own play button, under Sound
+        if (!host) return;
+        if (on) {
+          const r = wrap.getBoundingClientRect();
+          host.style.top = Math.round(r.bottom + 10) + 'px';
+          host.style.left = Math.max(10, Math.round(r.right - 240)) + 'px';
+        }
+        host.classList.toggle('is-asking', on); wrap.classList.toggle('is-asking', on);
+        host.setAttribute('aria-hidden', String(!on));
+        const f = host.querySelector('iframe'); if (f) f.tabIndex = on ? 0 : -1;
+      };
+      const fail = e => {
+        M.err = e && e.data != null ? e.data : String(e || '');   // YouTube's error number, for QA
+        M.on = false; paint(); set('error'); snd.classList.remove('is-loading'); ask(false);
+      };
+      const build = () => M.building || (M.building = api().then(YT => new Promise(res => {
+        host = el('div', 'yt-host'); host.setAttribute('aria-hidden', 'true');
+        const slot = el('div'); host.appendChild(slot); D.body.appendChild(host);
+        M.player = new YT.Player(slot, {
+          host: ST.music_host || 'https://www.youtube-nocookie.com',
+          videoId: ST.music_video, width: '100%', height: '100%',
+          playerVars: { autoplay: 0, controls: 1, loop: 1, playlist: ST.music_video, playsinline: 1, rel: 0, origin: location.origin },
+          events: {
+            onReady: e => {
+              const f = e.target.getIframe(); f.tabIndex = -1; f.title = 'Background music: ' + (ST.music_title || '');
+              e.target.setVolume(0); res(e.target);
+            },
+            onStateChange: e => {
+              const S = YT.PlayerState, p = e.target;
+              if (e.data === S.PLAYING) {
+                if (closing) { p.pauseVideo(); return; }
+                clearTimeout(watchT); ask(false); playing();
+                fade(VOL, p.getVolume() < VOL / 2 ? 1600 : 300);
+              } else if (e.data === S.PAUSED && !closing && !away && auto) {
+                clearTimeout(watchT); M.on = false; paint(); set('waiting');   // Chrome let it start, then held the sound back
+              } else if (e.data === S.PAUSED && !closing && !away && M.on) {
+                M.on = false; paint(); set('paused');
+              } else if (e.data === S.ENDED) { p.seekTo(0); p.playVideo(); }
+            },
+            onError: fail
+          }
+        });
+      })).catch(err => { M.building = null; M.api = null; fail(err && err.message); throw err; }));
+      E = {
+        start(tapped) {
+          closing = false; auto = !tapped; set('loading'); snd.classList.add('is-loading');
+          if (tapped) { M.on = true; paint(); }
+          build().then(p => {
+            if (closing) return;
+            p.playVideo();
+            clearTimeout(watchT);
+            watchT = setTimeout(() => {                  // still not playing: held back by the browser
+              if (M.state !== 'loading') return;
+              snd.classList.remove('is-loading');
+              if (tapped) { set('blocked'); M.on = false; paint(); ask(true); }
+              else { set('waiting'); M.on = false; paint(); }
+            }, tapped ? 4000 : 2500);
+          }).catch(() => {});
+        },
+        stop() {
+          closing = true; clearTimeout(watchT); M.on = false; paint(); set('off'); snd.classList.remove('is-loading'); ask(false);
+          tip.classList.remove('is-shown');
+          fade(0, 500, () => { try { if (closing && M.player && M.player.pauseVideo) M.player.pauseVideo(); } catch (_) {} });
+        },
+        away(hidden) {
+          const p = M.player;
+          if (!p || !p.pauseVideo) return;
+          if (hidden && M.on) { away = true; fade(0, 300, () => { if (D.hidden) p.pauseVideo(); }); }
+          else if (!hidden && away) { away = false; if (M.on) p.playVideo(); }
+        },
+        mayAuto: consented                               // YouTube only loads with the visitor's yes
+      };
+      /* Accept on the privacy notice is a yes to YouTube and a real tap: start right there
+         (consent.js has stored the answer by the time this bubbling listener runs) */
+      D.addEventListener('click', e => {
+        if (e.target.closest && e.target.closest('[data-consent="granted"]') && wants() && !M.on) E.start(true);
+      });
+      /* accepted on an earlier visit: try to play once the page has loaded; the first tap covers a refusal */
+      if (wants() && consented()) {
+        const go = () => setTimeout(() => { if (!M.on && M.state === 'off' && wants()) E.start(false); }, 1200);
+        if (D.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
+      }
+    } else {
+      /* ---------- the Web Audio loop (music-sync what-if) ---------- */
+      const VOL = 0.6, url = (ST.music_dir || '') + ST.music + '.mp4';
+      H.dataset.music = ST.music;
+      let busy = null;
+      const load = () => busy || (busy = (async () => {
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) throw new Error('no Web Audio');
+        if (!M.ctx) { M.ctx = new C(); M.gain = M.ctx.createGain(); M.gain.gain.value = 0; M.gain.connect(M.ctx.destination); }
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(r.status);
+        M.buf = await M.ctx.decodeAudioData(await r.arrayBuffer());
+      })());
+      /* Safari only unlocks audio inside the gesture itself, before any await: make the
+         context and ask it to resume right here, then let start() load in its own time */
+      const unlock = () => {
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return;
+        if (!M.ctx) { M.ctx = new C(); M.gain = M.ctx.createGain(); M.gain.gain.value = 0; M.gain.connect(M.ctx.destination); }
+        if (M.ctx.state !== 'running') { M.ctx.resume().catch(() => {}); const b = M.ctx.createBufferSource(); b.buffer = M.ctx.createBuffer(1, 1, 22050); b.connect(M.ctx.destination); b.start(0); }
+      };
+      const fade = (to, secs) => {
+        const g = M.gain.gain, t = M.ctx.currentTime;
+        g.cancelScheduledValues(t); g.setValueAtTime(Math.max(g.value, 0.0001), t);
+        g.exponentialRampToValueAtTime(Math.max(to, 0.0001), t + secs);
+      };
+      E = {
+        async start() {
+          unlock(); snd.classList.add('is-loading');
+          try { await load(); } catch (e) { snd.classList.remove('is-loading'); busy = null; set('error'); return; }
+          snd.classList.remove('is-loading');
+          if (M.ctx.state === 'suspended') await M.ctx.resume();
+          if (!M.src) {
+            M.src = M.ctx.createBufferSource();
+            M.src.buffer = M.buf; M.src.loop = true;
+            M.src.loopStart = ST.music_loop_start || 0;
+            M.src.loopEnd = Math.min(M.buf.duration, (ST.music_loop_start || 0) + (ST.music_seconds || M.buf.duration));
+            M.src.connect(M.gain); M.src.start(0, M.src.loopStart);
+            M.t0 = M.ctx.currentTime;                    // loop position = (now - t0) mod music_seconds
+          }
+          playing(); fade(VOL, 1.6);
+        },
+        stop() {
+          M.on = false; paint(); set('off'); tip.classList.remove('is-shown');
+          if (!M.ctx) return;
+          fade(0, 0.5);
+          setTimeout(() => { if (!M.on && M.ctx.state === 'running') M.ctx.suspend(); }, 560);
+        },
+        away(hidden) {
+          if (!M.ctx || !M.on) return;
+          if (hidden) { fade(0, 0.3); setTimeout(() => { if (D.hidden) M.ctx.suspend(); }, 320); }
+          else M.ctx.resume().then(() => fade(VOL, 1));
+        },
+        mayAuto: () => true                              // our own file: nothing third party to ask about
+      };
+    }
+
+    M.play = () => { if (!M.on) { E.start(true); remember('on'); } };   // for a page that asks first (the music-sync variant)
+    snd.addEventListener('click', () => {
+      if (M.on || M.state === 'loading') { E.stop(); remember('off'); } else { E.start(true); remember('on'); }
+    });
+    D.addEventListener('visibilitychange', () => E.away(D.hidden));
+    /* sound on by default (or left on last visit): the first tap, click or key starts it where
+       it may. A phone tap only counts on release, so listen to both ends and stop once it plays. */
+    if (wants() && !PAR) {
+      const EVTS = ['pointerdown', 'pointerup', 'touchend', 'keydown'];
+      const off = () => EVTS.forEach(t => removeEventListener(t, first, true));
+      function first(e) {
+        if (M.state === 'on') return off();
+        if (!E.mayAuto() || (M.state === 'loading' && M.on) || M.state === 'blocked') return;   // a load on its own (no tap) still takes this tap
+        if (wrap.contains(e.target) || (e.target.closest && e.target.closest('[data-nosound], #consent, .yt-host')) || e.key === 'Escape' || e.key === 'Tab') return;
+        if (!wants()) return off();                      // they turned it off meanwhile
+        E.start(true);
+      }
+      EVTS.forEach(t => addEventListener(t, first, true));
+    }
+    set('off'); paint();
+
+    if (PAR) {
+      /* ---------- framed: follow the shell's player, report where we are, leave for off-site links ---------- */
+      const sync = m => { M.on = m.on; snd.classList.toggle('is-loading', m.state === 'loading'); set(m.state); paint(); };
+      PAR.watch(sync); sync(PAR.m);
+      const arrive = () => { try { PAR.arrive(location.href, D.title); } catch (_) {} };
+      arrive(); addEventListener('hashchange', arrive);
+      D.addEventListener('click', e => {
+        if (!plain(e)) return;
+        const u = linkOf(e);
+        if (!u || site(u)) return;                       // the site's own pages stay in the frame
+        e.preventDefault(); window.top.location.href = u.href;
+      });
+    } else {
+      /* ---------- the shell: while the music plays, the site's pages open over this one ---------- */
+      let frame = null;
+      const first = D.title;
+      const open = href => {
+        frame = el('iframe', 'av-frame');
+        frame.title = first; frame.src = href;
+        frame.setAttribute('allow', 'autoplay; fullscreen; clipboard-write');
+        frame.addEventListener('load', () => { try { frame.contentWindow.focus(); } catch (_) {} });
+        D.body.appendChild(frame); H.classList.add('av-shell');
+      };
+      const close = () => {
+        if (!frame) return;
+        frame.remove(); frame = null; watcher = null; H.classList.remove('av-shell'); D.title = first;
+      };
+      window.AVMusic = {
+        m: M,
+        toggle(on) {
+          if (on && !M.on && M.state !== 'loading') { E.start(true); remember('on'); }
+          else if (!on && (M.on || M.state === 'loading')) { E.stop(); remember('off'); }
+        },
+        watch(fn) { watcher = fn; },
+        arrive(href, title) {
+          if (!frame) return;
+          try { history.replaceState({ avShell: href }, '', href); } catch (_) {}
+          D.title = title; frame.title = title;
+        },
+        frame: () => frame                               // for the QA scripts
+      };
+      D.addEventListener('click', e => {
+        if (frame || !plain(e) || (!M.on && M.state !== 'loading')) return;   // silent: a plain page load costs nothing
+        const u = linkOf(e);
+        if (!u || !site(u)) return;
+        if (norm(u.pathname) === norm(location.pathname) && u.search === location.search) return;   // this page: its own hash travel
+        e.preventDefault();
+        history.pushState({ avShell: u.href }, '', u.href);
+        open(u.href);
+      });
+      addEventListener('popstate', e => {
+        const s = e.state && e.state.avShell;
+        if (s && !frame) open(s); else if (!s) close();
+      });
+    }
+  }
 })();
 </script>
 

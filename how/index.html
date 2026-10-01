@@ -149,11 +149,6 @@ ul{padding:0;list-style:none}
 .top__calm{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 12px}
 .top__calm[aria-pressed="true"]{color:var(--fg);border-color:var(--fg)}
-.top__sound{display:inline-flex;align-items:center;gap:7px;margin-right:8px}
-.top__sound svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.top__sound .i-on,.top__sound[aria-pressed="true"] .i-off{display:none}
-.top__sound[aria-pressed="true"] .i-on{display:block}
-.top__sound.is-loading{opacity:.55;cursor:progress}
 .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:var(--radius-pill);
   background:var(--black);color:var(--white);font-weight:600;font-size:15px;position:relative;overflow:hidden;
   isolation:isolate;transition:transform .5s var(--ease-out)}
@@ -276,29 +271,8 @@ html.has-cur input,html.has-cur textarea{cursor:text}
 .cutclip.is-live>video{opacity:1}
 .cutclip.is-live>img{opacity:0}
 
-/* ---------- now playing: the music card, the song's name and its credit links (Owner 2026-09-30, "name lng") ---------- */
-/* the music's name: out of sight until Sound is hovered or keyboard-focused (pk-0321 C); a phone shows it for 3 s at
-   start (a tap focuses the button too, so plain focus does not count) */
-.snd{position:relative;display:inline-flex}
-.snd__tip{position:absolute;top:calc(100% + 10px);right:0;z-index:71;display:flex;flex-direction:column;gap:1px;
-  width:max-content;max-width:min(260px,calc(100vw - 32px));padding:10px 14px;border-radius:14px;background:var(--bg);
-  box-shadow:0 10px 30px rgba(28,20,16,.14),0 0 0 1px var(--border);text-align:left;
-  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility 0s .2s}
-.snd__tip::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
-.snd:hover .snd__tip,.snd:has(:focus-visible) .snd__tip,.snd__tip.is-shown{opacity:1;visibility:visible;transform:none;transition-delay:0s}
-.snd.is-asking .snd__tip{opacity:0;visibility:hidden}   /* the player itself is showing under Sound */
-.snd__k{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.snd__t{font-size:15px;font-weight:600;color:var(--fg);text-decoration:none}
-.snd__by{font-size:13px;color:var(--accent);font-weight:600;text-decoration:none}
-.snd__t:hover,.snd__by:hover,.snd__t:focus-visible,.snd__by:focus-visible{text-decoration:underline;text-underline-offset:2px}
+/* the music's Sound label, its credit bubble and the page shell: sound.css (2026-10-01) */
 .foot__music{font-size:12px}
-/* YouTube's player for the music, hidden: in the page and 200 x 200 so it plays, see-through and out of the way.
-   A browser that held it back gets it under Sound (.is-asking) for one press of its own play button. */
-.yt-host{position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:0;pointer-events:none;z-index:0;overflow:hidden}
-.yt-host iframe{display:block;width:100%;height:100%;border:0}
-.yt-host.is-asking{bottom:auto;width:240px;height:135px;opacity:1;pointer-events:auto;z-index:72;border-radius:12px;
-  box-shadow:0 10px 30px rgba(28,20,16,.18),0 0 0 1px var(--border)}
-@media (prefers-reduced-motion:reduce){.snd__tip{transition:none;transform:none}}
 
 /* ---------- calm: the Owner's switch for continuous motion ---------- */
 html[data-motion="calm"] *{animation-play-state:paused!important}
@@ -341,6 +315,73 @@ html[data-motion="calm"] .wreveal .w{opacity:1}
 html[data-motion="calm"] .js [data-reveal],html[data-motion="calm"][class] [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
 html[data-motion="calm"] .line-mask>span{transform:none!important}
 html[data-motion="calm"] .lineup .lineup__p{opacity:1!important;transform:none!important}
+
+/* ==========================================================================
+   AVAS sound (2026-10-01): the Sound button's icons, its label, the credit
+   bubble, YouTube's hidden player and the shell that carries the music
+   across pages. Shared by the A pages and the inner shell; every token has a
+   fallback because the two shells name their tokens differently.
+   ========================================================================== */
+.top__sound{display:inline-flex;align-items:center;gap:7px;margin-right:8px}
+.top__sound svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.top__sound .i-on,.top__sound[aria-pressed="true"] .i-off{display:none}
+.top__sound[aria-pressed="true"] .i-on{display:block}
+.top__sound.is-loading{opacity:.55;cursor:progress}
+@media (max-width:900px){.top__sound span{display:none}}
+
+/* ---------- now playing: the music card, the song's name and its credit links (Owner 2026-09-30, "name lng") ---------- */
+/* the music's name: out of sight until Sound is hovered or keyboard-focused (pk-0321 C); a phone shows it for 3 s at
+   start (a tap focuses the button too, so plain focus does not count) */
+.snd{position:relative;display:inline-flex}
+.snd__tip{position:absolute;top:calc(100% + 10px);right:0;z-index:71;display:flex;flex-direction:column;gap:1px;
+  width:max-content;max-width:min(260px,calc(100vw - 32px));padding:10px 14px;border-radius:14px;background:var(--bg,#fff);
+  box-shadow:0 10px 30px rgba(28,20,16,.14),0 0 0 1px var(--border,var(--hair,#D2D2D7));text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s var(--ease,ease),transform .2s var(--ease,ease),visibility 0s .2s}
+.snd__tip::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.snd:has(:focus-visible) .snd__tip,.snd__tip.is-shown{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+/* hover opens the label for a real pointer only: a phone's tap leaves :hover stuck on Sound (it has its 3 s reveal) */
+@media (hover:hover){.snd:hover .snd__tip{opacity:1;visibility:visible;transform:none;transition-delay:0s}}
+.snd.is-asking .snd__tip{opacity:0;visibility:hidden}   /* the player itself is showing under Sound */
+.snd__k{font-family:var(--font-mono,var(--font-m,ui-monospace,monospace));font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#6B6B6B)}
+.snd__t{font-size:15px;font-weight:600;color:var(--fg,#0B0B0B);text-decoration:none}
+.snd__by{font-size:13px;color:var(--accent,#3A241C);font-weight:600;text-decoration:none}
+.snd__t:hover,.snd__by:hover,.snd__t:focus-visible,.snd__by:focus-visible{text-decoration:underline;text-underline-offset:2px}
+/* YouTube's player for the music, hidden: in the page and 200 x 200 so it plays, see-through and out of the way.
+   A browser that held it back gets it under Sound (.is-asking) for one press of its own play button. */
+.yt-host{position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:0;pointer-events:none;z-index:0;overflow:hidden}
+.yt-host iframe{display:block;width:100%;height:100%;border:0}
+.yt-host.is-asking{bottom:auto;width:240px;height:135px;opacity:1;pointer-events:auto;z-index:72;border-radius:12px;
+  box-shadow:0 10px 30px rgba(28,20,16,.18),0 0 0 1px var(--border,var(--hair,#D2D2D7))}
+@media (prefers-reduced-motion:reduce){.snd__tip{transition:none;transform:none}}
+.snd__c{font-size:13px;color:var(--muted,#6B6B6B)}
+.snd__a{font-size:13px;color:var(--fg,#0B0B0B)}
+.snd__a:empty{display:none}
+
+/* the credit bubble (Owner 2026-10-01, "a mini cute bubble text in sound button"): a small speech bubble under Sound
+   while the music plays, its tail pointing at the button; one pop on the way in, no motion after (directional only) */
+.snd__mini{position:absolute;top:calc(100% + 12px);right:0;z-index:70;display:flex;flex-direction:column;gap:1px;
+  width:max-content;max-width:min(230px,calc(100vw - 32px));padding:7px 13px 8px 32px;border-radius:16px 5px 16px 16px;
+  background:var(--bg,#fff);color:var(--fg,#0B0B0B);border:1px solid var(--border,var(--hair,#D2D2D7));
+  box-shadow:0 8px 22px rgba(28,20,16,.10);font-size:11.5px;line-height:1.3;letter-spacing:0;text-transform:none;text-align:left;
+  pointer-events:none;opacity:0;visibility:hidden;transform:translateY(-6px) scale(.9);transform-origin:calc(100% - 14px) -6px;
+  transition:opacity .2s ease,transform .38s cubic-bezier(.2,1.5,.4,1),visibility 0s .38s}
+.snd__mini::before{content:"";position:absolute;top:-6px;right:12px;width:10px;height:10px;background:inherit;
+  border-left:1px solid var(--border,var(--hair,#D2D2D7));border-top:1px solid var(--border,var(--hair,#D2D2D7));
+  transform:rotate(45deg);border-top-left-radius:3px}
+.snd__mini b{font-weight:600;white-space:nowrap}
+.snd__mini span:last-child{color:var(--muted,#6B6B6B);white-space:nowrap}
+.snd__note{position:absolute;left:11px;top:50%;width:14px;height:14px;margin-top:-7px;color:var(--accent,#8B4A2A)}
+.snd__note svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+html[data-sound-state="on"] .snd__mini{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.snd:has(:focus-visible) .snd__mini,.snd:has(.snd__tip.is-shown) .snd__mini,.snd.is-asking .snd__mini{opacity:0;visibility:hidden}
+/* a mouse over Sound opens the full label instead; a phone's tap leaves a sticky :hover, so only a real pointer counts */
+@media (hover:hover){.snd:hover .snd__mini{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.snd__mini{transition:opacity .2s ease,visibility 0s .2s;transform:none}}
+
+/* the shell: while the music plays, the site's own pages open in this frame over the page that holds the player */
+.av-frame{position:fixed;inset:0;display:block;width:100%;height:100%;border:0;z-index:2147483000;background:var(--bg,#fff)}
+html.av-shell,html.av-shell body{overflow:hidden!important}
+html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
 
 /* ==========================================================================
    PROJECT SETTINGS: direction A, Gallery. Apple-quiet: lots of white, one
@@ -1224,7 +1265,7 @@ function start(THREE) {
   </div>
 </aside>
 
-<script>const SETTINGS = {"book_url":"https://ayalavirtualassistance.site/book","email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","site_url":"https://ayalavirtualassistance.site","bg":"drift","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com"};
+<script>const SETTINGS = {"book_url":"https://ayalavirtualassistance.site/book","email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","site_url":"https://ayalavirtualassistance.site","bg":"drift","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com","music_artist":"Fleetwood Mac","music_routes":"/,/team/,/how/,/services/,/pricing/,/work/,/about/,/book/,/quiz/,/privacy/,/terms/"};
 document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a.dataset.setHref]; if (v) a.href = v; });
 /* ==========================================================================
    AVAS immersive kit (2026-09-26). Classic script, no modules, no network, so
@@ -1765,6 +1806,30 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     paintMenu();
   }
 
+  /* the music, Sound and its credit live in sound.js (2026-10-01) */
+
+
+  /* a link like index.html#p-book lands on its rail panel */
+  if (location.hash && /^#p-/.test(location.hash) && AV.goPanel) {
+    addEventListener('load', () => setTimeout(() => AV.goTo(location.hash), 250));
+  }
+
+  /* year in the footer */
+  D.querySelectorAll('[data-year]').forEach(n => { n.textContent = String(new Date().getFullYear()); });
+})();
+
+/* ==========================================================================
+   AVAS sound (2026-10-01): the music, its Sound button, its credit and the
+   shell that carries it across pages. Moved out of a-kit.js so the inner
+   pages (about, book, quiz, privacy, terms) play it too. Classic script, no
+   modules; it reads SETTINGS (music_*) and uses window.AV.cursor when the
+   A kit is on the page.
+   ========================================================================== */
+(() => {
+  'use strict';
+  const D = document, H = D.documentElement;
+  const AV = window.AV || (window.AV = {});
+
   /* ======================================================================
      SOUND (Owner 2026-09-30). The live site plays Brooklyn Duo's cello and
      piano cover of Landslide in YouTube's own player, hidden (Owner: "use this
@@ -1785,12 +1850,40 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
      SETTINGS.music_source 'file' swaps in the Web Audio loop engine (a
      seamless mp4 loop, music_loop_start for music_seconds): the music-sync
      what-if uses it for its beat grid; the live build does not.
+
+     The credit bubble (Owner 2026-10-01, "a mini cute bubble text in sound
+     button ... credits so we dont copyright"): while the music plays, a
+     small speech bubble under Sound credits the song, its writers and the
+     cover. Hovering Sound still opens the full label with the links.
+
+     The music carries across pages (Owner 2026-10-01, picked A): while it
+     plays, a link to one of the site's own pages (SETTINGS.music_routes)
+     opens in a full-screen frame over this page, so this page and its
+     player never unload. The address bar, the title and Back follow the
+     frame. Inside the frame, Sound drives this page's player (window.AVMusic),
+     and a link off the site's pages (a GHL funnel, another site) leaves the
+     frame for the whole tab, where the music stops as on any other site.
      ====================================================================== */
   const snd = D.querySelector('[data-sound]');
   const ST = typeof SETTINGS !== 'undefined' ? SETTINGS : {};   // a top-level const, not a window property
   const YTM = ST.music_source === 'youtube' && !!ST.music_video;
   if (snd && (YTM || ST.music)) {
     const M = AV.sound = { on: false, state: 'off', engine: YTM ? 'youtube' : 'file', tip: null, player: null, ctx: null, t0: null };   // AV.sound: read by the QA scripts
+    /* framed by the shell (see above): the page around this one owns the player */
+    const PAR = (() => { try { const p = window.parent; return p !== window && p.AVMusic && p.location.origin === location.origin ? p.AVMusic : null; } catch (_) { return null; } })();
+    if (PAR) M.engine = 'shell';
+    let watcher = null;                                  // the framed page's repaint, set through AVMusic.watch
+    const tell = () => { if (watcher) { try { watcher(M); } catch (_) { watcher = null; } } };
+    const norm = p => (p.endsWith('/') ? p : p + '/');
+    const ROUTES = String(ST.music_routes || '').split(',').filter(Boolean).map(norm);
+    const site = u => u.origin === location.origin && ROUTES.includes(norm(u.pathname));
+    const plain = e => !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+    const linkOf = e => {                                // the same-tab http(s) link a click follows, or null
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return null;
+      const u = new URL(a.href, location.href);
+      return u.protocol === 'http:' || u.protocol === 'https:' ? u : null;
+    };
     const el = (tag, cls, text) => { const n = D.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
     const link = (cls, href, text) => { const a = el('a', cls, text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
     /* the name label: Sound and the label share a wrapper, so the pointer can travel onto the links */
@@ -1799,8 +1892,21 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     const tip = M.tip = el('span', 'snd__tip');
     tip.id = 'snd-tip';
     const kick = el('span', 'snd__k', 'Music');
-    tip.append(kick, link('snd__t', ST.music_url, ST.music_title), link('snd__by', ST.music_by_url, ST.music_by));
-    wrap.append(snd, tip);
+    const by = el('span', 'snd__c', 'cover by ');
+    by.append(link('snd__by', ST.music_by_url, ST.music_by));
+    tip.append(kick, link('snd__t', ST.music_url, ST.music_title), el('span', 'snd__a', ST.music_artist || ''), by);
+    /* the credit bubble: text only (the links live in the label above), so it never takes a tap meant for the page */
+    const mini = el('span', 'snd__mini');
+    mini.setAttribute('aria-hidden', 'true');
+    const note = el('span', 'snd__note');
+    const NS = 'http://www.w3.org/2000/svg', svg = D.createElementNS(NS, 'svg');   // Lucide "music", built node by node
+    svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true');
+    [['path', { d: 'M9 18V5l12-2v13' }], ['circle', { cx: 6, cy: 18, r: 3 }], ['circle', { cx: 18, cy: 16, r: 3 }]].forEach(([tag, at]) => {
+      const n = D.createElementNS(NS, tag); Object.entries(at).forEach(([k, v]) => n.setAttribute(k, v)); svg.appendChild(n);
+    });
+    note.appendChild(svg);
+    mini.append(note, el('b', '', ST.music_title + (ST.music_artist ? ' \u00b7 ' + ST.music_artist : '')), el('span', '', 'cover by ' + ST.music_by));
+    wrap.append(snd, tip, mini);
     snd.setAttribute('aria-describedby', 'snd-tip');
     const touch = matchMedia('(hover: none)');
     let tipT = 0;
@@ -1809,7 +1915,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
       tip.classList.add('is-shown'); clearTimeout(tipT);
       tipT = setTimeout(() => tip.classList.remove('is-shown'), 3000);
     };
-    const set = s => { M.state = s; H.dataset.soundState = s; };
+    const set = s => { M.state = s; H.dataset.soundState = s; tell(); };
     const paint = () => {
       snd.setAttribute('aria-pressed', String(M.on));
       snd.setAttribute('aria-label', M.on ? 'Music is on. Turn it off' : 'Music is off. Turn it on');
@@ -1818,6 +1924,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
       snd.dataset.cursor = M.on ? 'stop' : 'play';     // the cursor's word over Sound, kept true while it hovers
       const word = AV.cursor && AV.cursor.querySelector('.cur__label');
       if (word && snd.matches(':hover')) word.textContent = snd.dataset.cursor;
+      tell();
     };
     const playing = () => { M.on = true; paint(); set('on'); snd.classList.remove('is-loading'); reveal(); };
     const remember = v => { try { localStorage.setItem('avas-sound', v); } catch (_) {} };
@@ -1825,7 +1932,10 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     const consented = () => { try { return localStorage.getItem('avas-consent') === 'granted'; } catch (_) { return false; } };
     let E;                                               // the engine: start(tapped), stop(), away(hidden)
 
-    if (YTM) {
+    if (PAR) {
+      /* ---------- framed: Sound drives the shell's player ---------- */
+      E = { start() { PAR.toggle(true); }, stop() { PAR.toggle(false); }, away() {}, mayAuto: () => false };
+    } else if (YTM) {
       /* ---------- YouTube's player, hidden ---------- */
       const VOL = ST.music_volume || 60;
       let host = null, fadeT = 0, watchT = 0, closing = false, away = false, auto = false;   // auto: a try with no tap behind it
@@ -1995,7 +2105,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     D.addEventListener('visibilitychange', () => E.away(D.hidden));
     /* sound on by default (or left on last visit): the first tap, click or key starts it where
        it may. A phone tap only counts on release, so listen to both ends and stop once it plays. */
-    if (wants()) {
+    if (wants() && !PAR) {
       const EVTS = ['pointerdown', 'pointerup', 'touchend', 'keydown'];
       const off = () => EVTS.forEach(t => removeEventListener(t, first, true));
       function first(e) {
@@ -2008,15 +2118,63 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
       EVTS.forEach(t => addEventListener(t, first, true));
     }
     set('off'); paint();
-  }
 
-  /* a link like index.html#p-book lands on its rail panel */
-  if (location.hash && /^#p-/.test(location.hash) && AV.goPanel) {
-    addEventListener('load', () => setTimeout(() => AV.goTo(location.hash), 250));
+    if (PAR) {
+      /* ---------- framed: follow the shell's player, report where we are, leave for off-site links ---------- */
+      const sync = m => { M.on = m.on; snd.classList.toggle('is-loading', m.state === 'loading'); set(m.state); paint(); };
+      PAR.watch(sync); sync(PAR.m);
+      const arrive = () => { try { PAR.arrive(location.href, D.title); } catch (_) {} };
+      arrive(); addEventListener('hashchange', arrive);
+      D.addEventListener('click', e => {
+        if (!plain(e)) return;
+        const u = linkOf(e);
+        if (!u || site(u)) return;                       // the site's own pages stay in the frame
+        e.preventDefault(); window.top.location.href = u.href;
+      });
+    } else {
+      /* ---------- the shell: while the music plays, the site's pages open over this one ---------- */
+      let frame = null;
+      const first = D.title;
+      const open = href => {
+        frame = el('iframe', 'av-frame');
+        frame.title = first; frame.src = href;
+        frame.setAttribute('allow', 'autoplay; fullscreen; clipboard-write');
+        frame.addEventListener('load', () => { try { frame.contentWindow.focus(); } catch (_) {} });
+        D.body.appendChild(frame); H.classList.add('av-shell');
+      };
+      const close = () => {
+        if (!frame) return;
+        frame.remove(); frame = null; watcher = null; H.classList.remove('av-shell'); D.title = first;
+      };
+      window.AVMusic = {
+        m: M,
+        toggle(on) {
+          if (on && !M.on && M.state !== 'loading') { E.start(true); remember('on'); }
+          else if (!on && (M.on || M.state === 'loading')) { E.stop(); remember('off'); }
+        },
+        watch(fn) { watcher = fn; },
+        arrive(href, title) {
+          if (!frame) return;
+          try { history.replaceState({ avShell: href }, '', href); } catch (_) {}
+          D.title = title; frame.title = title;
+        },
+        frame: () => frame                               // for the QA scripts
+      };
+      D.addEventListener('click', e => {
+        if (frame || !plain(e) || (!M.on && M.state !== 'loading')) return;   // silent: a plain page load costs nothing
+        const u = linkOf(e);
+        if (!u || !site(u)) return;
+        if (norm(u.pathname) === norm(location.pathname) && u.search === location.search) return;   // this page: its own hash travel
+        e.preventDefault();
+        history.pushState({ avShell: u.href }, '', u.href);
+        open(u.href);
+      });
+      addEventListener('popstate', e => {
+        const s = e.state && e.state.avShell;
+        if (s && !frame) open(s); else if (!s) close();
+      });
+    }
   }
-
-  /* year in the footer */
-  D.querySelectorAll('[data-year]').forEach(n => { n.textContent = String(new Date().getFullYear()); });
 })();
 
 /* Direction A, Gallery: background field, team name parallax, glass A handoff. */
