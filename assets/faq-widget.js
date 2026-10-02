@@ -7,7 +7,8 @@
   "use strict";
   var me = document.currentScript;
   var ENDPOINT = (me && me.getAttribute("data-endpoint")) || "https://portal.ayalavirtualassistance.site/api/public/faq";
-  var ALLOW = [/^https:\/\/calendly\.com\/obmgwenayala\/30min([/?#]|$)/, /^https:\/\/(www\.)?ayalavirtualassistance\.site(\/|$)/, /^mailto:info@ayalavirtualassistance\.com$/];
+  // Our own booking form first; Gwen's Calendly stays allowed until the bot's config (portal repo) names the new link.
+  var ALLOW = [/^https:\/\/book\.ayalavirtualassistance\.site(\/|$)/, /^https:\/\/calendly\.com\/obmgwenayala\/30min([/?#]|$)/, /^https:\/\/(www\.)?ayalavirtualassistance\.site(\/|$)/, /^mailto:info@ayalavirtualassistance\.com$/];
   var LINK = /(https?:\/\/[^\s<>()"']+|mailto:[^\s<>()"']+)/g;
   var history = [];
   var busy = false;
@@ -118,14 +119,14 @@
       fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-12) }) })
         .then(function (r) { return r.json().catch(function () { return {}; }); })
         .then(function (j) {
-          var reply = (j && j.reply) || "Sorry, I could not answer that. You can book a call: https://calendly.com/obmgwenayala/30min";
+          var reply = (j && j.reply) || "Sorry, I could not answer that. You can book a call: https://book.ayalavirtualassistance.site/";
           wait.textContent = "";
           renderText(wait, reply);
           if (j && j.sig) history.push({ role: "assistant", content: j.reply, sig: j.sig });
         })
         .catch(function () {
           wait.textContent = "";
-          renderText(wait, "I am offline right now. You can book a call: https://calendly.com/obmgwenayala/30min");
+          renderText(wait, "I am offline right now. You can book a call: https://book.ayalavirtualassistance.site/");
         })
         .then(function () { busy = false; });
     });

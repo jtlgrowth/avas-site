@@ -816,8 +816,8 @@ html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
 /* v17 (2026-09-30): the home's scroll-scene styles live in parts/home-v17.css and ride inside the
    home page only (home-gen.py inlines them into a-home.html), so /team/ and /how/ do not carry them. */
 
-/* Privacy notice. It gates something real: the Calendly embed does not load
-   until this is answered, so declining actually changes what happens. */
+/* Privacy notice. It gates something real: the music does not start on its
+   own until this is answered, so declining actually changes what happens. */
 #consent{
   position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
   width:min(400px,calc(100vw - 28px));
@@ -1783,14 +1783,14 @@ function start(THREE) {
 </script>
 <aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
-  <p class="consent__p">This page keeps two settings on your device: whether the music is on, and whether you asked for calmer motion. Two things come from third parties, and only when you allow them: the booking calendar from Calendly, and the music, which plays in YouTube's own player.</p>
+  <p class="consent__p">This page keeps two settings on your device: whether the music is on, and whether you asked for calmer motion. One thing comes from a third party, and only when you allow it: the music, which plays in YouTube's own player.</p>
   <details class="consent__more">
     <summary>What that actually means</summary>
     <ul>
       <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
-      <li><b>Loaded from Calendly</b> when you accept: their booking widget, which sets its own cookies so it can remember your slot.</li>
+      <li><b>The booking form</b> is our own, so it loads either way. It runs a Cloudflare check that stops spam bookings.</li>
       <li><b>Played by YouTube</b> when you accept or tap Sound: Brooklyn Duo's cover of Landslide in YouTube's player, kept out of sight, which may set its own cookies once it plays.</li>
-      <li><b>If you decline</b>: nothing third party loads on its own. The booking panel gives you a plain link, and the music waits until you tap Sound.</li>
+      <li><b>If you decline</b>: nothing third party loads on its own. The music waits until you tap Sound.</li>
     </ul>
   </details>
   <div class="consent__row">
@@ -3113,7 +3113,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
 })();
 
 /* Privacy consent. One key, three states: unset shows the notice, granted lets
-   the booking panel load Calendly, denied keeps every third party off the page.
+   the music start on its own, denied keeps every third party off the page.
    The answer changes behaviour, so the notice is not decoration. */
 (() => {
   'use strict';

@@ -6,7 +6,7 @@
   fonts                    -> the Google Fonts <link> in <head> plus --font-display / --font-body / --font-mono (keep the two adjacent)
   waitlist link + CTA text -> SETTINGS.content.ctaHref, SETTINGS.content.cta
   social links             -> SETTINGS.content.facebook / instagram / threads
-  consultation call        -> SETTINGS.content.bookHref (Gwen's Calendly, same as /book) and SETTINGS.content.bookCta
+  consultation call        -> SETTINGS.content.bookHref (our booking form, same as /book) and SETTINGS.content.bookCta
   product links            -> SETTINGS.content.contentEngineHref / leadEngineHref
   prices                   -> none on this page by Owner direction 2026-09-28; the product pages carry their own
   motion on or off         -> SETTINGS.behavior.animations (false = the reduced-motion layout for everyone)
@@ -388,7 +388,7 @@ html.still .brand-row{flex-wrap:wrap;width:auto;white-space:normal;padding-inlin
 html.still .close-bg{transform:none}
 </style>
 <script>
-const SETTINGS = {"brand": {"name": "Robots & Coffee", "logo": "media/rc-lockup.webp"}, "content": {"cta": "Join the waitlist", "ctaHref": "/ai-workshop-waitlist/", "facebook": "https://www.facebook.com/profile.php?id=61592292412856", "instagram": "https://www.instagram.com/robots_and_coffee/", "threads": "https://www.threads.com/@robots_and_coffee", "bookHref": "https://calendly.com/obmgwenayala/30min", "bookCta": "Book a consultation call", "contentEngineHref": "/content-engine/", "leadEngineHref": "/lead-engine/"}, "behavior": {"animations": true, "preloader": true}, "integration": {"analyticsId": ""}};
+const SETTINGS = {"brand": {"name": "Robots & Coffee", "logo": "media/rc-lockup.webp"}, "content": {"cta": "Join the waitlist", "ctaHref": "/ai-workshop-waitlist/", "facebook": "https://www.facebook.com/profile.php?id=61592292412856", "instagram": "https://www.instagram.com/robots_and_coffee/", "threads": "https://www.threads.com/@robots_and_coffee", "bookHref": "https://book.ayalavirtualassistance.site/", "bookCta": "Book a consultation call", "contentEngineHref": "/content-engine/", "leadEngineHref": "/lead-engine/"}, "behavior": {"animations": true, "preloader": true}, "integration": {"analyticsId": ""}};
 document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('[data-setting]').forEach(el => { const v = el.dataset.setting.split('.').reduce((o, k) => o && o[k], SETTINGS); if (typeof v !== 'string') return; if (el.dataset.attr === 'href' && el.tagName === 'A') { if (/^(\/|https:\/\/)/.test(v)) el.setAttribute('href', v); } else if (el.dataset.attr === 'src' && el.tagName === 'IMG') { if (/^(media\/|\/|https:\/\/)/.test(v)) el.setAttribute('src', v); } else el.textContent = v; }); });
 </script>
 </head>
@@ -630,7 +630,7 @@ document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll(
           <h3>Ask us anything, one on one.</h3>
           <p>Stuck on a tool, a workflow, or where to even start? Sit down with Gwen and Jamz and get straight answers for your exact business.</p>
           <ul><li>One hour, just you and us</li><li>Anything AI in your business: tools, workflows, where to start</li><li>You leave with answers, not homework</li></ul>
-          <a class="btn solid" href="https://calendly.com/obmgwenayala/30min" data-setting="content.bookHref" data-attr="href" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg><span data-setting="content.bookCta">Book a consultation call</span></a>
+          <a class="btn solid" href="https://book.ayalavirtualassistance.site/" data-setting="content.bookHref" data-attr="href" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg><span data-setting="content.bookCta">Book a consultation call</span></a>
         </div>
       </article>
       <article class="offer rv" style="--d:.12s">
@@ -640,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll(
           <h3>We bring the room to your team.</h3>
           <p>The hands-on format from our public batches, run for your company. Your people build on your real work: your offer, your clients, your processes.</p>
           <ul><li>Run for your team, on your team's real work</li><li>Leaders leave with their own AI employees set up</li><li>Hands on from the first hour</li></ul>
-          <a class="btn solid" href="https://calendly.com/obmgwenayala/30min" data-setting="content.bookHref" data-attr="href" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg><span data-setting="content.bookCta">Book a consultation call</span></a>
+          <a class="btn solid" href="https://book.ayalavirtualassistance.site/" data-setting="content.bookHref" data-attr="href" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg><span data-setting="content.bookCta">Book a consultation call</span></a>
         </div>
       </article>
     </div>
