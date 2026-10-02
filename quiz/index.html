@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light" data-motion="full">
+<html lang="en" data-theme="light" data-motion="full" data-cur="dot">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -14,270 +14,314 @@
 <meta property="og:url" content="https://ayalavirtualassistance.site/quiz/">
 <meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
 <!-- QUICK SETTINGS
-  footer links -> const SETTINGS (build.py OLD_SETTINGS)
-  colours, type, spacing -> the tokens in parts/tokens.css :root
+  links and page switches -> const SETTINGS (build.py A_SETTINGS)
+  colours, type, radii -> the role tokens in a-kit.css :root
+  client facts -> clients.json via parts/clients_gen.py
   settings: host-ok=jtlgrowth.com
 -->
-<link rel="stylesheet" href="/assets/fonts.css">
-<style>/* AVAS v16 tokens.
-
-   Palette: Apple gray, not porcelain. No beige, no cream, no warm ground.
-   Values are Apple's own system greys, taken from library/apple-gray.
-   Espresso is the only warm colour on the page and it is an ACCENT: the mark,
-   the caret, an active state, a link, a CTA fill, a hairline. Never a ground.
-
-   Type: JTL Growth's own combination, read from its live stylesheet.
-   Archivo Expanded for display, Archivo for body, Instrument Serif as the
-   accent voice, Space Mono for machine surfaces only. All inlined, no CDN. */
+<!-- template: W-24 -->
+<link rel="preload" as="image" type="image/avif" href="/assets/work-aturn/sm/00.avif" media="(max-width: 900px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" href="/assets/work-aturn/lg/00.avif" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" href="/assets/font-archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/font-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url('/assets/font-archivo.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/font-serif-italic.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/font-serif.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/font-mono.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/font-mono-bold.woff2') format('woff2');
+  
+}
+/* ==========================================================================
+   AVAS immersive kit, shared by the three design directions (2026-09-26).
+   PROJECT SETTINGS: every colour, font and size a direction uses is a role
+   token on :root below. A direction page overrides tokens in its own :root
+   block, never by hunting literals. Palette law (Owner 2026-09-26): white
+   ground, espresso brand, black accent. No beige, no cream.
+   ========================================================================== */
 :root{
-  --bg:#F5F5F7;
-  --panel:#FFFFFF;
-  --raised:#EBEBED;
-  --ink:#1D1D1F;
-  --ink-72:#3A3A3E;
-  --muted:#515154;
-  --faint:#86868B;
-  --hair:#D2D2D7;
-  --hair-2:rgba(29,29,31,.055);
-  --espresso:#8B4A2A;
-  --espresso-60:rgba(139,74,42,.6);
-  --espresso-24:rgba(139,74,42,.24);
-  --espresso-10:rgba(139,74,42,.10);
-  --deep:#3A241C;
-  --on-dark:#F5F5F7;    /* ink on the one dark panel (shell.css chrome) */
-  --copper:#D08A5A;     /* the rail's active dot on dark */
-  --shadow:0 20px 50px rgba(29,29,31,.10), 0 1px 0 rgba(29,29,31,.04) inset;
-  --shadow-lift:0 36px 90px rgba(29,29,31,.16);
+  /* venice-base roles */
+  --bg:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F4F4F4;
+  --fg:#0B0B0B;
+  --fg-2:#2B2B2B;
+  --muted:#6B6B6B;
+  --border:#E6E6E6;
+  --accent:#3A241C;
+  --accent-on:#FFFFFF;
+  --accent-hover:color-mix(in oklab,var(--accent),black 22%);
+  --success:#1F7A4D;
+  --warn:#8A5A00;
+  --danger:#B3261E;
+  --font-display:"Archivo",system-ui,-apple-system,sans-serif;
+  --font-body:"Archivo",system-ui,-apple-system,sans-serif;
+  --font-serif:"Instrument Serif",Georgia,serif;
+  --font-mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --radius-sm:8px;
+  --radius-md:16px;
+  --radius-lg:28px;
+  --radius-pill:999px;
+  --container-max:1320px;
 
-  /* display carries the expanded width; the variable axis does the work */
-  --font-d:'Archivo',system-ui,-apple-system,sans-serif;
-  --font-b:'Archivo',system-ui,-apple-system,sans-serif;
-  --font-s:'Instrument Serif',Georgia,serif;
-  --font-m:'Space Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* AVAS brand */
+  --espresso:#3A241C;
+  --espresso-deep:#1E0F07;
+  --black:#0B0B0B;
+  --white:#FFFFFF;
+  --dot:#D2D2D2;
+  --shadow:color-mix(in oklab,var(--black) 14%,transparent);
+  --shadow-soft:color-mix(in oklab,var(--black) 7%,transparent);
 
-  --w-display:700;
-  --wdth-display:118;
-  --track-display:-.026em;
-
-  --fs-hero:clamp(38px,6.6vw,104px);
-  --fs-h2:clamp(32px,4.2vw,60px);
-  --fs-body:17px;
+  /* layout + motion */
   --pad:clamp(20px,4.4vw,72px);
-  --rail-ease:cubic-bezier(.22,.61,.36,1);
+  --top-h:64px;
+  --fs-hero:clamp(44px,8.4vw,140px);
+  --fs-h2:clamp(34px,4.6vw,76px);
+  --fs-lede:clamp(17px,1.35vw,21px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-slam:cubic-bezier(.34,1.36,.64,1);
 }
 
-/* ---------- reset and ground ---------- */
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--bg);color:var(--ink);
-  font-family:var(--font-b);font-size:var(--fs-body);line-height:1.55;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-img{max-width:100%;display:block}
-h1,h2,h3{font-family:var(--font-d);font-weight:var(--w-display);
-  font-variation-settings:'wdth' var(--wdth-display);
-  letter-spacing:var(--track-display);margin:0;line-height:1.06}
-p{margin:0}
-a{color:inherit}
-button{font:inherit;color:inherit}
-::selection{background:var(--espresso-24)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+h1,h2,h3,p,ul,figure{margin:0}
+ul{padding:0;list-style:none}
 :focus-visible{outline:2px solid var(--espresso);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--black);color:var(--white);
+  padding:10px 16px;border-radius:var(--radius-pill)}
+.skip:focus{left:8px}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--espresso);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
 
-.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--espresso);color:var(--panel);
-  padding:10px 16px;border-radius:0 0 10px 0;font-weight:600}
-.skip:focus{left:0}
-
-#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
-
-/* ---------- top chrome ---------- */
-.top{
-  position:fixed;top:0;left:0;right:0;z-index:40;
-  display:flex;align-items:center;gap:10px;white-space:nowrap;
-  padding:16px var(--pad);
-}
-.top__mark{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;font-size:13px;color:var(--deep);text-decoration:none;transition:color .3s}
-.top__nav{display:flex;gap:18px;margin-left:24px}
-.top__nav a,.top__menu-list a{
-  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
-  color:var(--muted);transition:color .25s;
-}
-.top__nav a:hover,.top__nav a[aria-current="page"],.top__menu-list a:hover{color:var(--espresso)}
-.top__nav a[aria-current="page"]{border-bottom:1px solid var(--espresso-60);padding-bottom:2px}
-.top__cta{
-  font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;
-  background:var(--espresso);color:var(--panel);border:1px solid var(--espresso);border-radius:999px;
-  padding:5px 13px;transition:background .25s,border-color .25s;
-}
-.top__cta:hover{background:var(--deep);border-color:var(--deep)}
-.top__menu{display:none;position:relative}
-.top__menu summary{
-  list-style:none;cursor:pointer;border:1px solid var(--hair);border-radius:999px;
-  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
-}
-.top__menu summary::-webkit-details-marker{display:none}
-.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso-24)}
-.top__menu-list{
-  position:absolute;right:0;top:calc(100% + 8px);min-width:200px;
-  background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:8px;
-  display:flex;flex-direction:column;box-shadow:var(--shadow);
-}
-.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center}
-.top__menu-list a:hover{background:var(--espresso-10)}
-@media (max-width:900px){
-  .top__nav{display:none}
-  .top__menu{display:block}
-  .top__cta{display:none}
-}
+/* ---------- top bar ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:60;height:var(--top-h);display:flex;align-items:center;
+  gap:22px;padding:0 var(--pad);transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+.top.is-scrolled{background:color-mix(in oklab,var(--white) 82%,transparent);
+  backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+  box-shadow:0 1px 0 var(--border)}
+.top__mark{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;
+  letter-spacing:.14em;font-size:14px;color:var(--fg)}
+.top__mark svg{height:26px;width:auto;color:var(--espresso)}
+.top__nav{display:flex;gap:26px;margin-left:18px}
+.top__nav a{font-size:14px;color:var(--fg-2);position:relative;padding:4px 0}
+.top__nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--espresso);
+  transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-out)}
+.top__nav a:hover::after,.top__nav a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left}
 .top__sp{flex:1}
-.top button{
-  background:transparent;border:1px solid var(--hair);border-radius:999px;
-  padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--muted);cursor:pointer;transition:color .25s,border-color .25s,background .25s;
-}
-.top button:hover{color:var(--espresso);border-color:var(--espresso-24);background:var(--espresso-10)}
-.top button[aria-pressed="true"]{color:var(--espresso);border-color:var(--espresso-24)}
+.top__calm{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 12px}
+.top__calm[aria-pressed="true"]{color:var(--fg);border-color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:var(--radius-pill);
+  background:var(--black);color:var(--white);font-weight:600;font-size:15px;position:relative;overflow:hidden;
+  isolation:isolate;transition:transform .5s var(--ease-out)}
+.btn--sm{height:40px;padding:0 18px;font-size:14px}
+.top .btn{white-space:nowrap;flex-shrink:0}
+.btn--ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--fg)}
+.btn--esp{background:var(--espresso)}
+.btn svg{width:16px;height:16px}
+@media (max-width:900px){.top__nav{margin-left:14px}.top__nav a:not([href="team.html"]){display:none}.top__calm{display:none}}
+@media (max-width:900px){.top__calm.top__sound{display:inline-flex;padding:7px 9px;margin-right:6px}.top__sound span{display:none}}
 
-/* ---------- shared section frame ---------- */
-.hero,.panel{position:relative;z-index:1}
-
-/* ---------- the rail ---------- */
-.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh))}
+/* ---------- hero + rail (ported from v16 shell.css, ground stays white) ---------- */
+.hero{position:relative;min-height:100svh;padding:calc(var(--top-h) + 32px) var(--pad) 72px;
+  display:flex;flex-direction:column;justify-content:center;overflow:hidden;z-index:1}
+.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh));z-index:1}
 .rail__stick{position:sticky;top:0;height:100svh;overflow:hidden}
 .rail__track{display:flex;height:100%;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
-.panel{
-  width:100vw;height:100%;flex:none;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:76px var(--pad) 68px;
-}
-.panel__eyebrow{
-  font-family:var(--font-b);font-weight:600;font-size:12px;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--espresso);margin-bottom:14px;
-}
-
-/* rail UI: dots, counter, progress hairline */
-.rail__ui{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;z-index:6;
-  display:flex;align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
-/* the corner assistant lives bottom right, so the counter gets out of its way */
-@media (min-width:901px){ .rail__ui{padding-right:96px} }
-.rail__dots{display:flex;gap:8px;pointer-events:auto}
-.rail__dots button{
-  width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--hair);
-  background:transparent;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;
-}
-.rail__dots button[aria-current="true"]{background:var(--espresso);border-color:var(--espresso);
-  box-shadow:0 0 0 4px var(--espresso-10)}
-.rail__bar{flex:1;height:1px;background:var(--hair);position:relative}
-.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);
-  width:calc(var(--rail-p,0) * 100%);transform-origin:left}
-.rail__count{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--muted)}
-
-/* word reveal, driven by horizontal progress */
-.wreveal .w{opacity:.16;transition:opacity .5s var(--rail-ease),color .5s}
+.panel{position:relative;width:100vw;height:100%;flex:none;display:flex;flex-direction:column;
+  justify-content:center;padding:calc(var(--top-h) + 20px) var(--pad) 84px;overflow:hidden}
+.panel.hero--clone{padding:calc(var(--top-h) + 32px) var(--pad) 72px;min-height:0}
+.rail__ui{position:absolute;left:calc(var(--pad) + 64px);right:var(--pad);bottom:28px;z-index:6;display:flex;
+  align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
+.rail__dots{display:flex;gap:0;margin-left:-7px;pointer-events:auto}
+/* 24px hit area around a 9px dot */
+.rail__dots button{width:24px;height:24px;display:grid;place-items:center;border:0;padding:0;background:none;cursor:pointer}
+.rail__dots button::before{content:"";width:9px;height:9px;box-sizing:border-box;border-radius:50%;border:1px solid var(--muted);
+  transition:background .3s,border-color .3s,box-shadow .3s}
+.rail__dots button[aria-current="true"]::before{background:var(--espresso);border-color:var(--espresso);
+  box-shadow:0 0 0 4px color-mix(in oklab,var(--espresso) 14%,transparent)}
+.rail__bar{flex:1;height:1px;background:var(--border);position:relative}
+.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);width:calc(var(--rail-p,0) * 100%)}
+.rail__count{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--muted);background:var(--bg);padding:2px 6px;border-radius:var(--radius-sm)}
+.wreveal .w{opacity:.14;transition:opacity .5s var(--ease),color .5s}
 .wreveal .w.on{opacity:1}
-/* the accent word drops into the serif, which is how JTL rations its italic */
-.wreveal .w.tl{
-  font-family:var(--font-s);font-style:italic;font-weight:400;
-  font-variation-settings:normal;letter-spacing:-.008em;
-}
+.wreveal .w.tl{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.008em}
 .wreveal .w.tl.on{color:var(--espresso)}
 
-/* ---------- footer ---------- */
-.foot{
-  position:relative;z-index:1;display:flex;align-items:center;gap:12px;white-space:nowrap;
-  padding:26px var(--pad);border-top:1px solid var(--hair);
-  font-size:13px;color:var(--faint);
-}
-@media (max-width:900px){
-  /* the JTL lock badge widened this row enough that the old 760px cutoff
-     let it overflow at 768px (solo-review 2026-09-27, CONCERN). */
-  .foot{flex-wrap:wrap;white-space:normal;row-gap:6px}
-  .foot__sp{flex-basis:100%;height:0}
-  .foot a{overflow-wrap:anywhere}
-}
-.foot__sp{flex:1}
+/* ---------- custom cursor (three looks, one engine) ---------- */
+.cur{position:fixed;left:0;top:0;z-index:120;pointer-events:none;will-change:transform;display:none}
+html.has-cur .cur{display:block}
+html.has-cur,html.has-cur a,html.has-cur button{cursor:none}
+html.has-cur input,html.has-cur textarea{cursor:text}
+.cur__p{position:absolute;left:0;top:0;will-change:transform}
+.cur__dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--black);
+  transition:transform .35s var(--ease-out),opacity .3s}
+.cur__ring{position:absolute;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;
+  display:grid;place-items:center;transform:scale(.12);opacity:0;
+  transition:transform .45s var(--ease-out),opacity .3s,background .3s}
+.cur__label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--white);opacity:0;transition:opacity .25s}
+.cur.is-on .cur__ring{transform:scale(1);opacity:1}
+.cur.is-on .cur__label{opacity:1}
+.cur.is-on .cur__dot{transform:scale(0);opacity:0}
+.cur.is-down .cur__ring{transform:scale(.86)}
+
+/* ---------- JTL: corner badge + footer lockup ---------- */
+.jtl-badge{position:fixed;left:18px;bottom:18px;z-index:70;display:flex;align-items:center;height:44px;
+  border-radius:var(--radius-pill);background:var(--black);color:var(--white);overflow:hidden;
+  max-width:44px;transition:max-width .6s var(--ease-out),box-shadow .4s;box-shadow:0 8px 24px var(--shadow)}
+.jtl-badge svg{flex:none;width:44px;height:44px;padding:9px}
+.jtl-badge span{white-space:nowrap;font-size:13px;font-weight:600;padding-right:18px;opacity:0;
+  transition:opacity .3s .1s}
+.jtl-badge:hover,.jtl-badge:focus-visible{max-width:260px}
+.jtl-badge:hover span,.jtl-badge:focus-visible span{opacity:1}
+html.foot-on .jtl-badge{opacity:0;pointer-events:none;visibility:hidden}
+.foot{position:relative;z-index:2;padding:40px var(--pad) 36px;border-top:1px solid var(--border);
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-size:13px;color:var(--muted);background:var(--bg)}
 .foot a:hover{color:var(--espresso)}
-.jtl-lock{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:13px;
-  padding:6px 12px 6px 6px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--hair);
-  transition:box-shadow .3s}
-.jtl-lock svg{width:24px;height:24px;padding:5px;border-radius:50%;background:var(--ink);color:var(--panel);flex:none}
+.foot__sp{flex:1}
+.jtl-lock{display:inline-flex;align-items:center;gap:10px;color:var(--fg);font-size:13px;
+  padding:8px 14px 8px 8px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px var(--border);
+  transition:box-shadow .3s,transform .5s var(--ease-out)}
+.jtl-lock svg{width:28px;height:28px;padding:5px;border-radius:50%;background:var(--black);color:var(--white)}
 .jtl-lock b{font-weight:700}
-.jtl-lock small{color:var(--muted);font-size:11px}
-.jtl-lock:hover{box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink)}
-@media (max-width:900px){.jtl-lock small{display:none}}
+.jtl-lock:hover{box-shadow:inset 0 0 0 1.5px var(--black)}
+.jtl-lock small{color:var(--muted);font-size:12px}
 
-/* the wrap panel: a hero that lives inside the track, so it takes the panel's
-   box and drops the page section's own sizing */
-.panel.hero--clone{
-  min-height:0;height:100%;width:100vw;flex:none;
-  padding:96px var(--pad) 84px;      /* the hero's own padding, not the panel's */
-  justify-content:center;
-}
-.panel.hero--clone .hero__cue{pointer-events:none}
+/* ---------- entrance reveals (JS adds .in; without JS everything shows) ---------- */
+.js [data-reveal]{transition:opacity .9s var(--ease-out),transform 1s var(--ease-out),clip-path 1.1s var(--ease-out)}
+.js [data-reveal="rise"]:not(.in){opacity:0;transform:translateY(42px)}
+.js [data-reveal="fade"]:not(.in){opacity:0}
+.js [data-reveal="mask"]:not(.in){clip-path:inset(0 0 100% 0);transform:translateY(24px)}
+.js [data-reveal="scale"]:not(.in){opacity:0;transform:scale(.9)}
+.line-mask{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.line-mask>span{display:block;transition:transform 1.15s var(--ease-out)}
+.js .lines:not(.in) .line-mask>span{transform:translateY(108%)}
+.lines .line-mask:nth-child(2)>span{transition-delay:.08s}
+.lines .line-mask:nth-child(3)>span{transition-delay:.16s}
+.lines .line-mask:nth-child(4)>span{transition-delay:.24s}
 
-/* ---------- calm register: the Owner's live kill switch for oscillation ---------- */
+/* ---------- tilt + magnetic base ---------- */
+[data-tilt]{transform-style:preserve-3d;will-change:transform;transition:transform .6s var(--ease-out),box-shadow .6s var(--ease-out)}
+[data-tilt].is-tilting{transition:transform .12s linear,box-shadow .3s}
+[data-magnetic]{will-change:transform}
+
+/* ---------- the ask box (a light port of the v16 laptop) ---------- */
+.ask{display:grid;gap:14px}
+.ask__log{min-height:128px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end}
+.ask__q{align-self:flex-end;background:var(--black);color:var(--white);padding:9px 16px;border-radius:18px 18px 4px 18px;font-size:15px;max-width:80%}
+.ask__a{align-self:flex-start;background:var(--surface-2);padding:12px 16px;border-radius:18px 18px 18px 4px;font-size:15px;max-width:88%;line-height:1.45}
+.ask__form{display:flex;align-items:center;gap:10px;border-radius:var(--radius-pill);padding:6px 6px 6px 20px;
+  box-shadow:inset 0 0 0 1.5px var(--fg);background:var(--white)}
+.ask__form span{font-family:var(--font-mono);color:var(--espresso)}
+.ask__form input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--fg);min-width:0}
+.ask__chips{display:flex;flex-wrap:wrap;gap:8px}
+.ask__chips button{font-size:13px;padding:8px 14px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px var(--border);
+  transition:background .3s,color .3s,box-shadow .3s}
+.ask__chips button:hover{background:var(--black);color:var(--white);box-shadow:inset 0 0 0 1px var(--black)}
+
+.ask__go{margin-left:4px;font-weight:600;color:var(--espresso);border-bottom:1.5px solid currentColor}
+
+/* ---------- team clips ----------
+   .clip: a white-ground clip on white, multiply hides any edge.
+   .cutclip: a still cutout that hands over to the alpha canvas once it plays. */
+.clip{position:relative;overflow:hidden}
+.clip video,.clip img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.cutclip{position:relative;aspect-ratio:640/802;overflow:hidden}
+.cutclip>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .3s .12s}
+.cutclip>video{position:absolute;left:0;top:0;width:100%;height:200%;object-fit:fill;filter:url(#stack-alpha);
+  opacity:0;transition:opacity .3s;pointer-events:none}
+.cutclip.is-live>video{opacity:1}
+.cutclip.is-live>img{opacity:0}
+
+/* the music's Sound label, its credit bubble and the page shell: sound.css (2026-10-01) */
+.foot__music{font-size:12px}
+
+/* ---------- calm: the Owner's switch for continuous motion ---------- */
 html[data-motion="calm"] *{animation-play-state:paused!important}
-html[data-motion="calm"] .float{animation:none!important}
-html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after{animation:none!important}
+/* v17: CALM stops every CSS animation, pseudo-elements included, the way reduced motion does */
+html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after{animation:none!important;transition:none!important}
 
-/* ---------- collapse: phone, and anyone who asked for less motion ---------- */
+/* ---------- CALM in the phone menu (the top switch is hidden under 900 px by the kit) ---------- */
+.top__menu-calm{display:flex;align-items:center;width:100%;min-height:44px;margin-top:6px;padding:11px 12px;border:0;
+  border-top:1px solid var(--border);border-radius:0 0 8px 8px;background:none;font:inherit;font-family:var(--font-mono);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2);text-align:left;cursor:pointer}
+.top__menu-calm[aria-pressed="true"]{color:var(--espresso)}
+.top__menu-calm:hover{background:var(--surface-2);color:var(--espresso)}
+
+/* ---------- collapse: phones and anyone who asked for less motion ---------- */
 @media (max-width:900px),(prefers-reduced-motion:reduce){
   .rail{height:auto!important}
   .rail__stick{position:static;height:auto;overflow:visible}
   .rail__track{display:block;width:auto;transform:none!important}
-  .panel{width:auto;height:auto;min-height:auto;padding:56px var(--pad)}
+  .panel{width:auto;height:auto;min-height:auto;padding:72px var(--pad);overflow:visible;overflow-x:clip}
+  .hero{overflow-x:clip}
   .rail__ui{display:none}
-  .hero--clone{display:none}
-  #gl{display:none}
+  .hero--clone{display:none!important}
   .wreveal .w{opacity:1}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
+  .js .lines .line-mask>span{transform:none!important}
 }
 
-/* ---------- the chrome over the one dark panel (proof) ----------
-   On the rail the ground morphs into black and out again (rail.js paints
-   body and writes --dark, 0 to 1), so the header and the rail UI mix their
-   ink from the same number and never cut. In the stacked layout there is no
-   morph, so the panel under the chrome flips it instead. */
-:root{--dark:0}
-@media (min-width:901px) and (prefers-reduced-motion:no-preference){
-  .top__mark{color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--deep))}
-  .top__nav a{color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--muted))}
-  .top__nav a:hover{color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso))}
-  .top button{
-    color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted));
-    border-color:color-mix(in srgb,rgba(245,245,247,.28) calc(var(--dark) * 100%),var(--hair));
-  }
-  .top button[aria-pressed="true"]{
-    color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso));
-    border-color:color-mix(in srgb,rgba(245,245,247,.5) calc(var(--dark) * 100%),var(--espresso-24));
-  }
-  .top__cta{
-    background:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso));
-    border-color:color-mix(in srgb,var(--on-dark) calc(var(--dark) * 100%),var(--espresso));
-    color:color-mix(in srgb,var(--ink) calc(var(--dark) * 100%),var(--panel));
-  }
-  .rail__dots button{border-color:color-mix(in srgb,rgba(245,245,247,.45) calc(var(--dark) * 100%),var(--hair))}
-  .rail__dots button[aria-current="true"]{
-    background:color-mix(in srgb,var(--copper) calc(var(--dark) * 100%),var(--espresso));
-    border-color:color-mix(in srgb,var(--copper) calc(var(--dark) * 100%),var(--espresso));
-  }
-  .rail__bar{background:color-mix(in srgb,rgba(245,245,247,.18) calc(var(--dark) * 100%),var(--hair))}
-  .rail__bar i{background:color-mix(in srgb,var(--copper) calc(var(--dark) * 100%),var(--espresso))}
-  .rail__count{color:color-mix(in srgb,rgba(245,245,247,.72) calc(var(--dark) * 100%),var(--muted))}
-  /* the proof panel is transparent on the rail: the morphing ground is its black */
-  #p-proof{background:transparent}
-}
-@media (max-width:900px),(prefers-reduced-motion:reduce){
-html[data-panel="p-proof"] .top__mark,html[data-panel="p-proof"] .top__nav a{color:var(--on-dark)}
-html[data-panel="p-proof"] .top__nav a[aria-current="page"]{border-bottom-color:rgba(245,245,247,.5)}
-html[data-panel="p-proof"] .top button{color:rgba(245,245,247,.72);border-color:rgba(245,245,247,.28)}
-html[data-panel="p-proof"] .top button[aria-pressed="true"]{color:var(--on-dark);border-color:rgba(245,245,247,.5)}
-html[data-panel="p-proof"] .top__cta{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
-html[data-panel="p-proof"] .top__menu summary{color:rgba(245,245,247,.8);border-color:rgba(245,245,247,.3)}
-}
+/* ---------- v17: CALM is a still page too. The rail stacks like it does for reduced motion,
+   and every scroll scene reads html.still (set by the page script) and lays out plain. ---------- */
+html[data-motion="calm"] .rail{height:auto!important}
+html[data-motion="calm"] .rail__stick{position:static;height:auto;overflow:visible}
+html[data-motion="calm"] .rail__track{display:block;width:auto;transform:none!important}
+html[data-motion="calm"] .panel{width:auto;height:auto;min-height:auto;padding:72px var(--pad);overflow:visible;overflow-x:clip}
+html[data-motion="calm"] .rail__ui{display:none}
+html[data-motion="calm"] .hero--clone{display:none!important}
+html[data-motion="calm"] .wreveal .w{opacity:1}
+html[data-motion="calm"] .js [data-reveal],html[data-motion="calm"][class] [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
+html[data-motion="calm"] .line-mask>span{transform:none!important}
+html[data-motion="calm"] .lineup .lineup__p{opacity:1!important;transform:none!important}
 
 /* ==========================================================================
    AVAS sound (2026-10-01): the Sound button's icons, its label, the credit
@@ -346,6 +390,67 @@ html[data-sound-state="on"] .snd__mini{opacity:1;visibility:visible;transform:no
 html.av-shell,html.av-shell body{overflow:hidden!important}
 html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
 
+:root{
+  --bg:#FFFFFF;
+  --fg:#0B0B0B;
+  --accent:#3A241C;
+  --dot:#D0D0D0;
+  --grid-line:#EDEDED;
+  --glass-shadow:color-mix(in oklab,var(--espresso) 26%,transparent);
+  --card-shadow:0 30px 60px -28px var(--shadow),0 2px 6px var(--shadow-soft);
+  --a-title:clamp(56px,12.4vw,210px);
+  --lap-shell:#EDEDF0;
+  --lap-shell-2:#D9D9DE;
+  --lap-edge:#D2D2D7;
+  --lap-bezel:#E4E4E8;
+  --lap-bar:#F6F6F8;
+  --lap-side:#FAFAFB;
+  --lap-shadow:color-mix(in oklab,var(--black) 22%,transparent);
+
+  
+  --panel:var(--white);
+  --hair:var(--border);
+  --deep:var(--espresso-deep);
+  --espresso-24:color-mix(in oklab,var(--espresso) 24%,transparent);
+  --espresso-10:color-mix(in oklab,var(--espresso) 10%,transparent);
+  --font-d:var(--font-display);
+  --font-m:var(--font-mono);
+  --shadow-lift:0 36px 90px color-mix(in oklab,var(--black) 16%,transparent);
+
+  
+  --dot-near:#C9C9C9;
+  --v-ink:#1D1D1F;
+  --v-gray:#F5F5F7;
+  --v-cream:#F3EDE6;
+  --v-copper:#B87333;
+  --v-card-r:clamp(22px,2.4vw,34px);
+  --v-still-h:79.4%;
+}
+.top__menu{display:none;position:relative}
+.top__menu summary{list-style:none;cursor:pointer;border:1px solid var(--border);border-radius:var(--radius-pill);
+  padding:6px 14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.top__menu summary::-webkit-details-marker{display:none}
+.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso)}
+.top__menu-list{position:absolute;right:0;top:calc(100% + 8px);min-width:210px;background:var(--white);
+  border:1px solid var(--border);border-radius:12px;padding:8px;display:flex;flex-direction:column;
+  box-shadow:0 20px 50px var(--shadow)}
+.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center;
+  font-size:14px;color:var(--fg-2)}
+.top__menu-list a:hover{background:var(--surface-2);color:var(--espresso)}
+@media (max-width:900px){.top__nav{display:none!important}
+.top__menu{display:block}
+.top .btn{display:none}}
+html[data-cur="dot"] .cur__ring{background:var(--espresso)}
+#dots{position:fixed;inset:0;z-index:0;pointer-events:none}
+main{position:relative;z-index:1}
+.panel,.hero{background:transparent}
+.a-title{position:relative;z-index:1;font-family:var(--font-display);font-weight:700;
+  font-variation-settings:"wdth" 112;font-size:var(--a-title);line-height:.86;letter-spacing:-.058em}
+.a-title em,.a-h2 em{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.03em;color:var(--espresso)}
+.a-lede{font-size:var(--fs-lede);line-height:1.5;color:var(--fg-2);max-width:40ch}
+@media (max-width:900px){.jtl-badge{display:none}}
+.lineup{display:flex;justify-content:center;width:100%;align-self:stretch;margin-top:clamp(20px,4vh,48px)}
+@media (max-width:900px),(prefers-reduced-motion:reduce){.lineup{flex-wrap:wrap;justify-content:center;row-gap:10px}}
 /* Privacy notice. It gates something real: the Calendly embed does not load
    until this is answered, so declining actually changes what happens. */
 #consent{
@@ -378,188 +483,254 @@ html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
   #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
 }
 
-/* AVAS v16, fit quiz. Scoped under #p-quiz, reuses inner.css tokens and
-   components (.card, .btn, .note, .panel__eyebrow) rather than redefining
-   them. Vanilla, no framework. */
-#p-quiz .quiz{max-width:640px;padding:clamp(24px,4vw,40px)}
-#p-quiz .quiz__progress{margin-bottom:26px}
-#p-quiz .quiz__progress-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
-#p-quiz .quiz__step-label{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-#p-quiz .quiz__back{min-height:36px;padding:6px 16px;font-size:13px}
-#p-quiz .quiz__bar{display:block;height:3px;border-radius:100px;background:var(--hair);overflow:hidden}
-#p-quiz .quiz__bar-fill{display:block;height:100%;border-radius:100px;width:0%;background:var(--espresso);transition:width .35s ease}
-
-/* keyboard hint: shows only while an answer has keyboard focus, in the space
-   under the progress bar, so nothing moves when it appears */
-#p-quiz .quiz__progress{position:relative}
-#p-quiz .quiz__kbd{position:absolute;left:0;top:100%;margin:6px 0 0;font-family:var(--font-m);font-size:11px;
-  line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);visibility:hidden}
-#p-quiz .quiz:has(.quiz__opt input:focus-visible) .quiz__kbd{visibility:visible}
-
-#p-quiz .quiz__screen{border:0;margin:0;padding:0}
-#p-quiz .quiz__screen legend{font-family:var(--font-d);font-weight:var(--w-display);
-  font-variation-settings:'wdth' var(--wdth-display);font-size:clamp(21px,2.6vw,28px);
-  line-height:1.2;color:var(--deep);margin:0 0 22px;padding:0;max-width:22ch}
-#p-quiz .quiz__screen h2{font-size:clamp(24px,3vw,34px);margin-bottom:10px}
-/* a heading that takes focus when the screen changes does not need a ring */
-#p-quiz .quiz__screen legend:focus,
-#p-quiz .quiz__screen h2:focus,
-#p-quiz .quiz__screen:focus{outline:none}
-
-#p-quiz .quiz__options{display:flex;flex-direction:column;gap:10px}
-#p-quiz .quiz__opt{
-  display:flex;align-items:center;gap:14px;width:100%;
-  background:var(--panel);border:1px solid var(--hair);border-radius:12px;
-  padding:16px 18px;cursor:pointer;transition:border-color .2s,background-color .2s;
+/* ==========================================================================
+   A look, inner pages (/work/, /services/). 2026-09-29.
+   PROJECT SETTINGS: the kit's role tokens (a-kit.css) carry every colour and
+   font; this layer adds the scroll scenes. Every moving rule sits under
+   html.fx, which work-motion.js sets only when motion is allowed. Without
+   .fx (no JS, reduced motion, CALM) the page is plain and still.
+   ========================================================================== */
+:root{
+  --ih-title:clamp(52px,10.2vw,176px);
+  --sec-y:clamp(88px,15vh,170px);
+  --card-r:28px;
+  --paper:#FFFFFF;
+  --hair-soft:color-mix(in oklab,var(--border) 70%,transparent);
 }
-#p-quiz .quiz__opt:hover{border-color:var(--espresso-24)}
-#p-quiz .quiz__opt:has(input:checked){border-color:var(--espresso);background:var(--espresso-10)}
-#p-quiz .quiz__opt:has(input:focus-visible){outline:2px solid var(--espresso);outline-offset:2px}
-/* the option ring above already shows focus, so the radio's own ring would be a second one */
-#p-quiz .quiz__opt input:focus-visible{outline:none}
-#p-quiz .quiz__opt input{width:18px;height:18px;flex:none;accent-color:var(--espresso)}
-#p-quiz .quiz__opt span{font-size:16px;color:var(--ink)}
+main{position:relative;z-index:1}
+.wrap{max-width:var(--container-max);margin:0 auto;padding:0 var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-#p-quiz .btn-row{margin-top:22px}
-#p-quiz .btn:disabled{opacity:.4;cursor:not-allowed}
+/* ---------- hero: huge type left, the metallic A right ---------- */
+.ih{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;
+  gap:0 clamp(16px,4vw,72px);padding:calc(var(--top-h) + 24px) var(--pad) 64px;overflow-x:clip}
+.ih__copy{position:relative;z-index:2;max-width:1000px}
+.ih .a-title{font-size:var(--ih-title)}
+.ih .a-lede{margin-top:clamp(18px,3vh,32px)}
+.ih .a-ctas{margin-top:clamp(20px,3.4vh,34px)}
+.ih__a{position:relative;height:min(72svh,700px);aspect-ratio:600/1066;z-index:1}
+.a-turn{position:absolute;inset:0}
+.a-turn img,.a-turn canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.a-turn canvas{opacity:0}
+.a-turn.is-live canvas{opacity:1}
+.a-turn.is-live img{opacity:0}
+.ih__shadow{position:absolute;left:10%;right:10%;bottom:-3%;height:5%;border-radius:50%;
+  background:radial-gradient(closest-side,color-mix(in oklab,var(--espresso) 26%,transparent),transparent);filter:blur(6px)}
+.ih__cue{position:absolute;left:var(--pad);bottom:26px;display:flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ih__cue i{display:block;width:44px;height:1px;background:var(--border);position:relative;overflow:hidden}
+.ih__cue i::after{content:"";position:absolute;inset:0;background:var(--espresso);transform-origin:left;transform:scaleX(.3)}
+.fx .ih__cue i::after{transform:scaleX(calc(.3 + var(--p,0) * 2.4))}
+/* the A turns (frames), drops and settles as the hero scrolls away; the words lift off */
+.fx .ih__a{transform:translate3d(0,calc(var(--p,0) * 16svh),0) scale(calc(1 - var(--p,0) * .1))}
+.fx .ih__copy{transform:translate3d(0,calc(var(--p,0) * -7svh),0);opacity:calc(1 - var(--p,0) * 1.1)}
 
-#p-quiz #qsResult h2{color:var(--deep)}
-#p-quiz #qsResult .card__stop{border-top:1px solid var(--hair-2);margin-top:16px;padding-top:14px}
-#p-quiz #qsResult .card__stop li{list-style:none}
-#p-quiz .quiz__retake{margin-top:18px;background:transparent;border:0;color:var(--muted);
-  text-decoration:underline;text-underline-offset:3px;padding:0;min-height:0}
-#p-quiz .quiz__retake:hover{color:var(--espresso)}
+/* ---------- section frame ---------- */
+.is{position:relative;padding:var(--sec-y) var(--pad);max-width:var(--container-max);margin:0 auto}
+.is__head{max-width:980px;margin-bottom:clamp(32px,6vh,64px)}
+.is__head .a-lede{margin-top:18px;max-width:52ch}
+.a-h2{text-wrap:balance}
+
+/* kinetic words: each word rises out of its own mask as the heading scrolls in */
+.kw{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .2em;margin:0 -.04em -.2em}
+.kw>span{display:inline-block}
+.fx [data-split] .kw>span{transform:translate3d(0,calc((1 - clamp(0,(var(--p,1) - var(--k,0) * .45) * 2.2,1)) * 112%),0)}
+
+/* a line that draws itself with the scroll (pathLength="1" on the path) */
+[data-draw] path,[data-draw] line{stroke-dasharray:1;stroke-dashoffset:0}
+.fx [data-draw] path,.fx [data-draw] line{stroke-dashoffset:calc(1 - var(--p,1))}
+
+/* ---------- the closing call ---------- */
+.icta{position:relative;padding:calc(var(--sec-y) * 1.1) var(--pad);text-align:center;overflow-x:clip}
+.icta .a-title{font-size:clamp(46px,8.6vw,150px);max-width:none;margin:0 auto}
+.icta .a-lede{margin:22px auto 30px;max-width:44ch}
+.icta .a-ctas{justify-content:center}
+.fx .icta__rule{transform:scaleX(var(--p,1))}
+.icta__rule{display:block;width:min(560px,70vw);height:1px;margin:0 auto 42px;background:var(--espresso);transform-origin:50% 50%}
+
+/* ---------- a sliding band of words, moved only by the scroll ---------- */
+.tick{position:relative;overflow:hidden;padding:clamp(16px,3vh,28px) 0;border-block:1px solid var(--border);background:var(--white)}
+.tick__row{display:flex;gap:.6em;white-space:nowrap;width:max-content;font-family:var(--font-display);font-weight:700;
+  font-variation-settings:"wdth" 112;letter-spacing:-.04em;font-size:clamp(34px,5.4vw,92px);line-height:1.02;color:var(--fg)}
+.tick__row span{display:inline-flex;align-items:center;gap:.6em}
+.tick__row span::after{content:"";width:.28em;height:.28em;border-radius:50%;background:var(--espresso)}
+.tick__row--r{color:transparent;-webkit-text-stroke:1.5px var(--fg);margin-top:.12em}
+.tick__row--r span::after{background:none;box-shadow:inset 0 0 0 1.5px var(--espresso)}
+.fx .tick__row{transform:translate3d(calc(var(--p,0) * -38%),0,0)}
+.fx .tick__row--r{transform:translate3d(calc(-38% + var(--p,0) * 38%),0,0)}
+
+/* the phone-menu CALM item lives in a-kit.css (shared by every A page) */
+
+/* ---------- the menu row stays inside a 390 px screen ---------- */
+@media (max-width:900px){
+  .ih{grid-template-columns:minmax(0,1fr);align-content:start;padding-top:calc(var(--top-h) + 36px)}
+  .ih__a{height:46svh;justify-self:center;margin-top:18px}
+  .ih__cue{display:none}
+}
+@media (max-width:560px){
+  :root{--ih-title:clamp(44px,13.4vw,76px)}
+  .ih .a-ctas .btn{flex:1 1 auto;justify-content:center}
+}
+
+/* ==========================================================================
+   A look, document pages: /about/, /quiz/, /privacy/, /terms/, /404. 2026-10-02.
+   PROJECT SETTINGS: every colour, font and radius here is a role token from
+   a-kit.css :root (--fg, --fg-2, --muted, --border, --surface-2, --espresso,
+   --radius-*, --font-*); nothing is hard-coded. Built on work-shell.css (hero,
+   frame, motion). Plain and still: no rule here moves on its own.
+   ========================================================================== */
+
+/* ---------- compact hero: the A stays, the page starts sooner ---------- */
+.ih--doc{--ih-title:clamp(44px,6.6vw,108px);min-height:0;align-items:end;padding-bottom:clamp(36px,6vh,64px)}
+.ih--doc .ih__a{height:min(40svh,400px)}
+.ih--doc .a-lede{max-width:56ch}
+/* a long page must not fade its own title while you read it */
+.fx .ih--doc .ih__copy{transform:none;opacity:1}
+.dc__note{margin-top:14px;font-size:14px;line-height:1.6;color:var(--muted)}
+.ih--doc .a-ctas{margin-top:clamp(20px,3vh,30px)}
+
+/* ---------- the column: one measure, generous leading ---------- */
+.dc{position:relative;max-width:calc(760px + var(--pad) * 2);margin:0;padding:clamp(28px,5vh,56px) var(--pad) 0}
+.dc:last-of-type{padding-bottom:clamp(72px,12vh,140px)}
+.dc--wide{max-width:var(--container-max);margin:0 auto}
+.dc--wide:last-of-type{padding-bottom:clamp(72px,12vh,140px)}
+.dc--wide>.a-h2{max-width:20ch;font-size:clamp(34px,4vw,60px)}
+.dc__lede{margin-top:18px;max-width:58ch;font-size:var(--fs-lede);line-height:1.55;color:var(--fg-2)}
+.dc--wide .dc__note{margin-top:20px}
+
+.dc__sec{padding:clamp(26px,4.4vh,44px) 0;border-top:1px solid var(--border)}
+.dc__sec:first-child{border-top:0;padding-top:0}
+.dc__h{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 108;
+  font-size:clamp(26px,2.9vw,40px);line-height:1;letter-spacing:-.035em;color:var(--fg);margin-bottom:16px;text-wrap:balance}
+.dc__sec p{font-size:17px;line-height:1.68;color:var(--fg-2);max-width:66ch}
+.dc__sec p+p{margin-top:14px}
+.dc__sec .dc__note,.dc .dc__note{font-size:14px;line-height:1.6;color:var(--muted)}
+.dc__sec .dc__note{margin-top:16px}
+.dc a:not(.btn){color:var(--espresso);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.dc a:not(.btn):hover{color:var(--fg)}
+
+/* a term, then its plain sentence, stacked in the one column */
+.dc__defs{display:grid;gap:0;margin:0}
+.dc__defs>div{padding:18px 0;border-top:1px solid var(--border)}
+.dc__defs>div:first-child{border-top:0;padding-top:4px}
+.dc__defs dt{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 104;font-size:19px;
+  letter-spacing:-.015em;line-height:1.25;color:var(--fg);margin:0 0 6px}
+.dc__defs dd{margin:0;font-size:17px;line-height:1.65;color:var(--fg-2);max-width:66ch}
+.dc__end{margin-top:clamp(28px,5vh,48px);padding-top:clamp(26px,4.4vh,40px);border-top:1px solid var(--border)}
+.dc--wide .dc__defs{max-width:760px}
+
+/* ---------- about: the crew and the numbers ---------- */
+.ab__grid{display:grid;gap:16px;grid-template-columns:1fr;margin-top:clamp(24px,4vh,40px)}
+@media (min-width:640px){.ab__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.ab__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ab__card{display:flex;flex-direction:column;min-width:0;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:24px}
+.ab__mark{display:flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;margin-bottom:16px;
+  border-radius:50%;background:var(--espresso);color:var(--accent-on);font-family:var(--font-mono);font-size:13px;letter-spacing:.04em}
+.ab__card h3{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 106;font-size:21px;
+  line-height:1.1;letter-spacing:-.025em;color:var(--fg);margin:0 0 6px}
+.ab__role{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;line-height:1.5;
+  color:var(--espresso);margin-bottom:12px}
+.ab__card p:last-child{font-size:15px;line-height:1.6;color:var(--fg-2)}
+.ab__card--num{justify-content:flex-end;min-height:180px}
+.ab__n{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 112;font-size:clamp(44px,4.6vw,68px);
+  line-height:.95;letter-spacing:-.05em;color:var(--fg);margin-bottom:12px}
+
+/* ---------- quiz: the card, the options, the result ---------- */
+.dc--quiz{max-width:calc(700px + var(--pad) * 2)}
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  box-shadow:0 24px 60px -32px var(--shadow);padding:clamp(22px,4vw,40px)}
+.quiz__progress{position:relative;margin-bottom:30px}
+.quiz__progress-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}
+.quiz__step-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.quiz__back.btn{height:36px;padding:0 16px;font-size:13px}
+.quiz__bar{display:block;height:3px;border-radius:var(--radius-pill);background:var(--border);overflow:hidden}
+.quiz__bar-fill{display:block;height:100%;width:0%;border-radius:var(--radius-pill);background:var(--espresso);transition:width .35s var(--ease)}
+/* keyboard hint: shows only while an answer has keyboard focus, in the space under the bar */
+.quiz__kbd{position:absolute;left:0;top:100%;margin:8px 0 0;font-family:var(--font-mono);font-size:11px;line-height:1;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);visibility:hidden}
+.quiz:has(.quiz__opt input:focus-visible) .quiz__kbd{visibility:visible}
+
+.quiz__screen{border:0;margin:0;padding:0;min-width:0}
+.quiz__screen[hidden]{display:none}
+.qz__k{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  color:var(--espresso);margin-bottom:12px}
+.quiz__screen legend,.quiz__screen h2{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 108;
+  font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:-.035em;color:var(--fg);margin:0 0 22px;padding:0;
+  max-width:22ch;text-wrap:balance}
+.quiz__screen h2{margin-bottom:12px}
+.quiz__screen legend:focus,.quiz__screen h2:focus,.quiz__screen:focus{outline:none}
+.qz__note{font-size:16px;line-height:1.6;color:var(--muted);max-width:56ch}
+.qz__note a{color:var(--espresso);text-decoration:underline;text-underline-offset:3px}
+
+.quiz__options{display:flex;flex-direction:column;gap:10px}
+.quiz__opt{display:flex;align-items:center;gap:14px;width:100%;min-height:56px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--radius-md);padding:15px 18px;cursor:pointer;
+  transition:border-color .2s var(--ease),background-color .2s var(--ease)}
+.quiz__opt:hover{border-color:var(--fg-2)}
+.quiz__opt:has(input:checked){border-color:var(--espresso);background:var(--surface-2)}
+.quiz__opt:has(input:focus-visible){outline:2px solid var(--espresso);outline-offset:2px}
+/* the option ring shows focus already; the radio's own ring would be a second one */
+.quiz__opt input:focus-visible{outline:none}
+.quiz__opt input{width:18px;height:18px;flex:none;margin:0;accent-color:var(--espresso)}
+.quiz__opt span{font-size:17px;line-height:1.35;color:var(--fg)}
+
+.qz__row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.quiz .btn:disabled{opacity:.4;cursor:not-allowed}
+#qsResult .qz__stop{border-top:1px solid var(--border);margin-top:20px;padding-top:16px}
+#qsResult .qz__stop li{list-style:none;font-size:16px;line-height:1.5;color:var(--fg-2);padding:3px 0}
+.quiz__retake.btn{margin-top:18px;height:auto;padding:0;background:transparent;box-shadow:none;color:var(--muted);
+  text-decoration:underline;text-underline-offset:3px;font-size:15px}
+.quiz__retake.btn:hover{color:var(--espresso)}
 
 @media (max-width:640px){
-  #p-quiz .quiz{padding:22px 18px}
-  #p-quiz .quiz__opt{padding:14px 16px}
+  .quiz{padding:22px 18px}
+  .quiz__opt{padding:13px 14px}
+  .ih--doc .ih__a{height:30svh}
+  .dc__defs dt{font-size:18px}
 }
-
-/* Inner pages: document flow, no rail, no WebGL. The homepage owns the sideways
-   travel; every other route reads top to bottom on the same tokens. */
-.top{
-  background:rgba(245,245,247,.86);
-  -webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);
-  border-bottom:1px solid var(--hair-2);
-}
-main.page{position:relative;z-index:1;padding:112px var(--pad) 72px;max-width:1240px;margin:0 auto}
-.sec{margin:0 0 clamp(56px,8vh,96px)}
-.sec:last-child{margin-bottom:0}
-.sec__h{font-size:var(--fs-h2);color:var(--deep);max-width:20ch;margin-bottom:16px;text-wrap:balance}
-.sec__h--hero{font-size:clamp(36px,5.4vw,84px);max-width:16ch;margin-bottom:20px}
-.lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-72);max-width:58ch}
-.measure{max-width:64ch}
-.lead + .sec__h,.prose + .sec__h,.defs + .sec__h,.lead + h2,.lead + .sec,.btn-row + .sec{margin-top:48px}
-/* a section nested in a section is a subsection: its heading steps down one size */
-.sec .sec h3.sec__h,.sec .sec h2.sec__h{font-size:clamp(24px,2.6vw,36px);max-width:24ch}
-.prose p{margin-bottom:14px;line-height:1.65;color:var(--ink-72)}
-.prose h3{font-size:22px;margin:32px 0 10px;color:var(--deep)}
-.prose ul,.prose ol{padding-left:18px;color:var(--ink-72);line-height:1.6;margin:0 0 14px}
-.prose li{margin-bottom:6px}
-.prose a{color:var(--espresso);text-decoration-thickness:1px;text-underline-offset:3px}
-
-/* the serif accent word, the way JTL rations its italic; on the homepage
-   rail.js splits headings and marks it, here it is written as <em class="tl"> */
-.tl{font-family:var(--font-s);font-style:italic;font-weight:400;font-variation-settings:normal;
-  letter-spacing:-.008em;color:var(--espresso)}
-.wreveal .w{opacity:1}
-
-.grid{display:grid;gap:16px;grid-template-columns:1fr}
-@media (min-width:720px){.grid--2,.grid--3,.grid--4{grid-template-columns:1fr 1fr}}
-@media (min-width:1100px){.grid--3{grid-template-columns:repeat(3,1fr)}.grid--4{grid-template-columns:repeat(4,1fr)}}
-
-.card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:22px;min-width:0;
-  display:flex;flex-direction:column}
-.card--lead{border-color:var(--espresso-24);box-shadow:var(--shadow)}
-.card__k{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
-  font-weight:700;color:var(--espresso);margin-bottom:10px}
-.card h3{font-size:20px;margin-bottom:8px;line-height:1.15}
-.card p{font-size:15px;line-height:1.55;color:var(--ink-72)}
-.card ul{list-style:none;margin:10px 0 0;padding:0}
-.card ul li{font-size:15px;line-height:1.5;color:var(--ink-72);padding-left:16px;position:relative;margin-bottom:6px}
-.card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--espresso-60)}
-.card__stop{font-size:14px;line-height:1.5;color:var(--muted);border-top:1px solid var(--hair-2);
-  padding-top:12px;margin-top:auto}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
-  background:var(--espresso);color:var(--panel);text-decoration:none;font-weight:600;font-size:15px;
-  padding:12px 22px;border-radius:999px;border:1px solid var(--espresso);cursor:pointer;
-  transition:background .25s,border-color .25s,color .25s}
-.btn:hover{background:var(--deep);border-color:var(--deep)}
-.btn--ghost{background:transparent;color:var(--espresso)}
-.btn--ghost:hover{background:var(--espresso-10);color:var(--deep)}
-.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
-
-.note{font-size:14px;line-height:1.6;color:var(--muted)}
-.mono{font-family:var(--font-m)}
-.hr{border:0;border-top:1px solid var(--hair);margin:40px 0}
-.tbl-wrap{overflow-x:auto}
-.tbl{width:100%;border-collapse:collapse;font-size:15px}
-.tbl th,.tbl td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5}
-.tbl th{font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);font-weight:700}
-
-/* definition rows: a term, then its plain sentence */
-.defs{display:grid;gap:0}
-.def{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--hair)}
-.def:last-child{border-bottom:1px solid var(--hair)}
-.def dt{font-family:var(--font-d);font-weight:600;font-size:16px;color:var(--deep);margin:0}
-.def dd{margin:0;font-size:15px;line-height:1.6;color:var(--ink-72);max-width:68ch}
-@media (min-width:900px){.def{grid-template-columns:220px 1fr;gap:24px}}
-
-/* the pricing page reuses the homepage panel styles, three tiers wide */
-main.page #p-pricing .pricing__grid{grid-template-columns:1fr}
-@media (min-width:720px){main.page #p-pricing .pricing__grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1100px){main.page #p-pricing .pricing__grid{grid-template-columns:repeat(3,1fr)}}
-
-/* the booking panel keeps its two-column shape without the rail's fixed height */
-main.page #p-book .book{height:auto;max-height:none}
-main.page #p-book .book__frame{height:auto}
-main.page #p-book .cal{min-height:640px;height:auto}
-main.page #p-book .cal iframe{min-height:640px;height:640px}
-
-@media (max-width:900px){
-  main.page{padding-top:96px}
-}
+.dc--wide>.a-h2+.dc__defs{margin-top:clamp(20px,3.4vh,32px)}
 </style>
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
-  <a class="top__mark" href="/" aria-label="AVAS home">AVAS</a>
+  <a class="top__mark" href="/" aria-label="AVAS home" data-cursor="home"><svg class="" viewBox="0 0 600 1000" aria-hidden="true"><path fill-rule="evenodd" fill="currentColor" d="M134 998L145 996L156 992L176 981L193 965L212 940L230 910L246 879L273 819L313 722L336 677L348 657L363 639L372 629L386 618L393 615L396 615L470 881L491 959L490 966L488 974L485 977L475 981L464 983L448 983L447 993L600 993L600 985L598 983L586 983L577 981L565 976L558 972L549 961L542 947L384 377L303 86L293 44L292 34L294 27L301 18L308 14L323 11L334 10L334 2L332 0L179 1L180 9L182 11L194 11L214 17L226 23L234 31L38 722L8 837L3 863L1 882L3 908L6 923L10 934L21 954L37 971L56 985L80 995L106 999ZM138 954L112 954L92 949L82 946L68 938L51 926L38 909L33 900L27 886L22 860L23 834L28 804L45 743L238 56L241 56L242 61L391 599L390 603L376 611L353 633L340 650L328 668L295 735L251 838L234 871L214 903L197 923L177 941L158 950Z"/></svg><span>AVAS</span></a>
   <nav class="top__nav" aria-label="Site">
-    <a href="/services/">Services</a>
-    <a href="/work/">Work</a>
-    <a href="/pricing/">Pricing</a>
-    <a href="/how/">How it works</a>
-    <a href="/team/">Team</a>
-    <a href="/#p-ask">Ask</a>
+    <a href="/services/" data-cursor="go">Services</a>
+    <a href="/work/" data-cursor="go">Work</a>
+    <a href="/pricing/" data-cursor="go">Pricing</a>
+    <a href="/how/" data-cursor="go">How it works</a>
+    <a href="/team/" data-cursor="hi">Team</a>
+    <a href="/#p-ask" data-cursor="ask">Ask</a>
   </nav>
   <span class="top__sp"></span>
   <details class="top__menu">
     <summary>Menu</summary>
-    <div class="top__menu-list">
-      <a href="/services/">Services</a>
-      <a href="/work/">Work</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/how/">How it works</a>
-      <a href="/team/">Team</a>
-      <a href="/#p-ask">Ask</a>
-      <a href="/book">Book a call</a>
-    </div>
+    <div class="top__menu-list"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/pricing/">Pricing</a><a href="/how/">How it works</a><a href="/team/">Team</a><a href="/#p-ask">Ask</a><a href="/#p-book">Book a call</a><button type="button" class="top__menu-calm" data-calm-menu aria-pressed="false">Calm: turn motion off</button></div>
   </details>
-  <a class="top__cta" href="/book">Book a call</a>
-  <button type="button" class="top__calm top__sound" data-sound aria-pressed="false" aria-label="Music is off. Turn it on"><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg><span>sound</span></button>
+  <button type="button" class="top__calm top__sound" data-sound aria-pressed="false" aria-label="Music is off. Turn it on"><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg><span>sound</span></button><button type="button" class="top__calm" data-calm aria-pressed="false">calm</button>
+  <a class="btn btn--sm" href="/#p-book" data-magnetic="0.25" data-cursor="book">Book a call</a>
 </header>
+<canvas id="dots" aria-hidden="true"></canvas>
+<main id="main">
 
-<main class="page" id="main">
-<section class="sec" id="p-quiz" data-anchor="quiz">
-  <p class="panel__eyebrow">THE FIT QUIZ</p>
-  <h1 class="sec__h sec__h--hero">Sixty seconds to your tier</h1>
-  <p class="lead">Five questions. At the end you get one tier, the price, and what it includes. No email required to see it.</p>
+<section class="ih ih--doc" id="quiz-hero" data-scene="hero">
+  <div class="ih__copy">
+    <p class="eyebrow">THE FIT QUIZ</p>
+    <h1 class="a-title lines">
+      <span class="line-mask"><span>Sixty seconds</span></span>
+      <span class="line-mask"><span>to your tier</span></span>
+    </h1>
+    <p class="a-lede" data-reveal="rise">Five questions. At the end you get one tier, the price, and what it includes. No email required to see it.</p>
+  </div>
+  <div class="ih__a" aria-hidden="true"><div class="a-turn" data-turn data-frames="48" data-lg="/assets/work-aturn/lg/" data-sm="/assets/work-aturn/sm/" data-size-lg="600x1066" data-size-sm="440x780"><picture><source media="(max-width: 900px)" type="image/avif" srcset="/assets/work-aturn/sm/00.avif"><source media="(max-width: 900px)" srcset="/assets/work-a-first-sm.webp"><source type="image/avif" srcset="/assets/work-aturn/lg/00.avif"><img src="/assets/work-a-first.webp" alt="" width="600" height="1066" fetchpriority="high" decoding="async"></picture></div><i class="ih__shadow"></i></div>
+</section>
 
-  <div class="quiz card card--lead" id="quiz">
+<section class="dc dc--quiz" id="p-quiz" data-anchor="quiz">
+
+  <div class="quiz" id="quiz">
 
     <div class="quiz__progress" id="quizProgress" hidden>
       <div class="quiz__progress-top">
@@ -571,14 +742,14 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     </div>
 
     <div class="quiz__screen" id="qsStart" data-screen>
-      <p class="card__k">Start here</p>
+      <p class="qz__k">Start here</p>
       <h2>What should AVAS run for you first</h2>
-      <p class="note">Five questions about what is eating your week, your team size, and how fast you want it fixed. The result names one tier, one price, and three things it includes.</p>
-      <div class="btn-row">
+      <p class="qz__note">Five questions about what is eating your week, your team size, and how fast you want it fixed. The result names one tier, one price, and three things it includes.</p>
+      <div class="qz__row">
         <button type="button" class="btn" id="quizStart">Start the quiz</button>
       </div>
       <noscript>
-        <p class="quiz__fallback note">JavaScript is off, so the quiz cannot run here. See every tier and price on <a href="/pricing/">the pricing page</a> instead.</p>
+        <p class="quiz__fallback qz__note">JavaScript is off, so the quiz cannot run here. See every tier and price on <a href="/pricing/">the pricing page</a> instead.</p>
       </noscript>
     </div>
 
@@ -632,21 +803,21 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
         <label class="quiz__opt"><input type="radio" name="q5" value="quarter"><span>This quarter</span></label>
         <label class="quiz__opt"><input type="radio" name="q5" value="exploring"><span>Just exploring</span></label>
       </div>
-      <div class="btn-row">
+      <div class="qz__row">
         <button type="button" class="btn" id="quizNext5" disabled>See my tier</button>
       </div>
     </fieldset>
 
     <div class="quiz__screen" id="qsResult" data-screen hidden aria-live="polite" tabindex="-1">
-      <p class="card__k" id="quizTierName">Essential</p>
+      <p class="qz__k" id="quizTierName">Essential</p>
       <h2 id="quizTierPrice">$2,500 to $3,000 a month</h2>
-      <p class="note" id="quizTierOutcome">One brand, two channels, ten image posts a month.</p>
-      <ul class="card__stop" id="quizResultCounts">
+      <p class="qz__note" id="quizTierOutcome">One brand, two channels, ten image posts a month.</p>
+      <ul class="qz__stop" id="quizResultCounts">
         <li>Two channels</li>
         <li>Ten posts a month</li>
         <li>Image posts only</li>
       </ul>
-      <div class="btn-row">
+      <div class="qz__row">
         <a class="btn" id="quizSeeTier" href="/pricing/#tiers">See the tier</a>
         <a class="btn btn--ghost" href="/book/">Book a call</a>
       </div>
@@ -655,29 +826,26 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
 
   </div>
 </section>
-
 </main>
 <footer class="foot">
-  <span>AVAS <span aria-hidden="true">&middot;</span> Ayala Virtual Assistance</span>
+  <span>AVAS &middot; Ayala Virtual Assistance &middot; Quezon City, Manila</span>
   <a href="/services">Services</a>
-  <a href="/work">Work</a>
   <a href="/pricing">Pricing</a>
+  <a href="/work">Work</a>
   <a href="/about">About</a>
   <a href="/quiz">Quiz</a>
-  <span class="foot__sp"></span>
-  <span>Quezon City, Manila</span>
-  <span aria-hidden="true">&middot;</span>
-  <a href="/privacy">Privacy</a>
-  <span aria-hidden="true">&middot;</span>
-  <a href="/terms">Terms</a>
-  <span aria-hidden="true">&middot;</span>
   <a href="mailto:info@ayalavirtualassistance.com" data-set-href="email_href">info@ayalavirtualassistance.com</a>
-  <span aria-hidden="true">&middot;</span>
-  <a class="jtl-lock" href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener" aria-label="Powered by JTL Growth">
+  <span class="foot__sp"></span>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+  <a class="jtl-lock" href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener" data-cursor="jtl">
     <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg>
     <span><small>Powered by</small> <b>JTL Growth</b></span>
   </a>
 </footer>
+<a class="jtl-badge" href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener" aria-label="Powered by JTL Growth" data-cursor="jtl">
+  <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg><span>Powered by JTL Growth</span>
+</a>
 
 <aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
@@ -697,37 +865,569 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   </div>
 </aside>
 
-<script>const SETTINGS = {"email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com","music_artist":"Fleetwood Mac","music_routes":"/,/team/,/how/,/services/,/pricing/,/work/,/about/,/book/,/quiz/,/privacy/,/terms/"};
+<script>const SETTINGS = {"book_url":"https://ayalavirtualassistance.site/book","email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","site_url":"https://ayalavirtualassistance.site","bg":"drift","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com","music_artist":"Fleetwood Mac","music_routes":"/,/team/,/how/,/services/,/pricing/,/work/,/about/,/book/,/quiz/,/privacy/,/terms/"};
 document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a.dataset.setHref]; if (v) a.href = v; });
-/* Privacy consent. One key, three states: unset shows the notice, granted lets
-   the booking panel load Calendly, denied keeps every third party off the page.
-   The answer changes behaviour, so the notice is not decoration. */
+/* ==========================================================================
+   AVAS immersive kit (2026-09-26). Classic script, no modules, no network, so
+   every page opens from file:// the same as from a server (the music is the one
+   exception: it fetches its own file, so it plays when served).
+
+   window.AV exposes:
+     AV.onFrame(fn(m))     every rail frame while the track moves (m.xu, m.scrub, m.p)
+     AV.onPanel(fn(i, el)) the panel under the viewport changed (rail or stacked)
+     AV.loop(el, step)     a rAF loop that rests off screen, in a hidden tab,
+                           under reduced motion and in calm mode; step returning
+                           false parks it until .wake()
+     AV.goTo(sel)          travel to a selector through the rail
+     AV.scramble(el)       text scramble to the element's own words
+     AV.pointer            live pointer {x, y, nx, ny} (nx/ny in -1..1)
+
+   The rail is the v16 engine (apps/avas-site/v16/parts/rail.js) unchanged in
+   movement: the page goes down, then the track carries content sideways. The
+   ground stays white, so the v16 background morph is gone.
+   ========================================================================== */
 (() => {
   'use strict';
-  var KEY = 'avas-consent';
-  var el = document.getElementById('consent');
-  if (!el) return;
+  const D = document, H = D.documentElement;
+  H.classList.add('js');
+  if (!H.dataset.cur) H.dataset.cur = 'dot';   // v17: the custom cursor (black dot, espresso ring with a word) is on
+  const RMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  const NARROW = matchMedia('(max-width: 900px)');
+  const FINE = matchMedia('(hover: hover) and (pointer: fine)');
+  const clamp01 = v => Math.max(0, Math.min(1, v));
 
-  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
-  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  const AV = window.AV = {
+    reduced: () => RMQ.matches,
+    flat: () => RMQ.matches || NARROW.matches || H.dataset.motion === 'calm',   // v17: calm is a still, stacked page too
+    calm: () => H.dataset.motion === 'calm',
+    fine: () => FINE.matches,
+    pointer: { x: innerWidth / 2, y: innerHeight / 2, nx: 0, ny: 0, t: 0 },
+    frameFns: [], panelFns: [],
+    css: name => getComputedStyle(H).getPropertyValue(name).trim()
+  };
+  AV.onFrame = fn => AV.frameFns.push(fn);
+  AV.onPanel = fn => AV.panelFns.push(fn);
 
-  window.avasConsent = {
-    state: function () { return read(); },
-    granted: function () { return read() === 'granted'; },
-    onChange: []
+  addEventListener('pointermove', e => {
+    const p = AV.pointer;
+    p.x = e.clientX; p.y = e.clientY; p.t = performance.now();
+    p.nx = (e.clientX / innerWidth) * 2 - 1; p.ny = (e.clientY / innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  /* ---- a resting rAF loop: the four WebGL/canvas habits live here ---- */
+  AV.loop = (el, step) => {
+    let vis = true, raf = 0, last = 0;
+    const ok = () => vis && !D.hidden && !RMQ.matches && !AV.calm();
+    function tick(t) {
+      raf = 0;
+      if (!ok()) return;
+      const dt = last ? Math.min(50, t - last) : 16;
+      last = t;
+      if (step(t, dt) === false) { last = 0; return; }
+      raf = requestAnimationFrame(tick);
+    }
+    function wake() { if (!raf && ok()) { last = 0; raf = requestAnimationFrame(tick); } }
+    if (el && 'IntersectionObserver' in window) {
+      new IntersectionObserver(es => { vis = es[es.length - 1].isIntersecting; wake(); },
+        { rootMargin: '120px' }).observe(el);
+    }
+    D.addEventListener('visibilitychange', wake);
+    D.addEventListener('av:calm', wake);
+    wake();
+    return { wake };
   };
 
-  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+  /* ---- top bar ---- */
+  const top = D.querySelector('.top');
+  const onTop = () => top && top.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onTop, { passive: true }); onTop();
 
-  el.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-consent]');
-    if (!b) return;
-    var v = b.dataset.consent;
-    write(v);
-    el.hidden = true;
-    delete document.documentElement.dataset.consent;
-    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  /* ======================================================================
+     THE RAIL
+     ====================================================================== */
+  const rail = D.getElementById('rail');
+  const track = D.getElementById('track');
+  let goPanel = () => {};
+  if (rail && track) {
+    const flat = AV.flat;
+    const panels = [...track.querySelectorAll('.panel')];
+    const N = panels.length;
+    const NAV = panels[N - 1] && panels[N - 1].classList.contains('hero--clone') ? N - 1 : N;
+    const dots = [...D.querySelectorAll('[data-dot]')];
+    const bar = D.querySelector('.rail__bar i');
+    const count = D.querySelector('[data-count]');
+
+    /* hold zones from the page: data-hold="0:0.9,3:0.4" */
+    const HOLD = {};
+    (rail.dataset.hold || '').split(',').filter(Boolean).forEach(kv => {
+      const [k, v] = kv.split(':'); HOLD[+k] = +v;
+    });
+
+    const segs = [];
+    let U = 0;
+    for (let i = 0; i < N; i++) {
+      if (HOLD[i]) { segs.push({ from: U, len: HOLD[i], t: 'hold', at: i }); U += HOLD[i]; }
+      if (i < N - 1) { segs.push({ from: U, len: 1, t: 'move', at: i }); U += 1; }
+    }
+    rail.style.setProperty('--rail-len', String(Math.round(U * 100)));
+
+    const mapU = u => {
+      const out = { xu: 0, scrub: {} };
+      for (const s of segs) {
+        const f = clamp01((u - s.from) / s.len);
+        if (s.t === 'hold') { out.scrub[s.at] = f; if (u >= s.from) out.xu = s.at; }
+        else if (u >= s.from) out.xu = s.at + f;
+      }
+      return out;
+    };
+    const arrive = [];
+    for (let i = 0; i < N; i++) {
+      const seg = segs.find(s => s.at === i);
+      arrive.push(seg ? seg.from : U);
+    }
+    arrive[N - 1] = U;
+
+    /* word reveal, split once, revealed by horizontal progress */
+    const reveals = [...D.querySelectorAll('.wreveal')].map(el => {
+      const accents = new Set((el.dataset.accent || '').split(',').filter(Boolean));
+      const words = [];
+      [...el.childNodes].forEach(node => {
+        if (node.nodeType !== 3) return;
+        const frag = D.createDocumentFragment();
+        node.textContent.split(/\s+/).filter(Boolean).forEach((word, i, arr) => {
+          const s = D.createElement('span');
+          s.className = 'w' + (accents.has(word.replace(/[.,]$/, '')) ? ' tl' : '');
+          s.textContent = word;
+          words.push(s); frag.appendChild(s);
+          if (i < arr.length - 1) frag.appendChild(D.createTextNode(' '));
+        });
+        el.replaceChild(frag, node);
+      });
+      return { words, idx: panels.indexOf(el.closest('.panel')) };
+    });
+    const fx = m => reveals.forEach(r => {
+      const pr = HOLD[r.idx] != null ? (m.scrub[r.idx] || 0) : clamp01(m.xu - (r.idx - 1));
+      const on = Math.round(pr * r.words.length);
+      r.words.forEach((w, i) => w.classList.toggle('on', i < on));
+    });
+
+    let cur = 0, target = 0, raf = null, idx = -1;
+    const vw = () => rail.clientWidth || innerWidth;
+    const progress = () => {
+      const span = rail.offsetHeight - innerHeight;
+      return span <= 0 ? 0 : clamp01((scrollY - rail.offsetTop) / span);
+    };
+
+    function setUI(i) {
+      if (i === idx) return;
+      idx = i;
+      const nav = Math.min(i, NAV - 1);
+      dots.forEach((d, k) => d.setAttribute('aria-current', String(k === nav)));
+      if (count) count.textContent = String(nav + 1).padStart(2, '0') + ' / ' + String(NAV).padStart(2, '0');
+      panels.forEach((p, k) => { p.classList.toggle('is-on', k === i); if (k <= i) p.classList.add('was-on'); });
+      H.dataset.panel = (panels[i] && panels[i].id) || '';
+      AV.panelFns.forEach(fn => fn(i, panels[i]));
+    }
+
+    function frame() {
+      cur += (target - cur) * 0.12;
+      if (Math.abs(target - cur) < 0.0004) cur = target;
+      const m = mapU(cur * U);
+      m.p = cur;
+      track.style.transform = 'translate3d(' + (-m.xu * vw()) + 'px,0,0)';
+      if (bar) bar.parentElement.style.setProperty('--rail-p', String(cur));
+      fx(m);
+      setUI(Math.round(m.xu));
+      AV.frameFns.forEach(fn => fn(m));
+      window.__avRail = { p: cur, xu: m.xu, scrub: m.scrub, n: N };
+      if (cur === target) {
+        if (NAV < N && target >= 1 - 1e-4) {
+          /* fully arrived on the hero clone: jump to the real hero above the rail */
+          scrollTo({ top: 0, behavior: 'auto' });
+          cur = target = 0;
+          track.style.transform = 'translate3d(0,0,0)';
+          const z = mapU(0); z.p = 0;
+          fx(z); setUI(0); AV.frameFns.forEach(fn => fn(z));
+        }
+        raf = null; return;
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    const onScroll = () => { if (flat()) return; target = progress(); kick(); };
+
+    /* stacked layout: an observer names the panel under the middle of the screen */
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting || !flat()) return;
+        const i = panels.indexOf(e.target);
+        panels.forEach((p, k) => p.classList.toggle('is-on', k === i));
+        e.target.classList.add('was-on');
+        H.dataset.panel = e.target.id || '';
+        AV.panelFns.forEach(fn => fn(i, e.target));
+      }), { rootMargin: '-40% 0px -40% 0px' });
+      panels.forEach(p => io.observe(p));
+    }
+
+    const scrollToUnit = u => {
+      const span = rail.offsetHeight - innerHeight;
+      scrollTo({ top: rail.offsetTop + (u / U) * span, behavior: RMQ.matches ? 'auto' : 'smooth' });
+    };
+    goPanel = i => {
+      i = Math.max(0, Math.min(NAV - 1, i));
+      if (flat()) { panels[i].scrollIntoView({ behavior: RMQ.matches ? 'auto' : 'smooth' }); return; }
+      scrollToUnit(arrive[i] + (HOLD[i] ? HOLD[i] * 0.12 : 0));
+    };
+    AV.goPanel = goPanel;
+    AV.panels = panels;
+
+    dots.forEach((d, i) => d.addEventListener('click', () => goPanel(i)));
+    D.querySelectorAll('a[href^="#p-"]').forEach(a => a.addEventListener('click', e => {
+      const el = D.querySelector(a.getAttribute('href'));
+      const i = el ? panels.indexOf(el.closest('.panel')) : -1;
+      if (i < 0) return;
+      e.preventDefault(); goPanel(i);
+    }));
+
+    /* keyboard: arrows travel the rail; a focus landing off screen brings its panel in */
+    addEventListener('keydown', e => {
+      if (flat()) return;
+      const a = D.activeElement;
+      if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      const r = rail.getBoundingClientRect();
+      if (r.top > 4 || r.bottom < innerHeight - 4) return;
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goPanel(idx + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPanel(idx - 1); }
+    });
+    track.addEventListener('focusin', e => {
+      if (flat()) return;
+      const stick = rail.querySelector('.rail__stick');
+      if (stick) stick.scrollLeft = 0;
+      const i = panels.indexOf(e.target.closest('.panel'));
+      if (i >= 0 && i !== idx && i < NAV) goPanel(i);
+    });
+
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', () => { target = progress(); cur = target; idx = -1; kick(); });
+    const relayout = () => {
+      if (flat()) track.style.transform = '';
+      else { target = progress(); cur = target; idx = -1; kick(); }
+    };
+    [RMQ, NARROW].forEach(mq => mq.addEventListener('change', relayout));
+    D.addEventListener('av:calm', () => requestAnimationFrame(relayout));
+
+    if (!flat()) { target = progress(); cur = target; kick(); }
+    else fx(mapU(U));
+  }
+
+  AV.goTo = sel => {
+    const el = D.querySelector(sel);
+    if (!el) return false;
+    const i = AV.panels ? AV.panels.indexOf(el.closest('.panel')) : -1;
+    if (i >= 0) goPanel(i);
+    else el.scrollIntoView({ behavior: RMQ.matches ? 'auto' : 'smooth', block: 'center' });
+    return true;
+  };
+
+  /* ======================================================================
+     CURSOR: one engine, three looks (html[data-cur] = dot | invert | badge)
+     ====================================================================== */
+  if (FINE.matches && !RMQ.matches && H.dataset.cur) {
+    const c = D.createElement('div');
+    c.className = 'cur';
+    c.setAttribute('aria-hidden', 'true');
+    c.innerHTML = '<i class="cur__p cur__p--dot"><b class="cur__dot"></b></i>' +
+      '<i class="cur__p cur__p--ring"><b class="cur__ring"><span class="cur__label"></span></b></i>';
+    D.body.appendChild(c);
+    H.classList.add('has-cur');
+    const pd = c.children[0], pr = c.children[1], label = c.querySelector('.cur__label');
+    const dflt = H.dataset.curDefault || '';
+    let rx = innerWidth / 2, ry = innerHeight / 2, craf = 0;
+    if (dflt) { c.classList.add('is-on'); label.textContent = dflt; }
+    const step = () => {
+      craf = 0;
+      const p = AV.pointer;
+      rx += (p.x - rx) * 0.2; ry += (p.y - ry) * 0.2;
+      pd.style.transform = 'translate(' + p.x + 'px,' + p.y + 'px)';
+      pr.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      if (Math.abs(p.x - rx) + Math.abs(p.y - ry) > 0.3) craf = requestAnimationFrame(step);
+    };
+    addEventListener('pointermove', () => { if (!craf) craf = requestAnimationFrame(step); }, { passive: true });
+    D.addEventListener('pointerover', e => {
+      const t = e.target.closest && e.target.closest('[data-cursor],a,button,summary,input');
+      const word = t ? (t.dataset.cursor != null ? t.dataset.cursor : (t.tagName === 'INPUT' ? '' : (H.dataset.curLink || 'open'))) : dflt;
+      const on = !!(t && t.tagName !== 'INPUT') || !!dflt;
+      c.classList.toggle('is-on', on);
+      c.classList.toggle('is-target', !!t);
+      label.textContent = on ? word : '';
+      c.dataset.kind = t && t.dataset.cursorKind ? t.dataset.cursorKind : '';
+    });
+    addEventListener('pointerdown', () => c.classList.add('is-down'));
+    addEventListener('pointerup', () => c.classList.remove('is-down'));
+    D.addEventListener('pointerleave', () => { c.style.opacity = '0'; });
+    D.addEventListener('pointerenter', () => { c.style.opacity = ''; });
+    AV.cursor = c;
+  }
+
+  /* ---- magnetic: [data-magnetic="0.35"] leans toward the pointer ---- */
+  if (FINE.matches && !RMQ.matches) {
+    D.querySelectorAll('[data-magnetic]').forEach(el => {
+      const k = parseFloat(el.dataset.magnetic) || 0.3;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        el.style.transition = 'transform .15s linear';
+        el.style.transform = 'translate(' + dx * k + 'px,' + dy * k + 'px)';
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1)';
+        el.style.transform = '';
+      });
+    });
+
+    /* ---- tilt: [data-tilt="12"], sets --gx/--gy for a glare layer ---- */
+    D.querySelectorAll('[data-tilt]').forEach(el => {
+      const max = parseFloat(el.dataset.tilt) || 10;
+      const lift = parseFloat(el.dataset.lift || '0');
+      const base = el.dataset.tiltBase || '';
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        el.classList.add('is-tilting');
+        el.style.transform = base + ' perspective(900px) rotateX(' + ((0.5 - py) * max).toFixed(2) +
+          'deg) rotateY(' + ((px - 0.5) * max).toFixed(2) + 'deg) translate3d(0,' + (-lift) + 'px,' + lift + 'px)';
+        el.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        el.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('is-tilting');
+        el.style.transform = base;
+      });
+    });
+  }
+
+  /* ======================================================================
+     ENTRANCES: [data-reveal], .lines, counters and scrambles fire once
+     ====================================================================== */
+  const counters = el => el.querySelectorAll('[data-count-to]').forEach(n => countUp(n));
+  function countUp(n) {
+    if (n.dataset.done) return;
+    n.dataset.done = '1';
+    const to = parseFloat(n.dataset.countTo);
+    if (RMQ.matches || AV.calm()) { n.textContent = n.dataset.countTo; return; }
+    const t0 = performance.now(), dur = parseFloat(n.dataset.countDur || '1400');
+    const tick = t => {
+      const f = clamp01((t - t0) / dur), e = 1 - Math.pow(1 - f, 3);
+      n.textContent = String(Math.round(to * e));
+      if (f < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  AV.countUp = countUp;
+
+  const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*+=?';
+  AV.scramble = (el, dur) => {
+    if (RMQ.matches) return;
+    const final = el.dataset.text || (el.dataset.text = el.textContent);
+    const t0 = performance.now(); dur = dur || 520;
+    cancelAnimationFrame(el._scr);
+    const tick = t => {
+      const f = clamp01((t - t0) / dur), keep = Math.floor(f * final.length);
+      let s = '';
+      for (let i = 0; i < final.length; i++) {
+        const ch = final[i];
+        s += i < keep || ch === ' ' ? ch : GLYPHS[(Math.random() * GLYPHS.length) | 0];
+      }
+      el.textContent = s;
+      if (f < 1) el._scr = requestAnimationFrame(tick); else el.textContent = final;
+    };
+    el._scr = requestAnimationFrame(tick);
+  };
+  D.querySelectorAll('[data-scramble]').forEach(el => {
+    const t = el.querySelector('[data-scramble-text]') || el;
+    el.addEventListener('pointerenter', () => AV.scramble(t, 420));
+    el.addEventListener('focus', () => AV.scramble(t, 420));
   });
+
+  const revealEls = [...D.querySelectorAll('[data-reveal],.lines,.lineup,.deck,[data-count-wrap]')];
+  const show = el => {
+    el.classList.add('in');
+    counters(el);
+    if (el.hasAttribute('data-scramble-in')) AV.scramble(el, 700);
+  };
+  if ('IntersectionObserver' in window && !RMQ.matches) {
+    const rio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { show(e.target); rio.unobserve(e.target); }
+    }), { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(el => rio.observe(el));
+  } else revealEls.forEach(show);
+
+  /* ======================================================================
+     TEAM CLIPS: the active panel plays from the top, the rest pause
+     ====================================================================== */
+  /* A clip with data-alpha is a stacked mp4 (colour on top, Vision matte below).
+     The SVG filter #stack-alpha lifts the matte into alpha while it renders, so
+     the person stands on any ground. It reads no pixels, so it works from
+     file:// as well as from a server. The still cutout shows until the clip plays. */
+  const clips = [...D.querySelectorAll('video[data-clip]')];
+  clips.forEach(v => v.addEventListener('playing', () => v.parentElement.classList.add('is-live')));
+  const playIn = panel => clips.forEach(v => {
+    const mine = panel && panel.contains(v);
+    if (mine && !RMQ.matches && !AV.calm()) {
+      if (v.paused) {
+        if (v.preload === 'none') v.preload = 'auto';
+        try { v.currentTime = 0; } catch (_) {}
+        const p = v.play(); if (p && p.catch) p.catch(() => {});
+      }
+    } else if (!v.paused && !v.hasAttribute('data-free')) v.pause();
+  });
+  AV.playIn = playIn;
+
+  /* line-ups: hovering a person plays their wave */
+  if (FINE.matches && !RMQ.matches) D.querySelectorAll('[data-hover-clip]').forEach(item => {
+    const v = item.querySelector('video');
+    if (!v) return;
+    v.loop = false;                  // v17: a hover plays the wave once and holds its last frame, never loops
+    v.addEventListener('playing', () => v.parentElement.classList.add('is-live'));
+    const on = () => {
+      if (AV.calm()) return;
+      if (!v.getAttribute('src')) { v.src = v.dataset.src; v.preload = 'auto'; }
+      try { v.currentTime = 0; } catch (_) {}
+      const p = v.play(); if (p && p.catch) p.catch(() => {});
+    };
+    const off = () => { v.pause(); v.parentElement.classList.remove('is-live'); };
+    item.addEventListener('pointerenter', on);
+    item.addEventListener('pointerleave', off);
+    item.addEventListener('focusin', on);
+    item.addEventListener('focusout', off);
+  });
+  if (clips.length) AV.onPanel((i, panel) => playIn(panel));
+  /* clips outside the rail (line-ups, cards): play while on screen */
+  const free = clips.filter(v => v.hasAttribute('data-free'));
+  if (free.length && 'IntersectionObserver' in window) {
+    const fio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && !RMQ.matches && !AV.calm()) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      else v.pause();
+    }), { threshold: 0.25 });
+    free.forEach(v => fio.observe(v));
+  }
+
+  /* ======================================================================
+     ASK BOX: fed by the site-wide intents brief (avas-intents.json plus the
+     homepage-only parts/intents-extra.json), the same longest-keyword-wins
+     match as the rest of the site. window.AVAS_DATA is set by the page build.
+     go: an anchor ("#p-pricing") travels the rail; anything else is a route,
+     shown as a real link (an ask answer must be able to send someone off page).
+     ====================================================================== */
+  /* v17: the home's own answers (parts/home-intents.json, inlined as #home-intents) replace the
+     matching intents by id, so the Ask box leads with what we make (home-gen.py checks every # target) */
+  const OVR = D.getElementById('home-intents');
+  if (OVR && window.AVAS_DATA && !window.AVAS_DATA._home) {
+    try {
+      const o = JSON.parse(OVR.textContent), byId = {};
+      (window.AVAS_DATA.intents || []).forEach(it => { byId[it.id] = it; });
+      (o.intents || []).forEach(v => { if (byId[v.id]) Object.assign(byId[v.id], v); });
+      if (o.notfound) window.AVAS_DATA.notfound = o.notfound;
+      window.AVAS_DATA._home = 1;
+    } catch (_) {}
+  }
+  D.querySelectorAll('[data-ask]').forEach(box => {
+    const DATA = window.AVAS_DATA;
+    if (!DATA) return;
+    const log = box.querySelector('.ask__log'), form = box.querySelector('form'), input = box.querySelector('input');
+    const say = (cls, text) => {
+      const b = D.createElement('div'); b.className = cls; log.appendChild(b);
+      while (log.children.length > 4) log.removeChild(log.firstChild);
+      if (RMQ.matches || cls === 'ask__q') { b.textContent = text; return Promise.resolve(b); }
+      return new Promise(res => {
+        let i = 0;
+        const t = setInterval(() => { i += 2; b.textContent = text.slice(0, i); if (i >= text.length) { clearInterval(t); res(b); } }, 14);
+      });
+    };
+    const bestFor = q => {
+      const s = q.toLowerCase();
+      /* the longest matching keyword wins, so "what does it cost" lands on pricing */
+      let hit = null, best = 0;
+      DATA.intents.forEach(it => (it.k || []).forEach(k => {
+        if (k.length > best && s.includes(k.toLowerCase())) { best = k.length; hit = it; }
+      }));
+      return hit;
+    };
+    const answer = q => {
+      const hit = bestFor(q);
+      say('ask__q', q);
+      setTimeout(() => say('ask__a', hit ? hit.a : (DATA.notfound || 'Not something I hold yet. Try services, pricing, who runs it, or book a call.')).then(b => {
+        const go = hit && hit.go;
+        if (!go) return;
+        const isRoute = go.charAt(0) !== '#';
+        const g = D.createElement(isRoute ? 'a' : 'button');
+        g.className = 'ask__go';
+        g.textContent = (isRoute ? 'take me there' : 'take me there') + ' →';
+        if (isRoute) g.href = go; else { g.type = 'button'; g.addEventListener('click', () => AV.goTo(go)); }
+        b.appendChild(D.createTextNode(' ')); b.appendChild(g);
+      }), 280);
+    };
+    form.addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if (q) { answer(q); input.value = ''; } });
+    box.querySelectorAll('[data-q]').forEach(b => b.addEventListener('click', () => answer(b.dataset.q)));
+  });
+
+  /* ======================================================================
+     CALM: the Owner's switch; stops loops, clips and CSS animation
+     ====================================================================== */
+  const calm = D.querySelector('[data-calm]');
+  try { if (localStorage.getItem('avas-calm') === 'calm') H.dataset.motion = 'calm'; } catch (_) {}   // a new key: the old site's saved 'calm' no longer carries over (Owner 2026-09-27: motion on by default)
+  if (calm) {
+    const paint = () => {
+      const on = AV.calm();
+      calm.setAttribute('aria-pressed', String(on));
+      calm.textContent = on ? 'calm on' : 'calm';
+    };
+    paint();
+    calm.addEventListener('click', () => {
+      H.dataset.motion = AV.calm() ? 'full' : 'calm';
+      try { localStorage.setItem('avas-calm', H.dataset.motion); } catch (_) {}
+      paint();
+      if (AV.calm()) clips.forEach(v => v.pause());
+      D.dispatchEvent(new CustomEvent('av:calm'));
+    });
+  }
+  /* phones hide the top switch (under 900 px), so the Menu carries the same CALM (final QA 2026-09-30) */
+  const menuCalm = D.querySelector('[data-calm-menu]');
+  if (menuCalm && calm) {
+    const paintMenu = () => {
+      const on = AV.calm();
+      menuCalm.setAttribute('aria-pressed', String(on));
+      menuCalm.textContent = on ? 'Calm: motion is off' : 'Calm: turn motion off';
+    };
+    menuCalm.dataset.bound = '1';
+    menuCalm.addEventListener('click', () => calm.click());
+    D.addEventListener('av:calm', paintMenu);
+    paintMenu();
+  }
+
+  /* the music, Sound and its credit live in sound.js (2026-10-01) */
+
+
+  /* a link like index.html#p-book lands on its rail panel */
+  if (location.hash && /^#p-/.test(location.hash) && AV.goPanel) {
+    addEventListener('load', () => setTimeout(() => AV.goTo(location.hash), 250));
+  }
+
+  /* the footer carries its own Powered by JTL Growth lock, so the corner badge steps aside while a
+     footer is on screen (Owner 2026-10-02: two JTL marks side by side at the end of the home rail) */
+  const feet = D.querySelectorAll('.foot');
+  if (feet.length && 'IntersectionObserver' in window) {
+    const seen = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+      D.documentElement.classList.toggle('foot-on', seen.size > 0);
+    });
+    feet.forEach(f => io.observe(f));
+  }
+
+  /* year in the footer */
+  D.querySelectorAll('[data-year]').forEach(n => { n.textContent = String(new Date().getFullYear()); });
 })();
 
 /* ==========================================================================
@@ -1089,6 +1789,424 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   }
 })();
 
+/* Privacy consent. One key, three states: unset shows the notice, granted lets
+   the booking panel load Calendly, denied keeps every third party off the page.
+   The answer changes behaviour, so the notice is not decoration. */
+(() => {
+  'use strict';
+  var KEY = 'avas-consent';
+  var el = document.getElementById('consent');
+  if (!el) return;
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  window.avasConsent = {
+    state: function () { return read(); },
+    granted: function () { return read() === 'granted'; },
+    onChange: []
+  };
+
+  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.dataset.consent;
+    write(v);
+    el.hidden = true;
+    delete document.documentElement.dataset.consent;
+    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  });
+})();
+
+/* ==========================================================================
+   AVAS inner pages (/work/, /services/): the scroll engine. 2026-09-29.
+   Every effect here is driven by scroll position or a click. Nothing loops,
+   bobs, pulses or turns on its own (Owner: oscillating motion makes him dizzy).
+
+   A scene is any element with data-scene; it gets --p (0 to 1) from where it
+   sits on screen, and CSS turns that one number into transforms, opacity and
+   clip-path. Modes:
+     in    entrance: 0 when its top meets the bottom edge, 1 at 40% from the top
+     view  0 when its top meets the bottom edge, 1 when its bottom leaves the top
+     pin   0 when it reaches the top, 1 when its end leaves (sticky child inside)
+     hero  0 at the top of the page, 1 once the page has scrolled its height
+   html.fx is on only when motion is allowed: prefers-reduced-motion and the
+   CALM button take it off, and every scene falls back to a plain, still page
+   (the no-JS page is that same still page, with every number already written).
+   ========================================================================== */
+(() => {
+  'use strict';
+  const D = document, H = D.documentElement;
+  const RMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  const NARROW = matchMedia('(max-width: 900px)');
+  const clamp = v => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const live = () => !RMQ.matches && H.dataset.motion !== 'calm';
+  let vh = innerHeight;
+
+  /* ---- data on the page: totals the Work page computes from its own files. The served HTML
+     already carries them (clients_gen.totals); build.py runs workTotals in node on the same data
+     and fails the build unless the two agree, key by key. ---- */
+  /* TOTALS:begin */
+  const workTotals = data => {
+    const norm = ch => ch.replace(/ group$/, '');
+    const channels = new Map(), byCountry = {};
+    data.forEach(c => [...new Set((c.channels || []).map(norm))].sort().forEach(ch => channels.set(ch, (channels.get(ch) || 0) + 1)));
+    data.forEach(c => { if (c.country) byCountry[c.country] = (byCountry[c.country] || 0) + 1; });
+    const cmp = (a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0);
+    const sorted = o => Object.keys(o).sort().reduce((m, k) => (m[k] = o[k], m), {});
+    return {
+      brands: data.length,
+      current: data.filter(c => c.status === 'current').length,
+      past: data.filter(c => c.status !== 'current').length,
+      countries: Object.keys(byCountry).length,
+      channels: channels.size,
+      run: data.reduce((a, c) => a + (+c.run || 0), 0),
+      runBrands: data.filter(c => +c.run > 0).length,
+      results: data.reduce((a, c) => a + (+c.stats || 0), 0),
+      byCountry: sorted(byCountry),
+      bars: [...channels].sort(cmp).filter(r => r[1] >= 2).slice(0, 7)
+    };
+  };
+  /* TOTALS:end */
+  const dataEl = D.getElementById('work-data');
+  if (dataEl) {
+    let data = null;
+    try { data = JSON.parse(dataEl.textContent); } catch (_) {}
+    if (data) {
+      const t = workTotals(data);
+      D.querySelectorAll('[data-total]').forEach(n => {
+        const v = t[n.dataset.total];
+        if (v === undefined) return;
+        if (n.textContent.trim() !== String(v)) { console.warn('work: total', n.dataset.total, 'served', n.textContent, 'computed', v); n.textContent = String(v); }
+      });
+      D.querySelectorAll('[data-country]').forEach(n => { n.textContent = String(t.byCountry[n.dataset.country] || 0); });
+    }
+  }
+  /* the tallies of "the sum" count with the scroll; their final value is the total above */
+  const tallies = [...D.querySelectorAll('[data-tally]')].map(el => {
+    const st = el.closest('[style*="--s:"]'), m = st && /--s:\s*(\d+)/.exec(st.getAttribute('style'));
+    return { el, v: +el.textContent || 0, shown: -1, sc: el.closest('[data-steps]'), k: m ? +m[1] : 0 };
+  });
+
+  /* ---- words: [data-split] wraps each word so it can rise out of a mask ---- */
+  D.querySelectorAll('[data-split]').forEach(el => {
+    const words = [];
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 1) { walk(n); return; }
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;
+      const frag = D.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(D.createTextNode(' ')); return; }
+        const w = D.createElement('span'); w.className = 'kw';
+        const i = D.createElement('span'); i.textContent = part;
+        w.appendChild(i); words.push(w); frag.appendChild(w);
+      });
+      n.replaceWith(frag);
+    });
+    walk(el);
+    words.forEach((w, k) => w.style.setProperty('--k', (k / Math.max(1, words.length - 1)).toFixed(3)));
+  });
+
+  /* ---- the dotted ground: the home page's field, moving only with the scroll ---- */
+  const cv = D.getElementById('dots');
+  let drawDots = () => {};
+  if (cv) {
+    const ctx = cv.getContext('2d');
+    const GAP = 26, RATE = 0.3;
+    const css = getComputedStyle(H), ink = css.getPropertyValue('--dot').trim() || css.getPropertyValue('--border').trim();  // role tokens only
+    const mod = v => ((v % GAP) + GAP) % GAP;
+    let W = 0, Hh = 0;
+    drawDots = () => {
+      const oy = live() ? scrollY * RATE : 0;
+      ctx.clearRect(0, 0, W, Hh);
+      ctx.beginPath();
+      const x0 = mod(GAP / 2), y0 = mod(GAP / 2 - oy);
+      for (let y = y0; y < Hh; y += GAP) for (let x = x0; x < W; x += GAP) { ctx.moveTo(x + 1.3, y); ctx.arc(x, y, 1.3, 0, 6.2832); }
+      ctx.fillStyle = ink; ctx.fill();
+    };
+    const size = () => {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      W = innerWidth; Hh = innerHeight;
+      cv.width = W * dpr; cv.height = Hh * dpr;
+      cv.style.width = W + 'px'; cv.style.height = Hh + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      drawDots();
+    };
+    addEventListener('resize', size);
+    size();
+  }
+
+  /* ---- scenes ---- */
+  const scenes = [...D.querySelectorAll('[data-scene]')].map(el => ({ el, mode: el.dataset.scene, on: true, p: -1 }));
+  const prog = s => {
+    const r = s.el.getBoundingClientRect();
+    switch (s.mode) {
+      case 'pin': { const span = r.height - vh; return span > 0 ? clamp(-r.top / span) : (r.top < 0 ? 1 : 0); }
+      case 'view': return clamp((vh - r.top) / (r.height + vh));
+      case 'hero': return clamp(scrollY / Math.max(1, r.height));
+      default: return clamp((vh - r.top) / (vh * 0.6));
+    }
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const s = scenes.find(x => x.el === e.target);
+      if (s) { s.on = e.isIntersecting; if (s.on) kick(); }  // a fast jump can land after the last scroll tick
+    }), { rootMargin: '25% 0px 25% 0px' });
+    scenes.forEach(s => io.observe(s.el));
+  }
+
+  /* ---- the metallic A: a pre-rendered turn of the same glass A (48 frames, one AVIF each, about
+     2x the display size), drawn on a canvas one frame per scroll step. Frames load on the first
+     sign of intent, coarse to fine (every 8th frame first), so the A can turn after a few KB and
+     sharpens its steps as the rest arrive. Only a window of decoded frames is kept around the
+     current one; the rest stay compressed. Until the first frame other than 0 is needed, the page
+     shows frame 0 as a plain <img> (the first paint). ---- */
+  const ORDER = n => {
+    const seen = new Set(), out = [];
+    [8, 4, 2, 1].forEach(st => { for (let i = 0; i < n; i += st) if (!seen.has(i)) { seen.add(i); out.push(i); } });
+    if (!seen.has(n - 1)) out.push(n - 1);
+    return out;
+  };
+  const turns = [...D.querySelectorAll('[data-turn]')].map(el => {
+    const sm = NARROW.matches;
+    const [w, h] = (sm ? el.dataset.sizeSm : el.dataset.sizeLg || '600x1066').split('x').map(Number);
+    return { el, n: +el.dataset.frames || 48, base: sm ? el.dataset.sm : el.dataset.lg, w, h,
+             blobs: [], bms: new Map(), pending: new Set(), loaded: false, live: false, want: 0, painted: -1, cv: null };
+  });
+  const canDecode = typeof createImageBitmap === 'function' && typeof fetch === 'function';
+  const nearest = (t, f) => {
+    for (let d = 0; d < t.n; d++) {
+      if (t.blobs[f - d]) return f - d;
+      if (t.blobs[f + d]) return f + d;
+    }
+    return -1;
+  };
+  const decode = (t, k) => {
+    if (k < 0 || k >= t.n || !t.blobs[k] || t.bms.has(k) || t.pending.has(k)) return;
+    t.pending.add(k);
+    createImageBitmap(t.blobs[k]).then(bm => {
+      t.pending.delete(k);
+      t.bms.set(k, bm);
+      // keep a window of decoded frames around the one the scroll wants; close the rest
+      if (t.bms.size > 14) [...t.bms.keys()].sort((a, b) => Math.abs(b - t.want) - Math.abs(a - t.want)).slice(0, t.bms.size - 14)
+        .forEach(j => { const x = t.bms.get(j); t.bms.delete(j); if (x.close) x.close(); });
+      showTurn(t);
+    }, () => { t.pending.delete(k); t.broken = true; });
+  };
+  const paint = (t, k) => {
+    if (k === t.painted) return;
+    const bm = t.bms.get(k);
+    if (!bm) return;
+    if (!t.cv) {
+      t.cv = D.createElement('canvas');
+      t.cv.width = t.w; t.cv.height = t.h;
+      t.el.appendChild(t.cv);
+      t.ctx = t.cv.getContext('2d');
+    }
+    t.ctx.clearRect(0, 0, t.w, t.h);
+    t.ctx.drawImage(bm, 0, 0, t.w, t.h);
+    t.painted = k;
+    if (!t.live) { t.live = true; t.el.classList.add('is-live'); }
+  };
+  function showTurn(t) {
+    if (t.broken || !H.classList.contains('fx')) return;
+    if (!t.live && t.want === 0) return;              // frame 0 is the <img> already on screen
+    const k = nearest(t, t.want);
+    if (k < 0) return;
+    if (t.bms.has(k)) paint(t, k);
+    else {
+      decode(t, k);
+      // meanwhile, the closest decoded frame keeps the A moving
+      let best = -1;
+      t.bms.forEach((_, j) => { if (best < 0 || Math.abs(j - t.want) < Math.abs(best - t.want)) best = j; });
+      if (best >= 0) paint(t, best);
+    }
+    [1, -1, 2, -2, 3, -3].forEach(d => { const j = nearest(t, t.want + d); if (j >= 0) decode(t, j); });
+  }
+  const loadTurns = () => turns.forEach(t => {
+    if (t.loaded || !t.base || !live() || !canDecode) return;
+    t.loaded = true;
+    const queue = ORDER(t.n);
+    let active = 0;
+    const next = () => {
+      while (active < 6 && queue.length) {
+        const i = queue.shift();
+        active++;
+        fetch(t.base + String(i).padStart(2, '0') + '.avif', { priority: 'low' })
+          .then(r => (r.ok ? r.blob() : null))
+          .then(b => { if (b) { t.blobs[i] = b; showTurn(t); } }, () => {})
+          .finally(() => { active--; next(); });
+      }
+    };
+    next();
+  });
+  const setTurn = (t, p) => {
+    const f = Math.round(p * (t.n - 1));
+    if (f === t.want && (t.live || f === 0)) return;
+    t.want = f;
+    showTurn(t);
+  };
+  const stillTurns = () => turns.forEach(t => {
+    t.want = 0; t.painted = -1; t.live = false; t.el.classList.remove('is-live');
+  });
+
+  /* ---- horizontal tracks: a pinned section whose track slides sideways ---- */
+  const tracks = [...D.querySelectorAll('[data-track]')];
+  const measureTracks = () => tracks.forEach(sec => {
+    const tr = sec.querySelector('.hs__track');
+    if (!tr) return;
+    const tw = Math.max(0, tr.scrollWidth - sec.clientWidth);
+    sec.style.setProperty('--tw', String(Math.round(tw)));
+  });
+
+  /* ---- stacking files: each card shrinks back as the next one covers it ---- */
+  const files = [...D.querySelectorAll('[data-file]')];
+  const stackFiles = () => {
+    if (!H.classList.contains('fx') || NARROW.matches) { files.forEach(f => f.style.removeProperty('--cover')); return; }
+    for (let i = 0; i < files.length - 1; i++) {
+      const a = files[i].getBoundingClientRect(), b = files[i + 1].getBoundingClientRect();
+      files[i].style.setProperty('--cover', clamp((a.bottom - b.top) / a.height).toFixed(3));
+    }
+  };
+
+  /* ---- numbers: count as they enter, once; "A to B" counts B up from A ---- */
+  const fmt = (v, like) => (/,/.test(like) || v >= 10000 ? Math.round(v).toLocaleString('en-US') : String(Math.round(v)));
+  const countEl = el => {
+    if (el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const final = el.textContent;
+    if (!live()) return;
+    const nums = [...final.matchAll(/\d[\d,]*/g)];
+    if (!nums.length) return;
+    const vals = nums.map(m => parseFloat(m[0].replace(/,/g, '')));
+    const pair = /^\s*\S+\s+to\s+\S+\s*$/.test(final) && vals.length === 2;
+    const t0 = performance.now(), dur = 1300;
+    const step = t => {
+      const e = 1 - Math.pow(1 - clamp((t - t0) / dur), 3);
+      let i = 0;
+      el.textContent = final.replace(/\d[\d,]*/g, m => {
+        const k = i++;
+        if (pair && k === 0) return m;               // "A to B": A is a fixed start, never counted
+        const from = pair ? vals[0] : 0;
+        return fmt(from + (vals[k] - from) * e, m);
+      });
+      if (e < 1) requestAnimationFrame(step); else el.textContent = final;
+    };
+    requestAnimationFrame(step);
+  };
+  const counters = [...D.querySelectorAll('[data-num]')];
+  if ('IntersectionObserver' in window) {
+    const cio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { countEl(e.target); cio.unobserve(e.target); }
+    }), { threshold: 0.6 });
+    counters.forEach(c => cio.observe(c));
+  }
+
+  /* ---- images and posters that wait for their section: data-src / data-poster are set when the
+     element is about a screen away, so they never compete with the first paint ---- */
+  const lazy = [...D.querySelectorAll('img[data-src], video[data-poster]')];
+  const wake = el => {
+    if (el.tagName === 'IMG') { el.src = el.dataset.src; el.removeAttribute('data-src'); }
+    else { el.poster = el.dataset.poster; el.removeAttribute('data-poster'); }
+  };
+  // watched only after the load event: the wall sits one screen under the hero, so a margin of
+  // one screen alone would still fetch its marks alongside the first frame of the A
+  const startLazy = () => {
+    if (!('IntersectionObserver' in window)) { lazy.forEach(wake); return; }
+    const lio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { wake(e.target); lio.unobserve(e.target); }
+    }), { rootMargin: '100% 0px 100% 0px' });
+    lazy.forEach(el => lio.observe(el));
+  };
+  if (D.readyState === 'complete') startLazy(); else addEventListener('load', startLazy, { once: true });
+
+  /* ---- videos: fetched and played only on screen, paused off it, never under calm ---- */
+  const vids = [...D.querySelectorAll('video[data-src]')];
+  if ('IntersectionObserver' in window) {
+    const vio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && live()) {
+        if (!v.getAttribute('src')) { v.src = v.dataset.src; v.preload = 'auto'; }
+        if (!v.ended) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+      } else if (!v.paused) v.pause();
+    }), { threshold: 0.2 });
+    vids.forEach(v => vio.observe(v));
+  }
+
+  /* ---- the frame loop: runs only while the page scrolls ---- */
+  let raf = 0;
+  function tick(force) {
+    raf = 0;
+    if (!H.classList.contains('fx')) return;
+    for (const s of scenes) {
+      if (!s.on && !force) continue;
+      const p = prog(s);
+      if (Math.abs(p - s.p) < 0.0005 && !force) continue;
+      s.p = p;
+      s.el.style.setProperty('--p', p.toFixed(4));
+    }
+    turns.forEach(t => { if (t.loaded) { const s = scenes.find(x => x.el.contains(t.el)); if (s) setTurn(t, s.p < 0 ? 0 : s.p); } });
+    tallyTick();
+    stackFiles();
+    drawDots();
+  }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(() => tick(false)); };
+
+  /* a pinned scene of n steps (data-steps): step s owns p from s/n to (s+1)/n; its tally counts
+     from 0 to its total over the first 45% of that span, and back down if the reader scrolls back */
+  function tallyTick() {
+    tallies.forEach(t => {
+      const s = t.sc && scenes.find(x => x.el === t.sc);
+      if (!s || s.p < 0) return;
+      const q = clamp((s.p * (+t.sc.dataset.steps || 1) - t.k) / 0.45);
+      const v = Math.round(t.v * q);
+      if (v !== t.shown) { t.shown = v; t.el.textContent = String(v); }
+    });
+  }
+  const stillTallies = () => tallies.forEach(t => { t.shown = -1; t.el.textContent = String(t.v); });
+
+  function mode() {
+    const on = live();
+    H.classList.toggle('fx', on);
+    if (on) { measureTracks(); tick(true); if (scrollY > 0) loadTurns(); }
+    else {
+      scenes.forEach(s => { s.p = -1; s.el.style.removeProperty('--p'); });
+      stillTurns();
+      stillTallies();
+      files.forEach(f => f.style.removeProperty('--cover'));
+      vids.forEach(v => v.pause());
+      drawDots();
+    }
+  }
+  const menuCalm = D.querySelector('[data-calm-menu]'), topCalm = D.querySelector('[data-calm]');
+  const paintMenuCalm = () => {
+    if (!menuCalm) return;
+    const on = H.dataset.motion === 'calm';
+    menuCalm.setAttribute('aria-pressed', String(on));
+    menuCalm.textContent = on ? 'Calm: motion is off' : 'Calm: turn motion off';
+  };
+  if (menuCalm && topCalm && !menuCalm.dataset.bound) menuCalm.addEventListener('click', () => { topCalm.click(); paintMenuCalm(); });
+  D.addEventListener('av:calm', paintMenuCalm);
+  paintMenuCalm();
+  addEventListener('scroll', kick, { passive: true });
+  addEventListener('resize', () => { vh = innerHeight; measureTracks(); tick(true); });
+  RMQ.addEventListener('change', mode);
+  D.addEventListener('av:calm', mode);
+  mode();
+  /* the 330 KB turn sheet is fetched on the first sign of intent (a scroll, wheel, touch, pointer
+     or key), never during the first load, so it cannot compete with the first frame for bandwidth */
+  const INTENT = ['scroll', 'wheel', 'touchstart', 'pointerdown', 'pointermove', 'keydown'];
+  const onIntent = () => {
+    loadTurns();   // under CALM nothing loads, so the listeners stay for the first intent after it
+    if (turns.every(t => t.loaded || !t.sheet)) INTENT.forEach(ev => removeEventListener(ev, onIntent, true));
+  };
+  INTENT.forEach(ev => addEventListener(ev, onIntent, { capture: true, passive: true }));
+
+})();
+
 /* AVAS v16, fit quiz. Vanilla JS, IIFE, no globals, no framework, no network.
    Scoring is ported from the retired GHL quiz.html (computePlanKey + tierFor,
    Q1/Q4 weight 3, team/timing weight-1 leans, "everything" both = partner)
@@ -1382,6 +2500,5 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
 })();
 </script>
 
-<script src="/assets/faq-widget.js" data-endpoint="https://portal.ayalavirtualassistance.site/api/public/faq" defer></script>
 </body>
 </html>
