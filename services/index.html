@@ -219,6 +219,7 @@ html.has-cur input,html.has-cur textarea{cursor:text}
   transition:opacity .3s .1s}
 .jtl-badge:hover,.jtl-badge:focus-visible{max-width:260px}
 .jtl-badge:hover span,.jtl-badge:focus-visible span{opacity:1}
+html.foot-on .jtl-badge{opacity:0;pointer-events:none;visibility:hidden}
 .foot{position:relative;z-index:2;padding:40px var(--pad) 36px;border-top:1px solid var(--border);
   display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-size:13px;color:var(--muted);background:var(--bg)}
 .foot a:hover{color:var(--espresso)}
@@ -1441,6 +1442,18 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   /* a link like index.html#p-book lands on its rail panel */
   if (location.hash && /^#p-/.test(location.hash) && AV.goPanel) {
     addEventListener('load', () => setTimeout(() => AV.goTo(location.hash), 250));
+  }
+
+  /* the footer carries its own Powered by JTL Growth lock, so the corner badge steps aside while a
+     footer is on screen (Owner 2026-10-02: two JTL marks side by side at the end of the home rail) */
+  const feet = D.querySelectorAll('.foot');
+  if (feet.length && 'IntersectionObserver' in window) {
+    const seen = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+      D.documentElement.classList.toggle('foot-on', seen.size > 0);
+    });
+    feet.forEach(f => io.observe(f));
   }
 
   /* year in the footer */

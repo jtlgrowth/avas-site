@@ -213,6 +213,7 @@ html.has-cur input,html.has-cur textarea{cursor:text}
   transition:opacity .3s .1s}
 .jtl-badge:hover,.jtl-badge:focus-visible{max-width:260px}
 .jtl-badge:hover span,.jtl-badge:focus-visible span{opacity:1}
+html.foot-on .jtl-badge{opacity:0;pointer-events:none;visibility:hidden}
 .foot{position:relative;z-index:2;padding:40px var(--pad) 36px;border-top:1px solid var(--border);
   display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-size:13px;color:var(--muted);background:var(--bg)}
 .foot a:hover{color:var(--espresso)}
@@ -610,7 +611,12 @@ html.gl-on .a-fallback{display:none}
   padding:10px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;transition:color .3s,padding .5s var(--ease-out)}
 .a-logos li::after{content:"\2197";color:var(--muted)}
 .a-logos li:hover{color:var(--espresso);padding-left:10px}
-.a-book>.foot{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--border);padding:18px var(--pad) 18px calc(var(--pad) + 60px)}
+/* the footer is the panel's last row, never laid over it: absolute at bottom:0 it covered the
+   "Open the calendar" button once the title and the footer both wrapped (Owner 2026-10-02) */
+.a-book{justify-content:flex-start;padding-bottom:0}
+.a-book>.a-book__grid{flex:1;min-height:0;align-content:center}
+.a-book .a-title{font-size:clamp(44px,min(8.6vw,12.5svh),150px)}
+.a-book>.foot{flex:none;margin:0 calc(-1 * var(--pad));border-top:1px solid var(--border);padding:18px var(--pad)}
 html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
 .rail__ui{transition:opacity .4s}
 
@@ -760,7 +766,8 @@ html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
   .lineup__tag b{display:block;color:var(--fg);font-size:14px}
   .a-crew__head{flex-direction:column;align-items:flex-start;margin-bottom:24px}
   .a-kate__fig{width:100%}
-  .a-book>.foot{position:relative;padding:28px 0 0;border-top:0}
+  .a-book{padding-bottom:40px}
+  .a-book>.foot{margin:28px 0 0;padding:28px 0 0;border-top:1px solid var(--border)}
   .a-tm{min-height:100svh;padding:0 var(--pad) 40px;display:flex;flex-direction:column;justify-content:flex-end}
   .a-tm__name{top:18%}
   .a-tm__fig{position:relative;left:auto;height:auto;width:100%;transform:none;opacity:1}
@@ -1572,6 +1579,18 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   /* a link like index.html#p-book lands on its rail panel */
   if (location.hash && /^#p-/.test(location.hash) && AV.goPanel) {
     addEventListener('load', () => setTimeout(() => AV.goTo(location.hash), 250));
+  }
+
+  /* the footer carries its own Powered by JTL Growth lock, so the corner badge steps aside while a
+     footer is on screen (Owner 2026-10-02: two JTL marks side by side at the end of the home rail) */
+  const feet = D.querySelectorAll('.foot');
+  if (feet.length && 'IntersectionObserver' in window) {
+    const seen = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+      D.documentElement.classList.toggle('foot-on', seen.size > 0);
+    });
+    feet.forEach(f => io.observe(f));
   }
 
   /* year in the footer */

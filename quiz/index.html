@@ -389,11 +389,22 @@ html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
 #p-quiz .quiz__bar{display:block;height:3px;border-radius:100px;background:var(--hair);overflow:hidden}
 #p-quiz .quiz__bar-fill{display:block;height:100%;border-radius:100px;width:0%;background:var(--espresso);transition:width .35s ease}
 
+/* keyboard hint: shows only while an answer has keyboard focus, in the space
+   under the progress bar, so nothing moves when it appears */
+#p-quiz .quiz__progress{position:relative}
+#p-quiz .quiz__kbd{position:absolute;left:0;top:100%;margin:6px 0 0;font-family:var(--font-m);font-size:11px;
+  line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);visibility:hidden}
+#p-quiz .quiz:has(.quiz__opt input:focus-visible) .quiz__kbd{visibility:visible}
+
 #p-quiz .quiz__screen{border:0;margin:0;padding:0}
 #p-quiz .quiz__screen legend{font-family:var(--font-d);font-weight:var(--w-display);
   font-variation-settings:'wdth' var(--wdth-display);font-size:clamp(21px,2.6vw,28px);
   line-height:1.2;color:var(--deep);margin:0 0 22px;padding:0;max-width:22ch}
 #p-quiz .quiz__screen h2{font-size:clamp(24px,3vw,34px);margin-bottom:10px}
+/* a heading that takes focus when the screen changes does not need a ring */
+#p-quiz .quiz__screen legend:focus,
+#p-quiz .quiz__screen h2:focus,
+#p-quiz .quiz__screen:focus{outline:none}
 
 #p-quiz .quiz__options{display:flex;flex-direction:column;gap:10px}
 #p-quiz .quiz__opt{
@@ -404,6 +415,8 @@ html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
 #p-quiz .quiz__opt:hover{border-color:var(--espresso-24)}
 #p-quiz .quiz__opt:has(input:checked){border-color:var(--espresso);background:var(--espresso-10)}
 #p-quiz .quiz__opt:has(input:focus-visible){outline:2px solid var(--espresso);outline-offset:2px}
+/* the option ring above already shows focus, so the radio's own ring would be a second one */
+#p-quiz .quiz__opt input:focus-visible{outline:none}
 #p-quiz .quiz__opt input{width:18px;height:18px;flex:none;accent-color:var(--espresso)}
 #p-quiz .quiz__opt span{font-size:16px;color:var(--ink)}
 
@@ -554,6 +567,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
         <button type="button" class="quiz__back btn btn--ghost" id="quizBack">Back</button>
       </div>
       <div class="quiz__bar" role="progressbar" id="quizBar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Quiz progress"><span class="quiz__bar-fill" id="quizBarFill"></span></div>
+      <p class="quiz__kbd" id="quizKbd">Arrow keys move, Enter picks</p>
     </div>
 
     <div class="quiz__screen" id="qsStart" data-screen>
@@ -568,7 +582,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       </noscript>
     </div>
 
-    <fieldset class="quiz__screen" id="qsQ1" data-screen data-step="1" hidden>
+    <fieldset class="quiz__screen" id="qsQ1" data-screen aria-describedby="quizKbd" data-step="1" hidden>
       <legend>What is eating most of your week</legend>
       <div class="quiz__options">
         <label class="quiz__opt"><input type="radio" name="q1" value="content"><span>Content and social</span></label>
@@ -579,7 +593,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       </div>
     </fieldset>
 
-    <fieldset class="quiz__screen" id="qsQ2" data-screen data-step="2" hidden>
+    <fieldset class="quiz__screen" id="qsQ2" data-screen aria-describedby="quizKbd" data-step="2" hidden>
       <legend>Who is working on this with you</legend>
       <div class="quiz__options">
         <label class="quiz__opt"><input type="radio" name="q2" value="solo"><span>Just me</span></label>
@@ -589,7 +603,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       </div>
     </fieldset>
 
-    <fieldset class="quiz__screen" id="qsQ3" data-screen data-step="3" hidden>
+    <fieldset class="quiz__screen" id="qsQ3" data-screen aria-describedby="quizKbd" data-step="3" hidden>
       <legend>What have you already tried</legend>
       <div class="quiz__options">
         <label class="quiz__opt"><input type="radio" name="q3" value="va"><span>Hired a VA before</span></label>
@@ -599,7 +613,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       </div>
     </fieldset>
 
-    <fieldset class="quiz__screen" id="qsQ4" data-screen data-step="4" hidden>
+    <fieldset class="quiz__screen" id="qsQ4" data-screen aria-describedby="quizKbd" data-step="4" hidden>
       <legend>You wake up and one thing is already done, which one</legend>
       <div class="quiz__options">
         <label class="quiz__opt"><input type="radio" name="q4" value="content"><span>This week's content, shipped</span></label>
@@ -610,7 +624,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       </div>
     </fieldset>
 
-    <fieldset class="quiz__screen" id="qsQ5" data-screen data-step="5" hidden>
+    <fieldset class="quiz__screen" id="qsQ5" data-screen aria-describedby="quizKbd" data-step="5" hidden>
       <legend>When do you want this off your plate</legend>
       <div class="quiz__options">
         <label class="quiz__opt"><input type="radio" name="q5" value="asap"><span>This week</span></label>
@@ -1174,7 +1188,8 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   function focusScreen(screen) {
     var target = screen.querySelector("legend, h2");
     if (!target) { return; }
-    if (target.tagName === "LEGEND") { return; }
+    /* the next question's legend takes focus, so keyboard and screen reader
+       users land on the new question instead of the page body */
     if (!target.hasAttribute("tabindex")) { target.setAttribute("tabindex", "-1"); }
     target.focus();
   }
@@ -1210,6 +1225,26 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     showScreen(index);
   }
 
+  /* Keyboard (WCAG 3.2.2): an arrow key only moves the selection, the answer is
+     kept and the screen stays, so every option can be read first. A click,
+     Space or Enter picks and moves on. The flag is set on an arrow keydown and
+     cleared on the next keyup or pointerdown. */
+  var arrowing = false;
+  var ARROWS = { ArrowUp: 1, ArrowDown: 1, ArrowLeft: 1, ArrowRight: 1, Up: 1, Down: 1, Left: 1, Right: 1 };
+  root.addEventListener("keydown", function (e) { if (ARROWS[e.key]) { arrowing = true; } }, true);
+  document.addEventListener("keyup", function () { arrowing = false; }, true);
+  root.addEventListener("pointerdown", function () { arrowing = false; }, true);
+
+  function advanceFrom(step) {
+    if (advancing) { return; }
+    advancing = true;
+    var delay = reducedMotion() ? 0 : 260;
+    window.setTimeout(function () {
+      advancing = false;
+      goTo(step + 1);
+    }, delay);
+  }
+
   /* auto-advance on pick for Q1 to Q4; Q5 waits on the explicit button so the
      last click before the result is always deliberate */
   [1, 2, 3, 4].forEach(function (step) {
@@ -1219,13 +1254,23 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     Array.prototype.forEach.call(inputs, function (input) {
       input.addEventListener("change", function () {
         answers["q" + step] = input.value;
-        if (advancing) { return; }
-        advancing = true;
-        var delay = reducedMotion() ? 0 : 260;
-        window.setTimeout(function () {
-          advancing = false;
-          goTo(step + 1);
-        }, delay);
+        if (arrowing) { return; }
+        advanceFrom(step);
+      });
+      input.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") { return; }
+        e.preventDefault();
+        input.checked = true;
+        answers["q" + step] = input.value;
+        advanceFrom(step);
+      });
+      /* Chrome sends no click or change for Space on a radio that is already
+         checked, the usual state after arrowing to it, so Space is heard here.
+         On an unchecked radio this runs before the click checks it and waits. */
+      input.addEventListener("keyup", function (e) {
+        if (!input.checked || (e.key !== " " && e.key !== "Spacebar")) { return; }
+        answers["q" + step] = input.value;
+        advanceFrom(step);
       });
     });
   });
@@ -1237,6 +1282,15 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
       input.addEventListener("change", function () {
         answers.q5 = input.value;
         next5Btn.disabled = false;
+      });
+      /* Enter picks the focused answer and presses the button, as on Q1 to Q4 */
+      input.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") { return; }
+        e.preventDefault();
+        input.checked = true;
+        answers.q5 = input.value;
+        next5Btn.disabled = false;
+        next5Btn.click();
       });
     });
     next5Btn.addEventListener("click", function () { goTo(6); });
