@@ -638,7 +638,7 @@ main{position:relative;z-index:1}
 .pt__unit{font-size:16px;line-height:1.5;color:var(--fg-2);padding-bottom:18px;border-bottom:1px solid var(--border)}
 .pt .pt__list{flex:1;align-content:start}
 .pt .pt__list li{font-size:15.5px}
-/* the tier most clients take is the dark card */
+/* the recommended tier is the dark card */
 .pt--lead{background:var(--black);box-shadow:0 50px 90px -50px color-mix(in oklab,var(--black) 60%,transparent)}
 .pt--lead .pt__name{color:var(--white)}
 .pt--lead .pt__fig{color:var(--white)}
@@ -712,6 +712,7 @@ main{position:relative;z-index:1}
     <a href="/services/" data-cursor="go">Services</a>
     <a href="/work/" data-cursor="go">Work</a>
     <a href="/pricing/" aria-current="page" data-cursor="go">Pricing</a>
+    <a href="/quiz/" data-cursor="go">Quiz</a>
     <a href="/how/" data-cursor="go">How it works</a>
     <a href="/team/" data-cursor="hi">Team</a>
     <a href="/#p-ask" data-cursor="ask">Ask</a>
@@ -719,10 +720,10 @@ main{position:relative;z-index:1}
   <span class="top__sp"></span>
   <details class="top__menu">
     <summary>Menu</summary>
-    <div class="top__menu-list"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/pricing/">Pricing</a><a href="/how/">How it works</a><a href="/team/">Team</a><a href="/#p-ask">Ask</a><a href="/#p-book">Book a call</a><button type="button" class="top__menu-calm" data-calm-menu aria-pressed="false">Calm: turn motion off</button></div>
+    <div class="top__menu-list"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/pricing/">Pricing</a><a href="/quiz/">Quiz</a><a href="/how/">How it works</a><a href="/team/">Team</a><a href="/#p-ask">Ask</a><a href="/book/">Book a call</a><button type="button" class="top__menu-calm" data-calm-menu aria-pressed="false">Calm: turn motion off</button></div>
   </details>
   <button type="button" class="top__calm top__sound" data-sound aria-pressed="false" aria-label="Music is off. Turn it on"><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg><span>sound</span></button><button type="button" class="top__calm" data-calm aria-pressed="false">calm</button>
-  <a class="btn btn--sm" href="/#p-book" data-magnetic="0.25" data-cursor="book">Book a call</a>
+  <a class="btn btn--sm" href="/book/" data-magnetic="0.25" data-cursor="book">Book a call</a>
 </header>
 <canvas id="dots" aria-hidden="true"></canvas>
 <main id="main">
@@ -738,7 +739,7 @@ main{position:relative;z-index:1}
       number of things a month, made by a named team, on a calendar you can see. Every tier
       below is a count, every card says where it stops, and anything outside a tier is a quote.</p>
     <div class="a-ctas" data-reveal="rise">
-      <a class="btn" href="/#p-book" data-magnetic="0.3" data-cursor="book">Book a call</a>
+      <a class="btn" href="/book/" data-magnetic="0.3" data-cursor="book">Book a call</a>
       <a class="btn btn--ghost" href="#terms" data-magnetic="0.25" data-cursor="go">Where it stops</a>
     </div>
     <ol class="sjump" data-reveal="rise" aria-label="On this page">
@@ -781,7 +782,7 @@ main{position:relative;z-index:1}
     <div class="pd__side">
       <p class="pd__fig"><b class="pt__amt">$750</b></p>
       <p class="pd__note">One time. Gwen Ayala on the readout call.</p>
-      <a class="btn btn--esp" href="/#p-book" data-magnetic="0.25" data-cursor="book">Start with the diagnostic</a>
+      <a class="btn btn--esp" href="/book/" data-magnetic="0.25" data-cursor="book">Start with the diagnostic</a>
     </div>
   </div>
 </section>
@@ -812,7 +813,7 @@ main{position:relative;z-index:1}
     </li>
 
     <li class="pt pt--lead" id="embedded">
-      <p class="pt__name">Embedded <span class="pt__tag">most clients</span></p>
+      <p class="pt__name">Embedded <span class="pt__tag">recommended</span></p>
       <p class="pt__fig"><b class="pt__amt">$3,500 to 5,500</b><span>/mo</span></p>
       <p class="pt__unit">One brand, four channels. A marketing department that runs without you.</p>
       <ul class="pt__list">
@@ -900,7 +901,7 @@ main{position:relative;z-index:1}
   <p class="eyebrow">Not sure which tier</p>
   <h2 class="a-title" id="s-next-h" data-split data-scene="in">thirty minutes,<br> <em>founder to founder.</em></h2>
   <div class="a-ctas">
-    <a class="btn btn--xl" href="/#p-book" data-magnetic="0.35" data-cursor="book">Book a call</a>
+    <a class="btn btn--xl" href="/book/" data-magnetic="0.35" data-cursor="book">Book a call</a>
     <a class="btn btn--ghost btn--xl" href="/quiz/" data-magnetic="0.3" data-cursor="open">Take the 60 second fit quiz</a>
   </div>
 </section>
