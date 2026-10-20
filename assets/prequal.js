@@ -56,7 +56,7 @@
   var SVG = {"battery-low": "<path d=\"M22 14v-4\" /> <path d=\"M6 14v-4\" /> <rect x=\"2\" y=\"6\" width=\"16\" height=\"12\" rx=\"2\" />", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" /> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />", "clapperboard": "<path d=\"m12.296 3.464 3.02 3.956\" /> <path d=\"M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z\" /> <path d=\"M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\" /> <path d=\"m6.18 5.276 3.1 3.899\" />", "clock-3": "<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 6v6h4\" />", "inbox": "<polyline points=\"22 12 16 12 14 15 10 15 8 12 2 12\" /> <path d=\"M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z\" />", "message-square-warning": "<path d=\"M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z\" /> <path d=\"M12 15h.01\" /> <path d=\"M12 7v4\" />", "phone-missed": "<path d=\"m16 2 6 6\" /> <path d=\"m22 2-6 6\" /> <path d=\"M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384\" />", "receipt-text": "<path d=\"M13 16H8\" /> <path d=\"M14 8H8\" /> <path d=\"M16 12H8\" /> <path d=\"M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z\" />", "thumbs-down": "<path d=\"M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z\" /> <path d=\"M17 14V2\" />", "user": "<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\" /> <circle cx=\"12\" cy=\"7\" r=\"4\" />", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <path d=\"M16 3.128a4 4 0 0 1 0 7.744\" /> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" />"};
   function icon(v) {
     var inner = SVG && SVG[ICON[v]];
-    return inner ? '<svg class="pq__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>' : "";
+    return inner ? '<svg class="pqp__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>' : "";
   }
   var TASKS = {
     "general-va": ["Clears your inbox and keeps your calendar", "Handles data entry, research and follow-ups", "Sends you an end-of-day list of what got done"],
@@ -76,7 +76,14 @@
   function money(n) { return "$" + Number(n).toLocaleString("en-US"); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 
-  var ans = {}, step = 0, root, box, pill, lastFocus, tick;
+  var ans = {}, step = 0, root, box, pill, lastFocus, tick, busy = false;
+  // calm mode (the site's CALM button) and reduced motion: no movement, and no wait after a tap
+  function still() {
+    return document.documentElement.getAttribute("data-motion") === "calm" ||
+      (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  // which way the content slides in: forward after an answer, back after Back
+  function go(dir) { box.setAttribute("data-dir", dir); }
   var QS = [
     { k: "need", q: "What's eating your week right now?", sub: "Tap the one that costs you the most time.", o: NEED },
     { k: "hours", q: "How many hours a week does it take?", sub: "A rough guess is fine.", o: HOURS },
@@ -92,14 +99,14 @@
 
   function build() {
     root = document.createElement("div");
-    root.className = "pq";
+    root.className = "pqp";
     root.setAttribute("hidden", "");
-    root.innerHTML = '<div class="pq__dim" data-pq-close></div><div class="pq__box" role="dialog" aria-modal="true" aria-labelledby="pq-h" tabindex="-1"></div>';
+    root.innerHTML = '<div class="pqp__dim" data-pq-close></div><div class="pqp__box" role="dialog" aria-modal="true" aria-labelledby="pq-h" tabindex="-1"></div>';
     document.body.appendChild(root);
-    box = root.querySelector(".pq__box");
+    box = root.querySelector(".pqp__box");
     pill = document.createElement("button");
     pill.type = "button";
-    pill.className = "pq-pill";
+    pill.className = "pqp-pill";
     pill.textContent = "Find your specialist";
     pill.setAttribute("hidden", "");
     pill.addEventListener("click", function () { open(true); });
@@ -120,29 +127,43 @@
   }
   function head(label) {
     var pct = Math.round(Math.min(step, QS.length) / QS.length * 100);
-    return '<div class="pq__top"><span>' + label + '</span><span>' + (step < QS.length ? (step + 1) + " of " + QS.length : "Your match") +
-      '</span></div><div class="pq__bar"><i style="width:' + pct + '%"></i></div>';
+    return '<div class="pqp__top"><span>' + label + '</span><span>' + (step < QS.length ? (step + 1) + " of " + QS.length : "Your match") +
+      '</span></div><div class="pqp__bar"><i style="width:' + pct + '%"></i></div>';
   }
   function render() {
     clearInterval(tick);
     if (step < QS.length) {
       var q = QS[step];
       box.innerHTML = head("Quick consult") +
-        '<h2 class="pq__h" id="pq-h">' + q.q + '</h2>' + (q.sub ? '<p class="pq__sub">' + q.sub + '</p>' : "") +
-        '<div class="pq__opts pq__opts--' + q.o.length + '">' + q.o.map(function (o) { return '<button type="button" class="pq__opt" data-v="' + o[0] + '">' + icon(o[0]) + '<span>' + esc(o[1]) + '</span></button>'; }).join("") + '</div>' +
-        '<div class="pq__foot">' + (step ? '<button type="button" class="pq__link" data-pq-back>Back</button>' : '<span></span>') +
-        '<button type="button" class="pq__link" data-pq-skip>I\'d rather look around first</button></div>';
-      box.querySelectorAll(".pq__opt").forEach(function (b) {
-        b.addEventListener("click", function () {
+        '<h2 class="pqp__h" id="pq-h">' + q.q + '</h2>' + (q.sub ? '<p class="pqp__sub">' + q.sub + '</p>' : "") +
+        '<div class="pqp__opts pqp__opts--' + q.o.length + '">' + q.o.map(function (o, i) { return '<button type="button" class="pqp__opt" style="--i:' + i + '" data-v="' + o[0] + '">' + icon(o[0]) + '<span>' + esc(o[1]) + '</span></button>'; }).join("") + '</div>' +
+        '<div class="pqp__foot">' + (step ? '<button type="button" class="pqp__link" data-pq-back>Back</button>' : '<span></span>') +
+        '<button type="button" class="pqp__link" data-pq-skip>I\'d rather look around first</button></div>';
+      box.querySelectorAll(".pqp__opt").forEach(function (b) {
+        b.addEventListener("click", function (e) {
+          if (busy) { return; }
+          busy = true;
           ans[q.k] = b.getAttribute("data-v");
-          if ((q.k === "need" || q.k === "hours") && ans[q.k] === "team") { step = QS.length; result(); return; }
-          step++; render();
+          // the tap: the tile sinks, fills and ripples from the finger, then the next question slides in
+          var r = b.getBoundingClientRect(), rip = document.createElement("i");
+          rip.className = "pqp__rip";
+          b.style.setProperty("--x", (e.clientX ? e.clientX - r.left : r.width / 2) + "px");
+          b.style.setProperty("--y", (e.clientY ? e.clientY - r.top : r.height / 2) + "px");
+          b.classList.add("is-picked");
+          if (!still()) { b.appendChild(rip); }
+          function next() {
+            busy = false;
+            go("fwd");
+            if ((q.k === "need" || q.k === "hours") && ans[q.k] === "team") { step = QS.length; result(); return; }
+            step++; render();
+          }
+          if (still()) { next(); } else { setTimeout(next, 240); }
         });
       });
       var bk = box.querySelector("[data-pq-back]");
-      if (bk) { bk.addEventListener("click", function () { step--; render(); }); }
+      if (bk) { bk.addEventListener("click", function () { go("back"); step--; render(); }); }
       box.querySelector("[data-pq-skip]").addEventListener("click", skip);
-      var first = box.querySelector(".pq__opt");
+      var first = box.querySelector(".pqp__opt");
       if (first) { first.focus({ preventScroll: true }); }
       return;
     }
@@ -153,13 +174,13 @@
     s.state = "done"; s.ans = ans; store.set(s);
     if (ans.need === "team" || ans.hours === "team") {
       box.innerHTML = head("Quick consult") +
-        '<h2 class="pq__h" id="pq-h">You need a team, not one person.</h2>' +
-        '<p class="pq__sub">More than one person\'s worth of work is what our full execution team does, as a partnership with our sister company, JTL Growth.</p>' +
-        '<div class="pq__card"><p class="pq__role">Grow with us</p><p class="pq__price">Strategy plus a named crew, from $2,500 a month</p>' +
+        '<h2 class="pqp__h" id="pq-h">You need a team, not one person.</h2>' +
+        '<p class="pqp__sub">More than one person\'s worth of work is what our full execution team does, as a partnership with our sister company, JTL Growth.</p>' +
+        '<div class="pqp__card"><p class="pqp__role">Grow with us</p><p class="pqp__price">Strategy plus a named crew, from $2,500 a month</p>' +
         '<ul><li>Content made and channels run</li><li>A calendar you can see before the month starts</li><li>The same people every month</li></ul></div>' +
-        '<a class="pq__cta" href="/book/?' + esc(carry("team")) + '&amp;utm_campaign=prequal">Book a call about a team</a>' +
-        '<p class="pq__fine">Your answers are saved. You just pick a time.</p>' +
-        '<div class="pq__foot"><button type="button" class="pq__link" data-pq-again>Start over</button><button type="button" class="pq__link" data-pq-skip>Keep looking around</button></div>';
+        '<a class="pqp__cta" href="/book/?' + esc(carry("team")) + '&amp;utm_campaign=prequal">Book a call about a team</a>' +
+        '<p class="pqp__fine">Your answers are saved. You just pick a time.</p>' +
+        '<div class="pqp__foot"><button type="button" class="pqp__link" data-pq-again>Start over</button><button type="button" class="pqp__link" data-pq-skip>Keep looking around</button></div>';
       wire(); return;
     }
     var pick = NEED.filter(function (n) { return n[0] === ans.need; })[0] || NEED[0];
@@ -173,15 +194,15 @@
     var otherLine = typeof r[other] === "number" ? (other === "ft" ? "Full-time" : "Part-time") + " is " + money(r[other]) + " a month." : "";
     var tasks = TASKS[r.id] || [r.does];
     box.innerHTML = head("Quick consult") +
-      '<h2 class="pq__h" id="pq-h">' + esc(pain ? pain[2] : "Here is who takes it off your plate.") + '</h2>' +
-      '<p class="pq__sub">One consistent specialist on your account. You set the goals, we run the work, and we replace them if they are not the fit.</p>' +
-      '<div class="pq__card"><p class="pq__role">' + esc(r.name) + '</p><p class="pq__price">' + esc(hoursLine) + ' · ' + price + '</p>' +
+      '<h2 class="pqp__h" id="pq-h">' + esc(pain ? pain[2] : "Here is who takes it off your plate.") + '</h2>' +
+      '<p class="pqp__sub">One consistent specialist on your account. You set the goals, we run the work, and we replace them if they are not the fit.</p>' +
+      '<div class="pqp__card"><p class="pqp__role">' + esc(r.name) + '</p><p class="pqp__price">' + esc(hoursLine) + ' · ' + price + '</p>' +
       '<ul>' + tasks.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul>' +
-      (otherLine ? '<p class="pq__alt">' + esc(otherLine) + ' Monthly, no long contract.</p>' : "") + '</div>' +
-      '<div class="pq__offer" id="pq-offer"></div>' +
-      '<a class="pq__cta" id="pq-book" href="#">Pick a time for a free call</a>' +
-      '<p class="pq__fine">Your answers are saved. You just pick a time, and the call starts where this left off.</p>' +
-      '<div class="pq__foot"><button type="button" class="pq__link" data-pq-again>Start over</button><a class="pq__link" href="/staffing/">See all roles</a><button type="button" class="pq__link" data-pq-skip>Keep looking around</button></div>';
+      (otherLine ? '<p class="pqp__alt">' + esc(otherLine) + ' Monthly, no long contract.</p>' : "") + '</div>' +
+      '<div class="pqp__offer" id="pq-offer"></div>' +
+      '<a class="pqp__cta" id="pq-book" href="#">Pick a time for a free call</a>' +
+      '<p class="pqp__fine">Your answers are saved. You just pick a time, and the call starts where this left off.</p>' +
+      '<div class="pqp__foot"><button type="button" class="pqp__link" data-pq-again>Start over</button><a class="pqp__link" href="/staffing/">See all roles</a><button type="button" class="pqp__link" data-pq-skip>Keep looking around</button></div>';
     offer(function (o) {
       var book = document.getElementById("pq-book");
       if (!book) { return; } // the visitor left the result before the server answered
@@ -233,8 +254,8 @@
       return;
     }
     var endTxt = new Date(o.end).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-    el.innerHTML = '<p>Book your call in the next 8 hours and get ' + GIFT + '.</p><p class="pq__clock" id="pq-clock" aria-hidden="true"></p>' +
-      '<p class="pq__fine">Until ' + endTxt + ' your time. One per business.</p>';
+    el.innerHTML = '<p>Book your call in the next 8 hours and get ' + GIFT + '.</p><p class="pqp__clock" id="pq-clock" aria-hidden="true"></p>' +
+      '<p class="pqp__fine">Until ' + endTxt + ' your time. One per business.</p>';
     var c = document.getElementById("pq-clock");
     function draw() {
       var left = Math.max(0, Math.round((o.end - (Date.now() + o.skew)) / 1000));
@@ -247,24 +268,32 @@
   }
   function wire() {
     var a = box.querySelector("[data-pq-again]");
-    if (a) { a.addEventListener("click", function () { ans = {}; step = 0; render(); }); }
+    if (a) { a.addEventListener("click", function () { go("back"); ans = {}; step = 0; render(); }); }
     box.querySelectorAll("[data-pq-skip]").forEach(function (b) { b.addEventListener("click", skip); });
-    var cta = box.querySelector(".pq__cta");
+    var cta = box.querySelector(".pqp__cta");
     if (cta) { cta.focus({ preventScroll: true }); }
   }
   function open(fromPill) {
     lastFocus = document.activeElement;
     pill.setAttribute("hidden", "");
+    busy = false;
+    root.classList.remove("is-out");
+    box.removeAttribute("data-dir");
     root.removeAttribute("hidden");
-    document.documentElement.classList.add("pq-on");
+    document.documentElement.classList.add("pqp-on");
     var s = store.get();
     if (fromPill && s.state === "done" && s.ans) { ans = s.ans; step = QS.length; result(); }
     else { ans = {}; step = 0; render(); }
   }
   function skip() {
     clearInterval(tick);
-    root.setAttribute("hidden", "");
-    document.documentElement.classList.remove("pq-on");
+    // a short fade down before it goes; the page is usable again at once
+    document.documentElement.classList.remove("pqp-on");
+    if (still()) { root.setAttribute("hidden", ""); }
+    else {
+      root.classList.add("is-out");
+      setTimeout(function () { if (root.classList.contains("is-out")) { root.setAttribute("hidden", ""); root.classList.remove("is-out"); } }, 180);
+    }
     var s = store.get();
     if (!s.state) { s.state = "skipped"; store.set(s); }
     pill.removeAttribute("hidden");
