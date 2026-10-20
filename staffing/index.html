@@ -1,0 +1,2672 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-motion="full" data-cur="dot">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Staffing · AVAS</title>
+<meta name="description" content="One dedicated person, yours: every role, part-time or full-time, and what it costs.">
+<meta name="theme-color" content="#F5F5F7">
+<link rel="canonical" href="https://ayalavirtualassistance.site/staffing/">
+<link rel="icon" href="/assets/work-icon.png" sizes="96x96" type="image/png">
+<meta property="og:title" content="Staffing · AVAS">
+<meta property="og:description" content="One dedicated person, yours: every role, part-time or full-time, and what it costs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ayalavirtualassistance.site/staffing/">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
+<!-- QUICK SETTINGS
+  links and page switches -> const SETTINGS (build.py A_SETTINGS)
+  colours, type, radii -> the role tokens in a-kit.css :root
+  client facts -> clients.json via parts/clients_gen.py
+  settings: host-ok=jtlgrowth.com
+-->
+<!-- template: W-24 -->
+<link rel="preload" as="image" type="image/avif" href="/assets/work-aturn/sm/00.avif" media="(max-width: 900px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" href="/assets/work-aturn/lg/00.avif" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" href="/assets/font-archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/font-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url('/assets/font-archivo.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/font-serif-italic.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/font-serif.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/font-mono.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/font-mono-bold.woff2') format('woff2');
+  
+}
+/* ==========================================================================
+   AVAS immersive kit, shared by the three design directions (2026-09-26).
+   PROJECT SETTINGS: every colour, font and size a direction uses is a role
+   token on :root below. A direction page overrides tokens in its own :root
+   block, never by hunting literals. Palette law (Owner 2026-09-26): white
+   ground, espresso brand, black accent. No beige, no cream.
+   ========================================================================== */
+:root{
+  /* venice-base roles */
+  --bg:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F4F4F4;
+  --fg:#0B0B0B;
+  --fg-2:#2B2B2B;
+  --muted:#6B6B6B;
+  --border:#E6E6E6;
+  --accent:#3A241C;
+  --accent-on:#FFFFFF;
+  --accent-hover:color-mix(in oklab,var(--accent),black 22%);
+  --success:#1F7A4D;
+  --warn:#8A5A00;
+  --danger:#B3261E;
+  --font-display:"Archivo",system-ui,-apple-system,sans-serif;
+  --font-body:"Archivo",system-ui,-apple-system,sans-serif;
+  --font-serif:"Instrument Serif",Georgia,serif;
+  --font-mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --radius-sm:8px;
+  --radius-md:16px;
+  --radius-lg:28px;
+  --radius-pill:999px;
+  --container-max:1320px;
+
+  /* AVAS brand */
+  --espresso:#3A241C;
+  --espresso-deep:#1E0F07;
+  --black:#0B0B0B;
+  --white:#FFFFFF;
+  --dot:#D2D2D2;
+  --shadow:color-mix(in oklab,var(--black) 14%,transparent);
+  --shadow-soft:color-mix(in oklab,var(--black) 7%,transparent);
+
+  /* layout + motion */
+  --pad:clamp(20px,4.4vw,72px);
+  --top-h:64px;
+  --fs-hero:clamp(44px,8.4vw,140px);
+  --fs-h2:clamp(34px,4.6vw,76px);
+  --fs-lede:clamp(17px,1.35vw,21px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-slam:cubic-bezier(.34,1.36,.64,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+h1,h2,h3,p,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--espresso);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--black);color:var(--white);
+  padding:10px 16px;border-radius:var(--radius-pill)}
+.skip:focus{left:8px}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--espresso);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+
+/* ---------- top bar ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:60;height:var(--top-h);display:flex;align-items:center;
+  gap:22px;padding:0 var(--pad);transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+.top.is-scrolled{background:color-mix(in oklab,var(--white) 82%,transparent);
+  backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+  box-shadow:0 1px 0 var(--border)}
+.top__mark{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;
+  letter-spacing:.14em;font-size:14px;color:var(--fg)}
+.top__mark svg{height:26px;width:auto;color:var(--espresso)}
+.top__nav{display:flex;gap:26px;margin-left:18px}
+.top__nav a{font-size:14px;color:var(--fg-2);position:relative;padding:4px 0}
+.top__nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--espresso);
+  transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-out)}
+.top__nav a:hover::after,.top__nav a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left}
+.top__sp{flex:1}
+.top__calm{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 12px}
+.top__calm[aria-pressed="true"]{color:var(--fg);border-color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:var(--radius-pill);
+  background:var(--black);color:var(--white);font-weight:600;font-size:15px;position:relative;overflow:hidden;
+  isolation:isolate;transition:transform .5s var(--ease-out)}
+.btn--sm{height:40px;padding:0 18px;font-size:14px}
+.top .btn{white-space:nowrap;flex-shrink:0}
+.btn--ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--fg)}
+.btn--esp{background:var(--espresso)}
+.btn svg{width:16px;height:16px}
+@media (max-width:900px){.top__nav{margin-left:14px}.top__nav a:not([href="team.html"]){display:none}.top__calm{display:none}}
+@media (max-width:900px){.top__calm.top__sound{display:inline-flex;padding:7px 9px;margin-right:6px}.top__sound span{display:none}}
+
+/* ---------- hero + rail (ported from v16 shell.css, ground stays white) ---------- */
+.hero{position:relative;min-height:100svh;padding:calc(var(--top-h) + 32px) var(--pad) 72px;
+  display:flex;flex-direction:column;justify-content:center;overflow:hidden;z-index:1}
+.rail{position:relative;height:calc(100svh + (var(--rail-len,300) * 1svh));z-index:1}
+.rail__stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.rail__track{display:flex;height:100%;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.panel{position:relative;width:100vw;height:100%;flex:none;display:flex;flex-direction:column;
+  justify-content:center;padding:calc(var(--top-h) + 20px) var(--pad) 84px;overflow:hidden}
+.panel.hero--clone{padding:calc(var(--top-h) + 32px) var(--pad) 72px;min-height:0}
+.rail__ui{position:absolute;left:calc(var(--pad) + 64px);right:var(--pad);bottom:28px;z-index:6;display:flex;
+  align-items:center;gap:14px;white-space:nowrap;pointer-events:none}
+.rail__dots{display:flex;gap:0;margin-left:-7px;pointer-events:auto}
+/* 24px hit area around a 9px dot */
+.rail__dots button{width:24px;height:24px;display:grid;place-items:center;border:0;padding:0;background:none;cursor:pointer}
+.rail__dots button::before{content:"";width:9px;height:9px;box-sizing:border-box;border-radius:50%;border:1px solid var(--muted);
+  transition:background .3s,border-color .3s,box-shadow .3s}
+.rail__dots button[aria-current="true"]::before{background:var(--espresso);border-color:var(--espresso);
+  box-shadow:0 0 0 4px color-mix(in oklab,var(--espresso) 14%,transparent)}
+.rail__bar{flex:1;height:1px;background:var(--border);position:relative}
+.rail__bar i{position:absolute;inset:0 auto 0 0;background:var(--espresso);width:calc(var(--rail-p,0) * 100%)}
+.rail__count{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--muted);background:var(--bg);padding:2px 6px;border-radius:var(--radius-sm)}
+.wreveal .w{opacity:.14;transition:opacity .5s var(--ease),color .5s}
+.wreveal .w.on{opacity:1}
+.wreveal .w.tl{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.008em}
+.wreveal .w.tl.on{color:var(--espresso)}
+
+/* ---------- custom cursor (three looks, one engine) ---------- */
+.cur{position:fixed;left:0;top:0;z-index:120;pointer-events:none;will-change:transform;display:none}
+html.has-cur .cur{display:block}
+html.has-cur,html.has-cur a,html.has-cur button{cursor:none}
+html.has-cur input,html.has-cur textarea{cursor:text}
+.cur__p{position:absolute;left:0;top:0;will-change:transform}
+.cur__dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--black);
+  transition:transform .35s var(--ease-out),opacity .3s}
+.cur__ring{position:absolute;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;
+  display:grid;place-items:center;transform:scale(.12);opacity:0;
+  transition:transform .45s var(--ease-out),opacity .3s,background .3s}
+.cur__label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--white);opacity:0;transition:opacity .25s}
+.cur.is-on .cur__ring{transform:scale(1);opacity:1}
+.cur.is-on .cur__label{opacity:1}
+.cur.is-on .cur__dot{transform:scale(0);opacity:0}
+.cur.is-down .cur__ring{transform:scale(.86)}
+
+/* ---------- JTL: corner badge + footer lockup ---------- */
+.jtl-badge{position:fixed;left:18px;bottom:18px;z-index:70;display:flex;align-items:center;height:44px;
+  border-radius:var(--radius-pill);background:var(--black);color:var(--white);overflow:hidden;
+  max-width:44px;transition:max-width .6s var(--ease-out),box-shadow .4s;box-shadow:0 8px 24px var(--shadow)}
+.jtl-badge svg{flex:none;width:44px;height:44px;padding:9px}
+.jtl-badge span{white-space:nowrap;font-size:13px;font-weight:600;padding-right:18px;opacity:0;
+  transition:opacity .3s .1s}
+.jtl-badge:hover,.jtl-badge:focus-visible{max-width:260px}
+.jtl-badge:hover span,.jtl-badge:focus-visible span{opacity:1}
+html.foot-on .jtl-badge{opacity:0;pointer-events:none;visibility:hidden}
+.foot{position:relative;z-index:2;padding:40px var(--pad) 36px;border-top:1px solid var(--border);
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-size:13px;color:var(--muted);background:var(--bg)}
+.foot a:hover{color:var(--espresso)}
+.foot__sp{flex:1}
+.jtl-lock{display:inline-flex;align-items:center;gap:10px;color:var(--fg);font-size:13px;
+  padding:8px 14px 8px 8px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px var(--border);
+  transition:box-shadow .3s,transform .5s var(--ease-out)}
+.jtl-lock svg{width:28px;height:28px;padding:5px;border-radius:50%;background:var(--black);color:var(--white)}
+.jtl-lock b{font-weight:700}
+.jtl-lock:hover{box-shadow:inset 0 0 0 1.5px var(--black)}
+.jtl-lock small{color:var(--muted);font-size:12px}
+
+/* ---------- entrance reveals (JS adds .in; without JS everything shows) ---------- */
+.js [data-reveal]{transition:opacity .9s var(--ease-out),transform 1s var(--ease-out),clip-path 1.1s var(--ease-out)}
+.js [data-reveal="rise"]:not(.in){opacity:0;transform:translateY(42px)}
+.js [data-reveal="fade"]:not(.in){opacity:0}
+.js [data-reveal="mask"]:not(.in){clip-path:inset(0 0 100% 0);transform:translateY(24px)}
+.js [data-reveal="scale"]:not(.in){opacity:0;transform:scale(.9)}
+.line-mask{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.line-mask>span{display:block;transition:transform 1.15s var(--ease-out)}
+.js .lines:not(.in) .line-mask>span{transform:translateY(108%)}
+.lines .line-mask:nth-child(2)>span{transition-delay:.08s}
+.lines .line-mask:nth-child(3)>span{transition-delay:.16s}
+.lines .line-mask:nth-child(4)>span{transition-delay:.24s}
+
+/* ---------- tilt + magnetic base ---------- */
+[data-tilt]{transform-style:preserve-3d;will-change:transform;transition:transform .6s var(--ease-out),box-shadow .6s var(--ease-out)}
+[data-tilt].is-tilting{transition:transform .12s linear,box-shadow .3s}
+[data-magnetic]{will-change:transform}
+
+/* ---------- the ask box (a light port of the v16 laptop) ---------- */
+.ask{display:grid;gap:14px}
+.ask__log{min-height:128px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end}
+.ask__q{align-self:flex-end;background:var(--black);color:var(--white);padding:9px 16px;border-radius:18px 18px 4px 18px;font-size:15px;max-width:80%}
+.ask__a{align-self:flex-start;background:var(--surface-2);padding:12px 16px;border-radius:18px 18px 18px 4px;font-size:15px;max-width:88%;line-height:1.45}
+.ask__form{display:flex;align-items:center;gap:10px;border-radius:var(--radius-pill);padding:6px 6px 6px 20px;
+  box-shadow:inset 0 0 0 1.5px var(--fg);background:var(--white)}
+.ask__form span{font-family:var(--font-mono);color:var(--espresso)}
+.ask__form input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--fg);min-width:0}
+.ask__chips{display:flex;flex-wrap:wrap;gap:8px}
+.ask__chips button{font-size:13px;padding:8px 14px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px var(--border);
+  transition:background .3s,color .3s,box-shadow .3s}
+.ask__chips button:hover{background:var(--black);color:var(--white);box-shadow:inset 0 0 0 1px var(--black)}
+
+.ask__go{margin-left:4px;font-weight:600;color:var(--espresso);border-bottom:1.5px solid currentColor}
+
+/* ---------- team clips ----------
+   .clip: a white-ground clip on white, multiply hides any edge.
+   .cutclip: a still cutout that hands over to the alpha canvas once it plays. */
+.clip{position:relative;overflow:hidden}
+.clip video,.clip img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.cutclip{position:relative;aspect-ratio:640/802;overflow:hidden}
+.cutclip>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .3s .12s}
+.cutclip>video{position:absolute;left:0;top:0;width:100%;height:200%;object-fit:fill;filter:url(#stack-alpha);
+  opacity:0;transition:opacity .3s;pointer-events:none}
+.cutclip.is-live>video{opacity:1}
+.cutclip.is-live>img{opacity:0}
+
+/* the music's Sound label, its credit bubble and the page shell: sound.css (2026-10-01) */
+.foot__music{font-size:12px}
+
+/* ---------- calm: the Owner's switch for continuous motion ---------- */
+html[data-motion="calm"] *{animation-play-state:paused!important}
+/* v17: CALM stops every CSS animation, pseudo-elements included, the way reduced motion does */
+html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after{animation:none!important;transition:none!important}
+
+/* ---------- CALM in the phone menu (the top switch is hidden under 900 px by the kit) ---------- */
+.top__menu-calm{display:flex;align-items:center;width:100%;min-height:44px;margin-top:6px;padding:11px 12px;border:0;
+  border-top:1px solid var(--border);border-radius:0 0 8px 8px;background:none;font:inherit;font-family:var(--font-mono);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2);text-align:left;cursor:pointer}
+.top__menu-calm[aria-pressed="true"]{color:var(--espresso)}
+.top__menu-calm:hover{background:var(--surface-2);color:var(--espresso)}
+
+/* ---------- collapse: phones and anyone who asked for less motion ---------- */
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .rail{height:auto!important}
+  .rail__stick{position:static;height:auto;overflow:visible}
+  .rail__track{display:block;width:auto;transform:none!important}
+  .panel{width:auto;height:auto;min-height:auto;padding:72px var(--pad);overflow:visible;overflow-x:clip}
+  .hero{overflow-x:clip}
+  .rail__ui{display:none}
+  .hero--clone{display:none!important}
+  .wreveal .w{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
+  .js .lines .line-mask>span{transform:none!important}
+}
+
+/* ---------- v17: CALM is a still page too. The rail stacks like it does for reduced motion,
+   and every scroll scene reads html.still (set by the page script) and lays out plain. ---------- */
+html[data-motion="calm"] .rail{height:auto!important}
+html[data-motion="calm"] .rail__stick{position:static;height:auto;overflow:visible}
+html[data-motion="calm"] .rail__track{display:block;width:auto;transform:none!important}
+html[data-motion="calm"] .panel{width:auto;height:auto;min-height:auto;padding:72px var(--pad);overflow:visible;overflow-x:clip}
+html[data-motion="calm"] .rail__ui{display:none}
+html[data-motion="calm"] .hero--clone{display:none!important}
+html[data-motion="calm"] .wreveal .w{opacity:1}
+html[data-motion="calm"] .js [data-reveal],html[data-motion="calm"][class] [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
+html[data-motion="calm"] .line-mask>span{transform:none!important}
+html[data-motion="calm"] .lineup .lineup__p{opacity:1!important;transform:none!important}
+
+/* ==========================================================================
+   AVAS sound (2026-10-01): the Sound button's icons, its label, the credit
+   bubble, YouTube's hidden player and the shell that carries the music
+   across pages. Shared by the A pages and the inner shell; every token has a
+   fallback because the two shells name their tokens differently.
+   ========================================================================== */
+.top__sound{display:inline-flex;align-items:center;gap:7px;margin-right:8px}
+.top__sound svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.top__sound .i-on,.top__sound[aria-pressed="true"] .i-off{display:none}
+.top__sound[aria-pressed="true"] .i-on{display:block}
+.top__sound.is-loading{opacity:.55;cursor:progress}
+@media (max-width:900px){.top__sound span{display:none}}
+
+/* ---------- now playing: the music card, the song's name and its credit links (Owner 2026-09-30, "name lng") ---------- */
+/* the music's name: out of sight until Sound is hovered or keyboard-focused (pk-0321 C); a phone shows it for 3 s at
+   start (a tap focuses the button too, so plain focus does not count) */
+.snd{position:relative;display:inline-flex}
+.snd__tip{position:absolute;top:calc(100% + 10px);right:0;z-index:71;display:flex;flex-direction:column;gap:1px;
+  width:max-content;max-width:min(260px,calc(100vw - 32px));padding:10px 14px;border-radius:14px;background:var(--bg,#fff);
+  box-shadow:0 10px 30px rgba(28,20,16,.14),0 0 0 1px var(--border,var(--hair,#D2D2D7));text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s var(--ease,ease),transform .2s var(--ease,ease),visibility 0s .2s}
+.snd__tip::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.snd:has(:focus-visible) .snd__tip,.snd__tip.is-shown{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+/* hover opens the label for a real pointer only: a phone's tap leaves :hover stuck on Sound (it has its 3 s reveal) */
+@media (hover:hover){.snd:hover .snd__tip{opacity:1;visibility:visible;transform:none;transition-delay:0s}}
+.snd.is-asking .snd__tip{opacity:0;visibility:hidden}   /* the player itself is showing under Sound */
+.snd__k{font-family:var(--font-mono,var(--font-m,ui-monospace,monospace));font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#6B6B6B)}
+.snd__t{font-size:15px;font-weight:600;color:var(--fg,#0B0B0B);text-decoration:none}
+.snd__by{font-size:13px;color:var(--accent,#3A241C);font-weight:600;text-decoration:none}
+.snd__t:hover,.snd__by:hover,.snd__t:focus-visible,.snd__by:focus-visible{text-decoration:underline;text-underline-offset:2px}
+/* YouTube's player for the music, hidden: in the page and 200 x 200 so it plays, see-through and out of the way.
+   A browser that held it back gets it under Sound (.is-asking) for one press of its own play button. */
+.yt-host{position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:0;pointer-events:none;z-index:0;overflow:hidden}
+.yt-host iframe{display:block;width:100%;height:100%;border:0}
+.yt-host.is-asking{bottom:auto;width:240px;height:135px;opacity:1;pointer-events:auto;z-index:72;border-radius:12px;
+  box-shadow:0 10px 30px rgba(28,20,16,.18),0 0 0 1px var(--border,var(--hair,#D2D2D7))}
+@media (prefers-reduced-motion:reduce){.snd__tip{transition:none;transform:none}}
+.snd__c{font-size:13px;color:var(--muted,#6B6B6B)}
+.snd__a{font-size:13px;color:var(--fg,#0B0B0B)}
+.snd__a:empty{display:none}
+
+/* the credit bubble (Owner 2026-10-01, "a mini cute bubble text in sound button"): a small speech bubble under Sound
+   while the music plays, its tail pointing at the button; one pop on the way in, no motion after (directional only) */
+.snd__mini{position:absolute;top:calc(100% + 12px);right:0;z-index:70;display:flex;flex-direction:column;gap:1px;
+  width:max-content;max-width:min(230px,calc(100vw - 32px));padding:7px 13px 8px 32px;border-radius:16px 5px 16px 16px;
+  background:var(--bg,#fff);color:var(--fg,#0B0B0B);border:1px solid var(--border,var(--hair,#D2D2D7));
+  box-shadow:0 8px 22px rgba(28,20,16,.10);font-size:11.5px;line-height:1.3;letter-spacing:0;text-transform:none;text-align:left;
+  pointer-events:none;opacity:0;visibility:hidden;transform:translateY(-6px) scale(.9);transform-origin:calc(100% - 14px) -6px;
+  transition:opacity .2s ease,transform .38s cubic-bezier(.2,1.5,.4,1),visibility 0s .38s}
+.snd__mini::before{content:"";position:absolute;top:-6px;right:12px;width:10px;height:10px;background:inherit;
+  border-left:1px solid var(--border,var(--hair,#D2D2D7));border-top:1px solid var(--border,var(--hair,#D2D2D7));
+  transform:rotate(45deg);border-top-left-radius:3px}
+.snd__mini b{font-weight:600;white-space:nowrap}
+.snd__mini span:last-child{color:var(--muted,#6B6B6B);white-space:nowrap}
+.snd__note{position:absolute;left:11px;top:50%;width:14px;height:14px;margin-top:-7px;color:var(--accent,#8B4A2A)}
+.snd__note svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+html[data-sound-state="on"] .snd__mini{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.snd:has(:focus-visible) .snd__mini,.snd:has(.snd__tip.is-shown) .snd__mini,.snd.is-asking .snd__mini{opacity:0;visibility:hidden}
+/* a mouse over Sound opens the full label instead; a phone's tap leaves a sticky :hover, so only a real pointer counts */
+@media (hover:hover){.snd:hover .snd__mini{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.snd__mini{transition:opacity .2s ease,visibility 0s .2s;transform:none}}
+
+/* the shell: while the music plays, the site's own pages open in this frame over the page that holds the player */
+.av-frame{position:fixed;inset:0;display:block;width:100%;height:100%;border:0;z-index:2147483000;background:var(--bg,#fff)}
+html.av-shell,html.av-shell body{overflow:hidden!important}
+html.av-shell body>:not(.av-frame):not(.yt-host){visibility:hidden!important}
+
+:root{
+  --bg:#FFFFFF;
+  --fg:#0B0B0B;
+  --accent:#3A241C;
+  --dot:#D0D0D0;
+  --grid-line:#EDEDED;
+  --glass-shadow:color-mix(in oklab,var(--espresso) 26%,transparent);
+  --card-shadow:0 30px 60px -28px var(--shadow),0 2px 6px var(--shadow-soft);
+  --a-title:clamp(56px,12.4vw,210px);
+  --lap-shell:#EDEDF0;
+  --lap-shell-2:#D9D9DE;
+  --lap-edge:#D2D2D7;
+  --lap-bezel:#E4E4E8;
+  --lap-bar:#F6F6F8;
+  --lap-side:#FAFAFB;
+  --lap-shadow:color-mix(in oklab,var(--black) 22%,transparent);
+
+  
+  --panel:var(--white);
+  --hair:var(--border);
+  --deep:var(--espresso-deep);
+  --espresso-24:color-mix(in oklab,var(--espresso) 24%,transparent);
+  --espresso-10:color-mix(in oklab,var(--espresso) 10%,transparent);
+  --font-d:var(--font-display);
+  --font-m:var(--font-mono);
+  --shadow-lift:0 36px 90px color-mix(in oklab,var(--black) 16%,transparent);
+
+  
+  --dot-near:#C9C9C9;
+  --v-ink:#1D1D1F;
+  --v-gray:#F5F5F7;
+  --v-cream:#F3EDE6;
+  --v-copper:#B87333;
+  --v-card-r:clamp(22px,2.4vw,34px);
+  --v-still-h:79.4%;
+}
+.top__menu{display:none;position:relative}
+.top__menu summary{list-style:none;cursor:pointer;border:1px solid var(--border);border-radius:var(--radius-pill);
+  padding:6px 14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.top__menu summary::-webkit-details-marker{display:none}
+.top__menu[open] summary{color:var(--espresso);border-color:var(--espresso)}
+.top__menu-list{position:absolute;right:0;top:calc(100% + 8px);min-width:210px;background:var(--white);
+  border:1px solid var(--border);border-radius:12px;padding:8px;display:flex;flex-direction:column;
+  box-shadow:0 20px 50px var(--shadow)}
+.top__menu-list a{padding:11px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center;
+  font-size:14px;color:var(--fg-2)}
+.top__menu-list a:hover{background:var(--surface-2);color:var(--espresso)}
+@media (max-width:900px){.top__nav{display:none!important}
+.top__menu{display:block}
+.top .btn{display:none}}
+html[data-cur="dot"] .cur__ring{background:var(--espresso)}
+#dots{position:fixed;inset:0;z-index:0;pointer-events:none}
+main{position:relative;z-index:1}
+.panel,.hero{background:transparent}
+.a-title{position:relative;z-index:1;font-family:var(--font-display);font-weight:700;
+  font-variation-settings:"wdth" 112;font-size:var(--a-title);line-height:.86;letter-spacing:-.058em}
+.a-title em,.a-h2 em{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.03em;color:var(--espresso)}
+.a-lede{font-size:var(--fs-lede);line-height:1.5;color:var(--fg-2);max-width:40ch}
+.a-ctas{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:900px){.jtl-badge{display:none}}
+.a-h2{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 108;font-size:var(--fs-h2);
+  line-height:.95;letter-spacing:-.045em;max-width:16ch}
+.lineup{display:flex;justify-content:center;width:100%;align-self:stretch;margin-top:clamp(20px,4vh,48px)}
+.btn--xl{height:64px;padding:0 34px;font-size:17px}
+@media (max-width:900px),(prefers-reduced-motion:reduce){.lineup{flex-wrap:wrap;justify-content:center;row-gap:10px}}
+/* Privacy notice. It gates something real: the music does not start on its
+   own until this is answered, so declining actually changes what happens. */
+#consent{
+  position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
+  width:min(400px,calc(100vw - 28px));
+  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  box-shadow:var(--shadow-lift);padding:20px 22px 18px;
+}
+#consent .consent__h{font-family:var(--font-d);font-size:19px;color:var(--deep);margin-bottom:8px}
+#consent .consent__p{font-size:14px;line-height:1.55;color:var(--muted)}
+#consent .consent__more{margin-top:10px;font-size:13px;color:var(--muted)}
+#consent .consent__more summary{cursor:pointer;color:var(--espresso);list-style:none}
+#consent .consent__more summary::-webkit-details-marker{display:none}
+#consent .consent__more summary::after{content:" +";font-family:var(--font-m)}
+#consent .consent__more[open] summary::after{content:" -"}
+#consent .consent__more ul{margin:10px 0 0;padding-left:18px;line-height:1.6}
+#consent .consent__more li+li{margin-top:6px}
+#consent .consent__more b{color:var(--ink)}
+#consent .consent__row{display:flex;gap:10px;margin-top:16px}
+#consent .consent__btn{
+  flex:1;padding:10px 14px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--hair);background:transparent;color:var(--ink);
+  font-size:14px;font-weight:500;
+  transition:background .25s,border-color .25s,color .25s;
+}
+#consent .consent__btn:hover{border-color:var(--espresso-24);background:var(--espresso-10);color:var(--espresso)}
+#consent .consent__btn--yes{background:var(--espresso);border-color:var(--espresso);color:var(--panel)}
+#consent .consent__btn--yes:hover{background:var(--deep);border-color:var(--deep);color:var(--panel)}
+@media (max-width:520px){
+  #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
+}
+
+/* ==========================================================================
+   A look, inner pages (/work/, /services/). 2026-09-29.
+   PROJECT SETTINGS: the kit's role tokens (a-kit.css) carry every colour and
+   font; this layer adds the scroll scenes. Every moving rule sits under
+   html.fx, which work-motion.js sets only when motion is allowed. Without
+   .fx (no JS, reduced motion, CALM) the page is plain and still.
+   ========================================================================== */
+:root{
+  --ih-title:clamp(52px,10.2vw,176px);
+  --sec-y:clamp(88px,15vh,170px);
+  --card-r:28px;
+  --paper:#FFFFFF;
+  --hair-soft:color-mix(in oklab,var(--border) 70%,transparent);
+}
+main{position:relative;z-index:1}
+.wrap{max-width:var(--container-max);margin:0 auto;padding:0 var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- hero: huge type left, the metallic A right ---------- */
+.ih{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;
+  gap:0 clamp(16px,4vw,72px);padding:calc(var(--top-h) + 24px) var(--pad) 64px;overflow-x:clip}
+.ih__copy{position:relative;z-index:2;max-width:1000px}
+.ih .a-title{font-size:var(--ih-title)}
+.ih .a-lede{margin-top:clamp(18px,3vh,32px)}
+.ih .a-ctas{margin-top:clamp(20px,3.4vh,34px)}
+.ih__a{position:relative;height:min(72svh,700px);aspect-ratio:600/1066;z-index:1}
+.a-turn{position:absolute;inset:0}
+.a-turn img,.a-turn canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.a-turn canvas{opacity:0}
+.a-turn.is-live canvas{opacity:1}
+.a-turn.is-live img{opacity:0}
+.ih__shadow{position:absolute;left:10%;right:10%;bottom:-3%;height:5%;border-radius:50%;
+  background:radial-gradient(closest-side,color-mix(in oklab,var(--espresso) 26%,transparent),transparent);filter:blur(6px)}
+.ih__cue{position:absolute;left:var(--pad);bottom:26px;display:flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ih__cue i{display:block;width:44px;height:1px;background:var(--border);position:relative;overflow:hidden}
+.ih__cue i::after{content:"";position:absolute;inset:0;background:var(--espresso);transform-origin:left;transform:scaleX(.3)}
+.fx .ih__cue i::after{transform:scaleX(calc(.3 + var(--p,0) * 2.4))}
+/* the A turns (frames), drops and settles as the hero scrolls away; the words lift off */
+.fx .ih__a{transform:translate3d(0,calc(var(--p,0) * 16svh),0) scale(calc(1 - var(--p,0) * .1))}
+.fx .ih__copy{transform:translate3d(0,calc(var(--p,0) * -7svh),0);opacity:calc(1 - var(--p,0) * 1.1)}
+
+/* ---------- section frame ---------- */
+.is{position:relative;padding:var(--sec-y) var(--pad);max-width:var(--container-max);margin:0 auto}
+.is__head{max-width:980px;margin-bottom:clamp(32px,6vh,64px)}
+.is__head .a-lede{margin-top:18px;max-width:52ch}
+.a-h2{text-wrap:balance}
+
+/* kinetic words: each word rises out of its own mask as the heading scrolls in */
+.kw{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .2em;margin:0 -.04em -.2em}
+.kw>span{display:inline-block}
+.fx [data-split] .kw>span{transform:translate3d(0,calc((1 - clamp(0,(var(--p,1) - var(--k,0) * .45) * 2.2,1)) * 112%),0)}
+
+/* a line that draws itself with the scroll (pathLength="1" on the path) */
+[data-draw] path,[data-draw] line{stroke-dasharray:1;stroke-dashoffset:0}
+.fx [data-draw] path,.fx [data-draw] line{stroke-dashoffset:calc(1 - var(--p,1))}
+
+/* ---------- the closing call ---------- */
+.icta{position:relative;padding:calc(var(--sec-y) * 1.1) var(--pad);text-align:center;overflow-x:clip}
+.icta .a-title{font-size:clamp(46px,8.6vw,150px);max-width:none;margin:0 auto}
+.icta .a-lede{margin:22px auto 30px;max-width:44ch}
+.icta .a-ctas{justify-content:center}
+.fx .icta__rule{transform:scaleX(var(--p,1))}
+.icta__rule{display:block;width:min(560px,70vw);height:1px;margin:0 auto 42px;background:var(--espresso);transform-origin:50% 50%}
+
+/* ---------- a sliding band of words, moved only by the scroll ---------- */
+.tick{position:relative;overflow:hidden;padding:clamp(16px,3vh,28px) 0;border-block:1px solid var(--border);background:var(--white)}
+.tick__row{display:flex;gap:.6em;white-space:nowrap;width:max-content;font-family:var(--font-display);font-weight:700;
+  font-variation-settings:"wdth" 112;letter-spacing:-.04em;font-size:clamp(34px,5.4vw,92px);line-height:1.02;color:var(--fg)}
+.tick__row span{display:inline-flex;align-items:center;gap:.6em}
+.tick__row span::after{content:"";width:.28em;height:.28em;border-radius:50%;background:var(--espresso)}
+.tick__row--r{color:transparent;-webkit-text-stroke:1.5px var(--fg);margin-top:.12em}
+.tick__row--r span::after{background:none;box-shadow:inset 0 0 0 1.5px var(--espresso)}
+.fx .tick__row{transform:translate3d(calc(var(--p,0) * -38%),0,0)}
+.fx .tick__row--r{transform:translate3d(calc(-38% + var(--p,0) * 38%),0,0)}
+
+/* the phone-menu CALM item lives in a-kit.css (shared by every A page) */
+
+/* ---------- the menu row stays inside a 390 px screen ---------- */
+@media (max-width:900px){
+  .ih{grid-template-columns:minmax(0,1fr);align-content:start;padding-top:calc(var(--top-h) + 36px)}
+  .ih__a{height:46svh;justify-self:center;margin-top:18px}
+  .ih__cue{display:none}
+}
+@media (max-width:560px){
+  :root{--ih-title:clamp(44px,13.4vw,76px)}
+  .ih .a-ctas .btn{flex:1 1 auto;justify-content:center}
+}
+
+/* ==========================================================================
+   /pricing/ on the A look (2026-10-01, Owner: "nalimutan mo ung pricing page").
+   Shares work-shell.css (hero, turning A, kinetic heads, ticker, closing call)
+   and work-motion.js with /work/ and /services/. Every price and every line of
+   terms is the published card, word for word; build.py checks the four figures
+   against the home rail. Every moving rule sits under html.fx, so reduced
+   motion, CALM and no-JS read the same page still and in its final state.
+   ========================================================================== */
+
+/* ---------- the jump row under the hero (same pills as /services/) ---------- */
+.sjump{list-style:none;padding:0;margin:clamp(22px,4vh,40px) 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.sjump a{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:var(--radius-pill);background:var(--white);
+  box-shadow:inset 0 0 0 1px var(--border);font-size:14px;color:var(--fg-2);transition:box-shadow .3s,color .3s}
+.sjump a:hover{box-shadow:inset 0 0 0 1.5px var(--fg);color:var(--fg)}
+.sjump b{font:400 11px/1 var(--font-mono);letter-spacing:.12em;color:var(--espresso)}
+
+.is,.pq,.pt{scroll-margin-top:calc(var(--top-h) + 24px)}
+#diagnostic{padding-bottom:calc(var(--sec-y) * .5)}
+
+/* ---------- shared card parts ---------- */
+.pt__name{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  color:var(--espresso);display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.pt__tag,.pt__slot{font-size:10px;letter-spacing:.14em;border-radius:var(--radius-pill);padding:4px 9px;font-weight:400}
+.pt__tag{background:var(--white);color:var(--black)}
+.pt__slot{box-shadow:inset 0 0 0 1px var(--espresso);color:var(--espresso)}
+.pt__list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pt__list li{position:relative;padding-left:20px;font-size:16px;line-height:1.5;color:var(--fg-2)}
+.pt__list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1.5px;background:var(--espresso)}
+.pt__stop{font-size:15px;line-height:1.55;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+.pt__stop b{color:var(--fg);font-weight:600}
+.pt__amt{font-variant-numeric:tabular-nums;font-weight:inherit}
+/* prices never count up: a mid-count frame would show a number we do not charge */
+
+/* ---------- the diagnostic: one wide card, the fee as the hero number ---------- */
+.pd{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);
+  padding:clamp(28px,4vw,56px);border-radius:var(--card-r);background:var(--white);
+  box-shadow:inset 0 0 0 1px var(--border),0 40px 70px -46px var(--shadow)}
+.pd__body{display:grid;gap:18px;align-content:start}
+.pd__h{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 106;letter-spacing:-.04em;
+  font-size:clamp(28px,3vw,46px);line-height:1;text-wrap:balance}
+.pd__side{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:14px;
+  border-left:1px solid var(--border);padding-left:clamp(24px,4vw,56px)}
+.pd__fig{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 112;letter-spacing:-.06em;
+  font-size:clamp(84px,11vw,190px);line-height:.82;color:var(--fg)}
+.pd__note{font-size:15px;line-height:1.5;color:var(--muted);max-width:26ch}
+.pd .btn{margin-top:8px}
+/* the card opens from its centre line as it arrives, the fee rises after it */
+.fx .pd{--q:clamp(0,var(--p,1) * 1.4,1);clip-path:inset(calc((1 - var(--q)) * 22%) 0 calc((1 - var(--q)) * 22%) 0 round var(--card-r))}
+.fx .pd__fig{transform:translate3d(0,calc((1 - clamp(0,(var(--p,1) - .25) * 1.8,1)) * 30%),0)}
+
+/* ---------- three tiers ---------- */
+.pts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);align-items:stretch}
+.pt{position:relative;display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.6vw,38px);border-radius:var(--card-r);
+  background:var(--white);box-shadow:inset 0 0 0 1px var(--border),0 40px 70px -46px var(--shadow)}
+.pt__fig{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 108;letter-spacing:-.05em;
+  font-size:clamp(30px,2.5vw,42px);line-height:.95;color:var(--fg);display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px}
+.pt__fig .pt__amt{white-space:nowrap}
+.pt__fig>span{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;font-weight:400;color:var(--muted)}
+.pt__fig .pt__from{order:-1;width:100%;margin-bottom:6px}
+.pt__unit{font-size:16px;line-height:1.5;color:var(--fg-2);padding-bottom:18px;border-bottom:1px solid var(--border)}
+.pt .pt__list{flex:1;align-content:start}
+.pt .pt__list li{font-size:15.5px}
+/* the recommended tier is the dark card */
+.pt--lead{background:var(--black);box-shadow:0 50px 90px -50px color-mix(in oklab,var(--black) 60%,transparent)}
+.pt--lead .pt__name{color:var(--white)}
+.pt--lead .pt__fig{color:var(--white)}
+.pt--lead .pt__fig>span,.pt--lead .pt__stop{color:color-mix(in oklab,var(--white) 74%,var(--black))}
+.pt--lead .pt__unit,.pt--lead .pt__list li{color:color-mix(in oklab,var(--white) 89%,var(--black))}
+.pt--lead .pt__unit,.pt--lead .pt__stop{border-color:color-mix(in oklab,var(--white) 20%,var(--black))}
+.pt--lead .pt__list li::before{background:var(--white)}
+.pt--lead .pt__stop b{color:var(--white)}
+/* cards rise in order with the scroll; the dark one settles a step higher */
+.fx .pt{--q:clamp(0,(var(--p,1) - var(--i) * .16) * 2.2,1);opacity:calc(.15 + var(--q) * .85);
+  transform:translate3d(0,calc((1 - var(--q)) * 90px),0)}
+@media (min-width:1101px){
+  .fx .pt--lead{transform:translate3d(0,calc((1 - var(--q)) * 90px - 18px),0)}
+  .pts{padding-top:18px}
+}
+.pts__foot{margin-top:clamp(28px,5vh,48px);padding-top:20px;border-top:1px solid var(--fg);font-size:16px;line-height:1.6;
+  color:var(--fg-2);max-width:92ch}
+
+/* ---------- outside a tier: the one black band ---------- */
+.pq{position:relative;background:var(--black);color:var(--white);padding:var(--sec-y) var(--pad);overflow:hidden}
+.pq__in{max-width:var(--container-max);margin:0 auto}
+.pq .eyebrow{color:var(--white)}
+.pq .a-h2{color:var(--white);max-width:18ch}
+.pq .a-h2 em{color:color-mix(in oklab,var(--espresso) 22%,var(--white))}
+.pq .a-lede{color:color-mix(in oklab,var(--white) 81%,var(--black));max-width:56ch;margin-top:18px}
+.pq__chips{list-style:none;margin:clamp(28px,5vh,52px) 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pq__chips li{font-family:var(--font-display);font-weight:600;font-size:clamp(17px,1.6vw,24px);letter-spacing:-.02em;
+  padding:12px 20px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--white) 29%,var(--black));color:var(--white)}
+.pq__chips a{color:color-mix(in oklab,var(--espresso) 22%,var(--white));text-decoration:underline;text-underline-offset:3px}
+.fx .pq__chips li{--q:clamp(0,(var(--p,1) - var(--i) * .05) * 2.4,1);opacity:var(--q);transform:translate3d(0,calc((1 - var(--q)) * 26px),0)}
+.btn--light{background:var(--white);color:var(--black)}
+.pq .btn--ghost{color:var(--white);box-shadow:inset 0 0 0 1.5px var(--white)}
+
+/* stagger order, by position (no inline styles: settings-check B) */
+.pt:nth-child(2){--i:1}.pt:nth-child(3){--i:2}
+.pt,.pq__chips li{--i:0}
+.pq__chips li:nth-child(2){--i:1}.pq__chips li:nth-child(3){--i:2}.pq__chips li:nth-child(4){--i:3}.pq__chips li:nth-child(5){--i:4}.pq__chips li:nth-child(6){--i:5}.pq__chips li:nth-child(7){--i:6}.pq__chips li:nth-child(8){--i:7}.pq__chips li:nth-child(9){--i:8}.pq__chips li:nth-child(10){--i:9}
+.icta .eyebrow{justify-content:center}
+
+/* ---------- terms, as definitions ---------- */
+.pdefs{margin:0;display:grid;border-top:1px solid var(--fg)}
+.pdef{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(16px,4vw,60px);padding:clamp(20px,3vh,30px) 0;
+  border-bottom:1px solid var(--border)}
+.pdef dt{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;line-height:1.1}
+.pdef dd{margin:0;font-size:17px;line-height:1.55;color:var(--fg-2);max-width:62ch}
+.pdefs__more{margin-top:22px;font-size:15px;color:var(--muted)}
+.pdefs__more a{color:var(--espresso);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- narrower screens: everything stacks in reading order ---------- */
+@media (max-width:1100px){
+  .pts{grid-template-columns:minmax(0,1fr)}
+  .pt{max-width:720px}
+}
+@media (max-width:900px){
+  .pd{grid-template-columns:minmax(0,1fr)}
+  .pd__side{border-left:0;padding-left:0;border-top:1px solid var(--border);padding-top:24px}
+  .pdef{grid-template-columns:minmax(0,1fr);gap:8px}
+}
+@media (max-width:560px){
+  .pd__side .btn,.pq .a-ctas .btn{width:100%;justify-content:center}
+  .pq .btn--ghost{font-size:13px}
+}
+
+/* ==========================================================================
+   /staffing/ on the A look (hidden page, 2026-10-01). Loads after
+   work-shell.css and pricing.css, so the hero, jump pills, definitions list and
+   black band come from them. This file adds the role menu: one card per role,
+   grouped by family. Role tokens only (a-kit.css / tokens.css), no hex values.
+   Nothing here moves on hover and nothing oscillates; the page reads the same
+   with motion off, so there is no html.fx rule in this file.
+   ========================================================================== */
+
+/* ---------- the family section frame ---------- */
+.sfam{position:relative;max-width:var(--container-max);margin:0 auto;padding:calc(var(--sec-y) * .55) var(--pad);
+  scroll-margin-top:calc(var(--top-h) + 24px)}
+.sroles{padding-bottom:0}
+.sroles .is__head{margin-bottom:0}
+.sfam .is__head{margin-bottom:clamp(24px,4vh,44px)}
+
+/* the sister company line: set apart, never louder than the heading */
+.sfam__jtl{margin-top:18px;max-width:60ch;font-size:16px;line-height:1.55;color:var(--fg-2);
+  padding:12px 0 12px 16px;border-left:2px solid var(--espresso)}
+.sfam__jtl a{color:var(--espresso);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- role cards: a grid that drops to one column on a phone ---------- */
+.srows{list-style:none;margin:0;padding:0;display:grid;gap:clamp(14px,1.6vw,22px);
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.srow{position:relative;display:flex;flex-direction:column;gap:12px;min-width:0;
+  padding:clamp(20px,2vw,30px);border-radius:var(--card-r);background:var(--white);
+  box-shadow:inset 0 0 0 1px var(--border),0 40px 70px -46px var(--shadow);
+  scroll-margin-top:calc(var(--top-h) + 32px)}
+.srow:focus{outline:none}
+.srow:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+
+.srow__name{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 106;
+  letter-spacing:-.03em;font-size:clamp(20px,1.7vw,26px);line-height:1.1;color:var(--fg);
+  display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;text-wrap:balance}
+.srow__lvl{font:400 10px/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--espresso);border-radius:var(--radius-pill);padding:5px 9px;box-shadow:inset 0 0 0 1px var(--espresso)}
+.srow__does{font-size:16px;line-height:1.5;color:var(--fg-2)}
+.srow__not{font-size:16px;line-height:1.5;color:var(--muted)}
+.srow__not b{color:var(--fg);font-weight:600}
+
+/* the two prices sit side by side at the foot of the card */
+.srow__price{margin:auto 0 0;padding-top:16px;border-top:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}
+.srow__price>div{min-width:0;padding:10px 0;border-radius:calc(var(--card-r) * .5)}
+.srow__price dt{font:400 11px/1.2 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.srow__price dd{margin:6px 0 0;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 4px}
+.srow__amt{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 108;letter-spacing:-.04em;
+  font-size:clamp(24px,2vw,32px);line-height:1;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap}
+.srow__price dd span{font:400 13px/1 var(--font-mono);letter-spacing:.04em;color:var(--muted)}
+
+/* a role the quiz sent you to: ringed card, and the hours you picked filled in when you picked them */
+.srow.is-picked{box-shadow:inset 0 0 0 2px var(--espresso),0 40px 70px -46px var(--shadow)}
+.srow .is-h{background:var(--black);padding-inline:12px;margin-inline:-12px}
+.srow .is-h dt,.srow .is-h dd span{color:color-mix(in oklab,var(--white) 74%,var(--black))}
+.srow .is-h .srow__amt{color:var(--white)}
+
+/* ---------- the three ways up, inside the black band ---------- */
+.sup{list-style:none;margin:clamp(28px,5vh,52px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sup li{display:grid;gap:12px;align-content:start;padding:clamp(20px,2vw,28px);border-radius:var(--card-r);
+  box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--white) 29%,var(--black));
+  font-size:16px;line-height:1.55;color:color-mix(in oklab,var(--white) 89%,var(--black))}
+.sup__name{font:700 12px/1.2 var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--white)}
+.sup a{color:color-mix(in oklab,var(--espresso) 22%,var(--white));text-decoration:underline;text-underline-offset:3px}
+.sup li>a{align-self:end}
+
+@media (max-width:900px){
+  .sup{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .sfam,.sroles{padding-left:var(--pad);padding-right:var(--pad)}
+  .srows{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+<link rel="stylesheet" href="/assets/prequal.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="top__mark" href="/" aria-label="AVAS home" data-cursor="home"><svg class="" viewBox="0 0 600 1000" aria-hidden="true"><path fill-rule="evenodd" fill="currentColor" d="M134 998L145 996L156 992L176 981L193 965L212 940L230 910L246 879L273 819L313 722L336 677L348 657L363 639L372 629L386 618L393 615L396 615L470 881L491 959L490 966L488 974L485 977L475 981L464 983L448 983L447 993L600 993L600 985L598 983L586 983L577 981L565 976L558 972L549 961L542 947L384 377L303 86L293 44L292 34L294 27L301 18L308 14L323 11L334 10L334 2L332 0L179 1L180 9L182 11L194 11L214 17L226 23L234 31L38 722L8 837L3 863L1 882L3 908L6 923L10 934L21 954L37 971L56 985L80 995L106 999ZM138 954L112 954L92 949L82 946L68 938L51 926L38 909L33 900L27 886L22 860L23 834L28 804L45 743L238 56L241 56L242 61L391 599L390 603L376 611L353 633L340 650L328 668L295 735L251 838L234 871L214 903L197 923L177 941L158 950Z"/></svg><span>AVAS</span></a>
+  <nav class="top__nav" aria-label="Site">
+    <a href="/services/" data-cursor="go">Services</a>
+    <a href="/work/" data-cursor="go">Work</a>
+    <a href="/offer/" aria-current="page" data-cursor="go">Offer</a>
+    <a href="/quiz/" data-cursor="go">Quiz</a>
+    <a href="/how/" data-cursor="go">How it works</a>
+    <a href="/team/" data-cursor="hi">Team</a>
+    <a href="/#p-ask" data-cursor="ask">Ask</a>
+  </nav>
+  <span class="top__sp"></span>
+  <details class="top__menu">
+    <summary>Menu</summary>
+    <div class="top__menu-list"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/offer/">Offer</a><a href="/quiz/">Quiz</a><a href="/how/">How it works</a><a href="/team/">Team</a><a href="/#p-ask">Ask</a><a href="/book/">Book a call</a><button type="button" class="top__menu-calm" data-calm-menu aria-pressed="false">Calm: turn motion off</button></div>
+  </details>
+  <button type="button" class="top__calm top__sound" data-sound aria-pressed="false" aria-label="Music is off. Turn it on"><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg><span>sound</span></button><button type="button" class="top__calm" data-calm aria-pressed="false">calm</button>
+  <a class="btn btn--sm" href="/book/" data-magnetic="0.25" data-cursor="book">Book a call</a>
+</header>
+<canvas id="dots" aria-hidden="true"></canvas>
+<main id="main">
+
+<section class="ih" id="s-hero" data-scene="hero">
+  <div class="ih__copy">
+    <p class="eyebrow">Staffing &middot; one specialist, your goals</p>
+    <h1 class="a-title lines">
+      <span class="line-mask"><span>one person,</span></span>
+      <span class="line-mask"><span><em>yours.</em></span></span>
+    </h1>
+    <p class="a-lede" data-reveal="rise">Pick a role and the hours. One consistent specialist sits on your account. You set the goals and
+      priorities, we run the work. We supply, vet and replace them. Part-time is about 80 hours a month,
+      full-time is about 160.</p>
+    <div class="a-ctas" data-reveal="rise">
+      <a class="btn" href="/book/" data-magnetic="0.3" data-cursor="book">Book a call</a>
+      <a class="btn btn--ghost" href="#fam-admin" data-magnetic="0.25" data-cursor="go">See the roles</a>
+    </div>
+    <ol class="sjump" data-reveal="rise" aria-label="Families on this page">
+<li><a href="#fam-admin" data-cursor="go"><b>01</b> Admin and Operations</a></li>
+<li><a href="#fam-customer" data-cursor="go"><b>02</b> Customer and Sales</a></li>
+<li><a href="#fam-creative" data-cursor="go"><b>03</b> Creative</a></li>
+<li><a href="#fam-content" data-cursor="go"><b>04</b> Content and Marketing</a></li>
+<li><a href="#fam-ecommerce" data-cursor="go"><b>05</b> E-commerce</a></li>
+<li><a href="#fam-finance" data-cursor="go"><b>06</b> Finance</a></li>
+<li><a href="#fam-tech" data-cursor="go"><b>07</b> Tech</a></li>
+</ol>
+  </div>
+  <div class="ih__a" aria-hidden="true"><div class="a-turn" data-turn data-frames="48" data-lg="/assets/work-aturn/lg/" data-sm="/assets/work-aturn/sm/" data-size-lg="600x1066" data-size-sm="440x780"><picture><source media="(max-width: 900px)" type="image/avif" srcset="/assets/work-aturn/sm/00.avif"><source media="(max-width: 900px)" srcset="/assets/work-a-first-sm.webp"><source type="image/avif" srcset="/assets/work-aturn/lg/00.avif"><img src="/assets/work-a-first.webp" alt="" width="600" height="1066" fetchpriority="high" decoding="async"></picture></div><i class="ih__shadow"></i></div>
+  <p class="ih__cue" aria-hidden="true"><i></i>scroll the roles</p>
+</section>
+
+<div class="tick" data-scene="view" aria-hidden="true">
+  <div class="tick__row"><span>Pick a role</span><span>Pick the hours</span><span>You set the goals</span><span>Pick a role</span><span>Pick the hours</span></div>
+  <div class="tick__row tick__row--r"><span>We supply</span><span>We vet</span><span>We replace</span><span>We supply</span><span>We vet</span></div>
+</div>
+
+<section class="is" id="rule" aria-labelledby="rule-h">
+  <div class="is__head">
+    <p class="eyebrow">How a seat works</p>
+    <h2 class="a-h2" id="rule-h" data-split data-scene="in">you set the goals. <em>We run the work.</em></h2>
+    <p class="a-lede">Every role below is a seat. You tell us the results and priorities you want. We run the work and
+      keep the seat filled. When you want us to own the result instead, that is a team, and it is
+      further down this page.</p>
+  </div>
+  <dl class="pdefs">
+    <div class="pdef" data-reveal="rise"><dt>A seat is a specialist on your account</dt><dd>One consistent specialist on your account. You set the goals and priorities, we run the work.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>What we do</dt><dd>We supply, vet and replace the person, so the seat stays filled.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>Part-time or full-time</dt><dd>Part-time is about 80 hours a month, about 4 hours a day on weekdays. Full-time is about 160 hours a month, about 8 hours a day on weekdays.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>One price per role</dt><dd>Every role has its own part-time and full-time price, in US dollars per month. The level on each card is a guide to how senior the role is.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>A team is an outcome we own</dt><dd>If you want us to own the strategy, the numbers and the calendar, you are asking for a team, not a seat.</dd></div>
+  </dl>
+</section>
+
+<section class="is sroles" id="roles" aria-labelledby="roles-h">
+  <div class="is__head">
+    <p class="eyebrow">The menu</p>
+    <h2 class="a-h2" id="roles-h" data-split data-scene="in">pick the role. <em>Then the hours.</em></h2>
+    <p class="a-lede">41 roles in 7 families. Each card shows what the
+      person does, and where the seat stops.</p>
+  </div>
+</section>
+
+<section class="sfam" id="fam-admin" aria-labelledby="fam-admin-h">
+<div class="is__head">
+<p class="eyebrow">01 &middot; Admin and Operations</p>
+<h2 class="a-h2" id="fam-admin-h" data-split data-scene="in">the people who keep your <em>days in order.</em></h2>
+<p class="a-lede">One person to keep your inbox, calendar, records and projects in order.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-general-va" data-role="general-va" data-level="core" tabindex="-1">
+<p class="srow__name">General VA <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Inbox, calendar, data entry, research and admin</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-executive-assistant" data-role="executive-assistant" data-level="senior" tabindex="-1">
+<p class="srow__name">Executive Assistant <span class="srow__lvl">Senior</span></p>
+<p class="srow__does">Runs your day: calendar, travel, priorities and gatekeeping</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-project-manager" data-role="project-manager" data-level="senior" tabindex="-1">
+<p class="srow__name">Project Manager <span class="srow__lvl">Senior</span></p>
+<p class="srow__does">Timelines, task boards and follow-through across a team</p>
+<p class="srow__not"><b>Not this seat:</b> Setting the plan. You decide what matters, they keep it moving.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-data-entry-specialist" data-role="data-entry-specialist" data-level="core" tabindex="-1">
+<p class="srow__name">Data Entry Specialist <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Spreadsheets, CRM records and cleanup</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-research-assistant" data-role="research-assistant" data-level="core" tabindex="-1">
+<p class="srow__name">Research Assistant <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Market, competitor, lead and product research</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-operations-manager" data-role="operations-manager" data-level="senior" tabindex="-1">
+<p class="srow__name">OBM / Operations Manager <span class="srow__lvl">Senior</span></p>
+<p class="srow__does">Runs the team and SOPs, tracks projects</p>
+<p class="srow__not"><b>Not this seat:</b> Owning your results. You set the goals; they run the SOPs and track the work.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-recruitment-hr-assistant" data-role="recruitment-hr-assistant" data-level="skilled" tabindex="-1">
+<p class="srow__name">Recruitment / HR Assistant <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Job posts, screening and onboarding paperwork</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+<section class="sfam" id="fam-customer" aria-labelledby="fam-customer-h">
+<div class="is__head">
+<p class="eyebrow">02 &middot; Customer and Sales</p>
+<h2 class="a-h2" id="fam-customer-h" data-split data-scene="in">someone to answer, follow up and <em>book the call.</em></h2>
+<p class="a-lede">One person to answer your customers, chase your leads and fill your calendar.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-customer-support-va" data-role="customer-support-va" data-level="core" tabindex="-1">
+<p class="srow__name">Customer Support VA <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Email, tickets and follow-ups</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-appointment-setter" data-role="appointment-setter" data-level="skilled" tabindex="-1">
+<p class="srow__name">Appointment Setter <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Books calls from leads, confirms and reminds</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-lead-generation-researcher" data-role="lead-generation-researcher" data-level="core" tabindex="-1">
+<p class="srow__name">Lead Generation Researcher <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Builds and cleans lead lists</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-live-chat-agent" data-role="live-chat-agent" data-level="core" tabindex="-1">
+<p class="srow__name">Live Chat Agent <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Website and Messenger chat, FAQ answers</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-cold-caller-sdr" data-role="cold-caller-sdr" data-level="skilled" tabindex="-1">
+<p class="srow__name">Cold Caller / SDR <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Outbound calls and messages to a list</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-community-moderator" data-role="community-moderator" data-level="core" tabindex="-1">
+<p class="srow__name">Community Moderator <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Groups, comments and DMs, removes spam</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+<section class="sfam" id="fam-creative" aria-labelledby="fam-creative-h">
+<div class="is__head">
+<p class="eyebrow">03 &middot; Creative</p>
+<h2 class="a-h2" id="fam-creative-h" data-split data-scene="in">the person who <em>makes it look right.</em></h2>
+<p class="a-lede">One person to design, edit and finish the visuals you publish.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-graphic-designer" data-role="graphic-designer" data-level="skilled" tabindex="-1">
+<p class="srow__name">Graphic Designer <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Social graphics, ads, brochures and decks, in Canva and Adobe</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-video-editor" data-role="video-editor" data-level="skilled" tabindex="-1">
+<p class="srow__name">Video Editor <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Reels, TikToks, YouTube edits and captions</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-thumbnail-designer" data-role="thumbnail-designer" data-level="skilled" tabindex="-1">
+<p class="srow__name">Thumbnail Designer <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">YouTube and course thumbnails</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-presentation-designer" data-role="presentation-designer" data-level="skilled" tabindex="-1">
+<p class="srow__name">Presentation Designer <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Pitch decks and webinar slides</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-photo-editor" data-role="photo-editor" data-level="core" tabindex="-1">
+<p class="srow__name">Photo Editor <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Retouching, background removal and product photos</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-motion-graphics-designer" data-role="motion-graphics-designer" data-level="specialist" tabindex="-1">
+<p class="srow__name">Motion Graphics Designer <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">Animated titles, explainers and logo animations</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-podcast-audio-editor" data-role="podcast-audio-editor" data-level="skilled" tabindex="-1">
+<p class="srow__name">Podcast / Audio Editor <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Cleanup, cuts and show notes</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-brand-designer" data-role="brand-designer" data-level="senior" tabindex="-1">
+<p class="srow__name">Brand Designer <span class="srow__lvl">Senior</span></p>
+<p class="srow__does">Logo, identity and brand guide</p>
+<p class="srow__not"><b>Not this seat:</b> Setting your brand direction. You decide it, they design it.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+<section class="sfam" id="fam-content" aria-labelledby="fam-content-h">
+<div class="is__head">
+<p class="eyebrow">04 &middot; Content and Marketing</p>
+<h2 class="a-h2" id="fam-content-h" data-split data-scene="in">a person to write it, schedule it and <em>keep it moving.</em></h2>
+<p class="a-lede">One person to write, schedule and publish for your channels, on the plan you set.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-social-media-va" data-role="social-media-va" data-level="core" tabindex="-1">
+<p class="srow__name">Social Media VA <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Posting, scheduling and replies</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-social-media-manager" data-role="social-media-manager" data-level="skilled" tabindex="-1">
+<p class="srow__name">Social Media Manager <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Plans and runs the calendar you approve</p>
+<p class="srow__not"><b>Not this seat:</b> Owning your strategy or your results. You approve the plan. When you want us to own the outcome, that is the marketing team.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-copywriter" data-role="copywriter" data-level="skilled" tabindex="-1">
+<p class="srow__name">Copywriter <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Captions, emails, sales pages and ads</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-content-writer-blogger" data-role="content-writer-blogger" data-level="skilled" tabindex="-1">
+<p class="srow__name">Content Writer / Blogger <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Blog posts, newsletters and long form</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-email-marketing-specialist" data-role="email-marketing-specialist" data-level="skilled" tabindex="-1">
+<p class="srow__name">Email Marketing Specialist <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Campaigns, sequences and list hygiene</p>
+<p class="srow__not"><b>Not this seat:</b> Owning your list results. You set the goals; they run the campaigns.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-seo-specialist" data-role="seo-specialist" data-level="specialist" tabindex="-1">
+<p class="srow__name">SEO Specialist <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">On-page work, keywords and reporting</p>
+<p class="srow__not"><b>Not this seat:</b> Owning your rankings. You set the goals; they do the work.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-paid-ads-specialist" data-role="paid-ads-specialist" data-level="specialist" tabindex="-1">
+<p class="srow__name">Paid Ads Specialist <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">Meta and Google ads setup and daily management</p>
+<p class="srow__not"><b>Not this seat:</b> Ad spend, which is never included, and owning your ad results.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-influencer-pr-outreach" data-role="influencer-pr-outreach" data-level="skilled" tabindex="-1">
+<p class="srow__name">Influencer / PR Outreach <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Finds and pitches creators and media</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+<section class="sfam" id="fam-ecommerce" aria-labelledby="fam-ecommerce-h">
+<div class="is__head">
+<p class="eyebrow">05 &middot; E-commerce</p>
+<h2 class="a-h2" id="fam-ecommerce-h" data-split data-scene="in">a person who keeps the <em>store current.</em></h2>
+<p class="a-lede">One person to keep your store, listings and orders current.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-ecommerce-va" data-role="ecommerce-va" data-level="core" tabindex="-1">
+<p class="srow__name">E-commerce VA <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Orders, listings and inventory updates</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-product-listing-specialist" data-role="product-listing-specialist" data-level="skilled" tabindex="-1">
+<p class="srow__name">Product Listing Specialist <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Shopify, Amazon, Shopee and Lazada listings</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-marketplace-account-manager" data-role="marketplace-account-manager" data-level="specialist" tabindex="-1">
+<p class="srow__name">Marketplace Account Manager <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">Store health, promos, reviews and reports</p>
+<p class="srow__not"><b>Not this seat:</b> Owning your store results. You set the goals; they keep the account healthy.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+<section class="sfam" id="fam-finance" aria-labelledby="fam-finance-h">
+<div class="is__head">
+<p class="eyebrow">06 &middot; Finance</p>
+<h2 class="a-h2" id="fam-finance-h" data-split data-scene="in">a person who keeps the <em>books straight.</em></h2>
+<p class="a-lede">One person to keep receipts, invoices, collections and payroll prep tidy.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-bookkeeping-va" data-role="bookkeeping-va" data-level="skilled" tabindex="-1">
+<p class="srow__name">Bookkeeping VA <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Receipts, invoices and reconciling, in QuickBooks and Xero</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-accounts-payable-receivable" data-role="accounts-payable-receivable" data-level="core" tabindex="-1">
+<p class="srow__name">Accounts Payable / Receivable <span class="srow__lvl">Core</span></p>
+<p class="srow__does">Bills, collections and reminders</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$899</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,499</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-payroll-assistant" data-role="payroll-assistant" data-level="skilled" tabindex="-1">
+<p class="srow__name">Payroll Assistant <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Timesheets and payroll prep</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+<section class="sfam" id="fam-tech" aria-labelledby="fam-tech-h">
+<div class="is__head">
+<p class="eyebrow">07 &middot; Tech</p>
+<h2 class="a-h2" id="fam-tech-h" data-split data-scene="in">the tools, <em>set up and kept working.</em></h2>
+<p class="a-lede">One person to maintain your CRM, connect your tools and test what you ship.</p>
+<p class="sfam__jtl">GHL and tech roles are handled by our sister company, <a href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener">JTL Growth</a>. You book them here, the same way.</p>
+</div>
+<ol class="srows">
+<li class="srow" id="role-ghl-specialist-va" data-role="ghl-specialist-va" data-level="specialist" tabindex="-1">
+<p class="srow__name">GHL Specialist VA <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">CRM upkeep, pipelines, workflows, forms, calendars and funnel edits</p>
+<p class="srow__not"><b>Not this seat:</b> A full GHL build. That is a quote with JTL Growth.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-automation-specialist" data-role="automation-specialist" data-level="specialist" tabindex="-1">
+<p class="srow__name">Automation Specialist <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">Zapier, Make and n8n, connecting your tools</p>
+<p class="srow__not"><b>Not this seat:</b> A full automation build. That is a quote with JTL Growth.</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-web-developer" data-role="web-developer" data-level="specialist" tabindex="-1">
+<p class="srow__name">Web Developer <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">WordPress, Webflow and Shopify site edits and builds</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-ai-chatbot-specialist" data-role="ai-chatbot-specialist" data-level="specialist" tabindex="-1">
+<p class="srow__name">AI / Chatbot Specialist <span class="srow__lvl">Specialist</span></p>
+<p class="srow__does">Chatbots, AI assistants and prompt setup</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,299</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$2,199</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-it-support-va" data-role="it-support-va" data-level="skilled" tabindex="-1">
+<p class="srow__name">IT Support VA <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Accounts, email setup and tool admin</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+<li class="srow" id="role-qa-tester" data-role="qa-tester" data-level="skilled" tabindex="-1">
+<p class="srow__name">QA Tester <span class="srow__lvl">Skilled</span></p>
+<p class="srow__does">Tests sites, funnels and apps before launch</p>
+<dl class="srow__price"><div data-h="pt"><dt>Part-time</dt><dd><b class="srow__amt">$1,099</b><span>/mo</span></dd></div><div data-h="ft"><dt>Full-time</dt><dd><b class="srow__amt">$1,799</b><span>/mo</span></dd></div></dl>
+</li>
+</ol>
+</section>
+
+<section class="pq" id="upgrade" aria-labelledby="upgrade-h">
+  <div class="pq__in">
+    <p class="eyebrow">Need more than a seat</p>
+    <h2 class="a-h2" id="upgrade-h" data-split data-scene="in">want us to own the result? <em>That is a team.</em></h2>
+    <p class="a-lede">A seat delivers the results you ask for. When you would rather hand over the outcome, there are
+      three ways up.</p>
+    <ul class="sup" data-scene="in">
+      <li>
+        <p class="sup__name">Marketing team</p>
+        <p>Need the content made and the channels run? That is the marketing team, with a named crew and a calendar you can see.</p>
+        <a href="/quiz/" data-cursor="go">Find your tier</a>
+      </li>
+      <li>
+        <p class="sup__name">Execution team</p>
+        <p>Work that needs a team to deliver it, not one person. Scoped and quoted before anything starts.</p>
+        <a href="/book/?quote=1" data-cursor="open">Request a quote</a>
+      </li>
+      <li>
+        <p class="sup__name">A full build</p>
+        <p>A full GHL or automation build is quoted with <a href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener">JTL Growth</a>, our sister company.</p>
+        <a href="/book/?quote=1" data-cursor="open">Request a quote</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="icta" id="s-next" data-scene="in" aria-labelledby="s-next-h">
+  <i class="icta__rule" aria-hidden="true"></i>
+  <p class="eyebrow">Not sure which role</p>
+  <h2 class="a-title" id="s-next-h" data-split data-scene="in">tell us what you need <em>done.</em></h2>
+  <div class="a-ctas">
+    <a class="btn btn--xl" href="/book/" data-magnetic="0.35" data-cursor="book">Book a call</a>
+    <a class="btn btn--ghost btn--xl" href="/quiz/" data-magnetic="0.3" data-cursor="open">Take the quiz again</a>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <span>AVAS &middot; Ayala Virtual Assistance &middot; Quezon City, Manila</span>
+  <a href="/services">Services</a>
+  <a href="/offer">Offer</a>
+  <a href="/work">Work</a>
+  <a href="/about">About</a>
+  <a href="/quiz">Quiz</a>
+  <a href="mailto:info@ayalavirtualassistance.com" data-set-href="email_href">info@ayalavirtualassistance.com</a>
+  <span class="foot__sp"></span>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+  <a class="jtl-lock" href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener" data-cursor="jtl">
+    <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg>
+    <span><small>Powered by</small> <b>JTL Growth</b></span>
+  </a>
+</footer>
+<a class="jtl-badge" href="https://jtlgrowth.com" data-set-href="jtl_url" target="_blank" rel="noopener" aria-label="Powered by JTL Growth" data-cursor="jtl">
+  <svg viewBox="250 600 1400 800" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="141.5"><path d="M624 774H1267"/><path d="M846 706V1122A134.5 134.5 0 0 1 711.5 1256.5H494A134.5 134.5 0 0 1 359.5 1122"/><path d="M1195 706V1122A134.5 134.5 0 0 0 1329.5 1256.5H1602"/></g></svg><span>Powered by JTL Growth</span>
+</a>
+
+<aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
+  <h2 class="consent__h" id="consent-h">We value your privacy</h2>
+  <p class="consent__p">This page keeps three things on your device: whether the music is on, whether you asked for calmer motion, and your answers to the quick questions. To time the launch offer, a random id goes to our server with its start time; nothing else is kept with it: no name, no answers, no IP address. One thing comes from a third party, and only when you allow it: the music, which plays in YouTube's own player.</p>
+  <details class="consent__more">
+    <summary>What that actually means</summary>
+    <ul>
+      <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
+      <li><b>The booking form</b> is our own, so it loads either way. It runs a Cloudflare check that stops spam bookings.</li>
+      <li><b>Played by YouTube</b> when you accept or tap Sound: Brooklyn Duo's cover of Landslide in YouTube's player, kept out of sight, which may set its own cookies once it plays.</li>
+      <li><b>If you decline</b>: nothing third party loads on its own. The music waits until you tap Sound.</li>
+    </ul>
+  </details>
+  <div class="consent__row">
+    <button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept</button>
+    <button type="button" class="consent__btn" data-consent="denied">Decline</button>
+  </div>
+</aside>
+
+<script>const SETTINGS = {"book_url":"https://ayalavirtualassistance.site/book","email_href":"mailto:info@ayalavirtualassistance.com","jtl_url":"https://jtlgrowth.com","site_url":"https://ayalavirtualassistance.site","bg":"drift","music_source":"youtube","music_default":"on","music_volume":60,"music_video":"ZODBuRCDgpk","music_host":"https://www.youtube-nocookie.com","music_title":"Landslide","music_url":"https://www.youtube.com/watch?v=ZODBuRCDgpk","music_by":"Brooklyn Duo","music_by_url":"https://www.brooklynduo.com","music_artist":"Fleetwood Mac","music_routes":"/,/team/,/how/,/services/,/pricing/,/work/,/about/,/book/,/quiz/,/privacy/,/terms/,/offer/,/staffing/"};
+document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a.dataset.setHref]; if (v) a.href = v; });
+/* ==========================================================================
+   AVAS immersive kit (2026-09-26). Classic script, no modules, no network, so
+   every page opens from file:// the same as from a server (the music is the one
+   exception: it fetches its own file, so it plays when served).
+
+   window.AV exposes:
+     AV.onFrame(fn(m))     every rail frame while the track moves (m.xu, m.scrub, m.p)
+     AV.onPanel(fn(i, el)) the panel under the viewport changed (rail or stacked)
+     AV.loop(el, step)     a rAF loop that rests off screen, in a hidden tab,
+                           under reduced motion and in calm mode; step returning
+                           false parks it until .wake()
+     AV.goTo(sel)          travel to a selector through the rail
+     AV.scramble(el)       text scramble to the element's own words
+     AV.pointer            live pointer {x, y, nx, ny} (nx/ny in -1..1)
+
+   The rail is the v16 engine (apps/avas-site/v16/parts/rail.js) unchanged in
+   movement: the page goes down, then the track carries content sideways. The
+   ground stays white, so the v16 background morph is gone.
+   ========================================================================== */
+(() => {
+  'use strict';
+  const D = document, H = D.documentElement;
+  H.classList.add('js');
+  if (!H.dataset.cur) H.dataset.cur = 'dot';   // v17: the custom cursor (black dot, espresso ring with a word) is on
+  const RMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  const NARROW = matchMedia('(max-width: 900px)');
+  const FINE = matchMedia('(hover: hover) and (pointer: fine)');
+  const clamp01 = v => Math.max(0, Math.min(1, v));
+
+  const AV = window.AV = {
+    reduced: () => RMQ.matches,
+    flat: () => RMQ.matches || NARROW.matches || H.dataset.motion === 'calm',   // v17: calm is a still, stacked page too
+    calm: () => H.dataset.motion === 'calm',
+    fine: () => FINE.matches,
+    pointer: { x: innerWidth / 2, y: innerHeight / 2, nx: 0, ny: 0, t: 0 },
+    frameFns: [], panelFns: [],
+    css: name => getComputedStyle(H).getPropertyValue(name).trim()
+  };
+  AV.onFrame = fn => AV.frameFns.push(fn);
+  AV.onPanel = fn => AV.panelFns.push(fn);
+
+  addEventListener('pointermove', e => {
+    const p = AV.pointer;
+    p.x = e.clientX; p.y = e.clientY; p.t = performance.now();
+    p.nx = (e.clientX / innerWidth) * 2 - 1; p.ny = (e.clientY / innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  /* ---- a resting rAF loop: the four WebGL/canvas habits live here ---- */
+  AV.loop = (el, step) => {
+    let vis = true, raf = 0, last = 0;
+    const ok = () => vis && !D.hidden && !RMQ.matches && !AV.calm();
+    function tick(t) {
+      raf = 0;
+      if (!ok()) return;
+      const dt = last ? Math.min(50, t - last) : 16;
+      last = t;
+      if (step(t, dt) === false) { last = 0; return; }
+      raf = requestAnimationFrame(tick);
+    }
+    function wake() { if (!raf && ok()) { last = 0; raf = requestAnimationFrame(tick); } }
+    if (el && 'IntersectionObserver' in window) {
+      new IntersectionObserver(es => { vis = es[es.length - 1].isIntersecting; wake(); },
+        { rootMargin: '120px' }).observe(el);
+    }
+    D.addEventListener('visibilitychange', wake);
+    D.addEventListener('av:calm', wake);
+    wake();
+    return { wake };
+  };
+
+  /* ---- top bar ---- */
+  const top = D.querySelector('.top');
+  const onTop = () => top && top.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onTop, { passive: true }); onTop();
+
+  /* ======================================================================
+     THE RAIL
+     ====================================================================== */
+  const rail = D.getElementById('rail');
+  const track = D.getElementById('track');
+  let goPanel = () => {};
+  if (rail && track) {
+    const flat = AV.flat;
+    const panels = [...track.querySelectorAll('.panel')];
+    const N = panels.length;
+    const NAV = panels[N - 1] && panels[N - 1].classList.contains('hero--clone') ? N - 1 : N;
+    const dots = [...D.querySelectorAll('[data-dot]')];
+    const bar = D.querySelector('.rail__bar i');
+    const count = D.querySelector('[data-count]');
+
+    /* hold zones from the page: data-hold="0:0.9,3:0.4" */
+    const HOLD = {};
+    (rail.dataset.hold || '').split(',').filter(Boolean).forEach(kv => {
+      const [k, v] = kv.split(':'); HOLD[+k] = +v;
+    });
+
+    const segs = [];
+    let U = 0;
+    for (let i = 0; i < N; i++) {
+      if (HOLD[i]) { segs.push({ from: U, len: HOLD[i], t: 'hold', at: i }); U += HOLD[i]; }
+      if (i < N - 1) { segs.push({ from: U, len: 1, t: 'move', at: i }); U += 1; }
+    }
+    rail.style.setProperty('--rail-len', String(Math.round(U * 100)));
+
+    const mapU = u => {
+      const out = { xu: 0, scrub: {} };
+      for (const s of segs) {
+        const f = clamp01((u - s.from) / s.len);
+        if (s.t === 'hold') { out.scrub[s.at] = f; if (u >= s.from) out.xu = s.at; }
+        else if (u >= s.from) out.xu = s.at + f;
+      }
+      return out;
+    };
+    const arrive = [];
+    for (let i = 0; i < N; i++) {
+      const seg = segs.find(s => s.at === i);
+      arrive.push(seg ? seg.from : U);
+    }
+    arrive[N - 1] = U;
+
+    /* word reveal, split once, revealed by horizontal progress */
+    const reveals = [...D.querySelectorAll('.wreveal')].map(el => {
+      const accents = new Set((el.dataset.accent || '').split(',').filter(Boolean));
+      const words = [];
+      [...el.childNodes].forEach(node => {
+        if (node.nodeType !== 3) return;
+        const frag = D.createDocumentFragment();
+        node.textContent.split(/\s+/).filter(Boolean).forEach((word, i, arr) => {
+          const s = D.createElement('span');
+          s.className = 'w' + (accents.has(word.replace(/[.,]$/, '')) ? ' tl' : '');
+          s.textContent = word;
+          words.push(s); frag.appendChild(s);
+          if (i < arr.length - 1) frag.appendChild(D.createTextNode(' '));
+        });
+        el.replaceChild(frag, node);
+      });
+      return { words, idx: panels.indexOf(el.closest('.panel')) };
+    });
+    const fx = m => reveals.forEach(r => {
+      const pr = HOLD[r.idx] != null ? (m.scrub[r.idx] || 0) : clamp01(m.xu - (r.idx - 1));
+      const on = Math.round(pr * r.words.length);
+      r.words.forEach((w, i) => w.classList.toggle('on', i < on));
+    });
+
+    let cur = 0, target = 0, raf = null, idx = -1;
+    const vw = () => rail.clientWidth || innerWidth;
+    const progress = () => {
+      const span = rail.offsetHeight - innerHeight;
+      return span <= 0 ? 0 : clamp01((scrollY - rail.offsetTop) / span);
+    };
+
+    function setUI(i) {
+      if (i === idx) return;
+      idx = i;
+      const nav = Math.min(i, NAV - 1);
+      dots.forEach((d, k) => d.setAttribute('aria-current', String(k === nav)));
+      if (count) count.textContent = String(nav + 1).padStart(2, '0') + ' / ' + String(NAV).padStart(2, '0');
+      panels.forEach((p, k) => { p.classList.toggle('is-on', k === i); if (k <= i) p.classList.add('was-on'); });
+      H.dataset.panel = (panels[i] && panels[i].id) || '';
+      AV.panelFns.forEach(fn => fn(i, panels[i]));
+    }
+
+    function frame() {
+      cur += (target - cur) * 0.12;
+      if (Math.abs(target - cur) < 0.0004) cur = target;
+      const m = mapU(cur * U);
+      m.p = cur;
+      track.style.transform = 'translate3d(' + (-m.xu * vw()) + 'px,0,0)';
+      if (bar) bar.parentElement.style.setProperty('--rail-p', String(cur));
+      fx(m);
+      setUI(Math.round(m.xu));
+      AV.frameFns.forEach(fn => fn(m));
+      window.__avRail = { p: cur, xu: m.xu, scrub: m.scrub, n: N };
+      if (cur === target) {
+        if (NAV < N && target >= 1 - 1e-4) {
+          /* fully arrived on the hero clone: jump to the real hero above the rail */
+          scrollTo({ top: 0, behavior: 'auto' });
+          cur = target = 0;
+          track.style.transform = 'translate3d(0,0,0)';
+          const z = mapU(0); z.p = 0;
+          fx(z); setUI(0); AV.frameFns.forEach(fn => fn(z));
+        }
+        raf = null; return;
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    const onScroll = () => { if (flat()) return; target = progress(); kick(); };
+
+    /* stacked layout: an observer names the panel under the middle of the screen */
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting || !flat()) return;
+        const i = panels.indexOf(e.target);
+        panels.forEach((p, k) => p.classList.toggle('is-on', k === i));
+        e.target.classList.add('was-on');
+        H.dataset.panel = e.target.id || '';
+        AV.panelFns.forEach(fn => fn(i, e.target));
+      }), { rootMargin: '-40% 0px -40% 0px' });
+      panels.forEach(p => io.observe(p));
+    }
+
+    const scrollToUnit = u => {
+      const span = rail.offsetHeight - innerHeight;
+      scrollTo({ top: rail.offsetTop + (u / U) * span, behavior: RMQ.matches ? 'auto' : 'smooth' });
+    };
+    goPanel = i => {
+      i = Math.max(0, Math.min(NAV - 1, i));
+      if (flat()) { panels[i].scrollIntoView({ behavior: RMQ.matches ? 'auto' : 'smooth' }); return; }
+      scrollToUnit(arrive[i] + (HOLD[i] ? HOLD[i] * 0.12 : 0));
+    };
+    AV.goPanel = goPanel;
+    AV.panels = panels;
+
+    dots.forEach((d, i) => d.addEventListener('click', () => goPanel(i)));
+    D.querySelectorAll('a[href^="#p-"]').forEach(a => a.addEventListener('click', e => {
+      const el = D.querySelector(a.getAttribute('href'));
+      const i = el ? panels.indexOf(el.closest('.panel')) : -1;
+      if (i < 0) return;
+      e.preventDefault(); goPanel(i);
+    }));
+
+    /* keyboard: arrows travel the rail; a focus landing off screen brings its panel in */
+    addEventListener('keydown', e => {
+      if (flat()) return;
+      const a = D.activeElement;
+      if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      const r = rail.getBoundingClientRect();
+      if (r.top > 4 || r.bottom < innerHeight - 4) return;
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goPanel(idx + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPanel(idx - 1); }
+    });
+    track.addEventListener('focusin', e => {
+      if (flat()) return;
+      const stick = rail.querySelector('.rail__stick');
+      if (stick) stick.scrollLeft = 0;
+      const i = panels.indexOf(e.target.closest('.panel'));
+      if (i >= 0 && i !== idx && i < NAV) goPanel(i);
+    });
+
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', () => { target = progress(); cur = target; idx = -1; kick(); });
+    const relayout = () => {
+      if (flat()) track.style.transform = '';
+      else { target = progress(); cur = target; idx = -1; kick(); }
+    };
+    [RMQ, NARROW].forEach(mq => mq.addEventListener('change', relayout));
+    D.addEventListener('av:calm', () => requestAnimationFrame(relayout));
+
+    if (!flat()) { target = progress(); cur = target; kick(); }
+    else fx(mapU(U));
+  }
+
+  AV.goTo = sel => {
+    const el = D.querySelector(sel);
+    if (!el) return false;
+    const i = AV.panels ? AV.panels.indexOf(el.closest('.panel')) : -1;
+    if (i >= 0) goPanel(i);
+    else el.scrollIntoView({ behavior: RMQ.matches ? 'auto' : 'smooth', block: 'center' });
+    return true;
+  };
+
+  /* ======================================================================
+     CURSOR: one engine, three looks (html[data-cur] = dot | invert | badge)
+     ====================================================================== */
+  if (FINE.matches && !RMQ.matches && H.dataset.cur) {
+    const c = D.createElement('div');
+    c.className = 'cur';
+    c.setAttribute('aria-hidden', 'true');
+    c.innerHTML = '<i class="cur__p cur__p--dot"><b class="cur__dot"></b></i>' +
+      '<i class="cur__p cur__p--ring"><b class="cur__ring"><span class="cur__label"></span></b></i>';
+    D.body.appendChild(c);
+    H.classList.add('has-cur');
+    const pd = c.children[0], pr = c.children[1], label = c.querySelector('.cur__label');
+    const dflt = H.dataset.curDefault || '';
+    let rx = innerWidth / 2, ry = innerHeight / 2, craf = 0;
+    if (dflt) { c.classList.add('is-on'); label.textContent = dflt; }
+    const step = () => {
+      craf = 0;
+      const p = AV.pointer;
+      rx += (p.x - rx) * 0.2; ry += (p.y - ry) * 0.2;
+      pd.style.transform = 'translate(' + p.x + 'px,' + p.y + 'px)';
+      pr.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      if (Math.abs(p.x - rx) + Math.abs(p.y - ry) > 0.3) craf = requestAnimationFrame(step);
+    };
+    addEventListener('pointermove', () => { if (!craf) craf = requestAnimationFrame(step); }, { passive: true });
+    D.addEventListener('pointerover', e => {
+      const t = e.target.closest && e.target.closest('[data-cursor],a,button,summary,input');
+      const word = t ? (t.dataset.cursor != null ? t.dataset.cursor : (t.tagName === 'INPUT' ? '' : (H.dataset.curLink || 'open'))) : dflt;
+      const on = !!(t && t.tagName !== 'INPUT') || !!dflt;
+      c.classList.toggle('is-on', on);
+      c.classList.toggle('is-target', !!t);
+      label.textContent = on ? word : '';
+      c.dataset.kind = t && t.dataset.cursorKind ? t.dataset.cursorKind : '';
+    });
+    addEventListener('pointerdown', () => c.classList.add('is-down'));
+    addEventListener('pointerup', () => c.classList.remove('is-down'));
+    D.addEventListener('pointerleave', () => { c.style.opacity = '0'; });
+    D.addEventListener('pointerenter', () => { c.style.opacity = ''; });
+    AV.cursor = c;
+  }
+
+  /* ---- magnetic: [data-magnetic="0.35"] leans toward the pointer ---- */
+  if (FINE.matches && !RMQ.matches) {
+    D.querySelectorAll('[data-magnetic]').forEach(el => {
+      const k = parseFloat(el.dataset.magnetic) || 0.3;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        el.style.transition = 'transform .15s linear';
+        el.style.transform = 'translate(' + dx * k + 'px,' + dy * k + 'px)';
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1)';
+        el.style.transform = '';
+      });
+    });
+
+    /* ---- tilt: [data-tilt="12"], sets --gx/--gy for a glare layer ---- */
+    D.querySelectorAll('[data-tilt]').forEach(el => {
+      const max = parseFloat(el.dataset.tilt) || 10;
+      const lift = parseFloat(el.dataset.lift || '0');
+      const base = el.dataset.tiltBase || '';
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        el.classList.add('is-tilting');
+        el.style.transform = base + ' perspective(900px) rotateX(' + ((0.5 - py) * max).toFixed(2) +
+          'deg) rotateY(' + ((px - 0.5) * max).toFixed(2) + 'deg) translate3d(0,' + (-lift) + 'px,' + lift + 'px)';
+        el.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        el.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('is-tilting');
+        el.style.transform = base;
+      });
+    });
+  }
+
+  /* ======================================================================
+     ENTRANCES: [data-reveal], .lines, counters and scrambles fire once
+     ====================================================================== */
+  const counters = el => el.querySelectorAll('[data-count-to]').forEach(n => countUp(n));
+  function countUp(n) {
+    if (n.dataset.done) return;
+    n.dataset.done = '1';
+    const to = parseFloat(n.dataset.countTo);
+    if (RMQ.matches || AV.calm()) { n.textContent = n.dataset.countTo; return; }
+    const t0 = performance.now(), dur = parseFloat(n.dataset.countDur || '1400');
+    const tick = t => {
+      const f = clamp01((t - t0) / dur), e = 1 - Math.pow(1 - f, 3);
+      n.textContent = String(Math.round(to * e));
+      if (f < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  AV.countUp = countUp;
+
+  const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*+=?';
+  AV.scramble = (el, dur) => {
+    if (RMQ.matches) return;
+    const final = el.dataset.text || (el.dataset.text = el.textContent);
+    const t0 = performance.now(); dur = dur || 520;
+    cancelAnimationFrame(el._scr);
+    const tick = t => {
+      const f = clamp01((t - t0) / dur), keep = Math.floor(f * final.length);
+      let s = '';
+      for (let i = 0; i < final.length; i++) {
+        const ch = final[i];
+        s += i < keep || ch === ' ' ? ch : GLYPHS[(Math.random() * GLYPHS.length) | 0];
+      }
+      el.textContent = s;
+      if (f < 1) el._scr = requestAnimationFrame(tick); else el.textContent = final;
+    };
+    el._scr = requestAnimationFrame(tick);
+  };
+  D.querySelectorAll('[data-scramble]').forEach(el => {
+    const t = el.querySelector('[data-scramble-text]') || el;
+    el.addEventListener('pointerenter', () => AV.scramble(t, 420));
+    el.addEventListener('focus', () => AV.scramble(t, 420));
+  });
+
+  const revealEls = [...D.querySelectorAll('[data-reveal],.lines,.lineup,.deck,[data-count-wrap]')];
+  const show = el => {
+    el.classList.add('in');
+    counters(el);
+    if (el.hasAttribute('data-scramble-in')) AV.scramble(el, 700);
+  };
+  if ('IntersectionObserver' in window && !RMQ.matches) {
+    const rio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { show(e.target); rio.unobserve(e.target); }
+    }), { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(el => rio.observe(el));
+  } else revealEls.forEach(show);
+
+  /* ======================================================================
+     TEAM CLIPS: the active panel plays from the top, the rest pause
+     ====================================================================== */
+  /* A clip with data-alpha is a stacked mp4 (colour on top, Vision matte below).
+     The SVG filter #stack-alpha lifts the matte into alpha while it renders, so
+     the person stands on any ground. It reads no pixels, so it works from
+     file:// as well as from a server. The still cutout shows until the clip plays. */
+  const clips = [...D.querySelectorAll('video[data-clip]')];
+  clips.forEach(v => v.addEventListener('playing', () => v.parentElement.classList.add('is-live')));
+  const playIn = panel => clips.forEach(v => {
+    const mine = panel && panel.contains(v);
+    if (mine && !RMQ.matches && !AV.calm()) {
+      if (v.paused) {
+        if (v.preload === 'none') v.preload = 'auto';
+        try { v.currentTime = 0; } catch (_) {}
+        const p = v.play(); if (p && p.catch) p.catch(() => {});
+      }
+    } else if (!v.paused && !v.hasAttribute('data-free')) v.pause();
+  });
+  AV.playIn = playIn;
+
+  /* line-ups: hovering a person plays their wave */
+  if (FINE.matches && !RMQ.matches) D.querySelectorAll('[data-hover-clip]').forEach(item => {
+    const v = item.querySelector('video');
+    if (!v) return;
+    v.loop = false;                  // v17: a hover plays the wave once and holds its last frame, never loops
+    v.addEventListener('playing', () => v.parentElement.classList.add('is-live'));
+    const on = () => {
+      if (AV.calm()) return;
+      if (!v.getAttribute('src')) { v.src = v.dataset.src; v.preload = 'auto'; }
+      try { v.currentTime = 0; } catch (_) {}
+      const p = v.play(); if (p && p.catch) p.catch(() => {});
+    };
+    const off = () => { v.pause(); v.parentElement.classList.remove('is-live'); };
+    item.addEventListener('pointerenter', on);
+    item.addEventListener('pointerleave', off);
+    item.addEventListener('focusin', on);
+    item.addEventListener('focusout', off);
+  });
+  if (clips.length) AV.onPanel((i, panel) => playIn(panel));
+  /* clips outside the rail (line-ups, cards): play while on screen */
+  const free = clips.filter(v => v.hasAttribute('data-free'));
+  if (free.length && 'IntersectionObserver' in window) {
+    const fio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && !RMQ.matches && !AV.calm()) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      else v.pause();
+    }), { threshold: 0.25 });
+    free.forEach(v => fio.observe(v));
+  }
+
+  /* ======================================================================
+     ASK BOX: fed by the site-wide intents brief (avas-intents.json plus the
+     homepage-only parts/intents-extra.json), the same longest-keyword-wins
+     match as the rest of the site. window.AVAS_DATA is set by the page build.
+     go: an anchor ("#p-pricing") travels the rail; anything else is a route,
+     shown as a real link (an ask answer must be able to send someone off page).
+     ====================================================================== */
+  /* v17: the home's own answers (parts/home-intents.json, inlined as #home-intents) replace the
+     matching intents by id, so the Ask box leads with what we make (home-gen.py checks every # target) */
+  const OVR = D.getElementById('home-intents');
+  if (OVR && window.AVAS_DATA && !window.AVAS_DATA._home) {
+    try {
+      const o = JSON.parse(OVR.textContent), byId = {};
+      (window.AVAS_DATA.intents || []).forEach(it => { byId[it.id] = it; });
+      (o.intents || []).forEach(v => { if (byId[v.id]) Object.assign(byId[v.id], v); });
+      if (o.notfound) window.AVAS_DATA.notfound = o.notfound;
+      window.AVAS_DATA._home = 1;
+    } catch (_) {}
+  }
+  D.querySelectorAll('[data-ask]').forEach(box => {
+    const DATA = window.AVAS_DATA;
+    if (!DATA) return;
+    const log = box.querySelector('.ask__log'), form = box.querySelector('form'), input = box.querySelector('input');
+    const say = (cls, text) => {
+      const b = D.createElement('div'); b.className = cls; log.appendChild(b);
+      while (log.children.length > 4) log.removeChild(log.firstChild);
+      if (RMQ.matches || cls === 'ask__q') { b.textContent = text; return Promise.resolve(b); }
+      return new Promise(res => {
+        let i = 0;
+        const t = setInterval(() => { i += 2; b.textContent = text.slice(0, i); if (i >= text.length) { clearInterval(t); res(b); } }, 14);
+      });
+    };
+    const bestFor = q => {
+      const s = q.toLowerCase();
+      /* the longest matching keyword wins, so "what does it cost" lands on pricing */
+      let hit = null, best = 0;
+      DATA.intents.forEach(it => (it.k || []).forEach(k => {
+        if (k.length > best && s.includes(k.toLowerCase())) { best = k.length; hit = it; }
+      }));
+      return hit;
+    };
+    const answer = q => {
+      const hit = bestFor(q);
+      say('ask__q', q);
+      setTimeout(() => say('ask__a', hit ? hit.a : (DATA.notfound || 'Not something I hold yet. Try services, pricing, who runs it, or book a call.')).then(b => {
+        const go = hit && hit.go;
+        if (!go) return;
+        const isRoute = go.charAt(0) !== '#';
+        const g = D.createElement(isRoute ? 'a' : 'button');
+        g.className = 'ask__go';
+        g.textContent = (isRoute ? 'take me there' : 'take me there') + ' →';
+        if (isRoute) g.href = go; else { g.type = 'button'; g.addEventListener('click', () => AV.goTo(go)); }
+        b.appendChild(D.createTextNode(' ')); b.appendChild(g);
+      }), 280);
+    };
+    form.addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if (q) { answer(q); input.value = ''; } });
+    box.querySelectorAll('[data-q]').forEach(b => b.addEventListener('click', () => answer(b.dataset.q)));
+  });
+
+  /* ======================================================================
+     CALM: the Owner's switch; stops loops, clips and CSS animation
+     ====================================================================== */
+  const calm = D.querySelector('[data-calm]');
+  try { if (localStorage.getItem('avas-calm') === 'calm') H.dataset.motion = 'calm'; } catch (_) {}   // a new key: the old site's saved 'calm' no longer carries over (Owner 2026-09-27: motion on by default)
+  if (calm) {
+    const paint = () => {
+      const on = AV.calm();
+      calm.setAttribute('aria-pressed', String(on));
+      calm.textContent = on ? 'calm on' : 'calm';
+    };
+    paint();
+    calm.addEventListener('click', () => {
+      H.dataset.motion = AV.calm() ? 'full' : 'calm';
+      try { localStorage.setItem('avas-calm', H.dataset.motion); } catch (_) {}
+      paint();
+      if (AV.calm()) clips.forEach(v => v.pause());
+      D.dispatchEvent(new CustomEvent('av:calm'));
+    });
+  }
+  /* phones hide the top switch (under 900 px), so the Menu carries the same CALM (final QA 2026-09-30) */
+  const menuCalm = D.querySelector('[data-calm-menu]');
+  if (menuCalm && calm) {
+    const paintMenu = () => {
+      const on = AV.calm();
+      menuCalm.setAttribute('aria-pressed', String(on));
+      menuCalm.textContent = on ? 'Calm: motion is off' : 'Calm: turn motion off';
+    };
+    menuCalm.dataset.bound = '1';
+    menuCalm.addEventListener('click', () => calm.click());
+    D.addEventListener('av:calm', paintMenu);
+    paintMenu();
+  }
+
+  /* the music, Sound and its credit live in sound.js (2026-10-01) */
+
+
+  /* a link like index.html#p-book lands on its rail panel */
+  if (location.hash && /^#p-/.test(location.hash) && AV.goPanel) {
+    addEventListener('load', () => setTimeout(() => AV.goTo(location.hash), 250));
+  }
+
+  /* the footer carries its own Powered by JTL Growth lock, so the corner badge steps aside while a
+     footer is on screen (Owner 2026-10-02: two JTL marks side by side at the end of the home rail) */
+  const feet = D.querySelectorAll('.foot');
+  if (feet.length && 'IntersectionObserver' in window) {
+    const seen = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+      D.documentElement.classList.toggle('foot-on', seen.size > 0);
+    });
+    feet.forEach(f => io.observe(f));
+  }
+
+  /* year in the footer */
+  D.querySelectorAll('[data-year]').forEach(n => { n.textContent = String(new Date().getFullYear()); });
+})();
+
+/* ==========================================================================
+   AVAS sound (2026-10-01): the music, its Sound button, its credit and the
+   shell that carries it across pages. Moved out of a-kit.js so the inner
+   pages (about, book, quiz, privacy, terms) play it too. Classic script, no
+   modules; it reads SETTINGS (music_*) and uses window.AV.cursor when the
+   A kit is on the page.
+   ========================================================================== */
+(() => {
+  'use strict';
+  const D = document, H = D.documentElement;
+  const AV = window.AV || (window.AV = {});
+
+  /* ======================================================================
+     SOUND (Owner 2026-09-30). The live site plays Brooklyn Duo's cello and
+     piano cover of Landslide in YouTube's own player, hidden (Owner: "use this
+     instead but just hide the vid and if possible auto play"): the plays and
+     the credit stay theirs and the audio is never downloaded or hosted here.
+     YouTube's terms ask for a visible player; the Owner chose hidden
+     (pk-0321 C), flagged before deploy. Nothing from YouTube loads until the
+     visitor allows it: Accept on the privacy notice starts it right there (a
+     real tap, so browsers let it sound), a visitor who accepted earlier gets
+     a try at playing on load and otherwise at the first tap, and Sound always
+     works. If a browser still holds the player back after a tap (iPhone
+     Safari may), the player shows under Sound for one press of its own play
+     button, then hides again once it plays.
+     The name stays out of sight (pk-0321 C): a small label under Sound names
+     the song with links on hover or keyboard focus, and for 3 s on a phone as
+     the music starts. Sound stops and resumes it; the choice is remembered;
+     a hidden tab pauses it.
+     SETTINGS.music_source 'file' swaps in the Web Audio loop engine (a
+     seamless mp4 loop, music_loop_start for music_seconds): the music-sync
+     what-if uses it for its beat grid; the live build does not.
+
+     The credit bubble (Owner 2026-10-01, "a mini cute bubble text in sound
+     button ... credits so we dont copyright"): while the music plays, a
+     small speech bubble under Sound credits the song, its writers and the
+     cover. Hovering Sound still opens the full label with the links.
+
+     The music carries across pages (Owner 2026-10-01, picked A): while it
+     plays, a link to one of the site's own pages (SETTINGS.music_routes)
+     opens in a full-screen frame over this page, so this page and its
+     player never unload. The address bar, the title and Back follow the
+     frame. Inside the frame, Sound drives this page's player (window.AVMusic),
+     and a link off the site's pages (a GHL funnel, another site) leaves the
+     frame for the whole tab, where the music stops as on any other site.
+     ====================================================================== */
+  const snd = D.querySelector('[data-sound]');
+  const ST = typeof SETTINGS !== 'undefined' ? SETTINGS : {};   // a top-level const, not a window property
+  const YTM = ST.music_source === 'youtube' && !!ST.music_video;
+  if (snd && (YTM || ST.music)) {
+    const M = AV.sound = { on: false, state: 'off', engine: YTM ? 'youtube' : 'file', tip: null, player: null, ctx: null, t0: null };   // AV.sound: read by the QA scripts
+    /* framed by the shell (see above): the page around this one owns the player */
+    const PAR = (() => { try { const p = window.parent; return p !== window && p.AVMusic && p.location.origin === location.origin ? p.AVMusic : null; } catch (_) { return null; } })();
+    if (PAR) M.engine = 'shell';
+    let watcher = null;                                  // the framed page's repaint, set through AVMusic.watch
+    const tell = () => { if (watcher) { try { watcher(M); } catch (_) { watcher = null; } } };
+    const norm = p => (p.endsWith('/') ? p : p + '/');
+    const ROUTES = String(ST.music_routes || '').split(',').filter(Boolean).map(norm);
+    const site = u => u.origin === location.origin && ROUTES.includes(norm(u.pathname));
+    const plain = e => !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+    const linkOf = e => {                                // the same-tab http(s) link a click follows, or null
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return null;
+      const u = new URL(a.href, location.href);
+      return u.protocol === 'http:' || u.protocol === 'https:' ? u : null;
+    };
+    const el = (tag, cls, text) => { const n = D.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+    const link = (cls, href, text) => { const a = el('a', cls, text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
+    /* the name label: Sound and the label share a wrapper, so the pointer can travel onto the links */
+    const wrap = el('span', 'snd');
+    snd.parentNode.insertBefore(wrap, snd);
+    const tip = M.tip = el('span', 'snd__tip');
+    tip.id = 'snd-tip';
+    const kick = el('span', 'snd__k', 'Music');
+    const by = el('span', 'snd__c', 'cover by ');
+    by.append(link('snd__by', ST.music_by_url, ST.music_by));
+    tip.append(kick, link('snd__t', ST.music_url, ST.music_title), el('span', 'snd__a', ST.music_artist || ''), by);
+    /* the credit bubble: text only (the links live in the label above), so it never takes a tap meant for the page */
+    const mini = el('span', 'snd__mini');
+    mini.setAttribute('aria-hidden', 'true');
+    const note = el('span', 'snd__note');
+    const NS = 'http://www.w3.org/2000/svg', svg = D.createElementNS(NS, 'svg');   // Lucide "music", built node by node
+    svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true');
+    [['path', { d: 'M9 18V5l12-2v13' }], ['circle', { cx: 6, cy: 18, r: 3 }], ['circle', { cx: 18, cy: 16, r: 3 }]].forEach(([tag, at]) => {
+      const n = D.createElementNS(NS, tag); Object.entries(at).forEach(([k, v]) => n.setAttribute(k, v)); svg.appendChild(n);
+    });
+    note.appendChild(svg);
+    mini.append(note, el('b', '', ST.music_title + (ST.music_artist ? ' \u00b7 ' + ST.music_artist : '')), el('span', '', 'cover by ' + ST.music_by));
+    wrap.append(snd, tip, mini);
+    snd.setAttribute('aria-describedby', 'snd-tip');
+    const touch = matchMedia('(hover: none)');
+    let tipT = 0;
+    const reveal = () => {                               // a phone: the name shows for 3 s as the music starts
+      if (!touch.matches) return;
+      tip.classList.add('is-shown'); clearTimeout(tipT);
+      tipT = setTimeout(() => tip.classList.remove('is-shown'), 3000);
+    };
+    const set = s => { M.state = s; H.dataset.soundState = s; tell(); };
+    const paint = () => {
+      snd.setAttribute('aria-pressed', String(M.on));
+      snd.setAttribute('aria-label', M.on ? 'Music is on. Turn it off' : 'Music is off. Turn it on');
+      snd.querySelector('span').textContent = M.on ? 'sound on' : 'sound';
+      kick.textContent = M.on ? 'Now playing' : 'Music';
+      snd.dataset.cursor = M.on ? 'stop' : 'play';     // the cursor's word over Sound, kept true while it hovers
+      const word = AV.cursor && AV.cursor.querySelector('.cur__label');
+      if (word && snd.matches(':hover')) word.textContent = snd.dataset.cursor;
+      tell();
+    };
+    const playing = () => { M.on = true; paint(); set('on'); snd.classList.remove('is-loading'); reveal(); };
+    const remember = v => { try { localStorage.setItem('avas-sound', v); } catch (_) {} };
+    const wants = () => { let v = null; try { v = localStorage.getItem('avas-sound'); } catch (_) {} return (v || ST.music_default || 'off') === 'on'; };
+    const consented = () => { try { return localStorage.getItem('avas-consent') === 'granted'; } catch (_) { return false; } };
+    let E;                                               // the engine: start(tapped), stop(), away(hidden)
+
+    if (PAR) {
+      /* ---------- framed: Sound drives the shell's player ---------- */
+      E = { start() { PAR.toggle(true); }, stop() { PAR.toggle(false); }, away() {}, mayAuto: () => false };
+    } else if (YTM) {
+      /* ---------- YouTube's player, hidden ---------- */
+      const VOL = ST.music_volume || 60;
+      let host = null, fadeT = 0, watchT = 0, closing = false, away = false, auto = false;   // auto: a try with no tap behind it
+      const fade = (to, ms, done) => {
+        clearInterval(fadeT);
+        const p = M.player;
+        if (!p || !p.getVolume) { if (done) done(); return; }
+        const from = p.getVolume(), t0 = performance.now();
+        fadeT = setInterval(() => {
+          const k = Math.min(1, (performance.now() - t0) / ms);
+          try { p.setVolume(Math.round(from + (to - from) * k)); } catch (_) {}
+          if (k >= 1) { clearInterval(fadeT); if (done) done(); }
+        }, 50);
+      };
+      const api = () => (window.YT && window.YT.Player) ? Promise.resolve(window.YT) : (M.api || (M.api = new Promise((res, rej) => {
+        const prev = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => { if (prev) { try { prev(); } catch (_) {} } res(window.YT); };
+        const sc = D.createElement('script');
+        sc.src = 'https://www.youtube.com/iframe_api'; sc.async = true;
+        sc.onerror = () => { M.api = null; rej(new Error('iframe api')); };
+        D.head.appendChild(sc);
+        setTimeout(() => rej(new Error('iframe api timeout')), 15000);
+      })));
+      const ask = on => {                                // a browser that held it back: its own play button, under Sound
+        if (!host) return;
+        if (on) {
+          const r = wrap.getBoundingClientRect();
+          host.style.top = Math.round(r.bottom + 10) + 'px';
+          host.style.left = Math.max(10, Math.round(r.right - 240)) + 'px';
+        }
+        host.classList.toggle('is-asking', on); wrap.classList.toggle('is-asking', on);
+        host.setAttribute('aria-hidden', String(!on));
+        const f = host.querySelector('iframe'); if (f) f.tabIndex = on ? 0 : -1;
+      };
+      const fail = e => {
+        M.err = e && e.data != null ? e.data : String(e || '');   // YouTube's error number, for QA
+        M.on = false; paint(); set('error'); snd.classList.remove('is-loading'); ask(false);
+      };
+      const build = () => M.building || (M.building = api().then(YT => new Promise(res => {
+        host = el('div', 'yt-host'); host.setAttribute('aria-hidden', 'true');
+        const slot = el('div'); host.appendChild(slot); D.body.appendChild(host);
+        M.player = new YT.Player(slot, {
+          host: ST.music_host || 'https://www.youtube-nocookie.com',
+          videoId: ST.music_video, width: '100%', height: '100%',
+          playerVars: { autoplay: 0, controls: 1, loop: 1, playlist: ST.music_video, playsinline: 1, rel: 0, origin: location.origin },
+          events: {
+            onReady: e => {
+              const f = e.target.getIframe(); f.tabIndex = -1; f.title = 'Background music: ' + (ST.music_title || '');
+              e.target.setVolume(0); res(e.target);
+            },
+            onStateChange: e => {
+              const S = YT.PlayerState, p = e.target;
+              if (e.data === S.PLAYING) {
+                if (closing) { p.pauseVideo(); return; }
+                clearTimeout(watchT); ask(false); playing();
+                fade(VOL, p.getVolume() < VOL / 2 ? 1600 : 300);
+              } else if (e.data === S.PAUSED && !closing && !away && auto) {
+                clearTimeout(watchT); M.on = false; paint(); set('waiting');   // Chrome let it start, then held the sound back
+              } else if (e.data === S.PAUSED && !closing && !away && M.on) {
+                M.on = false; paint(); set('paused');
+              } else if (e.data === S.ENDED) { p.seekTo(0); p.playVideo(); }
+            },
+            onError: fail
+          }
+        });
+      })).catch(err => { M.building = null; M.api = null; fail(err && err.message); throw err; }));
+      E = {
+        start(tapped) {
+          closing = false; auto = !tapped; set('loading'); snd.classList.add('is-loading');
+          if (tapped) { M.on = true; paint(); }
+          build().then(p => {
+            if (closing) return;
+            p.playVideo();
+            clearTimeout(watchT);
+            watchT = setTimeout(() => {                  // still not playing: held back by the browser
+              if (M.state !== 'loading') return;
+              snd.classList.remove('is-loading');
+              if (tapped) { set('blocked'); M.on = false; paint(); ask(true); }
+              else { set('waiting'); M.on = false; paint(); }
+            }, tapped ? 4000 : 2500);
+          }).catch(() => {});
+        },
+        stop() {
+          closing = true; clearTimeout(watchT); M.on = false; paint(); set('off'); snd.classList.remove('is-loading'); ask(false);
+          tip.classList.remove('is-shown');
+          fade(0, 500, () => { try { if (closing && M.player && M.player.pauseVideo) M.player.pauseVideo(); } catch (_) {} });
+        },
+        away(hidden) {
+          const p = M.player;
+          if (!p || !p.pauseVideo) return;
+          if (hidden && M.on) { away = true; fade(0, 300, () => { if (D.hidden) p.pauseVideo(); }); }
+          else if (!hidden && away) { away = false; if (M.on) p.playVideo(); }
+        },
+        mayAuto: consented                               // YouTube only loads with the visitor's yes
+      };
+      /* Accept on the privacy notice is a yes to YouTube and a real tap: start right there
+         (consent.js has stored the answer by the time this bubbling listener runs) */
+      D.addEventListener('click', e => {
+        if (e.target.closest && e.target.closest('[data-consent="granted"]') && wants() && !M.on) E.start(true);
+      });
+      /* accepted on an earlier visit: try to play once the page has loaded; the first tap covers a refusal */
+      if (wants() && consented()) {
+        const go = () => setTimeout(() => { if (!M.on && M.state === 'off' && wants()) E.start(false); }, 1200);
+        if (D.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
+      }
+    } else {
+      /* ---------- the Web Audio loop (music-sync what-if) ---------- */
+      const VOL = 0.6, url = (ST.music_dir || '') + ST.music + '.mp4';
+      H.dataset.music = ST.music;
+      let busy = null;
+      const load = () => busy || (busy = (async () => {
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) throw new Error('no Web Audio');
+        if (!M.ctx) { M.ctx = new C(); M.gain = M.ctx.createGain(); M.gain.gain.value = 0; M.gain.connect(M.ctx.destination); }
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(r.status);
+        M.buf = await M.ctx.decodeAudioData(await r.arrayBuffer());
+      })());
+      /* Safari only unlocks audio inside the gesture itself, before any await: make the
+         context and ask it to resume right here, then let start() load in its own time */
+      const unlock = () => {
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return;
+        if (!M.ctx) { M.ctx = new C(); M.gain = M.ctx.createGain(); M.gain.gain.value = 0; M.gain.connect(M.ctx.destination); }
+        if (M.ctx.state !== 'running') { M.ctx.resume().catch(() => {}); const b = M.ctx.createBufferSource(); b.buffer = M.ctx.createBuffer(1, 1, 22050); b.connect(M.ctx.destination); b.start(0); }
+      };
+      const fade = (to, secs) => {
+        const g = M.gain.gain, t = M.ctx.currentTime;
+        g.cancelScheduledValues(t); g.setValueAtTime(Math.max(g.value, 0.0001), t);
+        g.exponentialRampToValueAtTime(Math.max(to, 0.0001), t + secs);
+      };
+      E = {
+        async start() {
+          unlock(); snd.classList.add('is-loading');
+          try { await load(); } catch (e) { snd.classList.remove('is-loading'); busy = null; set('error'); return; }
+          snd.classList.remove('is-loading');
+          if (M.ctx.state === 'suspended') await M.ctx.resume();
+          if (!M.src) {
+            M.src = M.ctx.createBufferSource();
+            M.src.buffer = M.buf; M.src.loop = true;
+            M.src.loopStart = ST.music_loop_start || 0;
+            M.src.loopEnd = Math.min(M.buf.duration, (ST.music_loop_start || 0) + (ST.music_seconds || M.buf.duration));
+            M.src.connect(M.gain); M.src.start(0, M.src.loopStart);
+            M.t0 = M.ctx.currentTime;                    // loop position = (now - t0) mod music_seconds
+          }
+          playing(); fade(VOL, 1.6);
+        },
+        stop() {
+          M.on = false; paint(); set('off'); tip.classList.remove('is-shown');
+          if (!M.ctx) return;
+          fade(0, 0.5);
+          setTimeout(() => { if (!M.on && M.ctx.state === 'running') M.ctx.suspend(); }, 560);
+        },
+        away(hidden) {
+          if (!M.ctx || !M.on) return;
+          if (hidden) { fade(0, 0.3); setTimeout(() => { if (D.hidden) M.ctx.suspend(); }, 320); }
+          else M.ctx.resume().then(() => fade(VOL, 1));
+        },
+        mayAuto: () => true                              // our own file: nothing third party to ask about
+      };
+    }
+
+    M.play = () => { if (!M.on) { E.start(true); remember('on'); } };   // for a page that asks first (the music-sync variant)
+    snd.addEventListener('click', () => {
+      if (M.on || M.state === 'loading') { E.stop(); remember('off'); } else { E.start(true); remember('on'); }
+    });
+    D.addEventListener('visibilitychange', () => E.away(D.hidden));
+    /* sound on by default (or left on last visit): the first tap, click or key starts it where
+       it may. A phone tap only counts on release, so listen to both ends and stop once it plays. */
+    if (wants() && !PAR) {
+      const EVTS = ['pointerdown', 'pointerup', 'touchend', 'keydown'];
+      const off = () => EVTS.forEach(t => removeEventListener(t, first, true));
+      function first(e) {
+        if (M.state === 'on') return off();
+        if (!E.mayAuto() || (M.state === 'loading' && M.on) || M.state === 'blocked') return;   // a load on its own (no tap) still takes this tap
+        if (wrap.contains(e.target) || (e.target.closest && e.target.closest('[data-nosound], #consent, .yt-host')) || e.key === 'Escape' || e.key === 'Tab') return;
+        if (!wants()) return off();                      // they turned it off meanwhile
+        E.start(true);
+      }
+      EVTS.forEach(t => addEventListener(t, first, true));
+    }
+    set('off'); paint();
+
+    if (PAR) {
+      /* ---------- framed: follow the shell's player, report where we are, leave for off-site links ---------- */
+      const sync = m => { M.on = m.on; snd.classList.toggle('is-loading', m.state === 'loading'); set(m.state); paint(); };
+      PAR.watch(sync); sync(PAR.m);
+      const arrive = () => { try { PAR.arrive(location.href, D.title); } catch (_) {} };
+      arrive(); addEventListener('hashchange', arrive);
+      D.addEventListener('click', e => {
+        if (!plain(e)) return;
+        const u = linkOf(e);
+        if (!u || site(u)) return;                       // the site's own pages stay in the frame
+        e.preventDefault(); window.top.location.href = u.href;
+      });
+    } else {
+      /* ---------- the shell: while the music plays, the site's pages open over this one ---------- */
+      let frame = null;
+      const first = D.title;
+      const open = href => {
+        frame = el('iframe', 'av-frame');
+        frame.title = first; frame.src = href;
+        frame.setAttribute('allow', 'autoplay; fullscreen; clipboard-write');
+        frame.addEventListener('load', () => { try { frame.contentWindow.focus(); } catch (_) {} });
+        D.body.appendChild(frame); H.classList.add('av-shell');
+      };
+      const close = () => {
+        if (!frame) return;
+        frame.remove(); frame = null; watcher = null; H.classList.remove('av-shell'); D.title = first;
+      };
+      window.AVMusic = {
+        m: M,
+        toggle(on) {
+          if (on && !M.on && M.state !== 'loading') { E.start(true); remember('on'); }
+          else if (!on && (M.on || M.state === 'loading')) { E.stop(); remember('off'); }
+        },
+        watch(fn) { watcher = fn; },
+        arrive(href, title) {
+          if (!frame) return;
+          try { history.replaceState({ avShell: href }, '', href); } catch (_) {}
+          D.title = title; frame.title = title;
+        },
+        frame: () => frame                               // for the QA scripts
+      };
+      D.addEventListener('click', e => {
+        if (frame || !plain(e) || (!M.on && M.state !== 'loading')) return;   // silent: a plain page load costs nothing
+        const u = linkOf(e);
+        if (!u || !site(u)) return;
+        if (norm(u.pathname) === norm(location.pathname) && u.search === location.search) return;   // this page: its own hash travel
+        e.preventDefault();
+        history.pushState({ avShell: u.href }, '', u.href);
+        open(u.href);
+      });
+      addEventListener('popstate', e => {
+        const s = e.state && e.state.avShell;
+        if (s && !frame) open(s); else if (!s) close();
+      });
+    }
+  }
+})();
+
+/* Privacy consent. One key, three states: unset shows the notice, granted lets
+   the music start on its own, denied keeps every third party off the page.
+   The answer changes behaviour, so the notice is not decoration. */
+(() => {
+  'use strict';
+  var KEY = 'avas-consent';
+  var el = document.getElementById('consent');
+  if (!el) return;
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  window.avasConsent = {
+    state: function () { return read(); },
+    granted: function () { return read() === 'granted'; },
+    onChange: []
+  };
+
+  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+
+  el.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.dataset.consent;
+    write(v);
+    el.hidden = true;
+    delete document.documentElement.dataset.consent;
+    window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
+  });
+})();
+
+/* ==========================================================================
+   AVAS inner pages (/work/, /services/): the scroll engine. 2026-09-29.
+   Every effect here is driven by scroll position or a click. Nothing loops,
+   bobs, pulses or turns on its own (Owner: oscillating motion makes him dizzy).
+
+   A scene is any element with data-scene; it gets --p (0 to 1) from where it
+   sits on screen, and CSS turns that one number into transforms, opacity and
+   clip-path. Modes:
+     in    entrance: 0 when its top meets the bottom edge, 1 at 40% from the top
+     view  0 when its top meets the bottom edge, 1 when its bottom leaves the top
+     pin   0 when it reaches the top, 1 when its end leaves (sticky child inside)
+     hero  0 at the top of the page, 1 once the page has scrolled its height
+   html.fx is on only when motion is allowed: prefers-reduced-motion and the
+   CALM button take it off, and every scene falls back to a plain, still page
+   (the no-JS page is that same still page, with every number already written).
+   ========================================================================== */
+(() => {
+  'use strict';
+  const D = document, H = D.documentElement;
+  const RMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  const NARROW = matchMedia('(max-width: 900px)');
+  const clamp = v => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const live = () => !RMQ.matches && H.dataset.motion !== 'calm';
+  let vh = innerHeight;
+
+  /* ---- data on the page: totals the Work page computes from its own files. The served HTML
+     already carries them (clients_gen.totals); build.py runs workTotals in node on the same data
+     and fails the build unless the two agree, key by key. ---- */
+  /* TOTALS:begin */
+  const workTotals = data => {
+    const norm = ch => ch.replace(/ group$/, '');
+    const channels = new Map(), byCountry = {};
+    data.forEach(c => [...new Set((c.channels || []).map(norm))].sort().forEach(ch => channels.set(ch, (channels.get(ch) || 0) + 1)));
+    data.forEach(c => { if (c.country) byCountry[c.country] = (byCountry[c.country] || 0) + 1; });
+    const cmp = (a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0);
+    const sorted = o => Object.keys(o).sort().reduce((m, k) => (m[k] = o[k], m), {});
+    return {
+      brands: data.length,
+      current: data.filter(c => c.status === 'current').length,
+      past: data.filter(c => c.status !== 'current').length,
+      countries: Object.keys(byCountry).length,
+      channels: channels.size,
+      run: data.reduce((a, c) => a + (+c.run || 0), 0),
+      runBrands: data.filter(c => +c.run > 0).length,
+      results: data.reduce((a, c) => a + (+c.stats || 0), 0),
+      byCountry: sorted(byCountry),
+      bars: [...channels].sort(cmp).filter(r => r[1] >= 2).slice(0, 7)
+    };
+  };
+  /* TOTALS:end */
+  const dataEl = D.getElementById('work-data');
+  if (dataEl) {
+    let data = null;
+    try { data = JSON.parse(dataEl.textContent); } catch (_) {}
+    if (data) {
+      const t = workTotals(data);
+      D.querySelectorAll('[data-total]').forEach(n => {
+        const v = t[n.dataset.total];
+        if (v === undefined) return;
+        if (n.textContent.trim() !== String(v)) { console.warn('work: total', n.dataset.total, 'served', n.textContent, 'computed', v); n.textContent = String(v); }
+      });
+      D.querySelectorAll('[data-country]').forEach(n => { n.textContent = String(t.byCountry[n.dataset.country] || 0); });
+    }
+  }
+  /* the tallies of "the sum" count with the scroll; their final value is the total above */
+  const tallies = [...D.querySelectorAll('[data-tally]')].map(el => {
+    const st = el.closest('[style*="--s:"]'), m = st && /--s:\s*(\d+)/.exec(st.getAttribute('style'));
+    return { el, v: +el.textContent || 0, shown: -1, sc: el.closest('[data-steps]'), k: m ? +m[1] : 0 };
+  });
+
+  /* ---- words: [data-split] wraps each word so it can rise out of a mask ---- */
+  D.querySelectorAll('[data-split]').forEach(el => {
+    const words = [];
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 1) { walk(n); return; }
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;
+      const frag = D.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(D.createTextNode(' ')); return; }
+        const w = D.createElement('span'); w.className = 'kw';
+        const i = D.createElement('span'); i.textContent = part;
+        w.appendChild(i); words.push(w); frag.appendChild(w);
+      });
+      n.replaceWith(frag);
+    });
+    walk(el);
+    words.forEach((w, k) => w.style.setProperty('--k', (k / Math.max(1, words.length - 1)).toFixed(3)));
+  });
+
+  /* ---- the dotted ground: the home page's field, moving only with the scroll ---- */
+  const cv = D.getElementById('dots');
+  let drawDots = () => {};
+  if (cv) {
+    const ctx = cv.getContext('2d');
+    const GAP = 26, RATE = 0.3;
+    const css = getComputedStyle(H), ink = css.getPropertyValue('--dot').trim() || css.getPropertyValue('--border').trim();  // role tokens only
+    const mod = v => ((v % GAP) + GAP) % GAP;
+    let W = 0, Hh = 0;
+    drawDots = () => {
+      const oy = live() ? scrollY * RATE : 0;
+      ctx.clearRect(0, 0, W, Hh);
+      ctx.beginPath();
+      const x0 = mod(GAP / 2), y0 = mod(GAP / 2 - oy);
+      for (let y = y0; y < Hh; y += GAP) for (let x = x0; x < W; x += GAP) { ctx.moveTo(x + 1.3, y); ctx.arc(x, y, 1.3, 0, 6.2832); }
+      ctx.fillStyle = ink; ctx.fill();
+    };
+    const size = () => {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      W = innerWidth; Hh = innerHeight;
+      cv.width = W * dpr; cv.height = Hh * dpr;
+      cv.style.width = W + 'px'; cv.style.height = Hh + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      drawDots();
+    };
+    addEventListener('resize', size);
+    size();
+  }
+
+  /* ---- scenes ---- */
+  const scenes = [...D.querySelectorAll('[data-scene]')].map(el => ({ el, mode: el.dataset.scene, on: true, p: -1 }));
+  const prog = s => {
+    const r = s.el.getBoundingClientRect();
+    switch (s.mode) {
+      case 'pin': { const span = r.height - vh; return span > 0 ? clamp(-r.top / span) : (r.top < 0 ? 1 : 0); }
+      case 'view': return clamp((vh - r.top) / (r.height + vh));
+      case 'hero': return clamp(scrollY / Math.max(1, r.height));
+      default: return clamp((vh - r.top) / (vh * 0.6));
+    }
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const s = scenes.find(x => x.el === e.target);
+      if (s) { s.on = e.isIntersecting; if (s.on) kick(); }  // a fast jump can land after the last scroll tick
+    }), { rootMargin: '25% 0px 25% 0px' });
+    scenes.forEach(s => io.observe(s.el));
+  }
+
+  /* ---- the metallic A: a pre-rendered turn of the same glass A (48 frames, one AVIF each, about
+     2x the display size), drawn on a canvas one frame per scroll step. Frames load on the first
+     sign of intent, coarse to fine (every 8th frame first), so the A can turn after a few KB and
+     sharpens its steps as the rest arrive. Only a window of decoded frames is kept around the
+     current one; the rest stay compressed. Until the first frame other than 0 is needed, the page
+     shows frame 0 as a plain <img> (the first paint). ---- */
+  const ORDER = n => {
+    const seen = new Set(), out = [];
+    [8, 4, 2, 1].forEach(st => { for (let i = 0; i < n; i += st) if (!seen.has(i)) { seen.add(i); out.push(i); } });
+    if (!seen.has(n - 1)) out.push(n - 1);
+    return out;
+  };
+  const turns = [...D.querySelectorAll('[data-turn]')].map(el => {
+    const sm = NARROW.matches;
+    const [w, h] = (sm ? el.dataset.sizeSm : el.dataset.sizeLg || '600x1066').split('x').map(Number);
+    return { el, n: +el.dataset.frames || 48, base: sm ? el.dataset.sm : el.dataset.lg, w, h,
+             blobs: [], bms: new Map(), pending: new Set(), loaded: false, live: false, want: 0, painted: -1, cv: null };
+  });
+  const canDecode = typeof createImageBitmap === 'function' && typeof fetch === 'function';
+  const nearest = (t, f) => {
+    for (let d = 0; d < t.n; d++) {
+      if (t.blobs[f - d]) return f - d;
+      if (t.blobs[f + d]) return f + d;
+    }
+    return -1;
+  };
+  const decode = (t, k) => {
+    if (k < 0 || k >= t.n || !t.blobs[k] || t.bms.has(k) || t.pending.has(k)) return;
+    t.pending.add(k);
+    createImageBitmap(t.blobs[k]).then(bm => {
+      t.pending.delete(k);
+      t.bms.set(k, bm);
+      // keep a window of decoded frames around the one the scroll wants; close the rest
+      if (t.bms.size > 14) [...t.bms.keys()].sort((a, b) => Math.abs(b - t.want) - Math.abs(a - t.want)).slice(0, t.bms.size - 14)
+        .forEach(j => { const x = t.bms.get(j); t.bms.delete(j); if (x.close) x.close(); });
+      showTurn(t);
+    }, () => { t.pending.delete(k); t.broken = true; });
+  };
+  const paint = (t, k) => {
+    if (k === t.painted) return;
+    const bm = t.bms.get(k);
+    if (!bm) return;
+    if (!t.cv) {
+      t.cv = D.createElement('canvas');
+      t.cv.width = t.w; t.cv.height = t.h;
+      t.el.appendChild(t.cv);
+      t.ctx = t.cv.getContext('2d');
+    }
+    t.ctx.clearRect(0, 0, t.w, t.h);
+    t.ctx.drawImage(bm, 0, 0, t.w, t.h);
+    t.painted = k;
+    if (!t.live) { t.live = true; t.el.classList.add('is-live'); }
+  };
+  function showTurn(t) {
+    if (t.broken || !H.classList.contains('fx')) return;
+    if (!t.live && t.want === 0) return;              // frame 0 is the <img> already on screen
+    const k = nearest(t, t.want);
+    if (k < 0) return;
+    if (t.bms.has(k)) paint(t, k);
+    else {
+      decode(t, k);
+      // meanwhile, the closest decoded frame keeps the A moving
+      let best = -1;
+      t.bms.forEach((_, j) => { if (best < 0 || Math.abs(j - t.want) < Math.abs(best - t.want)) best = j; });
+      if (best >= 0) paint(t, best);
+    }
+    [1, -1, 2, -2, 3, -3].forEach(d => { const j = nearest(t, t.want + d); if (j >= 0) decode(t, j); });
+  }
+  const loadTurns = () => turns.forEach(t => {
+    if (t.loaded || !t.base || !live() || !canDecode) return;
+    t.loaded = true;
+    const queue = ORDER(t.n);
+    let active = 0;
+    const next = () => {
+      while (active < 6 && queue.length) {
+        const i = queue.shift();
+        active++;
+        fetch(t.base + String(i).padStart(2, '0') + '.avif', { priority: 'low' })
+          .then(r => (r.ok ? r.blob() : null))
+          .then(b => { if (b) { t.blobs[i] = b; showTurn(t); } }, () => {})
+          .finally(() => { active--; next(); });
+      }
+    };
+    next();
+  });
+  const setTurn = (t, p) => {
+    const f = Math.round(p * (t.n - 1));
+    if (f === t.want && (t.live || f === 0)) return;
+    t.want = f;
+    showTurn(t);
+  };
+  const stillTurns = () => turns.forEach(t => {
+    t.want = 0; t.painted = -1; t.live = false; t.el.classList.remove('is-live');
+  });
+
+  /* ---- horizontal tracks: a pinned section whose track slides sideways ---- */
+  const tracks = [...D.querySelectorAll('[data-track]')];
+  const measureTracks = () => tracks.forEach(sec => {
+    const tr = sec.querySelector('.hs__track');
+    if (!tr) return;
+    const tw = Math.max(0, tr.scrollWidth - sec.clientWidth);
+    sec.style.setProperty('--tw', String(Math.round(tw)));
+  });
+
+  /* ---- stacking files: each card shrinks back as the next one covers it ---- */
+  const files = [...D.querySelectorAll('[data-file]')];
+  const stackFiles = () => {
+    if (!H.classList.contains('fx') || NARROW.matches) { files.forEach(f => f.style.removeProperty('--cover')); return; }
+    for (let i = 0; i < files.length - 1; i++) {
+      const a = files[i].getBoundingClientRect(), b = files[i + 1].getBoundingClientRect();
+      files[i].style.setProperty('--cover', clamp((a.bottom - b.top) / a.height).toFixed(3));
+    }
+  };
+
+  /* ---- numbers: count as they enter, once; "A to B" counts B up from A ---- */
+  const fmt = (v, like) => (/,/.test(like) || v >= 10000 ? Math.round(v).toLocaleString('en-US') : String(Math.round(v)));
+  const countEl = el => {
+    if (el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const final = el.textContent;
+    if (!live()) return;
+    const nums = [...final.matchAll(/\d[\d,]*/g)];
+    if (!nums.length) return;
+    const vals = nums.map(m => parseFloat(m[0].replace(/,/g, '')));
+    const pair = /^\s*\S+\s+to\s+\S+\s*$/.test(final) && vals.length === 2;
+    const t0 = performance.now(), dur = 1300;
+    const step = t => {
+      const e = 1 - Math.pow(1 - clamp((t - t0) / dur), 3);
+      let i = 0;
+      el.textContent = final.replace(/\d[\d,]*/g, m => {
+        const k = i++;
+        if (pair && k === 0) return m;               // "A to B": A is a fixed start, never counted
+        const from = pair ? vals[0] : 0;
+        return fmt(from + (vals[k] - from) * e, m);
+      });
+      if (e < 1) requestAnimationFrame(step); else el.textContent = final;
+    };
+    requestAnimationFrame(step);
+  };
+  const counters = [...D.querySelectorAll('[data-num]')];
+  if ('IntersectionObserver' in window) {
+    const cio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { countEl(e.target); cio.unobserve(e.target); }
+    }), { threshold: 0.6 });
+    counters.forEach(c => cio.observe(c));
+  }
+
+  /* ---- images and posters that wait for their section: data-src / data-poster are set when the
+     element is about a screen away, so they never compete with the first paint ---- */
+  const lazy = [...D.querySelectorAll('img[data-src], video[data-poster]')];
+  const wake = el => {
+    if (el.tagName === 'IMG') { el.src = el.dataset.src; el.removeAttribute('data-src'); }
+    else { el.poster = el.dataset.poster; el.removeAttribute('data-poster'); }
+  };
+  // watched only after the load event: the wall sits one screen under the hero, so a margin of
+  // one screen alone would still fetch its marks alongside the first frame of the A
+  const startLazy = () => {
+    if (!('IntersectionObserver' in window)) { lazy.forEach(wake); return; }
+    const lio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { wake(e.target); lio.unobserve(e.target); }
+    }), { rootMargin: '100% 0px 100% 0px' });
+    lazy.forEach(el => lio.observe(el));
+  };
+  if (D.readyState === 'complete') startLazy(); else addEventListener('load', startLazy, { once: true });
+
+  /* ---- videos: fetched and played only on screen, paused off it, never under calm ---- */
+  const vids = [...D.querySelectorAll('video[data-src]')];
+  if ('IntersectionObserver' in window) {
+    const vio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && live()) {
+        if (!v.getAttribute('src')) { v.src = v.dataset.src; v.preload = 'auto'; }
+        if (!v.ended) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+      } else if (!v.paused) v.pause();
+    }), { threshold: 0.2 });
+    vids.forEach(v => vio.observe(v));
+  }
+
+  /* ---- the frame loop: runs only while the page scrolls ---- */
+  let raf = 0;
+  function tick(force) {
+    raf = 0;
+    if (!H.classList.contains('fx')) return;
+    for (const s of scenes) {
+      if (!s.on && !force) continue;
+      const p = prog(s);
+      if (Math.abs(p - s.p) < 0.0005 && !force) continue;
+      s.p = p;
+      s.el.style.setProperty('--p', p.toFixed(4));
+    }
+    turns.forEach(t => { if (t.loaded) { const s = scenes.find(x => x.el.contains(t.el)); if (s) setTurn(t, s.p < 0 ? 0 : s.p); } });
+    tallyTick();
+    stackFiles();
+    drawDots();
+  }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(() => tick(false)); };
+
+  /* a pinned scene of n steps (data-steps): step s owns p from s/n to (s+1)/n; its tally counts
+     from 0 to its total over the first 45% of that span, and back down if the reader scrolls back */
+  function tallyTick() {
+    tallies.forEach(t => {
+      const s = t.sc && scenes.find(x => x.el === t.sc);
+      if (!s || s.p < 0) return;
+      const q = clamp((s.p * (+t.sc.dataset.steps || 1) - t.k) / 0.45);
+      const v = Math.round(t.v * q);
+      if (v !== t.shown) { t.shown = v; t.el.textContent = String(v); }
+    });
+  }
+  const stillTallies = () => tallies.forEach(t => { t.shown = -1; t.el.textContent = String(t.v); });
+
+  function mode() {
+    const on = live();
+    H.classList.toggle('fx', on);
+    if (on) { measureTracks(); tick(true); if (scrollY > 0) loadTurns(); }
+    else {
+      scenes.forEach(s => { s.p = -1; s.el.style.removeProperty('--p'); });
+      stillTurns();
+      stillTallies();
+      files.forEach(f => f.style.removeProperty('--cover'));
+      vids.forEach(v => v.pause());
+      drawDots();
+    }
+  }
+  const menuCalm = D.querySelector('[data-calm-menu]'), topCalm = D.querySelector('[data-calm]');
+  const paintMenuCalm = () => {
+    if (!menuCalm) return;
+    const on = H.dataset.motion === 'calm';
+    menuCalm.setAttribute('aria-pressed', String(on));
+    menuCalm.textContent = on ? 'Calm: motion is off' : 'Calm: turn motion off';
+  };
+  if (menuCalm && topCalm && !menuCalm.dataset.bound) menuCalm.addEventListener('click', () => { topCalm.click(); paintMenuCalm(); });
+  D.addEventListener('av:calm', paintMenuCalm);
+  paintMenuCalm();
+  addEventListener('scroll', kick, { passive: true });
+  addEventListener('resize', () => { vh = innerHeight; measureTracks(); tick(true); });
+  RMQ.addEventListener('change', mode);
+  D.addEventListener('av:calm', mode);
+  mode();
+  /* the 330 KB turn sheet is fetched on the first sign of intent (a scroll, wheel, touch, pointer
+     or key), never during the first load, so it cannot compete with the first frame for bandwidth */
+  const INTENT = ['scroll', 'wheel', 'touchstart', 'pointerdown', 'pointermove', 'keydown'];
+  const onIntent = () => {
+    loadTurns();   // under CALM nothing loads, so the listeners stay for the first intent after it
+    if (turns.every(t => t.loaded || !t.sheet)) INTENT.forEach(ev => removeEventListener(ev, onIntent, true));
+  };
+  INTENT.forEach(ev => addEventListener(ev, onIntent, { capture: true, passive: true }));
+
+})();
+
+/* /staffing/ role pick (2026-10-01). The quiz sends people here as
+   /staffing/?h=pt#role-<id> (or h=ft), or /staffing/#role-<id> when the
+   visitor was not sure of the hours. When the role resolves, the card is
+   ringed, takes focus and scrolls into view; when the hours resolve too, that
+   cell is filled. Anything unknown is ignored and the page reads as a plain menu. No network, no globals, no
+   storage. Scrolling is instant when motion is off (html without .fx, or the
+   reduced motion setting); work-motion.js sets .fx only when motion is allowed. */
+(function () {
+  'use strict';
+
+  var doc = document;
+  var root = doc.documentElement;
+  var HOURS = { pt: 1, ft: 1 };
+  var ROLE_HASH = /^#role-([a-z0-9-]+)$/;
+
+  function reduced() {
+    if (!root.classList.contains('fx')) return true;
+    try {
+      return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function readHours() {
+    var h = '';
+    try {
+      h = new URLSearchParams(window.location.search).get('h') || '';
+    } catch (e) {
+      h = '';
+    }
+    return Object.prototype.hasOwnProperty.call(HOURS, h) ? h : '';
+  }
+
+  function readRole() {
+    var m = ROLE_HASH.exec(window.location.hash || '');
+    if (!m) return null;
+    var el = doc.getElementById('role-' + m[1]);
+    if (!el || !el.classList.contains('srow') || el.getAttribute('data-role') !== m[1]) return null;
+    return el;
+  }
+
+  function clear() {
+    var picked = doc.querySelectorAll('.srow.is-picked');
+    var cells = doc.querySelectorAll('.srow .is-h');
+    var i;
+    for (i = 0; i < picked.length; i++) picked[i].classList.remove('is-picked');
+    for (i = 0; i < cells.length; i++) cells[i].classList.remove('is-h');
+  }
+
+  function inView(el) {
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || root.clientHeight;
+    return r.top >= 0 && r.bottom <= vh;
+  }
+
+  function show(el) {
+    try {
+      el.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' });
+    } catch (e) {
+      el.scrollIntoView();
+    }
+  }
+
+  function apply(first) {
+    clear();
+    var h = readHours();
+    var row = readRole();
+    if (!row) return;
+
+    row.classList.add('is-picked');
+    var cell = h ? row.querySelector('[data-h="' + h + '"]') : null;
+    if (cell) cell.classList.add('is-h');
+
+    try {
+      row.focus({ preventScroll: true });
+    } catch (e) {
+      row.focus();
+    }
+
+    // wait one frame so the shell's own layout work lands before we measure
+    window.requestAnimationFrame(function () {
+      show(row);
+    });
+
+    // fonts and scenes can shift the page once after load: settle once, only if we drifted
+    if (first && doc.readyState !== 'complete') {
+      window.addEventListener('load', function () {
+        if (row.classList.contains('is-picked') && !inView(row)) show(row);
+      }, { once: true });
+    }
+  }
+
+  function start() {
+    apply(true);
+    window.addEventListener('hashchange', function () {
+      apply(false);
+    });
+  }
+
+  if (doc.readyState === 'loading') {
+    doc.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
+})();
+</script>
+
+<script src="/assets/faq-widget.js" data-endpoint="https://portal.ayalavirtualassistance.site/api/public/faq" defer></script>
+<script src="/assets/prequal.js" defer></script>
+</body>
+</html>

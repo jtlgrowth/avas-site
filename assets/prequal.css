@@ -1,0 +1,49 @@
+/* Pre-qualify popup and its reopen pill (prequal.js). Site tokens with fallbacks, so it reads the same
+   on the home, the A-look inner pages and the staffing pages. */
+.pq{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px}
+.pq[hidden]{display:none}
+.pq__dim{position:absolute;inset:0;background:rgba(29,29,31,.42)}
+.pq__box{position:relative;width:min(560px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;
+  background:var(--bg,#F5F5F7);color:var(--ink,#1D1D1F);border-radius:22px;box-shadow:0 36px 90px rgba(29,29,31,.3);
+  padding:24px 22px;font-family:var(--font-b,'Archivo',system-ui,-apple-system,sans-serif);letter-spacing:-.01em;outline:none}
+.pq__top{display:flex;justify-content:space-between;font:400 11px/1.2 var(--font-m,'Space Mono',ui-monospace,monospace);
+  text-transform:uppercase;letter-spacing:.08em;color:var(--muted,#515154)}
+.pq__bar{height:3px;background:var(--hair,#D2D2D7);border-radius:3px;margin:12px 0 20px}
+.pq__bar i{display:block;height:100%;background:var(--espresso,#8B4A2A);border-radius:3px;transition:width .25s ease}
+.pq__h{font:700 24px/1.15 var(--font-d,'Archivo',system-ui,sans-serif);letter-spacing:-.026em;margin:0 0 6px}
+.pq__sub{color:var(--muted,#515154);font-size:16px;line-height:1.45;margin:0 0 14px}
+.pq__opts{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}
+.pq__opts--6{grid-template-columns:repeat(3,1fr)}
+@media (max-width:480px){.pq__opts--6{grid-template-columns:repeat(2,1fr)}}
+.pq__opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;aspect-ratio:1/1;min-height:96px;
+  text-align:center;background:var(--panel,#fff);border:1px solid var(--hair,#D2D2D7);border-radius:16px;
+  padding:12px 10px;font:inherit;font-size:15px;line-height:1.25;color:inherit;cursor:pointer}
+.pq__opt:hover{border-color:var(--espresso,#8B4A2A)}
+.pq__ico{width:30px;height:30px;color:var(--espresso,#8B4A2A);flex:none}
+@media (max-width:480px){.pq__opt{font-size:14px;gap:8px}.pq__ico{width:26px;height:26px}}
+.pq__opt:focus-visible,.pq__link:focus-visible,.pq__cta:focus-visible,.pq-pill:focus-visible{outline:2px solid var(--espresso,#8B4A2A);outline-offset:2px}
+.pq__foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 16px;margin-top:16px}
+.pq__link{background:none;border:0;padding:6px 0;font:inherit;font-size:15px;color:var(--muted,#515154);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pq__card{background:var(--panel,#fff);border:1px solid var(--hair,#D2D2D7);border-radius:16px;padding:16px;margin:12px 0}
+.pq__role{font-size:20px;font-weight:700;margin:0}
+.pq__price{color:var(--muted,#515154);font-size:15px;margin:2px 0 0}
+.pq__card ul{margin:10px 0 0;padding-left:20px;font-size:16px;line-height:1.5;list-style:disc}
+.pq__card li{display:list-item;list-style:disc;margin:3px 0}
+.pq__alt{color:var(--muted,#515154);font-size:14px;margin:10px 0 0}
+.pq__offer{border:1px solid var(--espresso,#8B4A2A);background:var(--espresso-10,rgba(139,74,42,.10));border-radius:16px;padding:14px 16px;margin:12px 0;font-size:16px}
+.pq__offer p{margin:0}
+.pq__clock{font:700 26px/1.3 var(--font-m,'Space Mono',ui-monospace,monospace);color:var(--espresso,#8B4A2A);margin:4px 0 0!important}
+.pq__cta{display:block;text-align:center;background:var(--espresso,#8B4A2A);color:#fff;border-radius:99px;padding:14px;font-weight:700;font-size:16px;text-decoration:none;margin-top:10px}
+.pq__fine{color:var(--muted,#515154);font-size:13px;margin:8px 0 0}
+.pq-pill{position:fixed;left:76px;bottom:22px;z-index:2147482000;background:var(--ink,#1D1D1F);color:var(--bg,#F5F5F7);border:0;border-radius:99px;
+  padding:11px 16px;font:600 14px var(--font-b,'Archivo',system-ui,sans-serif);cursor:pointer;box-shadow:0 10px 30px rgba(29,29,31,.2)}
+.pq-pill[hidden]{display:none}
+html.pq-on{overflow:hidden}
+/* the site's custom cursor (a-kit.css .cur, z-index 120) hides the real one; keep it above the popup and the
+   pill, or the visitor has no cursor at all over them (Owner 2026-10-20: "ung cursor naka hide hndi kita") */
+html.has-cur .cur{z-index:2147483600}
+/* inside the popup its "open" ring covers the answers, so the popup uses the plain system cursor */
+html.pq-on .cur{display:none!important}
+html.pq-on .pq,html.pq-on .pq *{cursor:auto}
+html.pq-on .pq button,html.pq-on .pq a[href],html.pq-on .pq [data-pq-close]{cursor:pointer}
+@media (prefers-reduced-motion:reduce){.pq__bar i{transition:none}}
