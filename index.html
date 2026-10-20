@@ -817,14 +817,25 @@ html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
    home page only (home-gen.py inlines them into a-home.html), so /team/ and /how/ do not carry them. */
 
 /* Privacy notice. It gates something real: the music does not start on its
-   own until this is answered, so declining actually changes what happens. */
+   own until this is answered, so declining actually changes what happens.
+   Owner 2026-10-21: centred, with the page blurred behind it, so it reads as
+   the first thing to answer instead of a corner card that gets missed. Accept
+   and Decline both close it and the page carries on; only the music differs. */
 #consent{
-  position:fixed;left:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:60;
-  width:min(400px,calc(100vw - 28px));
-  background:var(--panel);border:1px solid var(--hair);border-radius:16px;
-  box-shadow:var(--shadow-lift);padding:20px 22px 18px;
+  position:fixed;inset:0;z-index:110;
+  display:flex;align-items:center;justify-content:center;padding:16px;
+  background:rgba(16,11,8,.28);
+  -webkit-backdrop-filter:blur(10px) saturate(.9);backdrop-filter:blur(10px) saturate(.9);
 }
-#consent .consent__h{font-family:var(--font-d);font-size:19px;color:var(--deep);margin-bottom:8px}
+#consent[hidden]{display:none}
+html[data-consent="ask"]{overflow:hidden}
+#consent .consent__card{
+  width:min(440px,100%);max-height:calc(100svh - 32px);overflow:auto;
+  background:var(--panel);border:1px solid var(--hair);border-radius:18px;
+  box-shadow:var(--shadow-lift),0 30px 80px rgba(16,11,8,.22);padding:24px 26px 20px;
+}
+#consent .consent__card:focus{outline:none}
+#consent .consent__h{font-family:var(--font-d);font-size:21px;color:var(--deep);margin-bottom:8px}
 #consent .consent__p{font-size:14px;line-height:1.55;color:var(--muted)}
 #consent .consent__more{margin-top:10px;font-size:13px;color:var(--muted)}
 #consent .consent__more summary{cursor:pointer;color:var(--espresso);list-style:none}
@@ -834,9 +845,9 @@ html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
 #consent .consent__more ul{margin:10px 0 0;padding-left:18px;line-height:1.6}
 #consent .consent__more li+li{margin-top:6px}
 #consent .consent__more b{color:var(--ink)}
-#consent .consent__row{display:flex;gap:10px;margin-top:16px}
+#consent .consent__row{display:flex;gap:10px;margin-top:18px}
 #consent .consent__btn{
-  flex:1;padding:10px 14px;border-radius:999px;cursor:pointer;
+  flex:1;padding:11px 14px;border-radius:999px;cursor:pointer;
   border:1px solid var(--hair);background:transparent;color:var(--ink);
   font-size:14px;font-weight:500;
   transition:background .25s,border-color .25s,color .25s;
@@ -844,8 +855,16 @@ html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
 #consent .consent__btn:hover{border-color:var(--espresso-24);background:var(--espresso-10);color:var(--espresso)}
 #consent .consent__btn--yes{background:var(--espresso);border-color:var(--espresso);color:var(--panel)}
 #consent .consent__btn--yes:hover{background:var(--deep);border-color:var(--deep);color:var(--panel)}
+/* the veil fades in and the card rises once; calm mode and reduced motion skip both */
+@keyframes consent-veil{from{opacity:0}}
+@keyframes consent-rise{from{opacity:0;transform:translateY(14px) scale(.985)}}
+#consent:not([hidden]){animation:consent-veil .35s ease-out backwards}
+#consent:not([hidden]) .consent__card{animation:consent-rise .45s cubic-bezier(.2,.8,.2,1) .05s backwards}
+html[data-motion="calm"] #consent,html[data-motion="calm"] #consent .consent__card{animation:none}
+@media (prefers-reduced-motion:reduce){#consent,#consent .consent__card{animation:none}}
 @media (max-width:520px){
-  #consent{left:10px;right:10px;bottom:10px;width:auto;padding:16px 18px 14px}
+  #consent{padding:12px}
+  #consent .consent__card{padding:20px 20px 16px}
 }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://ayalavirtualassistance.site/#org","name":"AVAS","alternateName":"Ayala Virtual Assistance Services","url":"https://ayalavirtualassistance.site/","logo":"https://ayalavirtualassistance.site/assets/avas-mark-plain.png","description":"AVAS is a marketing execution team in Manila: strategy, content, funnels, ads and ops, with a report of what shipped.","foundingDate":"2021","foundingLocation":"Quezon City, Philippines","areaServed":["United States","Australia","Philippines"],"email":"info@ayalavirtualassistance.com","founder":{"@id":"https://ayalavirtualassistance.site/#gwen"},"employee":[{"@id":"https://ayalavirtualassistance.site/#jamz"}],"knowsAbout":["Growth Roadmaps","Brand Positioning","Campaign Planning","Content Creation","Social Media","Ad Management","Email Marketing","Funnels & CRM","Admin Support","SEO","GEO","AIO"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"AVAS services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Growth Roadmaps","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Brand Positioning","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Campaign Planning","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Content Creation","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Social Media","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Ad Management","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Email Marketing","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Funnels & CRM","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Admin Support","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"SEO","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GEO","url":"https://ayalavirtualassistance.site/services/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AIO","url":"https://ayalavirtualassistance.site/services/"}}]},"sameAs":["https://jtlgrowth.com"]},{"@type":"Person","@id":"https://ayalavirtualassistance.site/#gwen","name":"Gwen Ayala","jobTitle":"Founder, Marketing Strategist","worksFor":{"@id":"https://ayalavirtualassistance.site/#org"}},{"@type":"Person","@id":"https://ayalavirtualassistance.site/#jamz","name":"Jamz Jamorol","jobTitle":"Co-founder, COO","worksFor":{"@id":"https://ayalavirtualassistance.site/#org"}},{"@type":"Organization","@id":"https://jtlgrowth.com/#org","name":"JTL Growth","url":"https://jtlgrowth.com","description":"AI and automation agency, sister company of AVAS."},{"@type":"WebSite","@id":"https://ayalavirtualassistance.site/#site","url":"https://ayalavirtualassistance.site/","name":"AVAS","publisher":{"@id":"https://ayalavirtualassistance.site/#org"}}]}</script>
@@ -2082,7 +2101,8 @@ function start(THREE) {
 }
 
 </script>
-<aside class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-h" hidden>
+<aside class="consent" id="consent" role="dialog" aria-modal="true" aria-labelledby="consent-h" hidden>
+  <div class="consent__card">
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
   <p class="consent__p">This page keeps three things on your device: whether the music is on, whether you asked for calmer motion, and your answers to the quick questions. To time the launch offer, a random id goes to our server with its start time; nothing else is kept with it: no name, no answers, no IP address. One thing comes from a third party, and only when you allow it: the music, which plays in YouTube's own player.</p>
   <details class="consent__more">
@@ -2097,6 +2117,7 @@ function start(THREE) {
   <div class="consent__row">
     <button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept</button>
     <button type="button" class="consent__btn" data-consent="denied">Decline</button>
+  </div>
   </div>
 </aside>
 
@@ -3431,7 +3452,21 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     onChange: []
   };
 
-  if (!read()) { el.hidden = false; document.documentElement.dataset.consent = 'ask'; }
+  if (!read()) {
+    el.hidden = false; document.documentElement.dataset.consent = 'ask';
+    // centred over a blurred page (Owner 2026-10-21), so it acts as a dialog: focus starts on the
+    // card itself (not on Accept, which would ring as if pre-picked) and Tab stays inside it until it is answered
+    var card = el.querySelector('.consent__card');
+    if (card) { card.tabIndex = -1; try { card.focus({ preventScroll: true }); } catch (e) {} }
+    el.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var f = el.querySelectorAll('summary, button');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
 
   el.addEventListener('click', function (e) {
     var b = e.target.closest('[data-consent]');
