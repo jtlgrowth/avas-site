@@ -710,21 +710,21 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
         <label class="quiz__opt"><input type="radio" name="q5" value="exploring"><span>Just exploring</span></label>
       </div>
       <div class="btn-row">
-        <button type="button" class="btn" id="quizNext5" disabled>See my tier</button>
+        <button type="button" class="btn" id="quizNext5" disabled>See my plan</button>
       </div>
     </fieldset>
 
     <div class="quiz__screen" id="qsResult" data-screen hidden aria-live="polite" tabindex="-1">
-      <p class="card__k" id="quizTierName">Essential</p>
-      <h2 id="quizTierPrice">$2,500 to $3,000 a month</h2>
-      <p class="note" id="quizTierOutcome">One brand, two channels, ten image posts a month.</p>
+      <p class="card__k" id="quizTierName">Essentials</p>
+      <h2 id="quizTierPrice">$2,500 a month</h2>
+      <p class="note" id="quizTierOutcome">Your marketing team with a set list every month: posting, daily replies and ads.</p>
       <ul class="card__stop" id="quizResultCounts">
-        <li>Two channels</li>
-        <li>Ten posts a month</li>
-        <li>Image posts only</li>
+        <li>24 posts a month, 8 short videos</li>
+        <li>Up to 3 platforms, replies every day</li>
+        <li>Meta ads managed</li>
       </ul>
       <div class="btn-row">
-        <a class="btn" id="quizSeeTier" href="/pricing/#tiers">See the tier</a>
+        <a class="btn" id="quizSeeTier" href="/pricing/#tiers">See the plan</a>
         <a class="btn btn--ghost" id="quizBookTier" href="/book/">Book a call</a>
       </div>
       <button type="button" class="quiz__retake btn--ghost btn" id="quizRetake">Retake the quiz</button>
@@ -1256,36 +1256,37 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   };
 
   var BUCKETS = {
+    // bucket keys stay as the scoring returns them; the names and prices follow the 2026-10-26 menu
     diagnostic: {
-      name: "Start with the diagnostic",
-      price: "$750, one time",
-      outcome: "Ten business days. We map what is actually broken before you commit to a monthly plan. The fee comes off month one if you continue.",
-      counts: ["Ten business days", "One report, one recommendation", "Fee credited to month one"],
-      link: "/pricing/#diagnostic"
+      name: "Start with a call",
+      price: "Free, thirty minutes",
+      outcome: "Founder to founder. We look at what you run today and name the plan, or the one person, that fits before you commit to a monthly price.",
+      counts: ["Thirty minutes", "Founder to founder", "A plan or a person named on the call"],
+      link: "/book/"
     },
     essential: {
-      name: "Essential",
-      price: "$2,500 to $3,000 a month",
-      outcome: "One brand, two channels, your content and inbox stop being your job.",
-      counts: ["Two channels, one brand", "Sixteen posts, four vertical video", "100 comments and DMs answered"],
-      link: "/pricing/#essential"
+      name: "Essentials",
+      price: "$2,500 a month",
+      outcome: "Your marketing team with a set list every month: posting, daily replies and ads.",
+      counts: ["24 posts a month, 8 short videos", "Up to 3 platforms, replies every day", "Meta ads managed"],
+      link: "/pricing/#essentials"
     },
     embedded: {
-      name: "Embedded",
-      price: "$3,500 to $5,500 a month",
-      outcome: "One brand, four channels, a marketing department that runs without you.",
-      counts: ["Four channels, one brand", "Twenty posts, six vertical video, one campaign a month", "A named manager and editor on a weekly call"],
-      link: "/pricing/#embedded"
+      name: "Premium",
+      price: "$5,000 a month",
+      outcome: "Your full execution team, marketing plus tech, with set limits each month.",
+      counts: ["48 posts a month, 16 short videos", "Meta and Google ads, email and SMS", "GHL, automations and 2 landing pages a month"],
+      link: "/pricing/#premium"
     },
     partner: {
       name: "Partner",
-      price: "from $10,000 a month",
-      outcome: "Up to six channels and a named pod, yours, accountable to one metric a quarter.",
-      counts: ["One slot, up to six channels", "Forty posts, sixteen vertical video, three campaigns a month", "500 comments and DMs answered"],
+      price: "$12,000 a month",
+      outcome: "The full execution team, no caps, measured against a 90-day target you set with us.",
+      counts: ["No caps, reels every day", "Ads on every platform that pays", "A live KPI scorecard"],
       link: "/pricing/#partner"
     },
     quote: {
-      name: "Outside a tier",
+      name: "Outside a plan",
       price: "Request a quote",
       outcome: "More than one brand, a white label arrangement, or a launch. Every one of those is scoped on a call, not a page.",
       counts: ["More than one brand", "Agency white label", "Launch scope"],

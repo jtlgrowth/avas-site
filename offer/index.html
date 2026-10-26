@@ -616,7 +616,6 @@ main{position:relative;z-index:1}
 .sjump b{font:400 11px/1 var(--font-mono);letter-spacing:.12em;color:var(--espresso)}
 
 .is,.pq,.pt{scroll-margin-top:calc(var(--top-h) + 24px)}
-#diagnostic{padding-bottom:calc(var(--sec-y) * .5)}
 
 /* ---------- shared card parts ---------- */
 .pt__name{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
@@ -632,7 +631,7 @@ main{position:relative;z-index:1}
 .pt__amt{font-variant-numeric:tabular-nums;font-weight:inherit}
 /* prices never count up: a mid-count frame would show a number we do not charge */
 
-/* ---------- the diagnostic: one wide card, the fee as the hero number ---------- */
+/* ---------- one wide card (the VA floor), the fee as the hero number ---------- */
 .pd{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);
   padding:clamp(28px,4vw,56px);border-radius:var(--card-r);background:var(--white);
   box-shadow:inset 0 0 0 1px var(--border),0 40px 70px -46px var(--shadow)}
@@ -643,13 +642,19 @@ main{position:relative;z-index:1}
   border-left:1px solid var(--border);padding-left:clamp(24px,4vw,56px)}
 .pd__fig{font-family:var(--font-display);font-weight:700;font-variation-settings:"wdth" 112;letter-spacing:-.06em;
   font-size:clamp(84px,11vw,190px);line-height:.82;color:var(--fg)}
+/* the VA floor reads "from $899/mo": the words go small and mono above and beside the number, so only
+   the number takes the display size and it never runs past the card at 390 */
+.pd__fig{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px}
+.pd__fig>span{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;font-weight:400;color:var(--muted)}
+.pd__fig .pt__from{order:-1;width:100%;margin-bottom:12px}
+.pd__fig .pt__amt{white-space:nowrap}
 .pd__note{font-size:15px;line-height:1.5;color:var(--muted);max-width:26ch}
 .pd .btn{margin-top:8px}
 /* the card opens from its centre line as it arrives, the fee rises after it */
 .fx .pd{--q:clamp(0,var(--p,1) * 1.4,1);clip-path:inset(calc((1 - var(--q)) * 22%) 0 calc((1 - var(--q)) * 22%) 0 round var(--card-r))}
 .fx .pd__fig{transform:translate3d(0,calc((1 - clamp(0,(var(--p,1) - .25) * 1.8,1)) * 30%),0)}
 
-/* ---------- three tiers ---------- */
+/* ---------- the team plans ---------- */
 .pts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);align-items:stretch}
 .pt{position:relative;display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.6vw,38px);border-radius:var(--card-r);
   background:var(--white);box-shadow:inset 0 0 0 1px var(--border),0 40px 70px -46px var(--shadow)}
@@ -724,6 +729,11 @@ main{position:relative;z-index:1}
   .pd__side .btn,.pq .a-ctas .btn{width:100%;justify-content:center}
   .pq .btn--ghost{font-size:13px}
 }
+
+/* ---------- 2026-10-26 menu: four team plans sit 2 x 2 on desktop, AVAS Cares line reads bold ---------- */
+@media (min-width:1101px){.pts--four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pt:not(.pt--lead) .pt__tag{background:var(--black);color:var(--white)}
+.pt__list .pt__cares{font-weight:600}
 
 /* ==========================================================================
    /offer/ on the A look (2026-10-01). Loads after work-shell.css and pricing.css,
@@ -894,19 +904,19 @@ main{position:relative;z-index:1}
       <h3 class="od__h">a team that owns <em>the result.</em></h3>
       <p class="od__unit">We own the outcome. Your content is made and your channels are run by a named team,
         on a calendar you can see before the month starts.</p>
-      <ul class="otier" aria-label="The three tiers and the execution team">
-        <li class="otier__i"><b class="ofam__n">Essential</b><span class="ofam__r">One brand, two channels. Your content and inbox stop being your job.</span></li>
-        <li class="otier__i"><b class="ofam__n">Embedded</b><span class="ofam__r">One brand, four channels. A marketing department that runs without you.</span></li>
-        <li class="otier__i"><b class="ofam__n">Partner</b><span class="ofam__r">One brand, up to six channels. A named pod, yours.</span></li>
-        <li class="otier__i"><b class="ofam__n">Execution team</b><span class="ofam__r">Work that needs a team to deliver it, not one person. Scoped and quoted before anything starts.</span></li>
+      <ul class="otier" aria-label="The four team plans">
+        <li class="otier__i"><b class="ofam__n">Essentials</b><span class="ofam__r">Your marketing team, with a set list of deliverables every month.</span></li>
+        <li class="otier__i"><b class="ofam__n">Premium</b><span class="ofam__r">Marketing plus tech, with set limits each month.</span></li>
+        <li class="otier__i"><b class="ofam__n">Partner</b><span class="ofam__r">The full team, no caps, counted in results.</span></li>
+        <li class="otier__i"><b class="ofam__n">Partner + EA</b><span class="ofam__r">Everything in Partner, plus a personal executive assistant.</span></li>
       </ul>
       <ul class="od__list">
-        <li>A paid diagnostic comes first, and its fee comes off your first month</li>
-        <li>Each tier is a count of things a month, and each card says where it stops</li>
-        <li>Anything outside a tier is quoted in writing before work starts</li>
+        <li>Setup is free when you pay 3 months upfront</li>
+        <li>Essentials and Premium are a count, Partner plans are a result</li>
+        <li>Anything outside a plan is quoted in writing before work starts</li>
       </ul>
       <div class="od__cta">
-        <a class="btn btn--esp" href="/quiz/" data-magnetic="0.25" data-cursor="go">Find your tier</a>
+        <a class="btn btn--esp" href="/quiz/" data-magnetic="0.25" data-cursor="go">Find your plan</a>
       </div>
     </li>
   </ol>
@@ -927,7 +937,7 @@ main{position:relative;z-index:1}
     <li class="hw__step">
       <p class="hw__n" aria-hidden="true">02</p>
       <h3 class="hw__h">See your fit</h3>
-      <p class="hw__p">You get the role or the tier that matches, with what it covers and its price.</p>
+      <p class="hw__p">You get the role or the plan that matches, with what it covers and its price.</p>
     </li>
     <li class="hw__step">
       <p class="hw__n" aria-hidden="true">03</p>

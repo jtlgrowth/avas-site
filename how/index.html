@@ -789,6 +789,11 @@ html[data-panel="p-book"] .rail__ui{opacity:0;pointer-events:none}
 /* v17 (2026-09-30): the home's scroll-scene styles live in parts/home-v17.css and ride inside the
    home page only (home-gen.py inlines them into a-home.html), so /team/ and /how/ do not carry them. */
 
+/* 2026-10-26 menu: four team plans on the home rail, 4 across wide, 2 x 2 under 1280 px */
+.a-tiers--four{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1280px){.a-tiers--four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px),(prefers-reduced-motion:reduce){.a-tiers--four{grid-template-columns:1fr}}
+
 /* Privacy notice. It gates something real: the music does not start on its
    own until this is answered, so declining actually changes what happens.
    Owner 2026-10-21: centred, with the page blurred behind it, so it reads as
@@ -937,9 +942,9 @@ html[data-motion="calm"] #consent,html[data-motion="calm"] #consent .consent__ca
     <div class="a-split">
       <div class="a-step__copy">
         <p class="a-step__n" aria-hidden="true">02</p>
-        <p class="eyebrow">Step 02 &middot; 10 business days</p>
+        <p class="eyebrow">Step 02 &middot; setup</p>
         <h2 class="a-h2 lines"><span class="line-mask"><span>We audit <em>everything.</em></span></span></h2>
-        <p class="a-lede">The $750 diagnostic. We go through your content, channels and systems, then walk you through the readout with Gwen. You leave with a written 90-day content calendar, and the $750 comes off your first month.</p>
+        <p class="a-lede">Setup. We go through your content, channels and systems, then walk you through the plan with Gwen. You leave with your 90-day targets and a written content calendar. Setup is half a month, free when you pay 3 months upfront.</p>
         <ul class="a-step__list">
           <li><b>You</b><span>Answer our questions. Show us where it hurts.</span></li>
           <li><b>We</b><span>Audit it all and write the next 90 days.</span></li>
@@ -947,15 +952,15 @@ html[data-motion="calm"] #consent,html[data-motion="calm"] #consent .consent__ca
       </div>
       <figure class="a-step__fig" aria-hidden="true">
         <div class="a-card a-doc" data-tilt="4">
-          <div class="a-doc__head"><svg viewBox="0 0 600 1000"><use href="#avas-a"/></svg><b>Diagnostic readout</b><span class="mono">10 business days</span></div>
+          <div class="a-doc__head"><svg viewBox="0 0 600 1000"><use href="#avas-a"/></svg><b>Your setup plan</b><span class="mono">first 14 days</span></div>
           <ol class="a-doc__rows">
             <li><i></i>Content audit</li>
             <li><i></i>Channels and reach</li>
             <li><i></i>Offer and audience</li>
             <li><i></i>Systems check</li>
-            <li><i></i>Your 90-day content calendar</li>
+            <li><i></i>Your 90-day targets and calendar</li>
           </ol>
-          <p class="a-doc__foot"><b>$750</b><span>comes off your first month</span></p>
+          <p class="a-doc__foot"><b>Free</b><span>with 3 months upfront</span></p>
         </div>
       </figure>
     </div>
@@ -1018,9 +1023,9 @@ html[data-motion="calm"] #consent,html[data-motion="calm"] #consent .consent__ca
         <p class="a-step__n" aria-hidden="true">04</p>
         <p class="eyebrow">Step 04 &middot; inside 14 days</p>
         <h2 class="a-h2 lines"><span class="line-mask"><span>Running in <em>two weeks.</em></span></span></h2>
-        <p class="a-lede">No setup fee. Your team is running inside 14 days. From then on the work keeps shipping, and nothing goes live without your yes.</p>
+        <p class="a-lede">Your team is running inside 14 days. From then on the work keeps shipping, and nothing goes live without your yes.</p>
         <ul class="a-step__list">
-          <li><b>Replies</b><span>Inside one business day. Inside four business hours on Embedded and Partner.</span></li>
+          <li><b>Replies</b><span>Inside one business day on Essentials. Inside four business hours on Premium and Partner.</span></li>
           <li><b>Changes</b><span>Two revision rounds on every piece.</span></li>
         </ul>
       </div>
