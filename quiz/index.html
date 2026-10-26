@@ -130,6 +130,10 @@ button{font:inherit;color:inherit}
   .top__cta{display:none}
 }
 .top__sp{flex:1}
+/* Robots & Coffee joined the nav (2026-10-26): links stay on one line, the gap tightens on laptops, and under 1024 px the R&C link rides the footer only so nothing wraps or spills */
+.top__nav a{white-space:nowrap}
+@media (min-width:901px) and (max-width:1180px){.top__nav{gap:16px;margin-left:14px}}
+@media (min-width:901px) and (max-width:1023px){.top__nav a[href^="/robots-and-coffee"]{display:none}}
 .top button{
   background:transparent;border:1px solid var(--hair);border-radius:999px;
   padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
@@ -596,6 +600,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
     <a href="/quiz/" aria-current="page">Quiz</a>
     <a href="/how/">How it works</a>
     <a href="/team/">Team</a>
+    <a href="/robots-and-coffee/">Robots &amp; Coffee</a>
     <a href="/#p-ask">Ask</a>
   </nav>
   <span class="top__sp"></span>
@@ -608,6 +613,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
       <a href="/quiz/">Quiz</a>
       <a href="/how/">How it works</a>
       <a href="/team/">Team</a>
+      <a href="/robots-and-coffee/">Robots &amp; Coffee</a>
       <a href="/#p-ask">Ask</a>
       <a href="/book">Book a call</a>
     </div>
@@ -773,6 +779,7 @@ main.page #p-book .cal iframe{min-height:640px;height:640px}
   <a href="/offer">Offer</a>
   <a href="/about">About</a>
   <a href="/quiz">Quiz</a>
+  <a href="/robots-and-coffee">Robots &amp; Coffee</a>
   <span class="foot__sp"></span>
   <span>Quezon City, Manila</span>
   <span aria-hidden="true">&middot;</span>
