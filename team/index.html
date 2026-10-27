@@ -528,6 +528,7 @@ html.gl-on .a-fallback{display:none}
 .a-lap .ask__q,.a-lap .ask__a{font-size:13.5px}
 .a-lap .ask__form{padding:3px 4px 3px 14px}
 .a-lap .ask__form input{font-size:14px;height:34px}
+@media (pointer: coarse){.a-lap .ask__form input{font-size:16px}}   /* iOS zooms into a field under 16px (GOTCHAS 2026-10-25) */
 .a-lap .ask__chips{gap:6px}
 .a-lap .ask__chips button{font-size:12px;padding:6px 10px}
 .a-lap__base{position:relative;padding-top:2.6%;margin:0 -5%;border-radius:3px 3px 18px 18px;
@@ -2376,6 +2377,29 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   D.addEventListener('av:calm', () => requestAnimationFrame(relayout));
   if (D.fonts && D.fonts.ready) D.fonts.ready.then(relayout);
   relayout();
+})();
+
+/* ---------- voice: her video and the background music never talk over each other ---------- */
+(() => {
+  const v = document.querySelector('#p-voice video');
+  if (!v) return;
+  const music = () => window.AVMusic || null;    // the shell's player (sound.js); the home is never framed
+  const fig = v.closest('.tv__film'), btn = fig.querySelector('.tv__play');
+  const sec = document.getElementById('p-voice');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { sec.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.35 });
+    io.observe(sec);
+  } else sec.classList.add('is-in');
+  if (btn) btn.addEventListener('click', () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); v.focus(); });
+  let resume = false;
+  v.addEventListener('play', () => {
+    fig.classList.add('is-on');
+    const m = music();
+    if (m && m.m && (m.m.on || m.m.state === 'loading')) { resume = true; m.toggle(false); }
+  });
+  const back = () => { const m = music(); if (resume && m) { resume = false; m.toggle(true); } };
+  v.addEventListener('pause', () => { if (!v.seeking) back(); });
+  v.addEventListener('ended', back);
 })();
 
 /* Privacy consent. One key, three states: unset shows the notice, granted lets

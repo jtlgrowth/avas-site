@@ -723,6 +723,13 @@ main{position:relative;z-index:1}
 /* the frame sizes itself from the height it posts; until then it holds the card open */
 .bk__frame{display:block;width:100%;height:560px;border:0;background:transparent}
 .bk .dc__note{margin-top:16px}
+.bk__voice{margin:clamp(36px,6vh,64px) 0 0;padding:0 0 0 20px;box-shadow:inset 2px 0 0 var(--espresso)}
+.bk__voice p{font-family:var(--font-serif);font-style:italic;font-size:var(--fs-lede);line-height:1.4;color:var(--fg);text-wrap:pretty}
+.bk__voice figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
+.bk__voice figcaption b{font-weight:600;color:var(--fg)}
+.bk__voice a{color:var(--fg);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px;transition:color .2s var(--ease)}
+.bk__voice a:hover{color:var(--espresso)}
+.bk__voice a:active{opacity:.7}
 </style>
 </head>
 <body>
@@ -769,6 +776,11 @@ main{position:relative;z-index:1}
     <div id="cal" class="bk__cal" data-book-url="https://book.ayalavirtualassistance.site/"></div>
   </div>
   <p class="dc__note">The form is our own. Your invite and the meeting link go to the email you give. Prefer a full page? <a href="https://book.ayalavirtualassistance.site/" target="_blank" rel="noopener">Open the booking page</a>.</p>
+  <!-- one client's words under the calendar; she names herself on camera (clients_gen.CONSENTED, Owner 2026-10-27) -->
+  <figure class="bk__voice" data-reveal="rise">
+    <blockquote><p>&ldquo;If you are a coach, a content creator who &hellip; wants to step out of your comfort zone and just launch your program, Gwen and her team is definitely the people that you should be working with.&rdquo;</p></blockquote>
+    <figcaption><b>Annikka Aborro</b>, Founder, The Philippine OBM Academy &middot; <a href="/#p-voice">Watch her say it</a></figcaption>
+  </figure>
 </section>
 </main>
 <footer class="foot">
