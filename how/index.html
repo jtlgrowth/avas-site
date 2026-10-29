@@ -2704,7 +2704,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   });
 })();
 
-window.AVAS_PH={"key":"phc_po4dGx6cfc8VHkgMfTMEWDDHmxjLdaGDtA4YCcXQHBcN","host":"https://us.i.posthog.com"};
+window.AVAS_PH={"key":"phc_po4dGx6cfc8VHkgMfTMEWDDHmxjLdaGDtA4YCcXQHBcN","host":"https://e.jtlgrowth.com","ui":"https://us.posthog.com"};
 /* Visit analytics (PostHog). Shipped only when build.py POSTHOG has a project key, and even then
    nothing loads until the visitor presses Accept on the privacy notice: unset or denied, no request
    leaves the page. build.py puts the key and host in front of this file as AVAS_PH. */
@@ -2718,20 +2718,29 @@ window.AVAS_PH={"key":"phc_po4dGx6cfc8VHkgMfTMEWDDHmxjLdaGDtA4YCcXQHBcN","host":
     if (started) return;
     started = true;
     // PostHog's own loader stub, trimmed to the calls made before array.js arrives
-    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split('.'); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; } (p = t.createElement('script')).type = 'text/javascript', p.crossOrigin = 'anonymous', p.async = !0, p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js', (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = 'posthog', u.people = u.people || [], o = 'init capture register identify reset opt_out_capturing'.split(' '), n = 0; n < o.length; n++) g(u, o[n]); e._i.push([i, s, a]); }, e.__SV = 1); }(document, window.posthog || []);
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split('.'); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; } (p = t.createElement('script')).type = 'text/javascript', p.crossOrigin = 'anonymous', p.async = !0, p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js', (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = 'posthog', u.people = u.people || [], o = 'init capture register identify reset opt_in_capturing opt_out_capturing'.split(' '), n = 0; n < o.length; n++) g(u, o[n]); e._i.push([i, s, a]); }, e.__SV = 1); }(document, window.posthog || []);
     window.posthog.init(cfg.key, {
       api_host: cfg.host,
+      ui_host: cfg.ui,
       person_profiles: 'identified_only',
       capture_pageview: true,
       capture_pageleave: true,
       autocapture: true,
-      session_recording: { maskAllInputs: true }
+      session_recording: { maskAllInputs: true },
+      // our consent key is the source of truth: a past "Change my choice" left PostHog opted out here
+      loaded: function (ph) { if (ph.has_opted_out_capturing()) ph.opt_in_capturing({ captureEventName: false }); }
     });
   }
 
   if (window.avasConsent.granted()) start();
-  window.avasConsent.onChange.push(function (v) { if (v === 'granted') start(); });
-  window.avasConsent.onReset.push(function () { if (started && window.posthog.reset) window.posthog.reset(); });
+  // a no stops PostHog at once, before the reload: no $pageleave or replay tail leaves under the new id
+  function follow(v) {
+    if (!started || !window.posthog) return;
+    if (v === 'granted') window.posthog.opt_in_capturing({ captureEventName: false });
+    else { window.posthog.opt_out_capturing(); window.posthog.reset(); }
+  }
+  window.avasConsent.onChange.push(function (v) { follow(v); if (v === 'granted') start(); });
+  window.avasConsent.onReset.push(function () { follow('denied'); });
 })();
 </script>
 
