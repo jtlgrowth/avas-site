@@ -845,6 +845,11 @@ html[data-motion="calm"] #consent,html[data-motion="calm"] #consent .consent__ca
   #consent{padding:12px}
   #consent .consent__card{padding:20px 20px 16px}
 }
+/* "Change my privacy choice" on /privacy/ (2026-10-29, ships with visit analytics): a quiet outline button, hover and press */
+.consent-reset{font:inherit;font-size:15px;color:var(--espresso);background:transparent;border:1px solid var(--hair);border-radius:999px;padding:10px 18px;cursor:pointer;transition:background-color .15s ease,border-color .15s ease,transform .1s ease}
+.consent-reset:hover{background:var(--panel);border-color:var(--espresso)}
+.consent-reset:active{transform:scale(.97)}
+.consent-reset:focus-visible{outline:2px solid var(--espresso);outline-offset:3px}
 </style>
 <link rel="stylesheet" href="/assets/prequal.css">
 </head>
@@ -1290,14 +1295,16 @@ function start(THREE) {
 <aside class="consent" id="consent" role="dialog" aria-modal="true" aria-labelledby="consent-h" hidden>
   <div class="consent__card">
   <h2 class="consent__h" id="consent-h">We value your privacy</h2>
-  <p class="consent__p">This page keeps three things on your device: whether the music is on, whether you asked for calmer motion, and your answers to the quick questions. To time the launch offer, a random id goes to our server with its start time; nothing else is kept with it: no name, no answers, no IP address. One thing comes from a third party, and only when you allow it: the music, which plays in YouTube's own player.</p>
+  
+  <p class="consent__p">This page keeps three things on your device: whether the music is on, whether you asked for calmer motion, and your answers to the quick questions. To time the launch offer, a random id goes to our server with its start time; nothing else is kept with it: no name, no answers, no IP address. Two things come from third parties, and only when you allow them: the music, which plays in YouTube's own player, and PostHog, which counts how visitors use the site.</p>
   <details class="consent__more">
     <summary>What that actually means</summary>
     <ul>
       <li><b>Kept on your device</b>, never sent anywhere: your sound and motion choices, and this answer.</li>
       <li><b>The booking form</b> is our own, so it loads either way. It runs a Cloudflare check that stops spam bookings.</li>
       <li><b>Played by YouTube</b> when you accept or tap Sound: Brooklyn Duo's cover of Landslide in YouTube's player, kept out of sight, which may set its own cookies once it plays.</li>
-      <li><b>If you decline</b>: nothing third party loads on its own. The music waits until you tap Sound.</li>
+      <li><b>Measured by PostHog</b> only when you accept: which pages you open and what you click, plus a replay of the visit with every typed field hidden, so we can see where the site confuses people. It sets its own cookie and never learns your name.</li>
+      <li><b>If you decline</b>: nothing third party loads on its own. The music waits until you tap Sound, and PostHog never loads.</li>
     </ul>
   </details>
   <div class="consent__row">
@@ -1983,7 +1990,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     const playing = () => { M.on = true; paint(); set('on'); snd.classList.remove('is-loading'); reveal(); };
     const remember = v => { try { localStorage.setItem('avas-sound', v); } catch (_) {} };
     const wants = () => { let v = null; try { v = localStorage.getItem('avas-sound'); } catch (_) {} return (v || ST.music_default || 'off') === 'on'; };
-    const consented = () => { try { return localStorage.getItem('avas-consent') === 'granted'; } catch (_) { return false; } };
+    const consented = () => { try { return localStorage.getItem('avas-consent-2') === 'granted'; } catch (_) { return false; } };
     let E;                                               // the engine: start(tapped), stop(), away(hidden)
 
     if (PAR) {
@@ -2647,7 +2654,7 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
    The answer changes behaviour, so the notice is not decoration. */
 (() => {
   'use strict';
-  var KEY = 'avas-consent';
+  var KEY = 'avas-consent-2';   // -2 since 2026-10-29: an answer given under the music-only notice must not switch visit analytics on, so everyone is asked again
   var el = document.getElementById('consent');
   if (!el) return;
 
@@ -2657,7 +2664,8 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
   window.avasConsent = {
     state: function () { return read(); },
     granted: function () { return read() === 'granted'; },
-    onChange: []
+    onChange: [],
+    onReset: []   // analytics.js forgets its visitor id here
   };
 
   if (!read()) {
@@ -2676,6 +2684,15 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     });
   }
 
+  // "Change my choice" on /privacy/: forget the answer (and, through onReset, the analytics visitor id),
+  // then reload so the notice asks again; without an answer analytics.js never loads
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('[data-consent-reset]')) return;
+    try { localStorage.removeItem(KEY); } catch (err) {}
+    window.avasConsent.onReset.forEach(function (fn) { try { fn(); } catch (err) {} });
+    location.reload();
+  });
+
   el.addEventListener('click', function (e) {
     var b = e.target.closest('[data-consent]');
     if (!b) return;
@@ -2685,6 +2702,36 @@ document.querySelectorAll('[data-set-href]').forEach(a => { const v = SETTINGS[a
     delete document.documentElement.dataset.consent;
     window.avasConsent.onChange.forEach(function (fn) { try { fn(v); } catch (err) {} });
   });
+})();
+
+window.AVAS_PH={"key":"phc_po4dGx6cfc8VHkgMfTMEWDDHmxjLdaGDtA4YCcXQHBcN","host":"https://us.i.posthog.com"};
+/* Visit analytics (PostHog). Shipped only when build.py POSTHOG has a project key, and even then
+   nothing loads until the visitor presses Accept on the privacy notice: unset or denied, no request
+   leaves the page. build.py puts the key and host in front of this file as AVAS_PH. */
+(() => {
+  'use strict';
+  var cfg = window.AVAS_PH;
+  if (!cfg || !cfg.key || !window.avasConsent) return;
+  var started = false;
+
+  function start() {
+    if (started) return;
+    started = true;
+    // PostHog's own loader stub, trimmed to the calls made before array.js arrives
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split('.'); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; } (p = t.createElement('script')).type = 'text/javascript', p.crossOrigin = 'anonymous', p.async = !0, p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js', (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = 'posthog', u.people = u.people || [], o = 'init capture register identify reset opt_out_capturing'.split(' '), n = 0; n < o.length; n++) g(u, o[n]); e._i.push([i, s, a]); }, e.__SV = 1); }(document, window.posthog || []);
+    window.posthog.init(cfg.key, {
+      api_host: cfg.host,
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: true,
+      session_recording: { maskAllInputs: true }
+    });
+  }
+
+  if (window.avasConsent.granted()) start();
+  window.avasConsent.onChange.push(function (v) { if (v === 'granted') start(); });
+  window.avasConsent.onReset.push(function () { if (started && window.posthog.reset) window.posthog.reset(); });
 })();
 </script>
 

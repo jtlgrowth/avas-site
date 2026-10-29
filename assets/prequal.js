@@ -301,12 +301,12 @@
   }
   function ready() {
     // wait for the home preloader (it leaves the DOM when done) and for an answer on the privacy card
-    // (consent.js stores it under avas-consent), so nothing stacks on top of either. Both are fixed
+    // (consent.js stores it under avas-consent-2), so nothing stacks on top of either. Both are fixed
     // elements, so offsetParent cannot tell whether they are showing.
     var boot = document.getElementById("boot");
     var booting = boot && !boot.classList.contains("off");
     var consent = document.getElementById("consent"), answered = false;
-    try { answered = !!localStorage.getItem("avas-consent"); } catch (e) { answered = true; }
+    try { answered = !!localStorage.getItem("avas-consent-2"); } catch (e) { answered = true; }
     var asking = consent && !consent.hidden && !answered;
     return !booting && !asking;
   }
