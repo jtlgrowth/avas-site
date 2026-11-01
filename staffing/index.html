@@ -634,6 +634,8 @@ main{position:relative;z-index:1}
 .pt__list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1.5px;background:var(--espresso)}
 .pt__stop{font-size:15px;line-height:1.55;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
 .pt__stop b{color:var(--fg);font-weight:600}
+.pt__keep{font-size:15px;line-height:1.55;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+.pt__keep b{color:var(--fg);font-weight:600}
 .pt__amt{font-variant-numeric:tabular-nums;font-weight:inherit}
 /* prices never count up: a mid-count frame would show a number we do not charge */
 
@@ -676,11 +678,11 @@ main{position:relative;z-index:1}
 .pt--lead{background:var(--black);box-shadow:0 50px 90px -50px color-mix(in oklab,var(--black) 60%,transparent)}
 .pt--lead .pt__name{color:var(--white)}
 .pt--lead .pt__fig{color:var(--white)}
-.pt--lead .pt__fig>span,.pt--lead .pt__stop{color:color-mix(in oklab,var(--white) 74%,var(--black))}
+.pt--lead .pt__fig>span,.pt--lead .pt__stop,.pt--lead .pt__keep{color:color-mix(in oklab,var(--white) 74%,var(--black))}
 .pt--lead .pt__unit,.pt--lead .pt__list li{color:color-mix(in oklab,var(--white) 89%,var(--black))}
-.pt--lead .pt__unit,.pt--lead .pt__stop{border-color:color-mix(in oklab,var(--white) 20%,var(--black))}
+.pt--lead .pt__unit,.pt--lead .pt__stop,.pt--lead .pt__keep{border-color:color-mix(in oklab,var(--white) 20%,var(--black))}
 .pt--lead .pt__list li::before{background:var(--white)}
-.pt--lead .pt__stop b{color:var(--white)}
+.pt--lead .pt__stop b,.pt--lead .pt__keep b{color:var(--white)}
 /* cards rise in order with the scroll; the dark one settles a step higher */
 .fx .pt{--q:clamp(0,(var(--p,1) - var(--i) * .16) * 2.2,1);opacity:calc(.15 + var(--q) * .85);
   transform:translate3d(0,calc((1 - var(--q)) * 90px),0)}
@@ -886,6 +888,8 @@ main{position:relative;z-index:1}
   <dl class="pdefs">
     <div class="pdef" data-reveal="rise"><dt>A seat is a specialist on your account</dt><dd>One consistent specialist on your account. You set the goals and priorities, we run the work.</dd></div>
     <div class="pdef" data-reveal="rise"><dt>What we do</dt><dd>We supply, vet and replace the person, so the seat stays filled.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>What keeps the seat running</dt><dd>We match and vet the person, train them on how we work, plan cover when they are out, and replace them if it is not working.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>Comparing a cheaper quote</dt><dd>Check if it includes matching, vetting, training, cover and a replacement. If a quote leaves these out, it is a different offer.</dd></div>
     <div class="pdef" data-reveal="rise"><dt>Part-time or full-time</dt><dd>Part-time is about 80 hours a month, about 4 hours a day on weekdays. Full-time is about 160 hours a month, about 8 hours a day on weekdays.</dd></div>
     <div class="pdef" data-reveal="rise"><dt>One price per role</dt><dd>Every role has its own part-time and full-time price, in US dollars per month. The level on each card is a guide to how senior the role is.</dd></div>
     <div class="pdef" data-reveal="rise"><dt>A team is an outcome we own</dt><dd>If you want us to own the strategy, the numbers and the calendar, you are asking for a team, not a seat.</dd></div>

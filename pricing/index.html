@@ -634,6 +634,8 @@ main{position:relative;z-index:1}
 .pt__list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1.5px;background:var(--espresso)}
 .pt__stop{font-size:15px;line-height:1.55;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
 .pt__stop b{color:var(--fg);font-weight:600}
+.pt__keep{font-size:15px;line-height:1.55;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+.pt__keep b{color:var(--fg);font-weight:600}
 .pt__amt{font-variant-numeric:tabular-nums;font-weight:inherit}
 /* prices never count up: a mid-count frame would show a number we do not charge */
 
@@ -676,11 +678,11 @@ main{position:relative;z-index:1}
 .pt--lead{background:var(--black);box-shadow:0 50px 90px -50px color-mix(in oklab,var(--black) 60%,transparent)}
 .pt--lead .pt__name{color:var(--white)}
 .pt--lead .pt__fig{color:var(--white)}
-.pt--lead .pt__fig>span,.pt--lead .pt__stop{color:color-mix(in oklab,var(--white) 74%,var(--black))}
+.pt--lead .pt__fig>span,.pt--lead .pt__stop,.pt--lead .pt__keep{color:color-mix(in oklab,var(--white) 74%,var(--black))}
 .pt--lead .pt__unit,.pt--lead .pt__list li{color:color-mix(in oklab,var(--white) 89%,var(--black))}
-.pt--lead .pt__unit,.pt--lead .pt__stop{border-color:color-mix(in oklab,var(--white) 20%,var(--black))}
+.pt--lead .pt__unit,.pt--lead .pt__stop,.pt--lead .pt__keep{border-color:color-mix(in oklab,var(--white) 20%,var(--black))}
 .pt--lead .pt__list li::before{background:var(--white)}
-.pt--lead .pt__stop b{color:var(--white)}
+.pt--lead .pt__stop b,.pt--lead .pt__keep b{color:var(--white)}
 /* cards rise in order with the scroll; the dark one settles a step higher */
 .fx .pt{--q:clamp(0,(var(--p,1) - var(--i) * .16) * 2.2,1);opacity:calc(.15 + var(--q) * .85);
   transform:translate3d(0,calc((1 - var(--q)) * 90px),0)}
@@ -786,8 +788,9 @@ main{position:relative;z-index:1}
     <ol class="sjump" data-reveal="rise" aria-label="On this page">
       <li><a href="#tiers" data-cursor="go"><b>01</b> Team plans</a></li>
       <li><a href="#vas" data-cursor="go"><b>02</b> One person</a></li>
-      <li><a href="#quote" data-cursor="go"><b>03</b> Outside a plan</a></li>
-      <li><a href="#terms" data-cursor="go"><b>04</b> Terms</a></li>
+      <li><a href="#compare" data-cursor="go"><b>03</b> Comparing quotes</a></li>
+      <li><a href="#quote" data-cursor="go"><b>04</b> Outside a plan</a></li>
+      <li><a href="#terms" data-cursor="go"><b>05</b> Terms</a></li>
     </ol>
   </div>
   <div class="ih__a" aria-hidden="true"><div class="a-turn" data-turn data-frames="48" data-lg="/assets/work-aturn/lg/" data-sm="/assets/work-aturn/sm/" data-size-lg="600x1066" data-size-sm="440x780"><picture><source media="(max-width: 900px)" type="image/avif" srcset="/assets/work-aturn/sm/00.avif"><source media="(max-width: 900px)" srcset="/assets/work-a-first-sm.webp"><source type="image/avif" srcset="/assets/work-aturn/lg/00.avif"><img src="/assets/work-a-first.webp" alt="" width="600" height="1066" fetchpriority="high" decoding="async"></picture></div><i class="ih__shadow"></i></div>
@@ -820,6 +823,7 @@ main{position:relative;z-index:1}
         <li>A monthly strategy call, a report by the 5th</li>
         <li class="pt__cares">10% goes to AVAS Cares charity</li>
       </ul>
+      <p class="pt__keep"><b>What keeps it running:</b> a strategist, a person who checks the work before it goes out, our tools and systems, cover when someone is out, and team training.</p>
       <p class="pt__stop"><b>Setup:</b> $1,250, free when you pay 3 months upfront. Need tech too? Premium
         adds GHL, automations and web.</p>
     </li>
@@ -837,6 +841,7 @@ main{position:relative;z-index:1}
         <li>A call every two weeks, a report by the 5th</li>
         <li class="pt__cares">10% goes to AVAS Cares charity</li>
       </ul>
+      <p class="pt__keep"><b>What keeps it running:</b> a strategist, a person who checks the work before it goes out, our tools and systems, cover when someone is out, and team training.</p>
       <p class="pt__stop"><b>Setup:</b> $2,500, free when you pay 3 months upfront. Want no caps? That
         is Partner.</p>
     </li>
@@ -853,6 +858,7 @@ main{position:relative;z-index:1}
         <li>Weekly strategy and a live KPI scorecard</li>
         <li class="pt__cares">10% goes to AVAS Cares charity</li>
       </ul>
+      <p class="pt__keep"><b>What keeps it running:</b> a strategist, a person who checks the work before it goes out, our tools and systems, cover when someone is out, and team training.</p>
       <p class="pt__stop"><b>Setup:</b> $6,000 for the strategy, audit and system build, free when you pay
         3 months upfront.</p>
     </li>
@@ -869,6 +875,7 @@ main{position:relative;z-index:1}
         <li>Same-day priority on every request</li>
         <li class="pt__cares">10% goes to AVAS Cares charity</li>
       </ul>
+      <p class="pt__keep"><b>What keeps it running:</b> a strategist, a person who checks the work before it goes out, our tools and systems, cover when someone is out, and team training.</p>
       <p class="pt__stop"><b>Setup:</b> $10,000, free when you pay 3 months upfront.</p>
     </li>
   </ol>
@@ -896,6 +903,7 @@ main{position:relative;z-index:1}
         <li>Up to 80 hours a month part-time or 160 full-time, a fixed monthly price, never billed by the hour</li>
         <li class="pt__cares">10% goes to AVAS Cares charity</li>
       </ul>
+      <p class="pt__keep"><b>What keeps it running:</b> we match and vet your VA, train them on how we work, plan cover when they are out, and replace them if it is not working.</p>
       <p class="pt__stop">Setup and matching is half a month, free when you pay 3 months upfront.</p>
     </div>
     <div class="pd__side">
@@ -906,9 +914,27 @@ main{position:relative;z-index:1}
   </div>
 </section>
 
+<section class="is" id="compare" aria-labelledby="compare-h">
+  <div class="is__head">
+    <p class="eyebrow">03 &middot; Comparing quotes</p>
+    <h2 class="a-h2" id="compare-h" data-split data-scene="in">comparing a cheaper quote? <em>check if these are included.</em></h2>
+    <p class="a-lede">Some costs do not show on a list of deliverables, but they keep the work running every month.
+      Ask any quote you compare who handles these.</p>
+  </div>
+  <dl class="pdefs">
+    <div class="pdef" data-reveal="rise"><dt>Who sets the plan</dt><dd>A strategist sets the priorities, writes the briefs and reviews the results.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>Who checks the work</dt><dd>A person reviews the facts, your brand voice and the final work before it goes out.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>Who keeps it moving</dt><dd>A delivery coordinator tracks assets, approvals, tasks and client updates.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>What it runs on</dt><dd>Our own tools and systems are in the price. Software you own, API usage and ad spend stay separate.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>Who covers when someone is out</dt><dd>A teammate is assigned to each task, so your calendar keeps moving.</dd></div>
+    <div class="pdef" data-reveal="rise"><dt>Who trains the team</dt><dd>We train our people on how we work, then on your brand and your accounts.</dd></div>
+  </dl>
+  <p class="pdefs__more">If a quote leaves these out, it is a different offer.</p>
+</section>
+
 <section class="pq" id="quote" aria-labelledby="quote-h">
   <div class="pq__in">
-    <p class="eyebrow">03 &middot; Outside a plan</p>
+    <p class="eyebrow">04 &middot; Outside a plan</p>
     <h2 class="a-h2" id="quote-h" data-split data-scene="in">need more than a plan holds? <em>add it or ask.</em></h2>
     <p class="a-lede">Add to Essentials, Premium or a VA: a third ad platform (TikTok, YouTube or LinkedIn) +$500 a
       month, 4 more short videos +$400 a month, website maintenance on its own $300 a month, a custom AI
@@ -932,7 +958,7 @@ main{position:relative;z-index:1}
 
 <section class="is" id="terms" aria-labelledby="terms-h">
   <div class="is__head">
-    <p class="eyebrow">04 &middot; Terms, in plain sentences</p>
+    <p class="eyebrow">05 &middot; Terms, in plain sentences</p>
     <h2 class="a-h2" id="terms-h" data-split data-scene="in">where every number <em>stops.</em></h2>
     <p class="a-lede">Scope creep is a definition problem. Here are the definitions, in the same words that
       appear in the contract.</p>
