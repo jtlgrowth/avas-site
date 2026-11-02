@@ -13,37 +13,27 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ayalavirtualassistance.site/">
 <meta property="og:image" content="https://assets.cdn.filesafe.space/hYap0Mi8cSxt1mNhkGTq/media/6a54b5c0524a3ec4c612862b.png">
-<link rel="preload" as="image" href="/assets/avas-boot-poster.webp" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/avas-boot-mark.webp">
-<style>/* AVAS preloader (2026-09-28, Owner: "a preloading for avas, like the one in jtlgrowth"). The JTL v10
-   contract (film gated by real load, seat lights, skip, once per tab, reduced motion) for AVAS: a macro travel along the thick stroke of the 3D A, the angle swings round to face it,
-   then the lights come on and the mark goes cream as the page is ready. The film is rendered from
-   the hero's own A (static/avas-a.js, a-glass.js extrude), not generated, so the letter never warps.
-   Eight seat lights are the eight people on the team. Renderer and gates:
-   HQ ops/reports/avas-website-2026-09-28/work/preloader. Home route only, styled at the first paint. */
-#boot{--bt-bg:#100b08;--bt-ink:#f3ede6;--bt-dim:#a39488;--bt-seat:#3a2f29;--bt-glow:rgba(243,237,230,.5);
-  position:fixed;inset:0;z-index:9999;background:var(--bt-bg);overflow:hidden;will-change:transform;
-  transition:transform .6s cubic-bezier(.83,0,.17,1)}
-#boot.off{transform:translateX(-100%);pointer-events:none}
-#boot .bt-film{position:absolute;left:50%;top:50%;width:max(100vw,177.78vh);aspect-ratio:16/9;transform:translate(-50%,-50%)}
-#boot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--bt-bg);transition:opacity .3s ease}
-/* the crisp mark: the last frame re-rendered at 3200x1800 on a clear background, cropped with 8 px pad;
-   these are that crop's fractions of the film box, so it lands on the video frame by construction */
-#boot .bt-mark{position:absolute;left:40.1562%;top:21.2222%;width:19.6875%;height:57.5556%;opacity:0;transition:opacity .3s ease}
-#boot.crisp .bt-mark{opacity:1}
-#boot.crisp video{opacity:0;transition:opacity 0s .3s}
-#boot .bt-hud{position:absolute;left:0;right:0;bottom:clamp(30px,8vh,72px);display:flex;flex-direction:column;align-items:center;gap:14px}
-#boot .bt-seats{display:flex;gap:9px}
-#boot .bt-seats i{width:5px;height:5px;border-radius:50%;background:var(--bt-seat);transition:background .35s ease,box-shadow .35s ease}
-#boot .bt-seats i.on{background:var(--bt-ink);box-shadow:0 0 7px var(--bt-glow)}
-#boot .bt-pct{margin:0;font:700 11px/1 'Space Mono',ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--bt-dim);font-variant-numeric:tabular-nums}
-#boot .bt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-#boot .bt-skip{position:absolute;right:18px;bottom:16px;font:12px/1 'Space Mono',ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-dim);background:none;border:0;padding:14px 12px;cursor:pointer}
-#boot .bt-skip:hover,#boot .bt-skip:focus-visible{color:var(--bt-ink)}
-#boot .bt-skip:focus-visible{outline:2px solid var(--bt-ink);outline-offset:2px}
-/* portrait: a wide band so the whole A stays on screen, its edges melting into the curtain */
-@media (max-aspect-ratio:1/1){#boot .bt-film{width:150vw;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent);mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent)}}
-@media (prefers-reduced-motion:reduce){#boot{transition:opacity .4s ease}#boot.off{transform:none;opacity:0}#boot video{display:none}#boot .bt-mark{opacity:1;transition:none}#boot .bt-hud{visibility:hidden}}
+<style>/* Draw intro (Owner pick A, 2026-11-03). The lockup is the nav logo drawn --s times bigger, so the
+   flight into the nav lands pixel for pixel. Brand tokens on #boot; source HQ ops/runs/intro-ref-2026-11-03/ship. */
+#boot{position:fixed;inset:0;z-index:9999}
+#boot.off{visibility:hidden;pointer-events:none}
+#boot .bd-cur{position:absolute;inset:0;background:var(--bd-bg)}
+#boot .bd-stage{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+#boot .bd-box{display:flex;flex-direction:column;align-items:center}
+#boot .bd-row{display:flex;align-items:center}
+#boot .bd-lk{display:flex;align-items:flex-start;transform-origin:0 0;color:var(--bd-mark)}
+#boot .bd-lk svg{display:block;flex:none;width:calc(var(--mw) * var(--s));height:calc(var(--mh) * var(--s))}
+#boot .bd-word{overflow:hidden;white-space:nowrap;color:var(--bd-word)}
+#boot .bd-word i{font-style:normal;display:inline-block}
+#boot .bd-tag{margin-top:calc(var(--s) * 7px);font:400 13px/1.2 'Space Mono',ui-monospace,Menlo,monospace;letter-spacing:.32em;text-transform:uppercase;white-space:nowrap;color:var(--bd-tag)}
+#boot .bd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:600px){#boot .bd-tag{font-size:10.5px}}
+@media (prefers-reduced-motion:reduce){#boot{display:none}}
+/* AVAS tokens: white curtain, espresso mark, ink wordmark, same as the nav lockup (a-kit.css .top__mark) */
+#boot{--bd-bg:#fff;--bd-mark:#3A241C;--bd-word:#0B0B0B;--bd-tag:#3A241C;--mw:15.59375px;--mh:26px;--s:4}
+#boot .bd-word{margin-left:calc(10px * var(--s));margin-top:calc(2.16px * var(--s));font:800 calc(14px * var(--s))/calc(21.69px * var(--s)) var(--font-display),Archivo,system-ui,sans-serif;letter-spacing:.14em}
+@media (max-width:600px){#boot{--s:2.6}}
+html.bd-on .top__mark{visibility:hidden}
 </style>
 <style>/* JTL Growth's own combination, inlined so the page stays offline clean.
    Archivo variable covers body and the expanded display width from one file.
@@ -888,115 +878,71 @@ html[data-motion="calm"] #consent,html[data-motion="calm"] #consent .consent__ca
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
-<!-- AVAS preloader (2026-09-28), home route only. Static markup + inline script so the curtain is in
-     the first paint; its CSS rides in the head (parts/boot.css). The crisp mark is the film's last
-     frame re-rendered at 2.5x with a clear background (film.html ?alpha=1), so it lands exactly. -->
-<div id="boot"><div class="bt-film"><video muted playsinline preload="none" disablepictureinpicture poster="/assets/avas-boot-poster.webp" aria-hidden="true"><source src="/assets/avas-boot.mp4" type='video/mp4; codecs="avc1.64001F"'><source src="/assets/avas-boot.webm" type='video/webm; codecs="vp9"'></video><img class="bt-mark" src="/assets/avas-boot-mark.webp" alt="" aria-hidden="true" width="630" height="1036" decoding="async"></div><div class="bt-hud" aria-hidden="true"><div class="bt-seats"></div><p class="bt-pct">Clocking in <span>0</span>%</p></div><span class="bt-sr" role="status">Loading AVAS</span><button class="bt-skip" type="button" aria-label="Skip intro">skip</button></div>
+<!-- AVAS intro (2026-11-03, Owner pick A "Draw", replaces the 2026-09-28 film preloader): home route only.
+     Static markup + inline script so the curtain is in the first paint; CSS in the head (parts/boot.css). -->
+<div id="boot" data-key="avasboot" data-event="avas:boot-done" data-nav=".top__mark" data-step="70" aria-hidden="true"><div class="bd-cur"></div><div class="bd-stage"><div class="bd-box"><div class="bd-row"><div class="bd-lk"><svg viewBox="0 0 600 1000" aria-hidden="true"><use href="#avas-a"></use></svg><span class="bd-word"><i>A</i><i>V</i><i>A</i><i>S</i></span></div></div><p class="bd-tag">A marketing team that ships</p></div></div></div>
 <!-- v17: with scripting off the curtain never lifts on its own and the headline never enters, so both start done, and the pinned sideways run lays out as a plain grid -->
 <noscript><style>#boot{display:none}html body .kin .kw{transform:none}html body .kin .kw--pen{-webkit-mask-image:none;mask-image:none}html body .px__stick{position:relative;height:auto;overflow:visible}html body .px__track{width:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:40px 32px;padding:0 var(--pad)}html body .px__card{width:auto}html body .px__ui{display:none}</style></noscript>
 <script>
-/* AVAS preloader. The film (3.75 s, rendered from the hero's own A) has three beats: a macro
-   travel along the thick stroke (0 to 2.0 s), the angle swinging round to face the A (2.0 to 3.3 s),
-   and the lights coming on (3.2 to 3.6 s). The travel may only run as far as the page has loaded
-   (parsing eases toward 40%, DOMContentLoaded 45%, eager images and fonts fill to 95%); the swing
-   and the lights wait for the load event, so the reveal never lands before the page is ready. Near
-   its limit the film eases into slow motion instead of freezing. The number and the eight seat
-   lights (the eight people on the team) follow the film's own position. If the film cannot play
-   (blocked autoplay, error, not ready in 2.5 s) the poster holds and the count follows real
-   progress, never faster than 1.6 s. A stuck resource cannot hold the curtain past 9 s. Once per
-   tab session (sessionStorage avasboot). ?hold=1 keeps it up. Same contract as the JTL v10 boot. */
+/* Draw intro (Owner pick A, 2026-11-03): the mark is drawn, the wordmark rises letter by letter, the
+   tagline settles, then the lockup flies into the nav logo while the curtain lifts like a blind.
+   Same contract as the film preloader it replaces: #boot, .off when done, removed after, once per tab
+   session (data-key), the done event (data-event), ?hold=1 keeps it up, Escape skips, reduced motion
+   skips. The curtain lifts once the page has loaded, never before 1.45 s, never later than 4.5 s.
+   Source: HQ ops/runs/intro-ref-2026-11-03/ship/boot-draw.js (one copy per site, keep them equal). */
 (function () {
   'use strict';
   var root = document.getElementById('boot'); if (!root) return;
-  try { if (sessionStorage.getItem('avasboot')) { root.parentNode.removeChild(root); return; } } catch (e) {}
-  var TRAVEL = 2.0, FILM = 3.75, FPS = 24, SEATS = 8, MIN = 1600, CAP = 9000, SPEED = 1 / 800;
-  var S = { shown: 0, real: 0, frame: -1, dom: false, fonts: false, loaded: false, film: 'loading', finishing: false, done: false, reduced: false, t: 0, trace: [], hold: /[?&]hold=1/.test(location.search) };
-  var t0 = performance.now(), last = t0, lit = 0;
-  var v = root.querySelector('video'), num = root.querySelector('.bt-pct span'), row = root.querySelector('.bt-seats');
-  var seats = [];
-  for (var k = 0; k < SEATS; k++) { var d = document.createElement('i'); row.appendChild(d); seats.push(d); }
-  v.muted = true;
-  // polled each frame, not taken from events: canplay can fire before this script runs, iOS ignores
-  // preload until play() is called, and a skipped <source> fires its own error
-  var srcs = v.querySelectorAll('source');
-  srcs[srcs.length - 1].addEventListener('error', function () { S.film = 'failed'; });
-  function real() {
-    if (S.loaded) return 1;
-    if (!S.dom) return Math.min(0.4, 0.04 + 0.36 * (1 - Math.exp(-(performance.now() - t0) / 900)));
-    var imgs = [].filter.call(document.images, function (i) { return i.loading !== 'lazy'; });
-    var got = imgs.filter(function (i) { return i.complete; }).length;
-    return Math.min(0.95, 0.45 + 0.5 * ((imgs.length ? got / imgs.length : 1) * 0.75 + (S.fonts ? 0.25 : 0)));
-  }
-  function steer(dur) {
-    var open = S.loaded || S.t > CAP;
-    var lim = open ? dur : Math.min(S.real / 0.95, 1) * TRAVEL;
-    var room = lim - v.currentTime;
-    if (!open && room <= 0.03) { if (!v.paused) v.pause(); return; }
-    var rate = open || room >= 0.6 ? 1 : Math.max(0.25, Math.round(room / 0.6 * 10) / 10);
-    if (v.playbackRate !== rate) v.playbackRate = rate;
-    if (v.paused && !v.ended) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function (e) { if (e && e.name === 'NotAllowedError') S.film = 'blocked'; else if (e && e.name === 'NotSupportedError') S.film = 'failed'; });
-    }
-  }
-  function light(p) {
-    var n = Math.round(p * SEATS);
-    while (lit < n) seats[lit++].className = 'on';
-  }
-  function done() {
-    if (S.done) return; S.done = true;
-    root.classList.add('off');
-    try { v.pause(); } catch (e) {}
-    try { sessionStorage.setItem('avasboot', '1'); } catch (e) {}
-    document.dispatchEvent(new Event('avas:boot-done'));   // v17: the hero headline starts its entrance here
-    setTimeout(function () { if (root.parentNode) root.parentNode.removeChild(root); }, 800);
-  }
+  var html = document.documentElement, D = root.dataset;
+  function gone() { html.classList.remove('bd-on'); if (root.parentNode) root.parentNode.removeChild(root); }
+  try { if (sessionStorage.getItem(D.key)) { gone(); return; } } catch (e) {}
+  var hold = /[?&]hold=1/.test(location.search), over = false, landed = false;
   function finish() {
-    if (S.finishing) return; S.finishing = true;
-    root.classList.add('crisp');
-    if (!S.hold) setTimeout(done, 500);
+    if (over) return; over = true;
+    root.classList.add('off'); html.classList.remove('bd-on');
+    try { sessionStorage.setItem(D.key, '1'); } catch (e) {}
+    if (D.event) document.dispatchEvent(new Event(D.event));
+    setTimeout(gone, 700);
   }
-  function tick(now) {
-    if (S.done) return;
-    var dt = Math.min(64, now - last); last = now; S.t = now - t0;
-    S.real = real();
-    var dur = v.duration && isFinite(v.duration) ? v.duration : FILM;
-    if (v.error) S.film = 'failed';
-    if (S.film === 'loading' || S.film === 'ready') steer(dur);
-    if (S.film === 'loading' && v.currentTime > 0) S.film = 'ready';
-    if (S.film === 'loading' && S.t > 2500) S.film = 'late';
-    var target;
-    if (S.film === 'loading') {
-      target = S.shown;
-    } else if (S.film === 'ready') {
-      target = v.ended || v.currentTime >= dur - 0.05 ? 1 : Math.min(v.currentTime / dur, 0.999);
-      S.frame = Math.round(v.currentTime * FPS);
-    } else {
-      var soft = S.t > CAP ? 1 : Math.min(S.real, S.t / MIN);
-      target = S.shown + Math.min(Math.max(0, soft - S.shown), dt * SPEED);
-    }
-    if (target > S.shown) S.shown = target;
-    var n = Math.round(S.shown * 100);
-    if (num.textContent !== String(n)) num.textContent = n;
-    light(S.shown);
-    if (S.trace.length < 900) S.trace.push([Math.round(S.t), +S.shown.toFixed(3), +S.real.toFixed(3), S.frame]);
-    if (S.shown >= 1 || S.t > CAP + 1500) { S.shown = 1; num.textContent = '100'; light(1); finish(); return; }
-    requestAnimationFrame(tick);
+  if (!root.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
+  html.classList.add('bd-on');   // the nav logo hides until the lockup lands on it
+  var E = 'cubic-bezier(.22,1,.36,1)', EIO = 'cubic-bezier(.65,0,.35,1)', PEN = 'cubic-bezier(.45,0,.2,1)';
+  function A(el, kf, delay, dur, ease, fill) { return el.animate(kf, { delay: delay, duration: dur, easing: ease || E, fill: fill || 'both' }); }
+  var cur = root.querySelector('.bd-cur'), lk = root.querySelector('.bd-lk'), mark = lk.querySelector('svg');
+  var word = root.querySelector('.bd-word'), tag = root.querySelector('.bd-tag');
+  var letters = word.querySelectorAll('i'), step = +(D.step || 50);
+
+  // 1. draw: a stroked mark draws path by path, a filled mark is revealed upward like a pen stroke
+  if (D.draw === 'stroke') {
+    [].forEach.call(mark.querySelectorAll('path'), function (p, i) {
+      p.setAttribute('pathLength', '1'); p.style.strokeDasharray = '1';
+      A(p, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], 100 + i * 170, 520, PEN);
+    });
+  } else {
+    A(mark, [{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], 120, 750, PEN);
   }
-  document.addEventListener('DOMContentLoaded', function () { S.dom = true; });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { S.fonts = true; });
-  addEventListener('load', function () { S.loaded = true; });
-  root.querySelector('.bt-skip').addEventListener('click', done);
-  addEventListener('keydown', function (e) { if (!S.done && e.key === 'Escape') done(); });
-  window.AVASBOOT = { state: S, done: done };
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    S.reduced = true; root.classList.add('crisp');
-    if (!S.hold) setTimeout(done, 400);
-    return;
+  [].forEach.call(letters, function (c, i) { A(c, [{ transform: 'translateY(105%)' }, { transform: 'none' }], 560 + i * step, 520); });
+  A(tag, [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], 950, 380);
+
+  // 2. land: the lockup flies into the real nav logo (measured now, so any width lands exactly)
+  function land() {
+    if (landed || over || hold) return; landed = true;
+    var nav = document.querySelector(D.nav), target = nav && nav.querySelector('svg');
+    var n = target && target.getBoundingClientRect();
+    if (!n || !n.width) { finish(); return; }
+    var m = mark.getBoundingClientRect(), s = n.width / m.width;
+    A(tag, [{ opacity: 1 }, { opacity: 0 }], 0, 300, 'ease-out', 'forwards');
+    if (D.fade) A(word, [{ opacity: 1 }, { opacity: 0 }], 100, 250, 'ease-out', 'forwards');
+    A(lk, [{ transform: 'none' }, { transform: 'translate(' + (n.left - m.left) + 'px,' + (n.top - m.top) + 'px) scale(' + s + ')' }], 100, 700, EIO, 'forwards');
+    A(cur, [{ clipPath: 'inset(0 0 0 0)' }, { clipPath: 'inset(0 0 100% 0)' }], 150, 650, EIO, 'forwards');
+    setTimeout(finish, 810);
   }
-  // the markup ships preload="none" so reduced-motion visitors never download the film
-  v.preload = 'auto';
-  requestAnimationFrame(tick);
+  var t0 = performance.now(), MIN = 1450, CAP = 4500, loaded = document.readyState === 'complete';
+  function maybe() { if (loaded && performance.now() - t0 >= MIN - 20) land(); }
+  addEventListener('load', function () { loaded = true; maybe(); });
+  setTimeout(maybe, MIN); setTimeout(land, CAP);
+  addEventListener('keydown', function (e) { if (!over && e.key === 'Escape') finish(); });
+  window.BOOTDRAW = { finish: finish, land: land };
 })();
 </script>
 
@@ -3644,6 +3590,7 @@ window.AVAS_PH={"key":"phc_po4dGx6cfc8VHkgMfTMEWDDHmxjLdaGDtA4YCcXQHBcN","host":
 })();
 </script>
 
+<script src="/assets/contact-widget.js" data-cw="{&quot;title&quot;:&quot;Talk to the AVAS team&quot;,&quot;sub&quot;:&quot;Questions about pricing, timelines or fit? Message us wherever is easiest.&quot;,&quot;teaser&quot;:&quot;Hi there! Need a hand with your marketing?&quot;,&quot;fabLabel&quot;:&quot;Contact AVAS&quot;,&quot;rows&quot;:[{&quot;k&quot;:&quot;msg&quot;,&quot;label&quot;:&quot;Messenger&quot;,&quot;handle&quot;:&quot;ayalavirtualassistance&quot;,&quot;href&quot;:&quot;https://m.me/ayalavirtualassistance&quot;},{&quot;k&quot;:&quot;ig&quot;,&quot;label&quot;:&quot;Instagram&quot;,&quot;handle&quot;:&quot;@ayalavirtualassistance&quot;,&quot;href&quot;:&quot;https://www.instagram.com/ayalavirtualassistance/&quot;},{&quot;k&quot;:&quot;fb&quot;,&quot;label&quot;:&quot;Facebook&quot;,&quot;handle&quot;:&quot;Ayala Virtual Assistance&quot;,&quot;href&quot;:&quot;https://www.facebook.com/ayalavirtualassistance&quot;},{&quot;k&quot;:&quot;mail&quot;,&quot;label&quot;:&quot;Email&quot;,&quot;handle&quot;:&quot;info@ayalavirtualassistance.com&quot;,&quot;href&quot;:&quot;mailto:info@ayalavirtualassistance.com&quot;}],&quot;cta&quot;:{&quot;label&quot;:&quot;Book a free call&quot;,&quot;href&quot;:&quot;/book/&quot;},&quot;mark&quot;:{&quot;w&quot;:14,&quot;h&quot;:23,&quot;aw&quot;:11,&quot;ah&quot;:18,&quot;svg&quot;:&quot;&lt;span style=\&quot;display:block;width:100%;height:100%;background:currentColor;-webkit-mask:url(/assets/avas-a-mark.svg) center/contain no-repeat;mask:url(/assets/avas-a-mark.svg) center/contain no-repeat\&quot;&gt;&lt;/span&gt;&quot;},&quot;theme&quot;:{&quot;font&quot;:&quot;Archivo,system-ui,-apple-system,sans-serif&quot;,&quot;dark&quot;:&quot;#3A241C&quot;,&quot;onDark&quot;:&quot;#fff&quot;,&quot;card&quot;:&quot;#fff&quot;,&quot;ink&quot;:&quot;#0B0B0B&quot;,&quot;icon&quot;:&quot;#3A241C&quot;,&quot;hover&quot;:&quot;#F5F1EF&quot;,&quot;line&quot;:&quot;rgba(58,36,28,.12)&quot;,&quot;teaseBg&quot;:&quot;#fff&quot;,&quot;teaseInk&quot;:&quot;#0B0B0B&quot;,&quot;teaseRadius&quot;:&quot;16px 16px 4px 16px&quot;,&quot;radius&quot;:&quot;20px&quot;,&quot;rowRadius&quot;:&quot;10px&quot;,&quot;avRadius&quot;:&quot;50%&quot;,&quot;cta&quot;:&quot;#0B0B0B&quot;,&quot;ctaInk&quot;:&quot;#fff&quot;,&quot;ctaHover&quot;:&quot;#3A241C&quot;,&quot;ctaRadius&quot;:&quot;999px&quot;},&quot;z&quot;:100}" defer></script>
 <script src="/assets/prequal.js" defer></script>
 </body>
 </html>
