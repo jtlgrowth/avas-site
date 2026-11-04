@@ -178,7 +178,7 @@
         '<p class="pqp__sub">More than one person\'s worth of work is what our full execution team does, as a partnership with our sister company, JTL Growth.</p>' +
         '<div class="pqp__card"><p class="pqp__role">Grow with us</p><p class="pqp__price">Strategy plus a named crew, from $2,500 a month</p>' +
         '<ul><li>Content made and channels run</li><li>A calendar you can see before the month starts</li><li>The same people every month</li></ul></div>' +
-        '<a class="pqp__cta" href="/book/?' + esc(carry("team")) + '&amp;utm_campaign=prequal">Book a call about a team</a>' +
+        '<a class="pqp__cta" href="/book/?' + esc(carry("team")) + '&amp;utm_campaign=prequal">Book a free call about a team</a>' +
         '<p class="pqp__fine">Your answers are saved. You just pick a time.</p>' +
         '<div class="pqp__foot"><button type="button" class="pqp__link" data-pq-again>Start over</button><button type="button" class="pqp__link" data-pq-skip>Keep looking around</button></div>';
       wire(); return;
